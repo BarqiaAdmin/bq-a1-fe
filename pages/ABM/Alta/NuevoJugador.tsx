@@ -241,6 +241,31 @@ function NuevoJugador() {
                             )}
                         </FormControl>
                     </GridItem>
+                    <GridItem colSpan={6}>
+                        <FormControl isRequired>
+                            <FormLabel>Nivel de inglés</FormLabel>
+                            <Input placeholder="Ingresar nivel" value={inputNombre} onChange={handleNombreChange}/>
+                        </FormControl>
+                    </GridItem>
+                    <GridItem colSpan={6}>
+                        <Accordion defaultIndex={[1]} allowMultiple>
+                            <AccordionItem>
+                                <h2>
+                                <AccordionButton>
+                                    <Box as="span" flex='1' textAlign='left'>
+                                    Certificaciones
+                                    </Box>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                                </h2>
+                                <AccordionPanel pb={4}>
+                                    <Input placeholder="Certificación 1" />
+                                    <Input placeholder="Certificación 2" />
+                                    <Input placeholder="Certificación 3" />
+                                </AccordionPanel>
+                            </AccordionItem>
+                        </Accordion>
+                    </GridItem>
                     <GridItem colSpan={12}>
                         <Text>SOCIAL</Text>
                     </GridItem>
