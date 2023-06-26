@@ -1,0 +1,2 @@
+1 de julio
+que cualquiera de los 4 usuarios se pueda registrar -> BD
