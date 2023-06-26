@@ -48,6 +48,7 @@ export default function Perfil() {
     const [files, selectFiles] = useFileUpload();
 
     const subirImagen = () => {
+        /*
         selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
             const elementoFoto1 = document.getElementById('foto1');
             //elementoFoto1.style.borderRadius = "100%"
@@ -57,6 +58,7 @@ export default function Perfil() {
             const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
             elementoBotonDeSubirImagen.remove();
         })
+        */
     }
 
     const usuario = {
@@ -256,10 +258,12 @@ export default function Perfil() {
                         <VStack>
                             <Heading>Galeria</Heading>
                             <HStack>
-                                <Image alt='' 
-                                id="foto1"
-                                src={files?.source || '/sl-icono-cuadrado-2.png'}
-                            />
+                                {/**
+                                    <Image alt='' 
+                                    id="foto1"
+                                    src={files?.source || '/sl-icono-cuadrado-2.png'}
+                                />
+                                 */}
                                 <Link
                                     id="botonDeSubirImagen"
                                     color="#6EC1E4"
