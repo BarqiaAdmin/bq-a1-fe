@@ -127,7 +127,7 @@ const NuevoClub = () => {
                             </FormControl>
                         </GridItem>
                         <GridItem colSpan={2} textAlign="right">
-                            <Link href=/">
+                            <Link href="/">
                                 <Button
                                     className="btn1"
                                     p="10px 24px 12px"
