@@ -87,7 +87,7 @@ const RegistroJugador = () => {
                         <Link href="http://127.0.0.1:5500/views/OnboardSelect.html">Volver</Link>
                     </GridItem>
                     <GridItem colSpan={1} textAlign="right">
-                        <Link className="btn1" href="http://localhost:3000/Onboarding/Load">
+                        <Link className="btn1" href="/Onboarding/Load">
                             <Button
                                 p="10px 24px 12px"
                                 w="161px"

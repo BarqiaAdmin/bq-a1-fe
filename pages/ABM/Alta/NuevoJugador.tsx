@@ -433,7 +433,7 @@ function NuevoJugador() {
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={12} textAlign="right">
-                        <Link href="http://localhost:3000/ABM/Alta/NuevoJugador2">
+                        <Link href="/ABM/Alta/NuevoJugador2">
                             <Button
                                 className="btn1"
                                 p="10px 24px 12px"

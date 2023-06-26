@@ -72,7 +72,7 @@ const IndexPage = () => {
                         <Link className="link1" href="Sesion/PassRecovery">Olvidé mi contraseña</Link>
                     </GridItem>
                     <GridItem colSpan={8}>
-                        <Link className="link1" href="http://localhost:3000/Onboarding/Onboarding">
+                        <Link className="link1" href="/Onboarding/Onboarding">
                             <Button
                                 w="full"
                                 className="btn1"

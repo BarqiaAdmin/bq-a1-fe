@@ -133,7 +133,7 @@ class Onboarding extends React.Component {
                         </GridItem>
 
                         <GridItem colSpan={6}>
-                            <Link className="btn1" href="http://localhost:3000/ABM/Alta/NuevoJugador">
+                            <Link className="btn1" href="/ABM/Alta/NuevoJugador">
                                 <Button>
                                     Continuar
                                 </Button>

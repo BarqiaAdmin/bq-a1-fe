@@ -65,7 +65,7 @@ const LogIn = () => {
                         <Link className="link1" href="PassRecovery">Olvidé mi contraseña</Link>
                     </GridItem>
                     <GridItem colSpan={8}>
-                        <Link className="link1" href="http://localhost:3000/Usuario/Perfil-beta">
+                        <Link className="link1" href="/Usuario/Perfil-beta">
                             <Button
                                 w="full"
                                 className="btn1"

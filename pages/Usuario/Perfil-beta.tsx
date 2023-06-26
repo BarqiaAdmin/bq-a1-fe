@@ -114,7 +114,7 @@ export default function Perfil() {
                                 <VStack gap="5px">
                                     <Heading>{ 'Juan Pablo Badino' }</Heading>
                                     <HStack gap="5px">
-                                        <Link href="http://localhost:3000/Usuario/Perfil">Estadísticas</Link>
+                                        <Link href="/Usuario/Perfil">Estadísticas</Link>
                                         <Button
                                             color="white"
                                             background="#144077"

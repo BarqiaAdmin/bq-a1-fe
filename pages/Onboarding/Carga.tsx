@@ -27,7 +27,7 @@ const Load = () => {
             p={10}
         >
             <Image alt=''  src="/artwork1.png" position="fixed" left="0" bottom="0" />
-            <Link href="http://localhost:3000/Usuario/Perfil">
+            <Link href="/Usuario/Perfil">
                 <VStack
                     w="702px"
                     h="500px"

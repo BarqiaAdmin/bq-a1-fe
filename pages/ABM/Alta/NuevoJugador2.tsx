@@ -244,13 +244,13 @@ class NuevoJugador2 extends Component {
                     <SimpleGrid columns={2} w="full">
                         <GridItem colSpan={1}>
                             <Link
-                                href="http://localhost:3000/ABM/Alta/NuevoJugador"
+                                href="/ABM/Alta/NuevoJugador"
                                 position="relative"
                                 zIndex="0"
                             >Volver</Link>
                         </GridItem>
                         <GridItem colSpan={1} textAlign="right">
-                            <Link href="http://localhost:3000/Onboarding/Carga">
+                            <Link href="/Onboarding/Carga">
                                 <Button
                                     className="btn1"
                                     p="10px 24px 12px"
