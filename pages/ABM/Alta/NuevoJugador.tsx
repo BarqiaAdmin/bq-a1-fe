@@ -459,9 +459,16 @@ function NuevoJugador() {
                         </FormControl>
                     </GridItem>
                      */}
-                    <GridItem colSpan={12} textAlign="right">
-                        <Link href="/Onboarding/Onboarding">Atrás</Link>
-                        <Link href="/ABM/Alta/NuevoJugador2">
+                    <GridItem colSpan={12}>
+
+                        <Link href="/Onboarding/Onboarding">
+                            <Button>
+                                Atrás
+                            </Button>
+                            
+                        </Link>
+
+                        <Link href="/ABM/Alta/NuevoJugador2" float="right">
                             <Button
                                 className="btn1"
                                 p="10px 24px 12px"
@@ -475,6 +482,7 @@ function NuevoJugador() {
                                 Continuar
                             </Button>
                         </Link>
+
                     </GridItem>
                 </SimpleGrid>
             </VStack>
