@@ -17,7 +17,6 @@ class Onboarding extends React.Component {
     nuevoJugador() {
         console.log('JUGADOR')
     }
-    
     render() {
         return (
             <Container
@@ -133,6 +132,11 @@ class Onboarding extends React.Component {
                         </GridItem>
 
                         <GridItem colSpan={6}>
+                        <Link href="/">
+                                <Button>
+                                    Atrás
+                                </Button>
+                            </Link>
                             <Link className="btn1" href="/ABM/Alta/NuevoJugador">
                                 <Button>
                                     Continuar

@@ -465,7 +465,6 @@ function NuevoJugador() {
                             <Button>
                                 Atrás
                             </Button>
-                            
                         </Link>
 
                         <Link href="/ABM/Alta/NuevoJugador2" float="right">
