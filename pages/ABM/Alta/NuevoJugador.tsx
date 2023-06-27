@@ -430,6 +430,7 @@ function NuevoJugador() {
                             </AccordionItem>
                         </Accordion>
                     </GridItem>
+                    {/**
                     <GridItem colSpan={12}>
                         <FormControl>
                             <FormLabel>
@@ -457,7 +458,9 @@ function NuevoJugador() {
                             <Checkbox onChange={() => localStorage.setItem("privado", "true")}>Privado</Checkbox>
                         </FormControl>
                     </GridItem>
+                     */}
                     <GridItem colSpan={12} textAlign="right">
+                        <Link href="/Onboarding/Onboarding">Atrás</Link>
                         <Link href="/ABM/Alta/NuevoJugador2">
                             <Button
                                 className="btn1"
