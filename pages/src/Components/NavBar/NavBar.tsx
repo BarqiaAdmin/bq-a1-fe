@@ -17,11 +17,9 @@ import {
     BreadcrumbLink,
     Flex,
     Switch,
-    useColorMode
 } from '@chakra-ui/react';
 
 const NavBar = () => {
-    const { toggleColorMode } = useColorMode();
     return (
         <HStack
             bg="#131619"
@@ -50,7 +48,6 @@ const NavBar = () => {
             <Flex
                 alignItems="center"
             >
-                <Switch onChange={toggleColorMode} marginRight="20px" />
                 <Button marginRight="25px">
                     <Link href="/">Cerrar sesión</Link>
                 </Button>
