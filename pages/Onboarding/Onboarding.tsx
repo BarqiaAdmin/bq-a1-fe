@@ -39,14 +39,15 @@ class Onboarding extends React.Component {
                 />
                 <VStack textAlign="center">
                     <SimpleGrid columns={6}>
+                        {/**
                         <GridItem colSpan={6}>
                             <Image alt=''  src="/logo.png" />
                         </GridItem>
                         <GridItem colSpan={6}>
                             <HStack>
-                                <Image alt=''  src="/rectangulo_verde.png" />
-                                <Image alt=''  src="/rectangulo_gris.png" />
-                                <Image alt=''  src="/rectangulo_gris.png" />
+                                <Image alt='' src="/rectangulo_verde.png" />
+                                <Image alt='' src="/rectangulo_gris.png" />
+                                <Image alt='' src="/rectangulo_gris.png" />
                             </HStack>
                         </GridItem>
                         <GridItem colSpan={6}>
@@ -102,7 +103,7 @@ class Onboarding extends React.Component {
                                         Selecciona tu deporte
                             </Heading>
                         </GridItem>
-
+                         */}
                         <GridItem colSpan={3} className="OnboardingOption">
                             <Box>
                                 <Image alt=''  margin="auto" src="/futbol_grande.png" />
@@ -111,7 +112,9 @@ class Onboarding extends React.Component {
                                 <Heading>Futbol</Heading>
                             </Box>
                             <Button>
-                                SELECCIONAR
+                                <Link href="/ABM/Alta/NuevoJugador">
+                                        SELECCIONAR
+                                </Link>
                             </Button>
                         </GridItem>
 
@@ -123,7 +126,9 @@ class Onboarding extends React.Component {
                                 <Heading>Rugby</Heading>
                             </Box>
                             <Button>
-                                SELECCIONAR
+                                <Link href="/ABM/Alta/NuevoJugador">
+                                    SELECCIONAR
+                                </Link>
                             </Button>
                         </GridItem>
 
@@ -132,21 +137,10 @@ class Onboarding extends React.Component {
                         </GridItem>
 
                         <GridItem colSpan={6}>
-                        <Link href="/">
+                            <Link href="/">
                                 <Button>
                                     Atrás
                                 </Button>
-                            </Link>
-                            <Link className="btn1" href="/ABM/Alta/NuevoJugador">
-                                <Button>
-                                    Continuar
-                                </Button>
-                            </Link>
-                        </GridItem>
-
-                        <GridItem colSpan={6}>
-                            <Link className="link1">
-                                Ingresar como espectador
                             </Link>
                         </GridItem>
                     </SimpleGrid>
