@@ -250,7 +250,7 @@ class NuevoJugador2 extends Component {
                             >Volver</Link>
                         </GridItem>
                         <GridItem colSpan={1} textAlign="right">
-                            <Link href="/Onboarding/Carga">
+                            <Link href="/Usuario/Perfil-beta">
                                 <Button
                                     className="btn1"
                                     p="10px 24px 12px"
