@@ -156,11 +156,9 @@ export default function Perfil() {
                                         <Image alt=''  h="30px" src="/icono-tiktok.png" />
                                     </HStack>
                                 </VStack>
-                                {/* 
                                 <HStack>
                                     <Progress value={75} size='lg' colorScheme='green' />
                                 </HStack>
-                                */}
                             </HStack>
                         </VStack>
                         <VStack
@@ -301,7 +299,7 @@ export default function Perfil() {
 
                     {/* "Top Torneos (Figma)" */}
 
-                    <GridItem colSpan={4}>
+                    <GridItem colSpan={15}>
                         <Box paddingTop="80px" paddingLeft="240px">
                             <HStack>
                                 <Text>ESTADISTICAS</Text>
@@ -431,23 +429,19 @@ export default function Perfil() {
                             </HStack>
                         </Box>
                     </GridItem>
-                    <GridItem colSpan={1} marginTop="150px">
-                        <VStack>
-                            
-                            {/**
+
+                    {/** Redes sociales */}
+
+                    <GridItem colSpan={15} marginTop="150px" paddingLeft="240px" textAlign="center">
+                        <HStack margin="auto" textAlign="center">
                             <HStack color="white">
                                 
                                 <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@riquelmefutbol10/video/7113220013762366725" data-video-id="7113220013762366725" style={{ maxWidth: '605px', minWidth: '325px'}} > <section> <a target="_blank" title="@riquelmefutbol10" href="https://www.tiktok.com/@riquelmefutbol10?refer=embed">@riquelmefutbol10</a> Se cumplen 16 años del golazo a México 🔥 <a title="maxirodriguez" target="_blank" href="https://www.tiktok.com/tag/maxirodriguez?refer=embed">#maxirodriguez</a> <a title="riquelme" target="_blank" href="https://www.tiktok.com/tag/riquelme?refer=embed">#riquelme</a> <a title="golazo" target="_blank" href="https://www.tiktok.com/tag/golazo?refer=embed">#golazo</a> <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> <a title="parati" target="_blank" href="https://www.tiktok.com/tag/parati?refer=embed">#parati</a> <a title="viral" target="_blank" href="https://www.tiktok.com/tag/viral?refer=embed">#viral</a> <a target="_blank" title="♬ sonido original - riquelmefutbol10" href="https://www.tiktok.com/music/sonido-original-7113220003352464133?refer=embed">♬ sonido original - riquelmefutbol10</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
                                 
                             </HStack>
-                             */}
-
-                            {/*
                             <HStack>
                                 <iframe width="295" src="https://www.youtube.com/embed/w_tALGi2wVI" title="Gol De Messi A Serbia 2006 HD (Relatos Argentinos)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                             </HStack>
-                            */}
-                            {/*
                             <HStack
                                 data-mc-src="2d37e04a-d910-4611-9e80-79d30ba70618#instagram">
                                 <script 
@@ -455,10 +449,8 @@ export default function Perfil() {
                                     async data-usrc>
                                 </script>
                             </HStack>
-                            */}
-                        </VStack>
+                        </HStack>
                     </GridItem>
-                    
                 </SimpleGrid>
             </HStack>
         </Box>

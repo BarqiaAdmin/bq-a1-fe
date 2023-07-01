@@ -38,17 +38,18 @@ function NuevoJugador() {
 
     const [files, selectFiles] = useFileUpload();
 
-    const [inputNombre, setInputNombre] = useState('')
-    const [inputApellido, setInputApellido] = useState('')
-    const [inputNacimiento, setInputNacimiento] = useState('')
-    const [inputNacionalidad, setInputNacionalidad] = useState('')
-    const [inputPieHabil, setInputPieHabil] = useState('')
-    const [inputPosicion, setInputPosicion] = useState('')
-    const [inputGenero, setInputGenero] = useState('')
-    const [inputEstatura, setInputEstatura] = useState('')
-    const [inputPeso, setInputPeso] = useState('')
-    const [inputClub, setInputClub] = useState('')
-    const [inputCategoria, setInputCategoria] = useState('')
+    const [inputNombre, setInputNombre] = useState('');
+    const [inputApellido, setInputApellido] = useState('');
+    const [inputNacimiento, setInputNacimiento] = useState('');
+    const [inputNacionalidad, setInputNacionalidad] = useState('');
+    const [inputPieHabil, setInputPieHabil] = useState('');
+    const [inputPosicion, setInputPosicion] = useState('');
+    const [inputGenero, setInputGenero] = useState('');
+    const [inputEstatura, setInputEstatura] = useState('');
+    const [inputPeso, setInputPeso] = useState('');
+    const [inputClub, setInputClub] = useState('');
+    const [inputCategoria, setInputCategoria] = useState('');
+    const [inputPresupuesto, setInputPresupuesto] = useState('');
 
     const subirImagen = () => {
         /*
@@ -117,6 +118,11 @@ function NuevoJugador() {
     const handleCategoriaChange = (e) => {
         setInputCategoria(e.target.value);
         localStorage.setItem('categoria', e.target.value);
+    }
+
+    const handlePresupuestoChange = (e) => {
+        setInputPresupuesto(e.target.value);
+        localStorage.setItem('presupuesto', e.target.value)
     }
 
     const isErrorNombre = inputNombre === ''
@@ -430,11 +436,22 @@ function NuevoJugador() {
                             )}
                         </FormControl>
                     </GridItem>
-                    <GridItem colSpan={12}>
+                    <GridItem colSpan={6}>
                         <FormControl>
                             <Select placeholder="Condición" onChange={(e) => localStorage.setItem("condicion", e.target.value)}>
                                 <option>Libre</option>
                                 <option>Con contrato</option>
+                            </Select>
+                        </FormControl>
+                    </GridItem>
+                    <GridItem colSpan={6}>
+                        <FormControl>
+                            <Select placeholder="Presupuesto" onChange={(e) => localStorage.setItem("presupuesto", e.target.value)}>
+                                <option>0 - 5.000</option>
+                                <option>6.0000 - 10.000</option>
+                                <option>10.000 - 15.000</option>
+                                <option>16.000 - 20.000</option>
+                                <option>Más de 20.000</option>
                             </Select>
                         </FormControl>
                     </GridItem>
@@ -502,6 +519,7 @@ function NuevoJugador() {
                             borderRadius="5px"
                             fontSize="21px"
                             color="#A2A2A2"
+                            float='right'
 
                             onClick={crearJugador}
                         >
