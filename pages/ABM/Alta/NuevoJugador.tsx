@@ -42,6 +42,7 @@ function NuevoJugador() {
     const [inputApellido, setInputApellido] = useState('');
     const [inputNacimiento, setInputNacimiento] = useState('');
     const [inputNacionalidad, setInputNacionalidad] = useState('');
+    const [inputNivelDeIngles, setInputNivelDeIngles] = useState('');
     const [inputPieHabil, setInputPieHabil] = useState('');
     const [inputPosicion, setInputPosicion] = useState('');
     const [inputGenero, setInputGenero] = useState('');
@@ -52,17 +53,15 @@ function NuevoJugador() {
     const [inputPresupuesto, setInputPresupuesto] = useState('');
 
     const subirImagen = () => {
-        /*
         selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
             const elementoFotoDePerfil = document.getElementById('fotoDePerfil');
-            elementoFotoDePerfil.style.borderRadius = "100%"
+            //elementoFotoDePerfil.style.borderRadius = "100%"
             elementoFotoDePerfil.style.width = "170px"
             elementoFotoDePerfil.style.marginTop = "-170px"
             elementoFotoDePerfil.style.marginLeft = "0px"
             const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
             elementoBotonDeSubirImagen.remove();
         })
-        */
     }
 
     const handleNombreChange = (e) => {
@@ -83,6 +82,11 @@ function NuevoJugador() {
     const handleNacionalidadChange = (e) => {
         setInputNacionalidad(e.target.value);
         localStorage.setItem('nacionalidad', e.target.value);
+    }
+
+    const handleNivelDeInglesChange = (e) => {
+        setInputNivelDeIngles(e.target.value);
+        localStorage.setItem('nivelDeIngles', e.target.value);
     }
 
     const handlePieHabilChange = (e) => {
@@ -196,7 +200,6 @@ function NuevoJugador() {
                 <VStack>
                     <div>
                         <Image alt=''  src="/ellipse.png" />
-                        {/*
                         <Image alt='' 
                             id="fotoDePerfil"
                             src={files?.source || '/usuario.png'}
@@ -204,7 +207,6 @@ function NuevoJugador() {
                             marginLeft="60px"
                             paddingBottom="10px"
                         />
-                        */}
                         <Link
                             id="botonDeSubirImagen"
                             color="#6EC1E4"
@@ -275,13 +277,18 @@ function NuevoJugador() {
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={6}>
-                        <FormControl isRequired>
+                        <FormControl>
                             <FormLabel>Nivel de inglés</FormLabel>
-                            <Input placeholder="Ingresar nivel" value={inputNombre} onChange={handleNombreChange}/>
+                            <Select onChange={handleNivelDeInglesChange}>
+                                <option>Bilingüe</option>
+                                <option>Avanzado</option>
+                                <option>Intermedio</option>
+                                <option>Básico</option>
+                            </Select>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={6}>
-                        <Accordion defaultIndex={[1]} allowMultiple>
+                        <Accordion defaultIndex={[1]} allowMultiple marginTop='31px'>
                             <AccordionItem>
                                 <h2>
                                 <AccordionButton>

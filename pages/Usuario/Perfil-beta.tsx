@@ -44,6 +44,8 @@ import SideBar from '../../src/Components/SideBar/SideBar';
 import { useFileUpload } from 'use-file-upload';
 import { get } from 'http';
 
+import { useState } from 'react';
+
 export default function Perfil() {
 
     const [files, selectFiles] = useFileUpload();
@@ -60,57 +62,36 @@ export default function Perfil() {
         })
     }
 
+    const [nombre, setNombre] = useState('')
+    const [apellido, setApellido] = useState('');
+    const [club, setClub] = useState('');
+    const [posicion, setPosicion] = useState(''); 
+    const [categoria, setCategoria] = useState(''); 
+    const [estatura, setEstatura] = useState(''); 
+    const [peso, setPeso] = useState(''); 
+    const [edad, setEdad] = useState(''); 
+    const [nacionalidad, setNacionalidad] = useState(''); 
+    const [pieHabil, setPieHabil] = useState(''); 
+
     const usuario = {
-        nombre: 'Nombre de prueba',
+        nombre: '',
         apellido: '',
-        nacimiento: '',
-        nacionalidad: '',
-        edad: '',
-        facebook: '',
-        instagram: '',
-        tiktok: '',
-        pieHabil: '',
-        posicion: '',
-        genero: '',
-        estatura: '',
-        peso: '',
-        equipo: '',
-        categoria: '',
-        condicion: '',
-        perfilVisibleA: {
-            scouts: '',
-            clubes: '',
-            universidades: '',
-            privado: '',
-        }
     }
 
     useEffect(() => {
-
-        
-        usuario.nombre = localStorage.getItem('club'),
-        usuario.apellido = localStorage.getItem('club'),
-        usuario.nacimiento = localStorage.getItem('club'),
-        usuario.nacionalidad = localStorage.getItem('club'),
-        usuario.edad = localStorage.getItem('club'),
-        usuario.facebook = localStorage.getItem('club'),
-        usuario.instagram = localStorage.getItem('club'),
-        usuario.tiktok = localStorage.getItem('club'),
-        usuario.pieHabil = localStorage.getItem('club'),
-        usuario.posicion = localStorage.getItem('club'),
-        usuario.genero = localStorage.getItem('club'),
-        usuario.estatura = localStorage.getItem('club'),
-        usuario.peso = localStorage.getItem('club'),
-        usuario.equipo = localStorage.getItem('club'),
-        usuario.categoria = localStorage.getItem('club'),
-        usuario.condicion = localStorage.getItem('club'),
-            
-
-        usuario.nombre = localStorage.getItem('nombre');
-        usuario.apellido = localStorage.getItem('posicion');
-        usuario.equipo = '';
-
+        setNombre(localStorage.getItem('nombre'))
+        setApellido(localStorage.getItem('apellido'))
+        setClub(localStorage.getItem('club'))
+        setPosicion(localStorage.getItem('posicion'));
+        setCategoria(localStorage.getItem('categoria'));
+        setEstatura(localStorage.getItem('estatura'));
+        setPeso(localStorage.getItem('peso'));
+        setEdad(localStorage.getItem('edad'));
+        setNacionalidad(localStorage.getItem('nacionalidad'));
+        setPieHabil(localStorage.getItem('pieHabil'));
     });
+
+    
 
     return(
         <>
@@ -128,14 +109,13 @@ export default function Perfil() {
                             paddingTop="100px"
                         >
                             <HStack>
-                                <Image alt='' 
-                                    borderRadius="full"
+                                <Image alt=''
                                     marginRight="20px"
                                     width="150px"
-                                    src="/test_avatar.png"
+                                    src="/maxi-rodriguez.png"
                                 />
                                 <VStack gap="5px">
-                                    <Heading>{ usuario.nombre }</Heading>
+                                    <Heading>{ nombre } { apellido }</Heading>
                                     <HStack gap="5px">
                                         <Link href="/Usuario/Perfil">Estadísticas</Link>
                                         <Button
@@ -173,39 +153,39 @@ export default function Perfil() {
                             <SimpleGrid columns={15} textAlign="center">
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">EQUIPO</Text>
-                                    <Text>{ usuario.equipo }</Text>
+                                    <Text>{ club }</Text> 
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">POSICIÓN</Text>
-                                    <Text>{ usuario.posicion}</Text>
+                                    <Text>{ posicion }</Text> 
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">CATEGORÍA</Text>
-                                    <Text>{ usuario.categoria }</Text>
+                                    <Text>{ categoria }</Text> 
                                 </GridItem>
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">ESTATURA</Text>
-                                    <Text>{ usuario.estatura}</Text>
+                                    <Text>{ estatura }</Text> 
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">PESO</Text>
-                                    <Text>{ usuario.peso }</Text>
+                                    <Text>{ peso }</Text> 
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">EDAD</Text>
-                                    <Text>{ usuario.edad }</Text>
+                                    <Text>{ edad }</Text> 
                                 </GridItem>
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">PAÍS</Text>
@@ -222,14 +202,14 @@ export default function Perfil() {
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">NACIONALIDAD</Text>
-                                    <Text>{ usuario.nacionalidad }</Text>
+                                    <Text>{ nacionalidad }</Text> 
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">PIE HÁBIL</Text>
-                                    <Text>{ usuario.pieHabil }</Text>
+                                    <Text>{ pieHabil }</Text> 
                                 </GridItem>
                                     {/*
                                     Commit
@@ -279,12 +259,10 @@ export default function Perfil() {
                         <VStack>
                             <Heading>Galeria</Heading>
                             <HStack>
-                                {/**
-                                    <Image alt='' 
+                                <Image alt='' 
                                     id="foto1"
                                     src={files?.source || '/sl-icono-cuadrado-2.png'}
                                 />
-                                 */}
                                 <Link
                                     id="botonDeSubirImagen"
                                     color="#6EC1E4"
@@ -304,7 +282,7 @@ export default function Perfil() {
                             <HStack>
                                 <Text>ESTADISTICAS</Text>
                                 <FormControl>
-                                    <Input placeholder="Buscar por nombre del equipo rival" />
+                                    <Input placeholder="Buscar por nombre del club rival" />
                                 </FormControl>
                             </HStack>
                             <HStack>
