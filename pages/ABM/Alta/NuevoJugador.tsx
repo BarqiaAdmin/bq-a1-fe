@@ -27,7 +27,11 @@ import {
     AccordionPanel
 } from '@chakra-ui/react';
 
+import axios from 'axios';
 import { useState } from 'react';
+
+import Router from 'next/router';
+
 import { useFileUpload } from 'use-file-upload';
 
 function NuevoJugador() {
@@ -126,6 +130,29 @@ function NuevoJugador() {
     const isErrorPeso = inputPeso === ''
     const isErrorClub = inputClub === ''
     const isErrorCategoria = inputCategoria === ''
+
+    const crearJugador = () => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:5051/crearUsuario',
+            data: {
+                nombre: localStorage.getItem('apellido'),
+                apellido: localStorage.getItem('apellido'),
+                fechaDeNacimiento: localStorage.getItem('fechaDeNacimiento'),
+                nacionalidad: localStorage.getItem('nacionalidad'),
+                nivelDeIngles: localStorage.getItem('nivelDeIngles'),
+                pieHabil: localStorage.getItem('pieHabil'),
+                posicion: localStorage.getItem('posicion'),
+                genero: localStorage.getItem('genero'),
+                estatura: localStorage.getItem('estatura'),
+                categoria: localStorage.getItem('categoria'),
+                condicion: localStorage.getItem('condicion'),
+            }
+        })
+        Router.push({
+            pathname: '/ABM/Alta/NuevoJugador2'
+        })
+    }
 
     return (
         <Container
@@ -466,22 +493,20 @@ function NuevoJugador() {
                                 Atrás
                             </Button>
                         </Link>
+                        <Button
+                            className="btn1"
+                            p="10px 24px 12px"
+                            w="161px"
+                            h="57px"
+                            bg="#353535"
+                            borderRadius="5px"
+                            fontSize="21px"
+                            color="#A2A2A2"
 
-                        <Link href="/ABM/Alta/NuevoJugador2" float="right">
-                            <Button
-                                className="btn1"
-                                p="10px 24px 12px"
-                                w="161px"
-                                h="57px"
-                                bg="#353535"
-                                borderRadius="5px"
-                                fontSize="21px"
-                                color="#A2A2A2"
-                            >
-                                Continuar
-                            </Button>
-                        </Link>
-
+                            onClick={crearJugador}
+                        >
+                            Continuar
+                        </Button>
                     </GridItem>
                 </SimpleGrid>
             </VStack>

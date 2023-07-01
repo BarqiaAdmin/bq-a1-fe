@@ -18,7 +18,39 @@ import {
     BreadcrumbSeparator,
 } from '@chakra-ui/react';
 
+import { useState } from 'react';
+import Router from 'next/router';
+
+import axios from 'axios';
+
 const LogIn = () => {
+    const [logInEmail, setLogInEmail] = useState('');
+    const [logInPassword, setLogInPassword] = useState('');
+
+    const handleLogInEmail = (e) => {
+        setLogInEmail(e.target.value)
+        localStorage.setItem('logInEmail', e.target.value);
+    }
+
+    const handleLogInPassword = (e) => {
+        setLogInPassword(e.target.value)
+        localStorage.setItem('logInPassword', e.target.value);
+    }
+
+    const iniciarSesion = () => {
+        axios({
+            method: 'post',
+            url: 'http://localhost:5051/leerUsuario',
+            data: {
+                email: localStorage.getItem('logInEmail'),
+                password: localStorage.getItem('logInPassword'),
+            }
+        })
+        Router.push({
+            pathname: '/Usuario/Perfil-beta'
+        })
+    }
+    
     return (
         <Container
             h='100%'
@@ -52,27 +84,27 @@ const LogIn = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Email</FormLabel>
-                            <Input placeholder="Ingresa tu email" />
+                            <Input placeholder="Ingresa tu email" onChange={handleLogInEmail}/>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Contraseña</FormLabel>
-                            <Input type="password" placeholder="Ingresa tu contraseña" />
+                            <Input type="password" placeholder="Ingresa tu contraseña" onChange={handleLogInPassword}/>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8} textAlign="right">
                         <Link className="link1" href="PassRecovery">Olvidé mi contraseña</Link>
                     </GridItem>
                     <GridItem colSpan={8}>
-                        <Link className="link1" href="/Usuario/Perfil-beta">
-                            <Button
-                                w="full"
-                                className="btn1"
-                            >
-                                Iniciar sesión
-                            </Button>
-                        </Link>
+                        <Button
+                            w="full"
+                            className="btn1"
+
+                            onClick={iniciarSesion}
+                        >
+                            Iniciar sesión
+                        </Button>
                     </GridItem>
                     <GridItem colSpan={8}>
                         <Button w="full">

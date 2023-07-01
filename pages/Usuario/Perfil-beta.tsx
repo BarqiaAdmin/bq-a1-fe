@@ -42,13 +42,13 @@ import NavBar from '../../src/Components/NavBar/NavBar';
 import SideBar from '../../src/Components/SideBar/SideBar';
 
 import { useFileUpload } from 'use-file-upload';
+import { get } from 'http';
 
 export default function Perfil() {
 
     const [files, selectFiles] = useFileUpload();
 
     const subirImagen = () => {
-        /*
         selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
             const elementoFoto1 = document.getElementById('foto1');
             //elementoFoto1.style.borderRadius = "100%"
@@ -58,14 +58,14 @@ export default function Perfil() {
             const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
             elementoBotonDeSubirImagen.remove();
         })
-        */
     }
 
     const usuario = {
-        nombre: '',
+        nombre: 'Nombre de prueba',
         apellido: '',
         nacimiento: '',
         nacionalidad: '',
+        edad: '',
         facebook: '',
         instagram: '',
         tiktok: '',
@@ -74,23 +74,46 @@ export default function Perfil() {
         genero: '',
         estatura: '',
         peso: '',
-        club: '',
+        equipo: '',
         categoria: '',
         condicion: '',
         perfilVisibleA: {
-            scouts: false,
-            clubes: false,
-            universidades: false,
-            privado: false
+            scouts: '',
+            clubes: '',
+            universidades: '',
+            privado: '',
         }
     }
 
     useEffect(() => {
+
+        
+        usuario.nombre = localStorage.getItem('club'),
+        usuario.apellido = localStorage.getItem('club'),
+        usuario.nacimiento = localStorage.getItem('club'),
+        usuario.nacionalidad = localStorage.getItem('club'),
+        usuario.edad = localStorage.getItem('club'),
+        usuario.facebook = localStorage.getItem('club'),
+        usuario.instagram = localStorage.getItem('club'),
+        usuario.tiktok = localStorage.getItem('club'),
+        usuario.pieHabil = localStorage.getItem('club'),
+        usuario.posicion = localStorage.getItem('club'),
+        usuario.genero = localStorage.getItem('club'),
+        usuario.estatura = localStorage.getItem('club'),
+        usuario.peso = localStorage.getItem('club'),
+        usuario.equipo = localStorage.getItem('club'),
+        usuario.categoria = localStorage.getItem('club'),
+        usuario.condicion = localStorage.getItem('club'),
+            
+
         usuario.nombre = localStorage.getItem('nombre');
-        console.log(usuario.nombre);
+        usuario.apellido = localStorage.getItem('posicion');
+        usuario.equipo = '';
+
     });
 
     return(
+        <>
         <Box>
             <NavBar />
             <SideBar />
@@ -112,7 +135,7 @@ export default function Perfil() {
                                     src="/test_avatar.png"
                                 />
                                 <VStack gap="5px">
-                                    <Heading>{ 'Juan Pablo Badino' }</Heading>
+                                    <Heading>{ usuario.nombre }</Heading>
                                     <HStack gap="5px">
                                         <Link href="/Usuario/Perfil">Estadísticas</Link>
                                         <Button
@@ -152,39 +175,39 @@ export default function Perfil() {
                             <SimpleGrid columns={15} textAlign="center">
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">EQUIPO</Text>
-                                    <Text>{'Club Atlético River Plate'}</Text>
+                                    <Text>{ usuario.equipo }</Text>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">POSICIÓN</Text>
-                                    <Text>{'Mediocampista'}</Text>
+                                    <Text>{ usuario.posicion}</Text>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">CATEGORÍA</Text>
-                                    <Text>{'Amateur'}</Text>
+                                    <Text>{ usuario.categoria }</Text>
                                 </GridItem>
                                 <GridItem colSpan={3} marginBottom="30px">
-                                    <Text color="#707378">ALTURA</Text>
-                                    <Text>{'1,82 m'}</Text>
+                                    <Text color="#707378">ESTATURA</Text>
+                                    <Text>{ usuario.estatura}</Text>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">PESO</Text>
-                                    <Text>{'88 kg'}</Text>
+                                    <Text>{ usuario.peso }</Text>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">EDAD</Text>
-                                    <Text>{'28'}</Text>
+                                    <Text>{ usuario.edad }</Text>
                                 </GridItem>
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">PAÍS</Text>
@@ -201,14 +224,14 @@ export default function Perfil() {
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Text color="#707378">NACIONALIDAD</Text>
-                                    <Text>{ 'Argentino' }</Text>
+                                    <Text>{ usuario.nacionalidad }</Text>
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
                                 </GridItem>
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">PIE HÁBIL</Text>
-                                    <Text>{'Derecho'}</Text>
+                                    <Text>{ usuario.pieHabil }</Text>
                                 </GridItem>
                                     {/*
                                     
@@ -439,5 +462,6 @@ export default function Perfil() {
                 </SimpleGrid>
             </HStack>
         </Box>
+        </>
     )
 }
