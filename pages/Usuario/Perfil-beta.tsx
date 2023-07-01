@@ -234,7 +234,7 @@ export default function Perfil() {
                                     <Text>{ usuario.pieHabil }</Text>
                                 </GridItem>
                                     {/*
-                                    
+                                    Commit
                                     <GridItem colSpan={5}>
                                     <VStack>
                                         <HStack>
