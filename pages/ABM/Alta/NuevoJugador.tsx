@@ -148,17 +148,27 @@ function NuevoJugador() {
             method: 'post',
             url: 'http://localhost:5051/crearUsuario',
             data: {
+                email: localStorage.getItem('email'),
+                contrasenia: localStorage.getItem('contraseña'),
+                imagelDePerfil: localStorage.getItem('imagenDePerfil'),
                 nombre: localStorage.getItem('apellido'),
                 apellido: localStorage.getItem('apellido'),
+                club: localStorage.getItem('club'),
                 fechaDeNacimiento: localStorage.getItem('fechaDeNacimiento'),
                 nacionalidad: localStorage.getItem('nacionalidad'),
                 nivelDeIngles: localStorage.getItem('nivelDeIngles'),
+                certificaciones: localStorage.getItem('certificaciones'),
                 pieHabil: localStorage.getItem('pieHabil'),
                 posicion: localStorage.getItem('posicion'),
                 genero: localStorage.getItem('genero'),
                 estatura: localStorage.getItem('estatura'),
                 categoria: localStorage.getItem('categoria'),
                 condicion: localStorage.getItem('condicion'),
+                presupuesto: localStorage.getItem('presupuesto'),
+                clubesAnteriores : {},
+                facebook: localStorage.getItem('facebook'),
+                instagram: localStorage.getItem('instagram'),
+                tiktok: localStorage.getItem('tiktok'),
             }
         })
         Router.push({
