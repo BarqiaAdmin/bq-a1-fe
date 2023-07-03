@@ -55,6 +55,7 @@ function NuevoJugador() {
     const [inputPresupuesto, setInputPresupuesto] = useState('');
 
     const subirImagen = () => {
+        /*
         selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
             const elementoFotoDePerfil = document.getElementById('fotoDePerfil');
             //elementoFotoDePerfil.style.borderRadius = "100%"
@@ -64,6 +65,7 @@ function NuevoJugador() {
             const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
             elementoBotonDeSubirImagen.remove();
         })
+        */
     }
 
     const handleNombreChange = (e) => {
