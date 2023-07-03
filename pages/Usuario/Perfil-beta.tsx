@@ -77,6 +77,7 @@ export default function Perfil() {
     ];
 
     const subirImagen = () => {
+        /*
         selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
             const elementoFoto1 = document.getElementById('foto1');
             //elementoFoto1.style.borderRadius = "100%"
@@ -86,6 +87,7 @@ export default function Perfil() {
             const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
             elementoBotonDeSubirImagen.remove();
         })
+        */
     }
 
     const usuario = {
