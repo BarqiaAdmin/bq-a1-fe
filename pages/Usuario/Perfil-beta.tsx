@@ -286,6 +286,7 @@ export default function Perfil() {
                         </VStack>
                         <VStack>
                             <Heading>Galeria</Heading>
+                            {/**
                             <HStack>
                                 <Image alt='' 
                                 id="foto1"
@@ -300,6 +301,7 @@ export default function Perfil() {
                                     Subir imagen
                                 </Link>
                             </HStack>
+                             */}
                         </VStack>
                         {/** Slider/Carousel */}
                         <Box
