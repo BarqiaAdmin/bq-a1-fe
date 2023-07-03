@@ -217,7 +217,8 @@ function NuevoJugador() {
                         marginTop="25px"
                         paddingTop="100px"
                     >
-                        <VStack>
+                        <HStack>
+                            {/**
                             <div>
                                 <Image alt=''  src="/ellipse.png" />
                                 <Image alt='' 
@@ -227,18 +228,20 @@ function NuevoJugador() {
                                     marginLeft="60px"
                                     paddingBottom="10px"
                                 />
-                                <Link
-                                    id="botonDeSubirImagen"
-                                    color="#6EC1E4"
-                                    marginLeft="35px"
-                                    position="relative"
-                                    zIndex="9999"
-                                    onClick={subirImagen}
-                                >
-                                    Subir imagen
-                                </Link>
+                                
                             </div>
-                        </VStack>
+                             */}
+                            <Link
+                                id="botonDeSubirImagen"
+                                color="#6EC1E4"
+                                marginLeft="35px"
+                                position="relative"
+                                zIndex="9999"
+                                onClick={subirImagen}
+                            >
+                                Subir imagen
+                            </Link>
+                        </HStack>
                         <Divider visibility="hidden" />
                         <SimpleGrid columns={12} gap="32px" w="full">
                             <GridItem colSpan={6}>
