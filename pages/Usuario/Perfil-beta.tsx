@@ -36,7 +36,7 @@ import {
     TableCaption,
     TableContainer,
     useBreakpointValue,
-    IconButton
+    IconButton,
 } from '@chakra-ui/react';
 
 import NavBar from '../../src/Components/NavBar/NavBar';
@@ -110,12 +110,13 @@ export default function Perfil() {
 
     // These are the images used in the slide
     const cards = [
-        'https://images.unsplash.com/photo-1612852098516-55d01c75769a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-        'https://images.unsplash.com/photo-1627875764093-315831ac12f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
-        'https://images.unsplash.com/photo-1571432248690-7fd6980a1ae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60',
+        '/maxi-rodriguez-2.jpg',
+        '/maxi-rodriguez-3.jpg',
+        '/maxi-rodriguez-4.jpg',
     ];
 
     useEffect(() => {
+        setUrlImagen(localStorage.getItem('urlImagen'));
         setNombre(localStorage.getItem('nombre'))
         setApellido(localStorage.getItem('apellido'))
         setClub(localStorage.getItem('club'))
@@ -125,8 +126,10 @@ export default function Perfil() {
         setPeso(localStorage.getItem('peso'));
         setEdad(localStorage.getItem('edad'));
         setNacionalidad(localStorage.getItem('nacionalidad'));
+        setCondicion(localStorage.getItem('condicion'));
+        setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
+        setPresupuesto(localStorage.getItem('presupuesto'));
         setPieHabil(localStorage.getItem('pieHabil'));
-        setPieHabil(localStorage.getItem('urlImagen'));
     });   
 
     return(
@@ -225,6 +228,7 @@ export default function Perfil() {
                                 </GridItem>
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">PAÍS</Text>
+                                    {/**
                                     <Image alt='' 
                                         src="/sl-icono-argentina.jpg"
                                         borderRadius="100%"
@@ -232,6 +236,7 @@ export default function Perfil() {
                                         marginTop="10px"
                                         width="30px"
                                     />
+                                     */}
                                 </GridItem>
                                 <GridItem colSpan={3}>
                                     <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
@@ -385,9 +390,16 @@ export default function Perfil() {
                                     />
                                     ))}
                                 </Slider>
-                                </Box>
+                            </Box>
                         </VStack>
+                        <HStack>
+                            <Image src='/maxi-rodriguez-2.jpg' alt=''/>
+                            <Image src='/maxi-rodriguez-3.jpg' alt=''/>
+                            <Image src='/maxi-rodriguez-4.jpg' alt=''/>
+                        </HStack>
+                            
                     </GridItem>
+                        
 
                     {/* "Top Torneos (Figma)" */}
 
@@ -522,7 +534,7 @@ export default function Perfil() {
                         </Box>
                     </GridItem>
 
-                    {/** Redes sociales */}
+                    {/** Redes sociales
 
                     <GridItem colSpan={15} marginTop="150px" paddingLeft="240px" textAlign="center">
                         <HStack margin="auto" textAlign="center">
@@ -543,6 +555,7 @@ export default function Perfil() {
                             </HStack>
                         </HStack>
                     </GridItem>
+                     */}
                 </SimpleGrid>
             </HStack>
         </Box>

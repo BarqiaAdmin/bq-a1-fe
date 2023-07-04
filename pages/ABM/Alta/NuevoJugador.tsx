@@ -42,6 +42,7 @@ function NuevoJugador() {
 
     const [inputNombre, setInputNombre] = useState('');
     const [inputApellido, setInputApellido] = useState('');
+    const [inputEdad, setInputEdad] = useState('');
     const [inputNacimiento, setInputNacimiento] = useState('');
     const [inputNacionalidad, setInputNacionalidad] = useState('');
     const [inputNivelDeIngles, setInputNivelDeIngles] = useState('');
@@ -52,6 +53,7 @@ function NuevoJugador() {
     const [inputPeso, setInputPeso] = useState('');
     const [inputClub, setInputClub] = useState('');
     const [inputCategoria, setInputCategoria] = useState('');
+    const [inputCondicion, setInputCondicion] = useState('');
     const [inputPresupuesto, setInputPresupuesto] = useState('');
 
     const subirImagen = () => {
@@ -74,8 +76,13 @@ function NuevoJugador() {
     }
 
     const handleApellidoChange = (e) => {
-        setInputApellido(e.target.value)
+        setInputApellido(e.target.value);
         localStorage.setItem('apellido', e.target.value);
+    }
+
+    const handleEdadChange = (e) => {
+        setInputEdad(e.target.value);
+        localStorage.setItem('edad', e.target.value)
     }
 
     const handleNacimientoChange = (e) => {
@@ -128,6 +135,11 @@ function NuevoJugador() {
         localStorage.setItem('categoria', e.target.value);
     }
 
+    const handleCondicionChange = (e) => {
+        setInputCondicion(e.target.value);
+        localStorage.setItem('condicion', e.target.value)
+    }
+
     const handlePresupuestoChange = (e) => {
         setInputPresupuesto(e.target.value);
         localStorage.setItem('presupuesto', e.target.value)
@@ -146,6 +158,7 @@ function NuevoJugador() {
     const isErrorCategoria = inputCategoria === ''
 
     const crearJugador = () => {
+        /*
         axios({
             method: 'post',
             url: 'http://localhost:5051/crearUsuario',
@@ -156,7 +169,7 @@ function NuevoJugador() {
                 nombre: localStorage.getItem('apellido'),
                 apellido: localStorage.getItem('apellido'),
                 club: localStorage.getItem('club'),
-                fechaDeNacimiento: localStorage.getItem('fechaDeNacimiento'),
+                edad: localStorage.getItem('edad'),
                 nacionalidad: localStorage.getItem('nacionalidad'),
                 nivelDeIngles: localStorage.getItem('nivelDeIngles'),
                 certificaciones: localStorage.getItem('certificaciones'),
@@ -172,7 +185,7 @@ function NuevoJugador() {
                 instagram: localStorage.getItem('instagram'),
                 tiktok: localStorage.getItem('tiktok'),
             }
-        })
+        })*/
         Router.push({
             pathname: '/ABM/Alta/NuevoJugador2'
         })
@@ -272,11 +285,11 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNacimiento}>
-                                    <FormLabel>Fecha de nacimiento</FormLabel>
-                                    <Input placeholder="DD/MM/AAAA" onChange={handleNacimientoChange}/>
+                                    <FormLabel>Edad</FormLabel>
+                                    <Input placeholder="DD/MM/AAAA" onChange={handleEdadChange}/>
                                     {!isErrorNacimiento ? (
                                         <FormHelperText>
-                                            Ingresa tu fecha de nacimiento
+                                            Ingresa tu edad
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -391,8 +404,8 @@ function NuevoJugador() {
                                 <FormControl isRequired isInvalid={isErrorGenero}>
                                     <FormLabel>Género</FormLabel>
                                     <Select onChange={handleGeneroChange}>
-                                        <option>Masculino</option>
                                         <option>Femenino</option>
+                                        <option>Masculino</option>
                                     </Select>
                                     {!isErrorGenero ? (
                                         <FormHelperText>
@@ -468,7 +481,7 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl>
-                                    <Select placeholder="Condición" onChange={(e) => localStorage.setItem("condicion", e.target.value)}>
+                                    <Select placeholder="Condición" onChange={handleCondicionChange}>
                                         <option>Libre</option>
                                         <option>Con contrato</option>
                                     </Select>
@@ -476,7 +489,7 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl>
-                                    <Select placeholder="Presupuesto" onChange={(e) => localStorage.setItem("presupuesto", e.target.value)}>
+                                    <Select placeholder="Presupuesto" onChange={handlePresupuestoChange}>
                                         <option>0 - 5.000</option>
                                         <option>6.0000 - 10.000</option>
                                         <option>10.000 - 15.000</option>
