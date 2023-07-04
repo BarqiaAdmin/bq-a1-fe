@@ -529,6 +529,8 @@ export default function Perfil() {
                             <Image h='330px' src='/maxi-rodriguez-2.jpg' alt=''/>
                             <Image h='330px' src='/maxi-rodriguez-3.jpg' alt=''/>
                             <Image h='330px' src='/maxi-rodriguez-4.jpg' alt=''/>
+                            <Image h='330px' src='/maxi-rodriguez-5.jpg' alt=''/>
+                            <Image h='330px' src='/maxi-rodriguez-6.jpg' alt=''/>
                         </HStack>
                         </Box>
                     </GridItem>

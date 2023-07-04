@@ -296,7 +296,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNacimiento}>
                                     <FormLabel>Edad</FormLabel>
-                                    <Input placeholder="DD/MM/AAAA" onChange={handleEdadChange}/>
+                                    <Input placeholder="Ingresar edad" onChange={handleEdadChange}/>
                                     {!isErrorNacimiento ? (
                                         <FormHelperText>
                                             Ingresa tu edad
@@ -380,8 +380,8 @@ function NuevoJugador() {
                                 <FormControl isRequired isInvalid={isErrorPieHabil}>
                                     <FormLabel>Pie hábil</FormLabel>
                                     <Select onChange={handlePieHabilChange}>
-                                        <option>Derecho</option>
                                         <option>Izquierdo</option>
+                                        <option>Derecho</option>
                                     </Select>
                                     {!isErrorPieHabil ? (
                                         <FormHelperText>

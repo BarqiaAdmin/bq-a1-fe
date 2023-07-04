@@ -69,8 +69,8 @@ const RegistroJugador = () => {
                     </GridItem>
                     <GridItem colSpan={1}>
                         <FormControl>
-                            <FormLabel>Fecha de nacimiento</FormLabel>
-                            <Input placeholder="DD/MM/AAAA" />
+                            <FormLabel>Edad</FormLabel>
+                            <Input placeholder="Ingresa tu edad" />
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={1}>
