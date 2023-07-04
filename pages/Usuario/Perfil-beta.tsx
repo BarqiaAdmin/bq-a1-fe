@@ -315,96 +315,13 @@ export default function Perfil() {
                                 */}
                             </SimpleGrid>
                         </VStack>
-                        <VStack>
-                            <Heading>Galeria</Heading>
-                            {/**
-                            <HStack>
-                                <Image alt='' 
-                                    id="foto1"
-                                    src={files?.source || '/sl-icono-cuadrado-2.png'}
-                                />
-                                <Link
-                                    id="botonDeSubirImagen"
-                                    color="#6EC1E4"
-                                    zIndex="9999"
-                                    onClick={subirImagen}
-                                >
-                                    Subir imagen
-                                </Link>
-                            </HStack>
-                            */}
-                             <Box
-                                position={'relative'}
-                                height={'600px'}
-                                width={'full'}
-                                overflow={'hidden'}>
-                                {/* CSS files for react-slick */}
-                                <link
-                                    rel="stylesheet"
-                                    type="text/css"
-                                    charSet="UTF-8"
-                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-                                />
-                                <link
-                                    rel="stylesheet"
-                                    type="text/css"
-                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-                                />
-                                {/* Left Icon */}
-                                <IconButton
-                                    aria-label="left-arrow"
-                                    colorScheme="messenger"
-                                    borderRadius="full"
-                                    position="absolute"
-                                    left={side}
-                                    top={top}
-                                    transform={'translate(0%, -50%)'}
-                                    zIndex={2}
-                                    onClick={() => slider?.slickPrev()}>
-                                    <BiLeftArrowAlt />
-                                </IconButton>
-                                {/* Right Icon */}
-                                <IconButton
-                                    aria-label="right-arrow"
-                                    colorScheme="messenger"
-                                    borderRadius="full"
-                                    position="absolute"
-                                    right={side}
-                                    top={top}
-                                    transform={'translate(0%, -50%)'}
-                                    zIndex={2}
-                                    onClick={() => slider?.slickNext()}>
-                                    <BiRightArrowAlt />
-                                </IconButton>
-                                {/* Slider */}
-                                <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                                    {cards.map((url, index) => (
-                                    <Box
-                                        key={index}
-                                        height={'6xl'}
-                                        position="relative"
-                                        backgroundPosition="center"
-                                        backgroundRepeat="no-repeat"
-                                        backgroundSize="cover"
-                                        backgroundImage={`url(${url})`}
-                                    />
-                                    ))}
-                                </Slider>
-                            </Box>
-                        </VStack>
-                        <HStack>
-                            <Image src='/maxi-rodriguez-2.jpg' alt=''/>
-                            <Image src='/maxi-rodriguez-3.jpg' alt=''/>
-                            <Image src='/maxi-rodriguez-4.jpg' alt=''/>
-                        </HStack>
-                            
                     </GridItem>
                         
 
                     {/* "Top Torneos (Figma)" */}
 
                     <GridItem colSpan={15}>
-                        <Box paddingTop="80px" paddingLeft="240px">
+                        <Box paddingLeft="240px" textAlign='center'>
                             <HStack>
                                 <Text>ESTADISTICAS</Text>
                                 <FormControl>
@@ -412,7 +329,7 @@ export default function Perfil() {
                                 </FormControl>
                             </HStack>
                             <HStack>
-                                <TableContainer>
+                                <TableContainer m='auto'>
                                     <Table variant='simple'>
                                         <Thead>
                                             <Tr>
@@ -531,6 +448,88 @@ export default function Perfil() {
                                     </Table>
                                 </TableContainer>
                             </HStack>
+                            <VStack>
+                            <Heading>Galeria</Heading>
+                            {/**
+                            <HStack>
+                                <Image alt='' 
+                                    id="foto1"
+                                    src={files?.source || '/sl-icono-cuadrado-2.png'}
+                                />
+                                <Link
+                                    id="botonDeSubirImagen"
+                                    color="#6EC1E4"
+                                    zIndex="9999"
+                                    onClick={subirImagen}
+                                >
+                                    Subir imagen
+                                </Link>
+                            </HStack>
+                            */}
+                             <Box
+                                position={'relative'}
+                                height={'600px'}
+                                width={'full'}
+                                overflow={'hidden'}>
+                                {/* CSS files for react-slick */}
+                                <link
+                                    rel="stylesheet"
+                                    type="text/css"
+                                    charSet="UTF-8"
+                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+                                />
+                                <link
+                                    rel="stylesheet"
+                                    type="text/css"
+                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+                                />
+                                {/* Left Icon */}
+                                <IconButton
+                                    aria-label="left-arrow"
+                                    colorScheme="messenger"
+                                    borderRadius="full"
+                                    position="absolute"
+                                    left={side}
+                                    top={top}
+                                    transform={'translate(0%, -50%)'}
+                                    zIndex={2}
+                                    onClick={() => slider?.slickPrev()}>
+                                    <BiLeftArrowAlt />
+                                </IconButton>
+                                {/* Right Icon */}
+                                <IconButton
+                                    aria-label="right-arrow"
+                                    colorScheme="messenger"
+                                    borderRadius="full"
+                                    position="absolute"
+                                    right={side}
+                                    top={top}
+                                    transform={'translate(0%, -50%)'}
+                                    zIndex={2}
+                                    onClick={() => slider?.slickNext()}>
+                                    <BiRightArrowAlt />
+                                </IconButton>
+                                {/* Slider */}
+                                <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                                    {cards.map((url, index) => (
+                                    <Box
+                                        key={index}
+                                        height={'6xl'}
+                                        position="relative"
+                                        backgroundPosition="center"
+                                        backgroundRepeat="no-repeat"
+                                        backgroundSize="cover"
+                                        backgroundImage={`url(${url})`}
+                                    />
+                                    ))}
+                                </Slider>
+                            </Box>
+                        </VStack>
+                        <HStack>
+                            <Image h='330px' src='/maxi-rodriguez-2.jpg' alt=''/>
+                            <Image h='330px' src='/maxi-rodriguez-3.jpg' alt=''/>
+                            <Image h='330px' src='/maxi-rodriguez-4.jpg' alt=''/>
+                        </HStack>
                         </Box>
                     </GridItem>
 
