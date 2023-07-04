@@ -84,6 +84,7 @@ export default function Perfil() {
         */
     }
 
+    const [urlDeImagen, setUrlDeImagen] = useState('');
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
     const [club, setClub] = useState('');
@@ -94,7 +95,6 @@ export default function Perfil() {
     const [edad, setEdad] = useState(''); 
     const [nacionalidad, setNacionalidad] = useState(''); 
     const [pieHabil, setPieHabil] = useState('');
-    const [urlImagen, setUrlImagen ] = useState('');
     const [nivelDeIngles, setNivelDeIngles ] = useState('');
     const [certificaciones, setCertificaciones] = useState('');
     const [condicion, setCondicion] = useState('');
@@ -110,13 +110,13 @@ export default function Perfil() {
 
     // These are the images used in the slide
     const cards = [
-        '/maxi-rodriguez-2.jpg',
-        '/maxi-rodriguez-3.jpg',
-        '/maxi-rodriguez-4.jpg',
+        'https://media.diariopopular.com.ar/p/24009ffb25bada88372dab009ec12847/adjuntos/143/imagenes/008/080/0008080142/1140x0/smart/maxi-rodriguezwebp.png',
+        'https://www.mdzol.com/u/fotografias/m/2020/3/30/f848x477-30054_87857_5050.jpg',
+        'https://fotografias.lasexta.com/clipping/cmsimages02/2020/03/30/64DEB56E-84FA-409D-A420-6C7BCDAFE4A2/98.jpg?crop=3000,1688,x0,y167&width=1900&height=1069&optimize=low&format=webply',
     ];
 
     useEffect(() => {
-        setUrlImagen(localStorage.getItem('urlImagen'));
+        setUrlDeImagen(localStorage.getItem('urlDeImagen'));
         setNombre(localStorage.getItem('nombre'))
         setApellido(localStorage.getItem('apellido'))
         setClub(localStorage.getItem('club'))
@@ -151,7 +151,7 @@ export default function Perfil() {
                                 <Image alt=''
                                     marginRight="20px"
                                     width="150px"
-                                    src={ urlImagen }
+                                    src={urlDeImagen}
                                 />
                                 <VStack gap="5px">
                                     <Heading>{ nombre } { apellido }</Heading>
@@ -189,7 +189,7 @@ export default function Perfil() {
                             marginTop="25px"
                             padding="30px 100px">
                             
-                            <SimpleGrid columns={15} textAlign="center">
+                            <SimpleGrid columns={15} fontSize='19px' textAlign="center">
                                 <GridItem colSpan={3} marginBottom="30px">
                                     <Text color="#707378">EQUIPO</Text>
                                     <Text>{ club }</Text> 
@@ -227,7 +227,7 @@ export default function Perfil() {
                                     <Text>{ edad }</Text> 
                                 </GridItem>
                                 <GridItem colSpan={3} marginBottom="30px">
-                                    <Text color="#707378">PAÍS</Text>
+                                    <Text color="#707378">ATRIBUTOS</Text>
                                     {/**
                                     <Image alt='' 
                                         src="/sl-icono-argentina.jpg"
