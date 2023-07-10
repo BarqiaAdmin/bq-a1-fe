@@ -66,6 +66,8 @@ const settings = {
     slidesToScroll: 1,
 };
 
+import Router from 'next/router';
+
 export default function Perfil() {
 
     const [files, selectFiles] = useFileUpload();
@@ -114,7 +116,7 @@ export default function Perfil() {
         'https://www.mdzol.com/u/fotografias/m/2020/3/30/f848x477-30054_87857_5050.jpg',
         'https://fotografias.lasexta.com/clipping/cmsimages02/2020/03/30/64DEB56E-84FA-409D-A420-6C7BCDAFE4A2/98.jpg?crop=3000,1688,x0,y167&width=1900&height=1069&optimize=low&format=webply',
     ];
-
+    
     useEffect(() => {
         setUrlDeImagen(localStorage.getItem('urlDeImagen'));
         setNombre(localStorage.getItem('nombre'))
@@ -160,7 +162,7 @@ export default function Perfil() {
                                         <Button
                                             color="white"
                                             background="#144077"
-                                            >Seguir jugador
+                                            >Compartir perfil
                                         </Button>
                                         <Image alt='' 
                                             src="/like.png"

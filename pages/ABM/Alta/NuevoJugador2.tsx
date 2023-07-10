@@ -28,6 +28,8 @@ import {
 
 import { Component, useState } from 'react';
 
+import Router from 'next/router';
+
 class NuevoJugador2 extends Component {
 
     constructor(props) {
@@ -36,6 +38,63 @@ class NuevoJugador2 extends Component {
         this.elegirPieHabil = this.elegirPieHabil.bind(this);
         this.elegirAtributo = this.elegirAtributo.bind(this);
     }
+
+
+    /**
+    Router = useRouter();
+
+    
+    crearUsuario = () => {
+        console.log('Se ha creado un usuario')
+        this.Router.push({
+            pathname: 'Perfil-beta',
+            query: {}
+        })
+    }
+    */
+
+    crearUsuario = () => {
+        fetch('https://bq-a1-be.vercel.app:5051/crearUsuario', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: localStorage.getItem('email'),
+                contrasenia: '',
+                nombre: localStorage.getItem('nombre'),
+                apellido: localStorage.getItem('apellido'),
+                urlDeImagen: localStorage.getItem('urlDeImagen'),
+                edad: localStorage.getItem('edad'),
+                nacionalidad: localStorage.getItem('nancionalidad'),
+                nivelDeIngles: localStorage.getItem('nivelDeIngles'),
+                certificaciones: [],
+                social: {
+                    facebook: '',
+                    instagram: '',
+                    tiktok: '',
+                },
+                pieHabil: localStorage.getItem('pieHabil'),
+                posicion: localStorage.getItem('posicion'),
+                genero: localStorage.getItem('genero'),
+                estatura: localStorage.getItem('estatura'),
+                peso: localStorage.getItem('peso'),
+                club: localStorage.getItem('club'),
+                categoria: localStorage.getItem('categoria'),
+                condicion: localStorage.getItem('condicion'),
+                presupuesto: localStorage.getItem('presupuesto'),
+                clubesPrevios: [],
+            })
+        })
+
+        Router.push({
+            pathname: '/Usuario/Perfil-beta'
+        })
+        
+        //window.location.href = '/Usuario/Perfil-beta'
+    }
+
 
     elegirLugarEnElCampo = (e, idLugarEnElCampo) => {
         if (this.LugarEnElCampoSeleccionado == false) {
@@ -250,20 +309,21 @@ class NuevoJugador2 extends Component {
                             >Volver</Link>
                         </GridItem>
                         <GridItem colSpan={1} textAlign="right">
-                            <Link href="/Usuario/Perfil-beta">
-                                <Button
-                                    className="btn1"
-                                    p="10px 24px 12px"
-                                    w="161px"
-                                    h="57px"
-                                    bg="#353535"
-                                    borderRadius="5px"
-                                    fontSize="21px"
-                                    color="#A2A2A2"
-                                >
-                                    Finalizar
-                                </Button>
-                            </Link>
+                            <Button
+                                className="btn1"
+
+                                p="10px 24px 12px"
+                                w="161px"
+                                h="57px"
+                                bg="#353535"
+                                borderRadius="5px"
+                                fontSize="21px"
+                                color="#A2A2A2"
+
+                                onClick={this.crearUsuario}
+                            >
+                                Finalizar
+                            </Button>
                         </GridItem>
                     </SimpleGrid>
                 </VStack>

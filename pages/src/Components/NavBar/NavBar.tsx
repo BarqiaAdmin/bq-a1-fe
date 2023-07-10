@@ -19,7 +19,36 @@ import {
     Switch,
 } from '@chakra-ui/react';
 
-const NavBar = () => {
+import Router from 'next/router';
+
+const NavBar = (props) => {
+    
+    const cerrarSesion = () => {
+        localStorage.setItem('email', '');
+        localStorage.setItem('logInPassword', '');
+        localStorage.setItem('nombre', '');
+        localStorage.setItem('apellido', '');
+        localStorage.setItem('urlDeImagen', '');
+        localStorage.setItem('edad', '');
+        localStorage.setItem('nancionalidad', '');
+        localStorage.setItem('nivelDeIngles', '');
+        localStorage.setItem('pieHabil', '');
+        localStorage.setItem('posicion', '');
+        localStorage.setItem('genero', '');
+        localStorage.setItem('estatura', '');
+        localStorage.setItem('peso', '');
+        localStorage.setItem('club', '');
+        localStorage.setItem('categoria', '');
+        localStorage.setItem('condicion', '');
+        localStorage.setItem('presupuesto', '');
+
+        Router.push({
+            pathname: '/Usuario/Registro'
+        })  
+    }
+
+    const urlDeImagen = 'https://pbs.twimg.com/profile_images/478580594415120384/v-spwMvM_400x400.png';
+
     return (
         <HStack
             bg="#131619"
@@ -48,12 +77,12 @@ const NavBar = () => {
             <Flex
                 alignItems="center"
             >
-                <Button marginRight="25px">
-                    <Link href="/">Cerrar sesión</Link>
+                <Button marginRight="25px" onClick={cerrarSesion}>
+                    Cerrar sesión
                 </Button>
                 <Image alt='' 
                     marginRight="20px"
-                    src="/avatar.png"
+                    src={ props.urlDeImagen }
                 />
             </Flex>
         </HStack>

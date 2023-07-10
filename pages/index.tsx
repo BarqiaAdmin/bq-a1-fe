@@ -11,10 +11,63 @@ import {
     Input,
     Checkbox,
     Link,
-    Button
+    Button,
+    Text
 } from '@chakra-ui/react';
 
+import { useState, useEffect } from 'react';
+
+import Router from 'next/router';   
+
 const IndexPage = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value)
+        localStorage.setItem('email', e.target.value);
+    }
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value)
+        localStorage.setItem('password', e.target.value);
+    }
+
+    const handleRepeatPasswordChange = (e) => {
+        setRepeatPassword(e.target.value);
+        localStorage.setItem('repeatPassword', e.target.value)
+    }
+
+    const handleRegister = () => {
+        //console.log('Signing up');
+        let inputEmail = (document.getElementById('inputEmail') as HTMLElement).value;
+        let inputPassword = (document.getElementById('inputPassword') as HTMLElement).value;
+        let inputPasswordRepeat = (document.getElementById('inputPasswordRepeat') as HTMLElement).value;
+
+        if (inputEmail == '') {
+            window.alert('No se ha ingresado un correo electrónico');
+        } else 
+        if (inputPassword == '') {
+            window.alert('No se ha ingresado una contraseña');
+        } else
+        if (inputPasswordRepeat == '') {
+            window.alert('Por favor complete el campo de "Repetir contraseña"');
+        } else
+        if (!(inputPassword == inputPasswordRepeat)) {
+            window.alert('Las contraseñas no coinciden');
+        } else {
+            Router.push({
+                pathname: '/ABM/Alta/NuevoJugador'
+            });
+        }
+    };
+
+    useEffect(() => {
+        localStorage.setItem('chakra-ui-color-mode', 'dark');
+    })
+
     return (
         <Container
             h='100%'
@@ -48,19 +101,25 @@ const IndexPage = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Email</FormLabel>
-                            <Input placeholder="Ingresa tu email" />
+                            <Input id='inputEmail' placeholder="Ingresa tu email" onChange={handleEmailChange} value={email} />
+                            <Text display="none" color="green">Debes ingresar una dirección de correo electrónico válida.</Text>
+                            <Text display="none" color="red">La dirección de correo electrónico no es válida.</Text>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Contraseña</FormLabel>
-                            <Input type="password" placeholder="Ingresa tu contraseña" />
+                            <Input id='inputPassword' type="password" placeholder="Ingresa tu contraseña" onChange={handlePasswordChange} value={password}/>
+                            <Text display='none' color="green">La contraseña debe tener por lo menos 8 caracteres.</Text>
+                            <Text display='none' color="red">La contraseña no es válida.</Text>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Repetir contraseña</FormLabel>
-                            <Input type="password" placeholder="Repetí tu contraseña" />
+                            <Input id='inputPasswordRepeat' type="password" placeholder="Repetí tu contraseña" onChange={handleRepeatPasswordChange} value={repeatPassword}/>
+                            <Text display='none' color="green">La contraseña debe tener por lo menos 8 caracteres.</Text>
+                            <Text display='none' color="red">La contraseña no es válida o no corresponde a la dirección de correo electrónico.</Text>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={6}>
@@ -72,7 +131,7 @@ const IndexPage = () => {
                         <Link className="link1" href="Sesion/PassRecovery">Olvidé mi contraseña</Link>
                     </GridItem>
                     <GridItem colSpan={8}>
-                        <Link className="link1" href="/Onboarding/Onboarding">
+                        <Link className="link1" onClick={handleRegister}>
                             <Button
                                 w="full"
                                 className="btn1"
