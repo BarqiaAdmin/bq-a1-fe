@@ -530,14 +530,12 @@ export default function Perfil() {
                                 </Slider>
                             </Box>
                         </VStack>
-                        {/**
                         <HStack>
                             <Image h='330px' src='https://s3.abcstatics.com/media/bienestar/2019/09/17/futbol-1-kU3C--1248x698@abc.jpg' alt=''/>
                             <Image h='330px' src='https://chajari.gob.ar/wp-content/uploads/2016/12/futbol-generic-entry-point.jpg' alt=''/>
                             <Image h='330px' src='https://definicion.de/wp-content/uploads/2009/03/futbolistas.jpg' alt=''/>
                             <Image h='330px' src='https://concepto.de/wp-content/uploads/2015/02/futbol-1-e1550783405750.jpg' alt=''/>
                         </HStack>
-                         */}
                         </Box>
                     </GridItem>
 
