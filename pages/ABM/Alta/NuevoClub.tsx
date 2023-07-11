@@ -17,8 +17,8 @@ import {
     BreadcrumbLink
 } from '@chakra-ui/react';
 
-import NavBar from '../../../src/Components/NavBar/NavBar';
-import SideBar from '../../../src/Components/SideBar/SideBar';
+import NavBar from '../../../Componentes/Components/NavBar/NavBar';
+import SideBar from '../../../Componentes/Components/SideBar/SideBar';
 
 const NuevoClub = () => {
     return (

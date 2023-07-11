@@ -46,6 +46,16 @@ const LogIn = () => {
     */
 
     const iniciarSesion = () => {
+        let inputEmail = (document.getElementById('inputEmail') as HTMLInputElement).value;
+        let inputPassword = (document.getElementById('inputPassword') as HTMLInputElement).value;
+
+        if (inputEmail == '') {
+            window.alert('No se ha ingresado un correo electrónico');
+        } else 
+        if (inputPassword == '') {
+            window.alert('No se ha ingresado una contraseña');
+        }
+
         fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
@@ -56,13 +66,13 @@ const LogIn = () => {
                 email: localStorage.getItem('email'),
                 password: localStorage.getItem('password')
             })
-        }).
-            then((res) => {
-                console.log(res)
-            })
-        7
-
-
+        }).then((res) => {
+            console.log(res)
+        })
+        
+        Router.push({
+            pathname: '/Usuario/Perfil-beta'
+        });
         
         /*
         Router.push({
@@ -124,13 +134,13 @@ const LogIn = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Email</FormLabel>
-                            <Input placeholder="Ingresa tu email" onChange={handleEmailChange}/>
+                            <Input id="inputEmail" placeholder="Ingresa tu email" onChange={handleEmailChange}/>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Contraseña</FormLabel>
-                            <Input type="password" placeholder="Ingresa tu contraseña" onChange={handlePasswordChange}/>
+                            <Input id="inputPassword" type="password" placeholder="Ingresa tu contraseña" onChange={handlePasswordChange}/>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8} textAlign="right">

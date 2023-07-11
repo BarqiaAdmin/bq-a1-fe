@@ -6,8 +6,8 @@ import { Box, Button, Container, Divider, HStack, Image, Text, VStack, Breadcrum
 
 import {ChevronRightIcon, DragHandleIcon} from '@chakra-ui/icons';
 
-import NavBar from '../../src/Components/NavBar/NavBar';
-import SideBar from '../../src/Components/SideBar/SideBar';
+import NavBar from '../../Componentes/Components/NavBar/NavBar';
+import SideBar from '../../Componentes/Components/SideBar/SideBar';
 
 const ProfileBeta = () => {
     return (

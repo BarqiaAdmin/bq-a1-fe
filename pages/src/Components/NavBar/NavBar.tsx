@@ -22,8 +22,9 @@ import {
 import Router from 'next/router';
 
 const NavBar = (props) => {
-    
+
     const cerrarSesion = () => {
+
         localStorage.setItem('email', '');
         localStorage.setItem('logInPassword', '');
         localStorage.setItem('nombre', '');
@@ -43,8 +44,9 @@ const NavBar = (props) => {
         localStorage.setItem('presupuesto', '');
 
         Router.push({
-            pathname: '/Usuario/Registro'
+            pathname: '/Sesion/LogIn'
         })  
+        
     }
 
     const urlDeImagen = 'https://pbs.twimg.com/profile_images/478580594415120384/v-spwMvM_400x400.png';

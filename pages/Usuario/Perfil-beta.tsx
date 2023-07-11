@@ -39,8 +39,8 @@ import {
     IconButton,
 } from '@chakra-ui/react';
 
-import NavBar from '../../src/Components/NavBar/NavBar';
-import SideBar from '../../src/Components/SideBar/SideBar';
+import NavBar from '../src/Components/NavBar/NavBar';
+import SideBar from '../src/Components/SideBar/SideBar';
 
 import { useFileUpload } from 'use-file-upload';
 import { get } from 'http';
@@ -112,9 +112,10 @@ export default function Perfil() {
 
     // These are the images used in the slide
     const cards = [
-        'https://media.diariopopular.com.ar/p/24009ffb25bada88372dab009ec12847/adjuntos/143/imagenes/008/080/0008080142/1140x0/smart/maxi-rodriguezwebp.png',
-        'https://www.mdzol.com/u/fotografias/m/2020/3/30/f848x477-30054_87857_5050.jpg',
-        'https://fotografias.lasexta.com/clipping/cmsimages02/2020/03/30/64DEB56E-84FA-409D-A420-6C7BCDAFE4A2/98.jpg?crop=3000,1688,x0,y167&width=1900&height=1069&optimize=low&format=webply',
+        'https://s3.abcstatics.com/media/bienestar/2019/09/17/futbol-1-kU3C--1248x698@abc.jpg',
+        'https://chajari.gob.ar/wp-content/uploads/2016/12/futbol-generic-entry-point.jpg',
+        'https://concepto.de/wp-content/uploads/2015/02/futbol-1-e1550783405750.jpg',
+        'https://definicion.de/wp-content/uploads/2009/03/futbolistas.jpg'
     ];
     
     useEffect(() => {
@@ -527,13 +528,14 @@ export default function Perfil() {
                                 </Slider>
                             </Box>
                         </VStack>
+                        {/**
                         <HStack>
-                            <Image h='330px' src='/maxi-rodriguez-2.jpg' alt=''/>
-                            <Image h='330px' src='/maxi-rodriguez-3.jpg' alt=''/>
-                            <Image h='330px' src='/maxi-rodriguez-4.jpg' alt=''/>
-                            <Image h='330px' src='/maxi-rodriguez-5.jpg' alt=''/>
-                            <Image h='330px' src='/maxi-rodriguez-6.jpg' alt=''/>
+                            <Image h='330px' src='https://s3.abcstatics.com/media/bienestar/2019/09/17/futbol-1-kU3C--1248x698@abc.jpg' alt=''/>
+                            <Image h='330px' src='https://chajari.gob.ar/wp-content/uploads/2016/12/futbol-generic-entry-point.jpg' alt=''/>
+                            <Image h='330px' src='https://definicion.de/wp-content/uploads/2009/03/futbolistas.jpg' alt=''/>
+                            <Image h='330px' src='https://concepto.de/wp-content/uploads/2015/02/futbol-1-e1550783405750.jpg' alt=''/>
                         </HStack>
+                         */}
                         </Box>
                     </GridItem>
 
