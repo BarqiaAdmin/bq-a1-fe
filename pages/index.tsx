@@ -42,9 +42,9 @@ const IndexPage = () => {
 
     const handleRegister = () => {
         //console.log('Signing up');
-        let inputEmail = (document.getElementById('inputEmail') as HTMLElement).value;
-        let inputPassword = (document.getElementById('inputPassword') as HTMLElement).value;
-        let inputPasswordRepeat = (document.getElementById('inputPasswordRepeat') as HTMLElement).value;
+        let inputEmail = (document.getElementById('inputEmail') as HTMLInputElement).value;
+        let inputPassword = (document.getElementById('inputPassword') as HTMLInputElement).value;
+        let inputPasswordRepeat = (document.getElementById('inputPasswordRepeat') as HTMLInputElement).value;
 
         if (inputEmail == '') {
             window.alert('No se ha ingresado un correo electrónico');
