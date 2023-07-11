@@ -31,7 +31,7 @@ const NavBar = (props) => {
         localStorage.setItem('apellido', '');
         localStorage.setItem('urlDeImagen', '');
         localStorage.setItem('edad', '');
-        localStorage.setItem('nancionalidad', '');
+        localStorage.setItem('pais', '');
         localStorage.setItem('nivelDeIngles', '');
         localStorage.setItem('pieHabil', '');
         localStorage.setItem('posicion', '');
