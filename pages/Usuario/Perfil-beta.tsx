@@ -139,7 +139,9 @@ export default function Perfil() {
         <>
         <Box>
             <NavBar />
+            {/**
             <SideBar />
+             */}
             <HStack>
                 <SimpleGrid columns={4}>
                     <GridItem

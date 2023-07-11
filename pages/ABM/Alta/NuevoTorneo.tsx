@@ -17,9 +17,6 @@ import {
     BreadcrumbLink
 } from '@chakra-ui/react';
 
-import NavBar from '../../../Componentes/Components/NavBar/NavBar';
-import SideBar from '../../../Componentes/Components/SideBar/SideBar';
-
 const NuevoTorneo = () => {
     return (
         <Container
