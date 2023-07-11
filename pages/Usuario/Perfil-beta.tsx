@@ -132,7 +132,7 @@ export default function Perfil() {
         setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
         setPresupuesto(localStorage.getItem('presupuesto'));
         setPieHabil(localStorage.getItem('pieHabil'));
-    });   
+    }, []);   
 
     return(
         <>

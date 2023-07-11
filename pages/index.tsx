@@ -66,7 +66,7 @@ const IndexPage = () => {
 
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
-    })
+    }, [])
 
     return (
         <Container

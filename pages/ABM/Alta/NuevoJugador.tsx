@@ -199,7 +199,7 @@ function NuevoJugador() {
 
     useEffect(() => {
         setDomLoaded(true);
-    })
+    }, [])
 
     return (
         <>
