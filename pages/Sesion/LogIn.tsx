@@ -46,7 +46,7 @@ const LogIn = () => {
     */
 
     const iniciarSesion = () => {
-        fetch('http://localhost:5051/buscarUsuario', {
+        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
