@@ -6,14 +6,9 @@ import { Box, Button, Container, Divider, HStack, Image, Text, VStack, Breadcrum
 
 import {ChevronRightIcon, DragHandleIcon} from '@chakra-ui/icons';
 
-import NavBar from '../../Componentes/Components/NavBar/NavBar';
-import SideBar from '../../Componentes/Components/SideBar/SideBar';
-
 const ProfileBeta = () => {
     return (
         <Box>
-            <NavBar />
-            <SideBar />
             <Box paddingTop="80px" paddingLeft="240px">
                 {/* Breadcrumbs */}
                 <HStack>
