@@ -234,33 +234,34 @@ function NuevoJugador() {
                         marginTop="25px"
                         paddingTop="100px"
                     >
-                            {/**
-                            <Image alt=''  src="/ellipse.png" />
-                            <Link
-                                id="botonDeSubirImagen"
-                                color="#6EC1E4"
-                                marginLeft="35px"
-                                marginTop='-25px'
-                                position="relative"
-                                zIndex="9999"
-                                onClick={subirImagen}
-                            >
-                                Subir imagen
-                            </Link>
-                             */}
-                            <div>
-                                <Image alt='' 
-                                    id="fotoDePerfil"
-                                    src={urlDeImagen}
-                                    marginTop="-130px"
-                                    marginLeft="60px"
-                                    paddingBottom="10px"
-                                />
-                            </div>
-                            <FormControl>
-                                URL de imagen
-                                <Input placeholder='URL de imagen' value={urlDeImagen} onChange={handleUrlDeImagenChange} />
-                            </FormControl>
+                        {/**
+                        <Image alt=''  src="/ellipse.png" />
+                        <Link
+                            id="botonDeSubirImagen"
+                            color="#6EC1E4"
+                            marginLeft="35px"
+                            marginTop='-25px'
+                            position="relative"
+                            zIndex="9999"
+                            onClick={subirImagen}
+                        >
+                            Subir imagen
+                        </Link>
+                            */}
+                        <div>
+                            <Image
+                                alt='' 
+                                id="fotoDePerfil"
+                                src={urlDeImagen}
+                                marginTop="-130px"
+                                marginLeft="60px"
+                                paddingBottom="10px"
+                            />
+                        </div>
+                        <FormControl>
+                            URL de imagen
+                            <Input placeholder='URL de imagen' value={urlDeImagen} onChange={handleUrlDeImagenChange} />
+                        </FormControl>
                             
                         <Divider visibility="hidden" />
                         <SimpleGrid columns={12} gap="32px" w="full">

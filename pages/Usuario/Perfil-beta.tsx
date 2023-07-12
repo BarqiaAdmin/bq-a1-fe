@@ -153,31 +153,39 @@ export default function Perfil() {
                             paddingTop="100px"
                         >
                             <HStack>
-                                <Image alt=''
-                                    marginRight="20px"
-                                    width="150px"
-                                    src={urlDeImagen}
-                                />
+                                
                                 <VStack gap="5px">
+                                    <Image alt=''
+                                        marginRight="20px"
+                                        width="150px"
+                                        src={urlDeImagen}
+                                        borderRadius='100%'
+                                    />
                                     <Heading>{ nombre } { apellido }</Heading>
                                     <HStack gap="5px">
-                                        <Link href="/Usuario/Perfil">Estadísticas</Link>
                                         <Button
                                             color="white"
                                             background="#144077"
-                                            >Compartir perfil
+                                            >
+                                            Seguir jugador
                                         </Button>
+                                        
                                         <Image alt='' 
                                             src="/like.png"
                                         />
                                         <Text>21.6k</Text>
-                                        <Image alt=''  src="/share.png" />
                                     </HStack>
                                     <HStack gap="10px">
                                         <Image alt=''  h="30px" src="/facebook.png" />
                                         <Image alt=''  h="30px" src="/twitter.png" />
                                         <Image alt=''  h="30px" src="/instagram.png" />
                                         <Image alt=''  h="30px" src="/icono-tiktok.png" />
+                                        <Button
+                                            color="white"
+                                            background="#144077"
+                                            >
+                                            <Image alt=''  src="/share.png" />
+                                        </Button>
                                     </HStack>
                                 </VStack>
                                 <HStack>
