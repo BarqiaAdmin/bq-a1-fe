@@ -334,7 +334,84 @@ export default function Perfil() {
                     {/* "Top Torneos (Figma)" */}
 
                     <GridItem colSpan={15}>
-                        <Box paddingLeft="240px" textAlign='center'>
+                    <VStack>
+                                <Heading>Galeria</Heading>
+                                {/**
+                                <HStack>
+                                    <Image alt='' 
+                                        id="foto1"
+                                        src={files?.source || '/sl-icono-cuadrado-2.png'}
+                                    />
+                                    <Link
+                                        id="botonDeSubirImagen"
+                                        color="#6EC1E4"
+                                        zIndex="9999"
+                                        onClick={subirImagen}
+                                    >
+                                        Subir imagen
+                                    </Link>
+                                </HStack>
+                                */}
+                                <Box
+                                position={'relative'}
+                                height={'600px'}
+                                width={'full'}
+                                overflow={'hidden'}>
+                                {/* CSS files for react-slick */}
+                                <link
+                                    rel="stylesheet"
+                                    type="text/css"
+                                    charSet="UTF-8"
+                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+                                />
+                                <link
+                                    rel="stylesheet"
+                                    type="text/css"
+                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+                                />
+                                {/* Left Icon */}
+                                <IconButton
+                                    aria-label="left-arrow"
+                                    colorScheme="messenger"
+                                    borderRadius="full"
+                                    position="absolute"
+                                    left={side}
+                                    top={top}
+                                    transform={'translate(0%, -50%)'}
+                                    zIndex={2}
+                                    onClick={() => slider?.slickPrev()}>
+                                    <BiLeftArrowAlt />
+                                </IconButton>
+                                {/* Right Icon */}
+                                <IconButton
+                                    aria-label="right-arrow"
+                                    colorScheme="messenger"
+                                    borderRadius="full"
+                                    position="absolute"
+                                    right={side}
+                                    top={top}
+                                    transform={'translate(0%, -50%)'}
+                                    zIndex={2}
+                                    onClick={() => slider?.slickNext()}>
+                                    <BiRightArrowAlt />
+                                </IconButton>
+                                {/* Slider */}
+                                <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                                    {cards.map((url, index) => (
+                                    <Box
+                                        key={index}
+                                        height={'6xl'}
+                                        position="relative"
+                                        backgroundPosition="center"
+                                        backgroundRepeat="no-repeat"
+                                        backgroundSize="cover"
+                                        backgroundImage={`url(${url})`}
+                                    />
+                                    ))}
+                                </Slider>
+                            </Box>
+                        </VStack>
+                        <Box>
                             <HStack>
                                 <Text>ESTADISTICAS</Text>
                                 <FormControl>
@@ -461,83 +538,6 @@ export default function Perfil() {
                                     </Table>
                                 </TableContainer>
                             </HStack>
-                            <VStack>
-                            <Heading>Galeria</Heading>
-                            {/**
-                            <HStack>
-                                <Image alt='' 
-                                    id="foto1"
-                                    src={files?.source || '/sl-icono-cuadrado-2.png'}
-                                />
-                                <Link
-                                    id="botonDeSubirImagen"
-                                    color="#6EC1E4"
-                                    zIndex="9999"
-                                    onClick={subirImagen}
-                                >
-                                    Subir imagen
-                                </Link>
-                            </HStack>
-                            */}
-                             <Box
-                                position={'relative'}
-                                height={'600px'}
-                                width={'full'}
-                                overflow={'hidden'}>
-                                {/* CSS files for react-slick */}
-                                <link
-                                    rel="stylesheet"
-                                    type="text/css"
-                                    charSet="UTF-8"
-                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-                                />
-                                <link
-                                    rel="stylesheet"
-                                    type="text/css"
-                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-                                />
-                                {/* Left Icon */}
-                                <IconButton
-                                    aria-label="left-arrow"
-                                    colorScheme="messenger"
-                                    borderRadius="full"
-                                    position="absolute"
-                                    left={side}
-                                    top={top}
-                                    transform={'translate(0%, -50%)'}
-                                    zIndex={2}
-                                    onClick={() => slider?.slickPrev()}>
-                                    <BiLeftArrowAlt />
-                                </IconButton>
-                                {/* Right Icon */}
-                                <IconButton
-                                    aria-label="right-arrow"
-                                    colorScheme="messenger"
-                                    borderRadius="full"
-                                    position="absolute"
-                                    right={side}
-                                    top={top}
-                                    transform={'translate(0%, -50%)'}
-                                    zIndex={2}
-                                    onClick={() => slider?.slickNext()}>
-                                    <BiRightArrowAlt />
-                                </IconButton>
-                                {/* Slider */}
-                                <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                                    {cards.map((url, index) => (
-                                    <Box
-                                        key={index}
-                                        height={'6xl'}
-                                        position="relative"
-                                        backgroundPosition="center"
-                                        backgroundRepeat="no-repeat"
-                                        backgroundSize="cover"
-                                        backgroundImage={`url(${url})`}
-                                    />
-                                    ))}
-                                </Slider>
-                            </Box>
-                        </VStack>
                         <HStack>
                             <Image h='330px' src='https://s3.abcstatics.com/media/bienestar/2019/09/17/futbol-1-kU3C--1248x698@abc.jpg' alt=''/>
                             <Image h='330px' src='https://chajari.gob.ar/wp-content/uploads/2016/12/futbol-generic-entry-point.jpg' alt=''/>
