@@ -89,9 +89,11 @@ const IndexPage = () => {
                 src='/artwork3.png'
             />
             <VStack
-                position="relative"
+                position="absolute"
+                right='250px'
+                marginTop='25px'
             >
-                <SimpleGrid columns={8}>
+                <SimpleGrid columns={8} gap={2}>
                     <GridItem colSpan={8}>
                         <Image alt=''  src="/logo.png" />
                     </GridItem>
@@ -122,12 +124,12 @@ const IndexPage = () => {
                             <Text display='none' color="red">La contraseña no es válida o no corresponde a la dirección de correo electrónico.</Text>
                         </FormControl>
                     </GridItem>
-                    <GridItem colSpan={6}>
-                        <Checkbox>
-                            Acepto los <Link className="link1" >Términos y condiciones</Link>
+                    <GridItem colSpan={5}>
+                        <Checkbox fontSize='10px'>
+                            Acepto los <Link className="link1">Términos y condiciones</Link>
                         </Checkbox>
                     </GridItem>
-                    <GridItem colSpan={2}>
+                    <GridItem colSpan={3} fontSize='14px' textAlign='right'>
                         <Link className="link1" href="Sesion/PassRecovery">Olvidé mi contraseña</Link>
                     </GridItem>
                     <GridItem colSpan={8}>
@@ -142,13 +144,13 @@ const IndexPage = () => {
                     </GridItem>
                     <GridItem colSpan={8}>
                         <Button w="full">
-                            <Image alt=''  src="/google.png" height='20px' width='20px'/>
+                            <Image alt=''  src="/google.png" height='20px' width='20px'/>&nbsp;
                             Continuar con Google
                         </Button>
                     </GridItem>
                     <GridItem colSpan={8}>
                         <Button w="full">
-                            <Image alt=''  src="/facebook.png" height='20px' width='20px'/>
+                            <Image alt=''  src="/facebook.png" height='20px' width='20px'/>&nbsp;
                             Continuar con Facebook
                         </Button>
                     </GridItem>

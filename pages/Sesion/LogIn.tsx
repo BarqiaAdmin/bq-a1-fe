@@ -56,6 +56,7 @@ const LogIn = () => {
             window.alert('No se ha ingresado una contraseña');
         }
 
+        /**
         fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
@@ -69,6 +70,7 @@ const LogIn = () => {
         }).then((res) => {
             console.log(res)
         })
+        */
         
         Router.push({
             pathname: '/Usuario/Perfil-beta'
@@ -122,9 +124,11 @@ const LogIn = () => {
                 src='/artwork3.png'
             />
             <VStack
-                position="relative"
+                position="absolute"
+                right='250px'
+                marginTop='25px'
             >
-                <SimpleGrid columns={8}>
+                <SimpleGrid columns={8} gap={2}>
                     <GridItem colSpan={8}>
                         <Image alt=''  src="/logo.png" />
                     </GridItem>
@@ -158,7 +162,7 @@ const LogIn = () => {
                     </GridItem>
                     <GridItem colSpan={8}>
                         <Button w="full">
-                            <Image alt=''  src="/google.png" />
+                            <Image alt=''  src="/google.png" />&nbsp;
                             Continuar con Google
                         </Button>
                     </GridItem>
@@ -167,7 +171,7 @@ const LogIn = () => {
                             <Image alt=''  
                             width="19px"
                             height="18px"
-                            src="/facebook.png" />
+                            src="/facebook.png" />&nbsp;
                             Continuar con Facebook
                         </Button>
                     </GridItem>
