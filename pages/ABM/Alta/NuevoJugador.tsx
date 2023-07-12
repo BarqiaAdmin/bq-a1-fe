@@ -151,17 +151,17 @@ function NuevoJugador() {
         localStorage.setItem('presupuesto', e.target.value)
     }
 
-    const isErrorNombre = inputNombre === ''
-    const isErrorApellido = inputApellido === ''
-    const isErrorNacimiento = inputNacimiento === ''
-    const isErrorNacionalidad = inputNacionalidad === ''
-    const isErrorPieHabil = inputPieHabil === ''
-    const isErrorPosicion = inputPosicion === ''
-    const isErrorGenero = inputGenero === ''
-    const isErrorEstatura = inputEstatura === ''
-    const isErrorPeso = inputPeso === ''
-    const isErrorClub = inputClub === ''
-    const isErrorCategoria = inputCategoria === ''
+    const isErrorNombre = false;
+    const isErrorApellido = false;
+    const isErrorNacimiento = false;
+    const isErrorNacionalidad = false;
+    const isErrorPieHabil = false;
+    const isErrorPosicion = false;
+    const isErrorGenero = false;
+    const isErrorEstatura = false;
+    const isErrorPeso = false;
+    const isErrorClub = false;
+    const isErrorCategoria = false;
 
     const crearJugador = () => {
         /*
@@ -238,33 +238,32 @@ function NuevoJugador() {
                     >
                             
                             <div>
-                                {/**
                                 <Image alt=''  src="/ellipse.png" />
-                                 */}
                                 <Image alt='' 
                                     id="fotoDePerfil"
-                                    src={urlDeImagen}
+                                    src='/usuario.png'
                                     marginTop="-130px"
                                     marginLeft="60px"
                                     paddingBottom="10px"
                                 />
                             </div>
-                            {/**
                             <Link
                                 id="botonDeSubirImagen"
                                 color="#6EC1E4"
                                 marginLeft="35px"
+                                marginTop='-25px'
                                 position="relative"
                                 zIndex="9999"
                                 onClick={subirImagen}
                             >
                                 Subir imagen
                             </Link>
-                             */}
+                            {/**
                             <FormControl>
                                 URL de imagen
                                 <Input placeholder='URL de imagen' value={urlDeImagen} onChange={handleUrlDeImagenChange} />
                             </FormControl>
+                             */}
                         <Divider visibility="hidden" />
                         <SimpleGrid columns={12} gap="32px" w="full">
                             <GridItem colSpan={6}>
@@ -559,7 +558,16 @@ function NuevoJugador() {
                             <GridItem colSpan={12}>
 
                                 <Link href="/Onboarding/Onboarding">
-                                    <Button>
+                                    <Button
+                                        className="btn1"
+                                        p="10px 24px 12px"
+                                        w="161px"
+                                        h="57px"
+                                        bg="#353535"
+                                        borderRadius="5px"
+                                        fontSize="21px"
+                                        color="#A2A2A2"
+                                    >
                                         Atrás
                                     </Button>
                                 </Link>

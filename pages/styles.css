@@ -9,12 +9,7 @@ body{
 
 /* SCOUTING LABS GRADIENT */ 
 .chakra-ui-dark {
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#050d17+0,03080e+100 */
-    background: rgb(5,13,23); /* Old browsers */
-    background: -moz-linear-gradient(top,  rgba(5,13,23,1) 0%, rgba(3,8,14,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(5,13,23,1) 0%,rgba(3,8,14,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(5,13,23,1) 0%,rgba(3,8,14,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#050d17', endColorstr='#03080e',GradientType=0 ); /* IE6-9 */
+    background: rgb(5,13,23);
 }
 
 .OnboardingOption:hover {
