@@ -125,7 +125,6 @@ const LogIn = () => {
             />
             <VStack
                 position="absolute"
-                right='250px'
                 marginTop='25px'
             >
                 <SimpleGrid columns={8} gap={2}>
