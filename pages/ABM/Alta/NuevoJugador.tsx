@@ -58,7 +58,6 @@ function NuevoJugador() {
     const [inputPresupuesto, setInputPresupuesto] = useState('');
 
     const subirImagen = () => {
-        /*
         selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
             const elementoFotoDePerfil = document.getElementById('fotoDePerfil');
             //elementoFotoDePerfil.style.borderRadius = "100%"
@@ -68,7 +67,6 @@ function NuevoJugador() {
             const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
             elementoBotonDeSubirImagen.remove();
         })
-        */
     }
     
     const handleUrlDeImagenChange = (e) => {
@@ -236,17 +234,8 @@ function NuevoJugador() {
                         marginTop="25px"
                         paddingTop="100px"
                     >
-                            
-                            <div>
-                                <Image alt=''  src="/ellipse.png" />
-                                <Image alt='' 
-                                    id="fotoDePerfil"
-                                    src='/usuario.png'
-                                    marginTop="-130px"
-                                    marginLeft="60px"
-                                    paddingBottom="10px"
-                                />
-                            </div>
+                            {/**
+                            <Image alt=''  src="/ellipse.png" />
                             <Link
                                 id="botonDeSubirImagen"
                                 color="#6EC1E4"
@@ -258,12 +247,21 @@ function NuevoJugador() {
                             >
                                 Subir imagen
                             </Link>
-                            {/**
+                             */}
+                            <div>
+                                <Image alt='' 
+                                    id="fotoDePerfil"
+                                    src={urlDeImagen}
+                                    marginTop="-130px"
+                                    marginLeft="60px"
+                                    paddingBottom="10px"
+                                />
+                            </div>
                             <FormControl>
                                 URL de imagen
                                 <Input placeholder='URL de imagen' value={urlDeImagen} onChange={handleUrlDeImagenChange} />
                             </FormControl>
-                             */}
+                            
                         <Divider visibility="hidden" />
                         <SimpleGrid columns={12} gap="32px" w="full">
                             <GridItem colSpan={6}>
