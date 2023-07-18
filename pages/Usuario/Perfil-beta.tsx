@@ -146,14 +146,12 @@ export default function Perfil() {
                 <SimpleGrid columns={4}>
                     <GridItem
                         colSpan={4}
-                        marginLeft="200px"
                         >
                         <VStack
                             gap="5px"
                             paddingTop="100px"
                         >
                             <HStack>
-                                
                                 <VStack gap="5px">
                                     <Image alt=''
                                         marginRight="20px"
@@ -172,7 +170,7 @@ export default function Perfil() {
                                         
                                         <Image alt='' 
                                             src="/like.png"
-                                        />
+                                        /> 
                                         <Text>21.6k</Text>
                                     </HStack>
                                     <HStack gap="10px">
@@ -193,141 +191,17 @@ export default function Perfil() {
                                 </HStack>
                             </HStack>
                         </VStack>
-                        <VStack
-                            bg="#0E1216"
-                            boxShadow="0px 1px 2px rgba(0, 0, 0, 0.08)"
-                            borderRadius="16px"
-                            color="#ECECEC"
-                            margin="auto"
-                            marginTop="25px"
-                            padding="30px 100px">
-                            
-                            <SimpleGrid columns={15} fontSize='19px' textAlign="center">
-                                <GridItem colSpan={3} marginBottom="30px">
-                                    <Text color="#707378">EQUIPO</Text>
-                                    <Text>{ club }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Text color="#707378">POSICIÓN</Text>
-                                    <Text>{ posicion }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Text color="#707378">CATEGORÍA</Text>
-                                    <Text>{ categoria }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3} marginBottom="30px">
-                                    <Text color="#707378">ESTATURA</Text>
-                                    <Text>{ estatura }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Text color="#707378">PESO</Text>
-                                    <Text>{ peso }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Text color="#707378">EDAD</Text>
-                                    <Text>{ edad }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3} marginBottom="30px">
-                                    <Text color="#707378">ATRIBUTOS</Text>
-                                    {/**
-                                    <Image alt='' 
-                                        src="/sl-icono-argentina.jpg"
-                                        borderRadius="100%"
-                                        margin="auto"
-                                        marginTop="10px"
-                                        width="30px"
-                                    />
-                                     */}
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Text color="#707378">NACIONALIDAD</Text>
-                                    <Text>{ nacionalidad }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
-                                </GridItem>
-                                <GridItem colSpan={3} marginBottom="30px">
-                                    <Text color="#707378">PIE HÁBIL</Text>
-                                    <Text>{ pieHabil }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3} marginBottom="30px">
-                                    <Text color="#707378">CONDICIÓN</Text>
-                                    <Text>{ condicion }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Text color="#707378">NIVEL DE INGLÉS</Text>
-                                    <Text>{ nivelDeIngles }</Text> 
-                                </GridItem>
-                                <GridItem colSpan={3}>
-                                    <Box h="48px" w="1px" margin="auto" background="#707378"></Box>
-                                </GridItem>
-                                <GridItem colSpan={3} marginBottom="30px">
-                                    <Text color="#707378">PRESUPUESTO</Text>
-                                    <Text>{ presupuesto }</Text> 
-                                </GridItem>
-                                    {/*
-                                    Commit
-                                    <GridItem colSpan={5}>
-                                    <VStack>
-                                        <HStack>
-                                            <Image alt='' 
-                                            id="foto1"
-                                            src={files?.source || '/sl-icono-cuadrado-2.png'}
-                                        />
-                                            <Link
-                                                id="botonDeSubirImagen"
-                                                color="#6EC1E4"
-                                                zIndex="9999"
-                                                onClick={subirImagen}
-                                            >
-                                                Subir imagen
-                                            </Link>
-                                        </HStack>
-                                    </VStack>
-                                </GridItem>
-                                    */}
-                                
-
-                                {/*
-                                <GridItem colSpan={5}>
-                                    <VStack>
-                                        <HStack>
-                                            <Image alt='' 
-                                            id="foto1"
-                                            src={files?.source || '/sl-icono-cuadrado-2.png'}
-                                        />
-                                            <Link
-                                                id="botonDeSubirImagen"
-                                                color="#6EC1E4"
-                                                zIndex="9999"
-                                                onClick={subirImagen}
-                                            >
-                                                Subir imagen
-                                            </Link>
-                                        </HStack>
-                                    </VStack>
-                                </GridItem>
-                                */}
+                        <HStack>
+                            <SimpleGrid columns={8}>
+                                <GridItem colSpan={1}>{ nacionalidad }</GridItem>
+                                <GridItem colSpan={2}>{ club }</GridItem>
+                                <GridItem colSpan={1}>{ pieHabil }</GridItem>
+                                <GridItem colSpan={1}>{ posicion }</GridItem>
+                                <GridItem colSpan={1}>{ categoria }</GridItem>
+                                <GridItem colSpan={1}>{ estatura }</GridItem>
+                                <GridItem colSpan={1}>{ peso }</GridItem>
                             </SimpleGrid>
-                        </VStack>
+                        </HStack>
                     </GridItem>
                         
 
@@ -335,7 +209,7 @@ export default function Perfil() {
 
                     <GridItem colSpan={15}>
                     <VStack>
-                                <Heading>Galeria</Heading>
+                                
                                 {/**
                                 <HStack>
                                     <Image alt='' 
@@ -419,7 +293,7 @@ export default function Perfil() {
                                 </FormControl>
                             </HStack>
                             <HStack>
-                                <TableContainer m='auto'>
+                                <TableContainer m='auto' fontSize='15px'>
                                     <Table variant='simple'>
                                         <Thead>
                                             <Tr>

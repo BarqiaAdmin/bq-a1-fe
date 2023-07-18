@@ -62,7 +62,7 @@ class NuevoJugador2 extends Component {
             },
             body: JSON.stringify({
                 email: localStorage.getItem('email'),
-                contrasenia: '',
+                password: '',
                 nombre: localStorage.getItem('nombre'),
                 apellido: localStorage.getItem('apellido'),
                 urlDeImagen: localStorage.getItem('urlDeImagen'),
