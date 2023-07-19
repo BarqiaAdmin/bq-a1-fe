@@ -54,7 +54,7 @@ class NuevoJugador2 extends Component {
     */
 
     crearUsuario = () => {
-        fetch('https://bq-a1-be.vercel.app/crearUsuario', {
+        fetch('http://localhost:5051/crearUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -62,12 +62,12 @@ class NuevoJugador2 extends Component {
             },
             body: JSON.stringify({
                 email: localStorage.getItem('email'),
-                password: '',
+                password: localStorage.getItem('password'),
                 nombre: localStorage.getItem('nombre'),
                 apellido: localStorage.getItem('apellido'),
                 urlDeImagen: localStorage.getItem('urlDeImagen'),
                 edad: localStorage.getItem('edad'),
-                nacionalidad: localStorage.getItem('nancionalidad'),
+                nacionalidad: localStorage.getItem('nacionalidad'),
                 nivelDeIngles: localStorage.getItem('nivelDeIngles'),
                 certificaciones: [],
                 social: {

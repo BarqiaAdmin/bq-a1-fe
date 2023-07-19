@@ -166,7 +166,7 @@ function NuevoJugador() {
         /*
         axios({
             method: 'post',
-            url: 'https://bq-a1-be.vercel.app/crearUsuario',
+            url: 'http://localhost:5051/crearUsuario',
             data: {
                 email: localStorage.getItem('email'),
                 contrasenia: localStorage.getItem('contraseña'),
@@ -235,7 +235,7 @@ function NuevoJugador() {
                         marginTop="25px"
                         paddingTop="100px"
                     >
-                        {/**
+                        
                         <Image alt=''  src="/ellipse.png" />
                         <Link
                             id="botonDeSubirImagen"
@@ -248,22 +248,22 @@ function NuevoJugador() {
                         >
                             Subir imagen
                         </Link>
-                            */}
+                        
                         <div>
                             <Image
                                 alt='' 
                                 id="fotoDePerfil"
-                                src={urlDeImagen}
-                                marginTop="-130px"
-                                marginLeft="60px"
+                                src='/usuario.png'
+                                marginTop="-230px"
                                 paddingBottom="10px"
                             />
                         </div>
+                        {/**
                         <FormControl>
                             URL de imagen
                             <Input placeholder='URL de imagen' value={urlDeImagen} onChange={handleUrlDeImagenChange} />
                         </FormControl>
-                            
+                        */}
                         <Divider visibility="hidden" />
                         <SimpleGrid columns={12} gap="32px" w="full">
                             <GridItem colSpan={6}>

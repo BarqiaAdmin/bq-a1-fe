@@ -39,6 +39,8 @@ import {
     IconButton,
 } from '@chakra-ui/react';
 
+import { EditIcon } from '@chakra-ui/icons'
+
 import NavBar from '../src/Components/NavBar/NavBar';
 import SideBar from '../src/Components/SideBar/SideBar';
 
@@ -192,14 +194,49 @@ export default function Perfil() {
                             </HStack>
                         </VStack>
                         <HStack>
-                            <SimpleGrid columns={8}>
-                                <GridItem colSpan={1}>{ nacionalidad }</GridItem>
-                                <GridItem colSpan={2}>{ club }</GridItem>
-                                <GridItem colSpan={1}>{ pieHabil }</GridItem>
-                                <GridItem colSpan={1}>{ posicion }</GridItem>
-                                <GridItem colSpan={1}>{ categoria }</GridItem>
-                                <GridItem colSpan={1}>{ estatura }</GridItem>
-                                <GridItem colSpan={1}>{ peso }</GridItem>
+                            <SimpleGrid columns={8} textAlign='center'>
+                                <GridItem colSpan={1}>
+                                    { nacionalidad }
+                                    <Button colorScheme='teal' variant='link'>
+                                        <EditIcon />
+                                    </Button>
+                                </GridItem>
+                                <GridItem colSpan={2}>
+                                    { club || 'Club Atlético River Plate'}
+                                    <Button colorScheme='teal' variant='link'>
+                                        <EditIcon />
+                                    </Button>
+                                </GridItem>
+                                <GridItem colSpan={1}>
+                                    { pieHabil || 'Derecho' }
+                                    <Button colorScheme='teal' variant='link'>
+                                        <EditIcon />
+                                    </Button>
+                                </GridItem>
+                                <GridItem colSpan={1}>
+                                    { posicion || 'Mediocampista'}
+                                    <Button colorScheme='teal' variant='link'>
+                                        <EditIcon />
+                                    </Button>
+                                </GridItem>
+                                <GridItem colSpan={1}>
+                                    { categoria || 'Con contrato'}
+                                    <Button colorScheme='teal' variant='link'>
+                                        <EditIcon />
+                                    </Button>
+                                </GridItem>
+                                <GridItem colSpan={1}>
+                                    { estatura || '1,82m'}
+                                    <Button colorScheme='teal' variant='link'>
+                                        <EditIcon />
+                                    </Button>
+                                </GridItem>
+                                <GridItem colSpan={1}>
+                                    { peso || '86kg' }
+                                    <Button colorScheme='teal' variant='link'>
+                                        <EditIcon />
+                                    </Button>
+                                </GridItem>
                             </SimpleGrid>
                         </HStack>
                     </GridItem>

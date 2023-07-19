@@ -56,8 +56,7 @@ const LogIn = () => {
             window.alert('No se ha ingresado una contraseña');
         }
 
-        /**
-        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        fetch('http://localhost:5051/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -70,7 +69,6 @@ const LogIn = () => {
         }).then((res) => {
             console.log(res)
         })
-        */
         
         Router.push({
             pathname: '/Usuario/Perfil-beta'
@@ -87,7 +85,7 @@ const LogIn = () => {
     const iniciarSesion = () => {
         axios({
             method: 'post',
-            url: 'https://bq-a1-be.vercel.app/leerUsuario',
+            url: 'http://localhost:5051/leerUsuario',
             data: {
                 email: localStorage.getItem('email'),
                 password: localStorage.getItem('logInPassword'),
