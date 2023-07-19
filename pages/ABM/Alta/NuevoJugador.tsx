@@ -166,7 +166,7 @@ function NuevoJugador() {
         /*
         axios({
             method: 'post',
-            url: 'http://localhost:5051/crearUsuario',
+            url: 'https://bq-a1-be.vercel.app/crearUsuario',
             data: {
                 email: localStorage.getItem('email'),
                 contrasenia: localStorage.getItem('contraseña'),

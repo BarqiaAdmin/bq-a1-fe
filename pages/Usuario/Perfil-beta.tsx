@@ -158,7 +158,7 @@ export default function Perfil() {
                                     <Image alt=''
                                         marginRight="20px"
                                         width="150px"
-                                        src={urlDeImagen}
+                                        src='/usuario.png'
                                         borderRadius='100%'
                                     />
                                     <Heading>{ nombre } { apellido }</Heading>
