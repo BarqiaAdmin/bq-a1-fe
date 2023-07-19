@@ -66,8 +66,25 @@ const LogIn = () => {
                 email: localStorage.getItem('email'),
                 password: localStorage.getItem('password')
             })
-        }).then((res) => {
-            console.log(res)
+        }).then((response) => {
+            console.log(response);
+            localStorage.setItem('email', response.email),
+            localStorage.setItem('password', response.password),
+            localStorage.setItem('nombre', response.nombre),
+            localStorage.setItem('apellido', response.apellido),
+            localStorage.setItem('urlDeImagen', response.urlDeImagen),
+            localStorage.setItem('edad', response.edad),
+            localStorage.setItem('nacionalidad', response.nacionalidad),
+            localStorage.setItem('nivelDeIngles', response.nivelDeIngles),
+            localStorage.setItem('pieHabil', response.pieHabil),
+            localStorage.setItem('posicion', response.posicion),
+            localStorage.setItem('genero', response.genero),
+            localStorage.setItem('estatura', response.estatura),
+            localStorage.setItem('peso', response.peso),
+            localStorage.setItem('club', response.club),
+            localStorage.setItem('categoria', response.categoria),
+            localStorage.setItem('condicion', response.condicion),
+            localStorage.setItem('presupuestoresponse', response.presupuesto)
         })
         
         Router.push({
