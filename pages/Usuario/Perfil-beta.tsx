@@ -193,49 +193,52 @@ export default function Perfil() {
                                 </HStack>
                             </HStack>
                         </VStack>
-                        <HStack>
-                            <SimpleGrid columns={8} textAlign='center'>
+                        <HStack
+                            marginTop='40px'
+                            marginBottom='40px'
+                        >
+                            <SimpleGrid
+                                columns={8}
+                                background='#0E1216'
+                                border='2px solid #14161A'
+                                borderRadius='5px'
+                                margin='auto'
+                                padding='30px'
+                                textAlign='center'
+                            >
                                 <GridItem colSpan={1}>
-                                    { nacionalidad }
-                                    <Button colorScheme='teal' variant='link'>
-                                        <EditIcon />
-                                    </Button>
+                                    NACIONALIDAD <br />
+                                    <strong>{ nacionalidad }</strong>
                                 </GridItem>
                                 <GridItem colSpan={2}>
-                                    { club || 'Club Atlético River Plate'}
-                                    <Button colorScheme='teal' variant='link'>
-                                        <EditIcon />
-                                    </Button>
+                                    EQUIPO <br />
+                                    {/**
+                                    <Image src='/escudo.png' alt=''
+                                        display='inline-block'
+                                        width='25px'
+                                    />
+                                     */}
+                                    <strong>{ club }</strong>
                                 </GridItem>
                                 <GridItem colSpan={1}>
-                                    { pieHabil || 'Derecho' }
-                                    <Button colorScheme='teal' variant='link'>
-                                        <EditIcon />
-                                    </Button>
+                                    PIE HÁBIL <br />
+                                    <strong>{ pieHabil }</strong>
                                 </GridItem>
                                 <GridItem colSpan={1}>
-                                    { posicion || 'Mediocampista'}
-                                    <Button colorScheme='teal' variant='link'>
-                                        <EditIcon />
-                                    </Button>
+                                    POSICIÓN <br />
+                                    <strong>{ posicion }</strong>
                                 </GridItem>
                                 <GridItem colSpan={1}>
-                                    { categoria || 'Con contrato'}
-                                    <Button colorScheme='teal' variant='link'>
-                                        <EditIcon />
-                                    </Button>
+                                    CATEGORÍA <br />
+                                    <strong>{ categoria }</strong>
                                 </GridItem>
                                 <GridItem colSpan={1}>
-                                    { estatura || '1,82m'}
-                                    <Button colorScheme='teal' variant='link'>
-                                        <EditIcon />
-                                    </Button>
+                                    ALTURA <br />
+                                    <strong>{ estatura }</strong>
                                 </GridItem>
                                 <GridItem colSpan={1}>
-                                    { peso || '86kg' }
-                                    <Button colorScheme='teal' variant='link'>
-                                        <EditIcon />
-                                    </Button>
+                                    PESO <br />
+                                    <strong>{ peso }</strong>
                                 </GridItem>
                             </SimpleGrid>
                         </HStack>
@@ -322,6 +325,12 @@ export default function Perfil() {
                                 </Slider>
                             </Box>
                         </VStack>
+                        <HStack>
+                            <Image h='330px' src='https://s3.abcstatics.com/media/bienestar/2019/09/17/futbol-1-kU3C--1248x698@abc.jpg' alt=''/>
+                            <Image h='330px' src='https://chajari.gob.ar/wp-content/uploads/2016/12/futbol-generic-entry-point.jpg' alt=''/>
+                            <Image h='330px' src='https://definicion.de/wp-content/uploads/2009/03/futbolistas.jpg' alt=''/>
+                            <Image h='330px' src='https://concepto.de/wp-content/uploads/2015/02/futbol-1-e1550783405750.jpg' alt=''/>
+                        </HStack>
                         <Box>
                             <HStack>
                                 <Text>ESTADISTICAS</Text>
@@ -449,12 +458,6 @@ export default function Perfil() {
                                     </Table>
                                 </TableContainer>
                             </HStack>
-                        <HStack>
-                            <Image h='330px' src='https://s3.abcstatics.com/media/bienestar/2019/09/17/futbol-1-kU3C--1248x698@abc.jpg' alt=''/>
-                            <Image h='330px' src='https://chajari.gob.ar/wp-content/uploads/2016/12/futbol-generic-entry-point.jpg' alt=''/>
-                            <Image h='330px' src='https://definicion.de/wp-content/uploads/2009/03/futbolistas.jpg' alt=''/>
-                            <Image h='330px' src='https://concepto.de/wp-content/uploads/2015/02/futbol-1-e1550783405750.jpg' alt=''/>
-                        </HStack>
                         </Box>
                     </GridItem>
 
