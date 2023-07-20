@@ -113,7 +113,7 @@ export default function Perfil() {
     const [imagenGaleria1, setImagenGaleria1] = useState('');
     const [imagenGaleria2, setImagenGaleria2] = useState('');
     const [imagenGaleria3, setImagenGaleria3] = useState('');
-    const [imagenGaleria4, setImagenGaleria4] = useState('');
+    const [videoGaleria1, setVideoGaleria1] = useState('');
 
     // As we have used custom buttons, we need a reference variable to
     // change the state
@@ -144,6 +144,8 @@ export default function Perfil() {
         setImagenGaleria1(localStorage.getItem('imagenGaleria1'))
         setImagenGaleria2(localStorage.getItem('imagenGaleria2'))
         setImagenGaleria3(localStorage.getItem('imagenGaleria3'))
+
+        setVideoGaleria1(localStorage.getItem('videoGaleria1'))
 
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
@@ -183,14 +185,13 @@ export default function Perfil() {
         } else if (localStorage.getItem('imagenGaleria3') == '') {
             localStorage.setItem('imagenGaleria3', base64.toString());
             setImagenGaleria3(base64.toString());
-        } else if (localStorage.getItem('imagenGaleria4') == '') {
-            localStorage.setItem('imagenGaleria4', base64.toString());
-            setImagenGaleria4(base64.toString());
         }
     };
 
-    const handleVideoUpload = () => {
-
+    const handleVideoUpload = (e) => {
+        let ytUrl = e.target.value
+        ytUrl = ytUrl.replace('/watch?v=', '/embed/')
+        setVideoGaleria1(ytUrl)
     }
 
     return(
@@ -398,6 +399,11 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
+                                            <HStack width='full'>
+                                                <Image h='330px' src={imagenGaleria1} alt=''/>
+                                                <Image h='330px' src={imagenGaleria2} alt=''/>
+                                                <Image h='330px' src={imagenGaleria3} alt=''/>
+                                            </HStack>
                                         </TabPanel>
                                         <TabPanel>
                                             <AlertDialog
@@ -414,6 +420,7 @@ export default function Perfil() {
                                                     <AlertDialogBody>
                                                         Ingresa la URL del video para agregarlo al perfil:
                                                         <Input
+                                                            id="videoGaleria1Input"
                                                             marginTop='20px'
                                                             placeholder="URL del video"
                                                             size="md"
@@ -434,7 +441,7 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
 
-                                            <iframe width="853" height="480" src="https://www.youtube.com/embed/EtapU5nI6G4" title="Nirvana&#39;s Nevermind but with the SM64 soundfont" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                            <iframe width="853" height="480" src={ videoGaleria1 } title="Nirvana&#39;s Nevermind but with the SM64 soundfont" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                         </TabPanel>
                                     </TabPanels>
                                 </Tabs>
@@ -513,11 +520,7 @@ export default function Perfil() {
                                 </Box>
                                  */}
                             </VStack>
-                            <HStack>
-                                <Image h='330px' src={imagenGaleria1} alt=''/>
-                                <Image h='330px' src={imagenGaleria2} alt=''/>
-                                <Image h='330px' src={imagenGaleria3} alt=''/>
-                            </HStack>
+                            
                             {/**
                             <Box>
                                 <HStack>
