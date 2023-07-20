@@ -26,6 +26,7 @@ const NavBar = (props) => {
     const cerrarSesion = () => {
 
         localStorage.setItem('email', '');
+        localStorage.setItem('fotoPerfil', '')
         localStorage.setItem('logInPassword', '');
         localStorage.setItem('fotoPerfil', '');
         localStorage.setItem('nombre', '');

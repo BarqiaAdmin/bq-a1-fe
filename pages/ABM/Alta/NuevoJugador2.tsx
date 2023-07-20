@@ -54,7 +54,7 @@ class NuevoJugador2 extends Component {
     */
 
     crearUsuario = () => {
-        fetch('https://bq-a1-be.vercel.app/crearUsuario', {
+        fetch('https://bq-a1-be.vercel.app//crearUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -301,13 +301,25 @@ class NuevoJugador2 extends Component {
                         <Button onClick={(e) => this.elegirAtributo(e, 7)} className="btn2">Marca</Button>
                         <Button onClick={(e) => this.elegirAtributo(e, 8)} className="btn2">Juego aéreo</Button>
                     </HStack>
-                    <SimpleGrid columns={2} w="full">
+                    <SimpleGrid columns={2} w="full" paddingTop='20px'>
                         <GridItem colSpan={1}>
-                            <Link
-                                href="/ABM/Alta/NuevoJugador"
+                            <Button
+                                className='btn1'
+
+                                p="10px 24px 12px"
+                                w="161px"
+                                h="57px"
+                                bg="#353535"
+                                borderRadius="5px"
+                                fontSize="21px"
+                                color="#A2A2A2"
                                 position="relative"
                                 zIndex="0"
-                            >Volver</Link>
+                            >
+                                <Link href='/ABM/Alta/NuevoJugador'>
+                                    Volver
+                                </Link>
+                            </Button>
                         </GridItem>
                         <GridItem colSpan={1} textAlign="right">
                             <Button

@@ -333,6 +333,7 @@ export default function Perfil() {
                             <Image h='330px' src='https://definicion.de/wp-content/uploads/2009/03/futbolistas.jpg' alt=''/>
                             <Image h='330px' src='https://concepto.de/wp-content/uploads/2015/02/futbol-1-e1550783405750.jpg' alt=''/>
                         </HStack>
+                        {/**
                         <Box>
                             <HStack>
                                 <Text>ESTADISTICAS</Text>
@@ -461,6 +462,7 @@ export default function Perfil() {
                                 </TableContainer>
                             </HStack>
                         </Box>
+                         */}
                     </GridItem>
 
                     {/** Redes sociales
