@@ -19,9 +19,19 @@ import {
     Switch,
 } from '@chakra-ui/react';
 
+import { useState, useEffect } from 'react';
+
+import { ExternalLinkIcon } from '@chakra-ui/icons'
+
 import Router from 'next/router';
 
 const NavBar = (props) => {
+
+    const [fotoPerfil, setFotoPerfil] = useState('');
+
+    useEffect(() => {
+        setFotoPerfil(localStorage.getItem('fotoPerfil'))
+    },[])
 
     const cerrarSesion = () => {
 
@@ -51,8 +61,6 @@ const NavBar = (props) => {
         
     }
 
-    const urlDeImagen = 'https://pbs.twimg.com/profile_images/478580594415120384/v-spwMvM_400x400.png';
-
     return (
         <HStack
             bg="#131619"
@@ -81,13 +89,21 @@ const NavBar = (props) => {
             <Flex
                 alignItems="center"
             >
-                <Button marginRight="25px" onClick={cerrarSesion}>
-                    Cerrar sesión
-                </Button>
+                
+                    
                 <Image alt='' 
+                    
+                    borderRadius='full'
+                    height='40px'
+                    width='40px'
                     marginRight="20px"
-                    src={ props.urlDeImagen }
+
+                    src={ fotoPerfil }
                 />
+
+                <Button marginRight="25px" onClick={cerrarSesion}>
+                    Cerrar sesión&nbsp;<ExternalLinkIcon />
+                </Button>
             </Flex>
         </HStack>
     )

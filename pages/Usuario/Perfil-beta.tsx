@@ -169,7 +169,7 @@ export default function Perfil() {
                                             color="white"
                                             background="#144077"
                                             >
-                                            Seguir jugador
+                                            Compartir perfil &nbsp; <Image alt=''  src="/share.png" />
                                         </Button>
                                         
                                         <Image alt='' 
@@ -182,12 +182,6 @@ export default function Perfil() {
                                         <Image alt=''  h="30px" src="/twitter.png" />
                                         <Image alt=''  h="30px" src="/instagram.png" />
                                         <Image alt=''  h="30px" src="/icono-tiktok.png" />
-                                        <Button
-                                            color="white"
-                                            background="#144077"
-                                            >
-                                            <Image alt=''  src="/share.png" />
-                                        </Button>
                                     </HStack>
                                 </VStack>
                                 <HStack>

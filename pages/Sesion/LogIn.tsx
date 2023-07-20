@@ -26,7 +26,22 @@ import Router from 'next/router';
 const LogIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [repeatPassword, setRepeatPassword] = useState('');
+    const [fotoPerfil, setFotoPerfil] = useState('');
+    const [nombre, setNombre] = useState('')
+    const [apellido, setApellido] = useState('');
+    const [club, setClub] = useState('');
+    const [posicion, setPosicion] = useState(''); 
+    const [categoria, setCategoria] = useState(''); 
+    const [estatura, setEstatura] = useState(''); 
+    const [peso, setPeso] = useState(''); 
+    const [edad, setEdad] = useState(''); 
+    const [nacionalidad, setNacionalidad] = useState(''); 
+    const [pieHabil, setPieHabil] = useState('');
+    const [nivelDeIngles, setNivelDeIngles ] = useState('');
+    const [certificaciones, setCertificaciones] = useState('');
+    const [condicion, setCondicion] = useState('');
+    const [presupuesto, setPresupuesto ] = useState('');
+    
     
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
@@ -45,7 +60,7 @@ const LogIn = () => {
     }
     */
 
-    const iniciarSesion = () => {
+    const iniciarSesion = async () => {
         let inputEmail = (document.getElementById('inputEmail') as HTMLInputElement).value;
         let inputPassword = (document.getElementById('inputPassword') as HTMLInputElement).value;
 
@@ -56,7 +71,7 @@ const LogIn = () => {
             window.alert('No se ha ingresado una contraseña');
         }
 
-        fetch('https://bq-a1-be.vercel.app//buscarUsuario', {
+        await fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -66,25 +81,28 @@ const LogIn = () => {
                 email: localStorage.getItem('email'),
                 password: localStorage.getItem('password')
             })
-        }).then((response) => {
-            console.log(response);
-            //localStorage.setItem('email', response.email),
-            //localStorage.setItem('password', response.password),
-            //localStorage.setItem('nombre', response.nombre),
-            //localStorage.setItem('apellido', response.apellido),
-            //localStorage.setItem('urlDeImagen', response.urlDeImagen),
-            //localStorage.setItem('edad', response.edad),
-            //localStorage.setItem('nacionalidad', response.nacionalidad),
-            //localStorage.setItem('nivelDeIngles', response.nivelDeIngles),
-            //localStorage.setItem('pieHabil', response.pieHabil),
-            //localStorage.setItem('posicion', response.posicion),
-            //localStorage.setItem('genero', response.genero),
-            //localStorage.setItem('estatura', response.estatura),
-            //localStorage.setItem('peso', response.peso),
-            //localStorage.setItem('club', response.club),
-            //localStorage.setItem('categoria', response.categoria),
-            //localStorage.setItem('condicion', response.condicion),
-            //localStorage.setItem('presupuestoresponse', response.presupuesto)
+        })
+        .then((response) => response.json())
+        .then(response => {
+            console.log(response)
+            const res = response[0]
+            localStorage.setItem('email', res.email),
+            localStorage.setItem('password', res.password),
+            localStorage.setItem('nombre', res.nombre),
+            localStorage.setItem('apellido', res.apellido),
+            localStorage.setItem('fotoPerfil', res.fotoPerfil),
+            localStorage.setItem('edad', res.edad),
+            localStorage.setItem('nacionalidad', res.nacionalidad),
+            localStorage.setItem('nivelDeIngles', res.nivelDeIngles),
+            localStorage.setItem('pieHabil', res.pieHabil),
+            localStorage.setItem('posicion', res.posicion),
+            localStorage.setItem('genero', res.genero),
+            localStorage.setItem('estatura', res.estatura),
+            localStorage.setItem('peso', res.peso),
+            localStorage.setItem('club', res.club),
+            localStorage.setItem('categoria', res.categoria),
+            localStorage.setItem('condicion', res.condicion),
+            localStorage.setItem('presupuestoresponse', res.presupuesto)
         })
         
         Router.push({

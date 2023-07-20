@@ -39,18 +39,17 @@ const PassRecovery = () => {
                 src='/artwork3.png'
             />
             <Image alt=''  src="/logo.png" />
-            <Box>Please enter your email for recovery:</Box>
             <VStack
                 position="relative"
             >
                 <FormControl>
-                    <FormLabel>User email:</FormLabel>
-                    <Input placeholder="Enter your email here to send code"></Input>
+                    <FormLabel>Correo electrónico:</FormLabel>
+                    <Input placeholder="Ingresa tu correo electrónico para recuperar tu contraseña"></Input>
                 </FormControl>
                 <HStack>
-                    <Link href="/">Back</Link>
+                    <Link href="/">Volver</Link>
                     <Button>
-                        <Link href="PassRecMailSent">Send</Link>
+                        <Link href="PassRecMailSent">Enviar</Link>
                     </Button>
                 </HStack>
             </VStack>
