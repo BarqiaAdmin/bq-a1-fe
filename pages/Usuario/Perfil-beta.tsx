@@ -37,18 +37,25 @@ import {
     TableContainer,
     useBreakpointValue,
     IconButton,
+    Tabs, TabList, TabPanels, Tab, TabPanel,
+    CircularProgress, CircularProgressLabel,
+    AlertDialog,
+    AlertDialogBody,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogContent,
+    AlertDialogOverlay,
+    AlertDialogCloseButton,
+    Tooltip
 } from '@chakra-ui/react';
 
-import { EditIcon } from '@chakra-ui/icons'
-
 import NavBar from '../src/Components/NavBar/NavBar';
-import SideBar from '../src/Components/SideBar/SideBar';
 
 import { useFileUpload } from 'use-file-upload';
-import { get } from 'http';
 
 import { useState } from 'react';
-import {ChevronRightIcon} from '@chakra-ui/icons';
+import { useDisclosure } from '@chakra-ui/react'
+import { ChevronRightIcon, EditIcon, AddIcon } from '@chakra-ui/icons';
 
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
@@ -103,6 +110,10 @@ export default function Perfil() {
     const [certificaciones, setCertificaciones] = useState('');
     const [condicion, setCondicion] = useState('');
     const [presupuesto, setPresupuesto ] = useState('');
+    const [imagenGaleria1, setImagenGaleria1] = useState('');
+    const [imagenGaleria2, setImagenGaleria2] = useState('');
+    const [imagenGaleria3, setImagenGaleria3] = useState('');
+    const [imagenGaleria4, setImagenGaleria4] = useState('');
 
     // As we have used custom buttons, we need a reference variable to
     // change the state
@@ -113,12 +124,7 @@ export default function Perfil() {
     const side = useBreakpointValue({ base: '30%', md: '10px' });
 
     // These are the images used in the slide
-    const cards = [
-        'https://s3.abcstatics.com/media/bienestar/2019/09/17/futbol-1-kU3C--1248x698@abc.jpg',
-        'https://chajari.gob.ar/wp-content/uploads/2016/12/futbol-generic-entry-point.jpg',
-        'https://concepto.de/wp-content/uploads/2015/02/futbol-1-e1550783405750.jpg',
-        'https://definicion.de/wp-content/uploads/2009/03/futbolistas.jpg'
-    ];
+    const imagenesGaleria = [];
     
     useEffect(() => {
         setFotoPerfil(localStorage.getItem('fotoPerfil'));
@@ -135,7 +141,57 @@ export default function Perfil() {
         setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
         setPresupuesto(localStorage.getItem('presupuesto'));
         setPieHabil(localStorage.getItem('pieHabil'));
-    }, []);   
+        setImagenGaleria1(localStorage.getItem('imagenGaleria1'))
+        setImagenGaleria2(localStorage.getItem('imagenGaleria2'))
+        setImagenGaleria3(localStorage.getItem('imagenGaleria3'))
+
+        localStorage.setItem('chakra-ui-color-mode', 'dark');
+
+        localStorage.setItem('imagenGaleria1', '');
+        localStorage.setItem('imagenGaleria2', '');
+        localStorage.setItem('imagenGaleria3', '');
+    }, []);
+    
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
+    const cancelRef = React.useRef()
+
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => {
+            resolve(fileReader.result);
+            };
+            fileReader.onerror = (error) => {
+            reject(error);
+            };
+        });
+    };
+
+    const handleFileUpload = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertToBase64(file);
+        if (localStorage.getItem('imagenGaleria1') == '') {
+            localStorage.setItem('imagenGaleria1', base64.toString());
+            setImagenGaleria1(base64.toString());
+            console.log('hey')
+        } else if (localStorage.getItem('imagenGaleria2') == '') {
+            localStorage.setItem('imagenGaleria2', base64.toString());
+            setImagenGaleria2(base64.toString());
+            console.log('hey2')
+        } else if (localStorage.getItem('imagenGaleria3') == '') {
+            localStorage.setItem('imagenGaleria3', base64.toString());
+            setImagenGaleria3(base64.toString());
+        } else if (localStorage.getItem('imagenGaleria4') == '') {
+            localStorage.setItem('imagenGaleria4', base64.toString());
+            setImagenGaleria4(base64.toString());
+        }
+    };
+
+    const handleVideoUpload = () => {
+
+    }
 
     return(
         <>
@@ -144,108 +200,246 @@ export default function Perfil() {
             {/**
             <SideBar />
              */}
-            <HStack>
-                <SimpleGrid columns={4}>
-                    <GridItem
-                        colSpan={4}
-                        >
-                        <VStack
-                            gap="5px"
-                            paddingTop="100px"
-                        >
-                            <HStack>
-                                <VStack gap="5px">
-                                    <Image
-                                        alt=''
-                                        borderRadius='full'
-                                        id="fotoDePerfil"
-                                        src={ fotoPerfil }
-                                        height='180px'
-                                        width='180px'
-                                    />
-                                    <Heading>{ nombre } { apellido }</Heading>
-                                    <HStack gap="5px">
-                                        <Button
-                                            color="white"
-                                            background="#144077"
-                                            >
-                                            Compartir perfil &nbsp; <Image alt=''  src="/share.png" />
-                                        </Button>
-                                        
-                                        <Image alt='' 
-                                            src="/like.png"
-                                        /> 
-                                        <Text>21.6k</Text>
-                                    </HStack>
-                                    <HStack gap="10px">
-                                        <Image alt=''  h="30px" src="/facebook.png" />
-                                        <Image alt=''  h="30px" src="/twitter.png" />
-                                        <Image alt=''  h="30px" src="/instagram.png" />
-                                        <Image alt=''  h="30px" src="/icono-tiktok.png" />
-                                    </HStack>
-                                </VStack>
-                                <HStack>
-                                    <Progress value={75} size='lg' colorScheme='green' />
-                                </HStack>
-                            </HStack>
-                        </VStack>
-                        <HStack
-                            marginTop='40px'
-                            marginBottom='40px'
-                        >
-                            <SimpleGrid
-                                columns={8}
-                                background='#0E1216'
-                                border='2px solid #14161A'
-                                borderRadius='5px'
-                                margin='auto'
-                                padding='30px'
-                                textAlign='center'
+            
+            <VStack>
+                <HStack marginTop='100px'>
+                    <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />} zIndex='9999'>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href='' color='#6EC1E4'>Home</BreadcrumbLink>
+                        </BreadcrumbItem>
+
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href='#' color='#6EC1E4'>Jugadores</BreadcrumbLink>
+                        </BreadcrumbItem>
+
+                        <BreadcrumbItem isCurrentPage>
+                            <BreadcrumbLink href='#'>Detalle jugador</BreadcrumbLink>
+                        </BreadcrumbItem>
+                    </Breadcrumb>
+                </HStack>
+                <HStack>
+                    <SimpleGrid columns={4} marginTop='-70px'>
+                        <GridItem
+                            colSpan={4}
                             >
-                                <GridItem colSpan={1}>
-                                    NACIONALIDAD <br />
-                                    <strong>{ nacionalidad }</strong>
-                                </GridItem>
-                                <GridItem colSpan={2}>
-                                    EQUIPO <br />
-                                    {/**
-                                    <Image src='/escudo.png' alt=''
-                                        display='inline-block'
-                                        width='25px'
-                                    />
-                                     */}
-                                    <strong>{ club }</strong>
-                                </GridItem>
-                                <GridItem colSpan={1}>
-                                    PIE HÁBIL <br />
-                                    <strong>{ pieHabil }</strong>
-                                </GridItem>
-                                <GridItem colSpan={1}>
-                                    POSICIÓN <br />
-                                    <strong>{ posicion }</strong>
-                                </GridItem>
-                                <GridItem colSpan={1}>
-                                    CATEGORÍA <br />
-                                    <strong>{ categoria }</strong>
-                                </GridItem>
-                                <GridItem colSpan={1}>
-                                    ALTURA <br />
-                                    <strong>{ estatura }</strong>
-                                </GridItem>
-                                <GridItem colSpan={1}>
-                                    PESO <br />
-                                    <strong>{ peso }</strong>
-                                </GridItem>
-                            </SimpleGrid>
-                        </HStack>
-                    </GridItem>
+                            <VStack
+                                gap="5px"
+                                paddingTop="100px"
+                            >
+                                <HStack>
+                                    <VStack gap="5px">
+                                        <Image
+                                            alt=''
+                                            borderRadius='full'
+                                            id="fotoDePerfil"
+                                            src={ fotoPerfil }
+                                            height='180px'
+                                            width='180px'
+                                        />
+                                        <Heading>{ nombre } { apellido }</Heading>
+                                        <HStack gap="5px">
+                                            <CircularProgress value={70} color='green.400' size='60px'>
+                                                <CircularProgressLabel>70%</CircularProgressLabel>
+                                            </CircularProgress>
+                                            <Button
+                                                color="white"
+                                                background="#144077"
+                                                >
+                                                Compartir perfil &nbsp; <Image alt=''  src="/share.png" />
+                                            </Button>
+                                            
+                                            <Image alt='' 
+                                                src="/like.png"
+                                            /> 
+                                            <Text>21.6k</Text>
+                                        </HStack>
+                                        <HStack gap="10px">
+                                            <Image alt=''  h="30px" src="/facebook.png" />
+                                            <Image alt=''  h="30px" src="/twitter.png" />
+                                            <Image alt=''  h="30px" src="/instagram.png" />
+                                            <Image alt=''  h="30px" src="/icono-tiktok.png" />
+                                        </HStack>
+                                    </VStack>
+                                    <HStack>
+                                        <Progress value={75} size='lg' colorScheme='green' />
+                                    </HStack>
+                                </HStack>
+                            </VStack>
+                            <HStack
+                                marginTop='40px'
+                                marginBottom='40px'
+                            >
+                                <SimpleGrid
+                                    columns={4}
+                                    background='#0E1216'
+                                    border='2px solid #14161A'
+                                    borderRadius='5px'
+                                    margin='auto'
+                                    padding='30px'
+                                    textAlign='center'
+
+                                    gap={12}
+                                >
+                                    <GridItem colSpan={1}>
+                                        NACIONALIDAD <br />
+                                        <strong>{ nacionalidad }</strong>
+                                    </GridItem>
+                                    <GridItem colSpan={1}>
+                                        EQUIPO <br />
+                                        {/**
+                                        <Image src='/escudo.png' alt=''
+                                            display='inline-block'
+                                            width='25px'
+                                        />
+                                        */}
+                                        <strong>{ club }</strong>
+                                    </GridItem>
+
+                                    <GridItem colSpan={1}>
+                                        PIE HÁBIL <br />
+                                        <strong>{ pieHabil }</strong>
+                                    </GridItem>
+                                    <GridItem colSpan={1}>
+                                        POSICIÓN <br />
+                                        <strong>{ posicion }</strong>
+                                    </GridItem>
+
+                                    <GridItem colSpan={1}>
+                                        CATEGORÍA <br />
+                                        <strong>{ categoria }</strong>
+                                    </GridItem>
+                                    <GridItem colSpan={1}>
+                                        ALTURA <br />
+                                        <strong>{ estatura }</strong>
+                                    </GridItem>
+                                    <GridItem colSpan={1}>
+                                        PESO <br />
+                                        <strong>{ peso }</strong>
+                                    </GridItem>
+                                    <GridItem colSpan={1}>
+                                        EDAD <br />
+                                        <strong>{ edad }</strong>
+                                    </GridItem>
+                                        
+                                    <GridItem colSpan={1}>
+                                        NIVEL DE INGLÉS <br />
+                                        <strong>{ nivelDeIngles }</strong>
+                                    </GridItem>
+                                    <GridItem colSpan={1}>
+                                        CONDICIÓN <br />
+                                        <strong>{ condicion }</strong>
+                                    </GridItem>
+                                    <GridItem colSpan={1}>
+                                        PRESUPUESTO <br />
+                                        <strong>{ presupuesto }</strong>
+                                    </GridItem>
+                                    <GridItem colSpan={1}>
+                                        <Button>Editar&nbsp;<EditIcon /></Button>
+                                    </GridItem>
+                                </SimpleGrid>
+                            </HStack>
+                        </GridItem>
+                            
+
+                        {/* "Top Torneos (Figma)" */}
+
+                        <GridItem colSpan={15}>
                         
+                            <Box width='full' padding='0 150px' suppressHydrationWarning>
+                                <Tabs isFitted variant='enclosed'>
+                                    <TabList mb='1em'>
+                                        <Tab position='relative' >
+                                            Imágenes&nbsp;
+                                            <Tooltip label="Agregar imagen" aria-label='A tooltip'>
+                                                <Link onClick={onOpen} position='absolute' right='20px'>
+                                                    <AddIcon />
+                                                </Link>
+                                            </Tooltip>
+                                        </Tab>
+                                        <Tab position='relative'>
+                                            Videos&nbsp;
+                                            <Tooltip label="Agregar video" aria-label='A tooltip'>
+                                                <Link onClick={onOpenVideos} position='absolute' right='20px'>
+                                                    <AddIcon />
+                                                </Link>
+                                            </Tooltip>
+                                        </Tab>
+                                    </TabList>
+                                    <TabPanels textAlign='center'>
+                                        <TabPanel>
+                                            <AlertDialog
+                                                isOpen={isOpen}
+                                                leastDestructiveRef={cancelRef}
+                                                onClose={onClose}
+                                            >
+                                                <AlertDialogOverlay>
+                                                <AlertDialogContent>
+                                                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                                    Agregar imagen
+                                                    </AlertDialogHeader>
 
-                    {/* "Top Torneos (Figma)" */}
+                                                    <AlertDialogBody>
+                                                        <Input
+                                                            placeholder="Select Date and Time"
+                                                            size="md"
+                                                            type="file"
+                                                            onChange={(e) => handleFileUpload(e)}
+                                                        />
+                                                    </AlertDialogBody>
 
-                    <GridItem colSpan={15}>
-                    <VStack>
-                                
+                                                    <AlertDialogFooter>
+                                                    <Button ref={cancelRef} onClick={onClose}>
+                                                        Cancelar
+                                                    </Button>
+                                                    <Button colorScheme='blue' onClick={onClose} ml={3}>
+                                                        Agregar
+                                                    </Button>
+                                                    </AlertDialogFooter>
+                                                </AlertDialogContent>
+                                                </AlertDialogOverlay>
+                                            </AlertDialog>
+                                        </TabPanel>
+                                        <TabPanel>
+                                            <AlertDialog
+                                                isOpen={isOpenVideos}
+                                                leastDestructiveRef={cancelRef}
+                                                onClose={onCloseVideos}
+                                            >
+                                                <AlertDialogOverlay>
+                                                <AlertDialogContent>
+                                                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                                    Agregar video
+                                                    </AlertDialogHeader>
+
+                                                    <AlertDialogBody>
+                                                        Ingresa la URL del video para agregarlo al perfil:
+                                                        <Input
+                                                            marginTop='20px'
+                                                            placeholder="URL del video"
+                                                            size="md"
+                                                            type="text"
+                                                            onChange={(e) => handleVideoUpload(e)}
+                                                        />
+                                                    </AlertDialogBody>
+
+                                                    <AlertDialogFooter>
+                                                    <Button ref={cancelRef} onClick={onCloseVideos}>
+                                                        Cancelar
+                                                    </Button>
+                                                    <Button colorScheme='blue' onClick={onCloseVideos} ml={3}>
+                                                        Agregar
+                                                    </Button>
+                                                    </AlertDialogFooter>
+                                                </AlertDialogContent>
+                                                </AlertDialogOverlay>
+                                            </AlertDialog>
+
+                                            <iframe width="853" height="480" src="https://www.youtube.com/embed/EtapU5nI6G4" title="Nirvana&#39;s Nevermind but with the SM64 soundfont" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                        </TabPanel>
+                                    </TabPanels>
+                                </Tabs>
+                            </Box>
+                            <VStack>
                                 {/**
                                 <HStack>
                                     <Image alt='' 
@@ -262,227 +456,228 @@ export default function Perfil() {
                                     </Link>
                                 </HStack>
                                 */}
+                                {/**
                                 <Box
-                                position={'relative'}
-                                height={'600px'}
-                                width={'full'}
-                                overflow={'hidden'}>
-                                {/* CSS files for react-slick */}
-                                <link
-                                    rel="stylesheet"
-                                    type="text/css"
-                                    charSet="UTF-8"
-                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-                                />
-                                <link
-                                    rel="stylesheet"
-                                    type="text/css"
-                                    href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-                                />
-                                {/* Left Icon */}
-                                <IconButton
-                                    aria-label="left-arrow"
-                                    colorScheme="messenger"
-                                    borderRadius="full"
-                                    position="absolute"
-                                    left={side}
-                                    top={top}
-                                    transform={'translate(0%, -50%)'}
-                                    zIndex={2}
-                                    onClick={() => slider?.slickPrev()}>
-                                    <BiLeftArrowAlt />
-                                </IconButton>
-                                {/* Right Icon */}
-                                <IconButton
-                                    aria-label="right-arrow"
-                                    colorScheme="messenger"
-                                    borderRadius="full"
-                                    position="absolute"
-                                    right={side}
-                                    top={top}
-                                    transform={'translate(0%, -50%)'}
-                                    zIndex={2}
-                                    onClick={() => slider?.slickNext()}>
-                                    <BiRightArrowAlt />
-                                </IconButton>
-                                {/* Slider */}
-                                <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                                    {cards.map((url, index) => (
-                                    <Box
-                                        key={index}
-                                        height={'6xl'}
-                                        position="relative"
-                                        backgroundPosition="center"
-                                        backgroundRepeat="no-repeat"
-                                        backgroundSize="cover"
-                                        backgroundImage={`url(${url})`}
+                                    position={'relative'}
+                                    height={'600px'}
+                                    width={'full'}
+                                    overflow={'hidden'}>
+                                    <link
+                                        rel="stylesheet"
+                                        type="text/css"
+                                        charSet="UTF-8"
+                                        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
                                     />
-                                    ))}
-                                </Slider>
+                                    <link
+                                        rel="stylesheet"
+                                        type="text/css"
+                                        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+                                    />
+                                    <IconButton
+                                        aria-label="left-arrow"
+                                        colorScheme="messenger"
+                                        borderRadius="full"
+                                        position="absolute"
+                                        left={side}
+                                        top={top}
+                                        transform={'translate(0%, -50%)'}
+                                        zIndex={2}
+                                        onClick={() => slider?.slickPrev()}>
+                                        <BiLeftArrowAlt />
+                                    </IconButton>
+                                    <IconButton
+                                        aria-label="right-arrow"
+                                        colorScheme="messenger"
+                                        borderRadius="full"
+                                        position="absolute"
+                                        right={side}
+                                        top={top}
+                                        transform={'translate(0%, -50%)'}
+                                        zIndex={2}
+                                        onClick={() => slider?.slickNext()}>
+                                        <BiRightArrowAlt />
+                                    </IconButton>
+                                    <Slider {...settings} ref={(slider) => setSlider(slider)}>
+                                        {imagenesGaleria.map((url, index) => (
+                                        <Box
+                                            key={index}
+                                            height={'6xl'}
+                                            position="relative"
+                                            backgroundPosition="center"
+                                            backgroundRepeat="no-repeat"
+                                            backgroundSize="cover"
+                                            backgroundImage={`url(${url})`}
+                                        />
+                                        ))}
+                                    </Slider>
+                                </Box>
+                                 */}
+                            </VStack>
+                            <HStack>
+                                <Image h='330px' src={imagenGaleria1} alt=''/>
+                                <Image h='330px' src={imagenGaleria2} alt=''/>
+                                <Image h='330px' src={imagenGaleria3} alt=''/>
+                            </HStack>
+                            {/**
+                            <Box>
+                                <HStack>
+                                    <Text>ESTADISTICAS</Text>
+                                    <FormControl>
+                                        <Input placeholder="Buscar por nombre del club rival" />
+                                    </FormControl>
+                                </HStack>
+                                <HStack>
+                                    <TableContainer m='auto' fontSize='15px'>
+                                        <Table variant='simple'>
+                                            <Thead>
+                                                <Tr>
+                                                    <Th>PARTIDO</Th>
+                                                    <Th>FECHA</Th>
+                                                    <Th>POS</Th>
+                                                    <Th>NRO</Th>
+                                                    <Th>M Jugados</Th>
+                                                    <Th>G</Th>
+                                                    <Th>Asist</Th>
+                                                    <Th>% Remates</Th>
+                                                    <Th>% Pases</Th>
+                                                    <Th>Estadísticas</Th>
+                                                </Tr>
+                                            </Thead>
+                                            <Tbody>
+                                                <Tr>
+                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
+                                                    <Td>26/03/22</Td>
+                                                    <Td>DC</Td>
+                                                    <Td>21</Td>
+                                                    <Td>81.82</Td>
+                                                    <Td>0</Td>
+                                                    <Td>2</Td>
+                                                    <Td>43</Td>
+                                                    <Td>21</Td>
+                                                    <Td>
+                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                    </Td>
+                                                </Tr>
+                                                <Tr>
+                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
+                                                    <Td>26/03/22</Td>
+                                                    <Td>DC</Td>
+                                                    <Td>21</Td>
+                                                    <Td>81.82</Td>
+                                                    <Td>0</Td>
+                                                    <Td>2</Td>
+                                                    <Td>43</Td>
+                                                    <Td>21</Td>
+                                                    <Td>
+                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                    </Td>
+                                                </Tr>
+                                                <Tr>
+                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
+                                                    <Td>26/03/22</Td>
+                                                    <Td>DC</Td>
+                                                    <Td>21</Td>
+                                                    <Td>81.82</Td>
+                                                    <Td>0</Td>
+                                                    <Td>2</Td>
+                                                    <Td>43</Td>
+                                                    <Td>21</Td>
+                                                    <Td>
+                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                    </Td>
+                                                </Tr>
+                                                <Tr>
+                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
+                                                    <Td>26/03/22</Td>
+                                                    <Td>DC</Td>
+                                                    <Td>21</Td>
+                                                    <Td>81.82</Td>
+                                                    <Td>0</Td>
+                                                    <Td>2</Td>
+                                                    <Td>43</Td>
+                                                    <Td>21</Td>
+                                                    <Td>
+                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                    </Td>
+                                                </Tr>
+                                                <Tr>
+                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
+                                                    <Td>26/03/22</Td>
+                                                    <Td>DC</Td>
+                                                    <Td>21</Td>
+                                                    <Td>81.82</Td>
+                                                    <Td>0</Td>
+                                                    <Td>2</Td>
+                                                    <Td>43</Td>
+                                                    <Td>21</Td>
+                                                    <Td>
+                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                    </Td>
+                                                </Tr>
+                                                <Tr>
+                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
+                                                    <Td>26/03/22</Td>
+                                                    <Td>DC</Td>
+                                                    <Td>21</Td>
+                                                    <Td>81.82</Td>
+                                                    <Td>0</Td>
+                                                    <Td>2</Td>
+                                                    <Td>43</Td>
+                                                    <Td>21</Td>
+                                                    <Td>
+                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                    </Td>
+                                                </Tr>
+                                                <Tr>
+                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
+                                                    <Td>26/03/22</Td>
+                                                    <Td>DC</Td>
+                                                    <Td>21</Td>
+                                                    <Td>81.82</Td>
+                                                    <Td>0</Td>
+                                                    <Td>2</Td>
+                                                    <Td>43</Td>
+                                                    <Td>21</Td>
+                                                    <Td>
+                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                    </Td>
+                                                </Tr>
+                                            </Tbody>
+                                        </Table>
+                                    </TableContainer>
+                                </HStack>
                             </Box>
-                        </VStack>
-                        <HStack>
-                            <Image h='330px' src='https://s3.abcstatics.com/media/bienestar/2019/09/17/futbol-1-kU3C--1248x698@abc.jpg' alt=''/>
-                            <Image h='330px' src='https://chajari.gob.ar/wp-content/uploads/2016/12/futbol-generic-entry-point.jpg' alt=''/>
-                            <Image h='330px' src='https://definicion.de/wp-content/uploads/2009/03/futbolistas.jpg' alt=''/>
-                            <Image h='330px' src='https://concepto.de/wp-content/uploads/2015/02/futbol-1-e1550783405750.jpg' alt=''/>
-                        </HStack>
-                        {/**
-                        <Box>
-                            <HStack>
-                                <Text>ESTADISTICAS</Text>
-                                <FormControl>
-                                    <Input placeholder="Buscar por nombre del club rival" />
-                                </FormControl>
-                            </HStack>
-                            <HStack>
-                                <TableContainer m='auto' fontSize='15px'>
-                                    <Table variant='simple'>
-                                        <Thead>
-                                            <Tr>
-                                                <Th>PARTIDO</Th>
-                                                <Th>FECHA</Th>
-                                                <Th>POS</Th>
-                                                <Th>NRO</Th>
-                                                <Th>M Jugados</Th>
-                                                <Th>G</Th>
-                                                <Th>Asist</Th>
-                                                <Th>% Remates</Th>
-                                                <Th>% Pases</Th>
-                                                <Th>Estadísticas</Th>
-                                            </Tr>
-                                        </Thead>
-                                        <Tbody>
-                                            <Tr>
-                                                <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                <Td>26/03/22</Td>
-                                                <Td>DC</Td>
-                                                <Td>21</Td>
-                                                <Td>81.82</Td>
-                                                <Td>0</Td>
-                                                <Td>2</Td>
-                                                <Td>43</Td>
-                                                <Td>21</Td>
-                                                <Td>
-                                                    <Link href="/Perfil-beta">Ver Estadísticas</Link>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                <Td>26/03/22</Td>
-                                                <Td>DC</Td>
-                                                <Td>21</Td>
-                                                <Td>81.82</Td>
-                                                <Td>0</Td>
-                                                <Td>2</Td>
-                                                <Td>43</Td>
-                                                <Td>21</Td>
-                                                <Td>
-                                                    <Link href="/Perfil-beta">Ver Estadísticas</Link>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                <Td>26/03/22</Td>
-                                                <Td>DC</Td>
-                                                <Td>21</Td>
-                                                <Td>81.82</Td>
-                                                <Td>0</Td>
-                                                <Td>2</Td>
-                                                <Td>43</Td>
-                                                <Td>21</Td>
-                                                <Td>
-                                                    <Link href="/Perfil-beta">Ver Estadísticas</Link>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                <Td>26/03/22</Td>
-                                                <Td>DC</Td>
-                                                <Td>21</Td>
-                                                <Td>81.82</Td>
-                                                <Td>0</Td>
-                                                <Td>2</Td>
-                                                <Td>43</Td>
-                                                <Td>21</Td>
-                                                <Td>
-                                                    <Link href="/Perfil-beta">Ver Estadísticas</Link>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                <Td>26/03/22</Td>
-                                                <Td>DC</Td>
-                                                <Td>21</Td>
-                                                <Td>81.82</Td>
-                                                <Td>0</Td>
-                                                <Td>2</Td>
-                                                <Td>43</Td>
-                                                <Td>21</Td>
-                                                <Td>
-                                                    <Link href="/Perfil-beta">Ver Estadísticas</Link>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                <Td>26/03/22</Td>
-                                                <Td>DC</Td>
-                                                <Td>21</Td>
-                                                <Td>81.82</Td>
-                                                <Td>0</Td>
-                                                <Td>2</Td>
-                                                <Td>43</Td>
-                                                <Td>21</Td>
-                                                <Td>
-                                                    <Link href="/Perfil-beta">Ver Estadísticas</Link>
-                                                </Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                <Td>26/03/22</Td>
-                                                <Td>DC</Td>
-                                                <Td>21</Td>
-                                                <Td>81.82</Td>
-                                                <Td>0</Td>
-                                                <Td>2</Td>
-                                                <Td>43</Td>
-                                                <Td>21</Td>
-                                                <Td>
-                                                    <Link href="/Perfil-beta">Ver Estadísticas</Link>
-                                                </Td>
-                                            </Tr>
-                                        </Tbody>
-                                    </Table>
-                                </TableContainer>
-                            </HStack>
-                        </Box>
-                         */}
-                    </GridItem>
+                            */}
+                        </GridItem>
 
-                    {/** Redes sociales
+                        
 
-                    <GridItem colSpan={15} marginTop="150px" paddingLeft="240px" textAlign="center">
-                        <HStack margin="auto" textAlign="center">
-                            <HStack color="white">
-                                
-                                <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@riquelmefutbol10/video/7113220013762366725" data-video-id="7113220013762366725" style={{ maxWidth: '605px', minWidth: '325px'}} > <section> <a target="_blank" title="@riquelmefutbol10" href="https://www.tiktok.com/@riquelmefutbol10?refer=embed">@riquelmefutbol10</a> Se cumplen 16 años del golazo a México 🔥 <a title="maxirodriguez" target="_blank" href="https://www.tiktok.com/tag/maxirodriguez?refer=embed">#maxirodriguez</a> <a title="riquelme" target="_blank" href="https://www.tiktok.com/tag/riquelme?refer=embed">#riquelme</a> <a title="golazo" target="_blank" href="https://www.tiktok.com/tag/golazo?refer=embed">#golazo</a> <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> <a title="parati" target="_blank" href="https://www.tiktok.com/tag/parati?refer=embed">#parati</a> <a title="viral" target="_blank" href="https://www.tiktok.com/tag/viral?refer=embed">#viral</a> <a target="_blank" title="♬ sonido original - riquelmefutbol10" href="https://www.tiktok.com/music/sonido-original-7113220003352464133?refer=embed">♬ sonido original - riquelmefutbol10</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
-                                
+                        {/** Redes sociales
+
+                        <GridItem colSpan={15} marginTop="150px" paddingLeft="240px" textAlign="center">
+                            <HStack margin="auto" textAlign="center">
+                                <HStack color="white">
+                                    
+                                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@riquelmefutbol10/video/7113220013762366725" data-video-id="7113220013762366725" style={{ maxWidth: '605px', minWidth: '325px'}} > <section> <a target="_blank" title="@riquelmefutbol10" href="https://www.tiktok.com/@riquelmefutbol10?refer=embed">@riquelmefutbol10</a> Se cumplen 16 años del golazo a México 🔥 <a title="maxirodriguez" target="_blank" href="https://www.tiktok.com/tag/maxirodriguez?refer=embed">#maxirodriguez</a> <a title="riquelme" target="_blank" href="https://www.tiktok.com/tag/riquelme?refer=embed">#riquelme</a> <a title="golazo" target="_blank" href="https://www.tiktok.com/tag/golazo?refer=embed">#golazo</a> <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> <a title="parati" target="_blank" href="https://www.tiktok.com/tag/parati?refer=embed">#parati</a> <a title="viral" target="_blank" href="https://www.tiktok.com/tag/viral?refer=embed">#viral</a> <a target="_blank" title="♬ sonido original - riquelmefutbol10" href="https://www.tiktok.com/music/sonido-original-7113220003352464133?refer=embed">♬ sonido original - riquelmefutbol10</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+                                    
+                                </HStack>
+                                <HStack>
+                                    <iframe width="295" src="https://www.youtube.com/embed/w_tALGi2wVI" title="Gol De Messi A Serbia 2006 HD (Relatos Argentinos)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                                </HStack>
+                                <HStack
+                                    data-mc-src="2d37e04a-d910-4611-9e80-79d30ba70618#instagram">
+                                    <script 
+                                        src="https://cdn2.woxo.tech/a.js#6460d15fbbb40bc502b1e839" 
+                                        async data-usrc>
+                                    </script>
+                                </HStack>
                             </HStack>
-                            <HStack>
-                                <iframe width="295" src="https://www.youtube.com/embed/w_tALGi2wVI" title="Gol De Messi A Serbia 2006 HD (Relatos Argentinos)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                            </HStack>
-                            <HStack
-                                data-mc-src="2d37e04a-d910-4611-9e80-79d30ba70618#instagram">
-                                <script 
-                                    src="https://cdn2.woxo.tech/a.js#6460d15fbbb40bc502b1e839" 
-                                    async data-usrc>
-                                </script>
-                            </HStack>
-                        </HStack>
-                    </GridItem>
-                     */}
-                </SimpleGrid>
-            </HStack>
+                        </GridItem>
+                        */}
+                        
+                    </SimpleGrid>
+                </HStack>
+            </VStack>
         </Box>
         </>
     )

@@ -17,11 +17,12 @@ import {
     BreadcrumbLink,
     Flex,
     Switch,
+    Badge
 } from '@chakra-ui/react';
 
 import { useState, useEffect } from 'react';
 
-import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { ExternalLinkIcon, BellIcon } from '@chakra-ui/icons'
 
 import Router from 'next/router';
 
@@ -69,7 +70,8 @@ const NavBar = (props) => {
             alignItems="center"
             justifyContent="space-between"
             position="fixed"
-            zIndex="1"
+            top='0'
+            zIndex="9999"
         >
             <Flex
                 alignItems="center"
@@ -90,10 +92,18 @@ const NavBar = (props) => {
                 alignItems="center"
             >
                 
-                    
+                <BellIcon w={7} h={7} marginRight='15px' cursor='pointer' />
+                <Badge ml='1'
+                    color='orange'
+                    margin='-15px 20px 0 -15px'
+                    borderRadius='100%'
+                    >
+                    3
+                </Badge>
                 <Image alt='' 
                     
                     borderRadius='full'
+                    cursor='pointer'
                     height='40px'
                     width='40px'
                     marginRight="20px"

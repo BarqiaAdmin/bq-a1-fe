@@ -190,6 +190,25 @@ function NuevoJugador() {
 
     useEffect(() => {
         setDomLoaded(true);
+        localStorage.setItem('email', '');
+        localStorage.setItem('fotoPerfil', '')
+        localStorage.setItem('logInPassword', '');
+        localStorage.setItem('fotoPerfil', '');
+        localStorage.setItem('nombre', '');
+        localStorage.setItem('apellido', '');
+        localStorage.setItem('urlDeImagen', '');
+        localStorage.setItem('edad', '');
+        localStorage.setItem('pais', '');
+        localStorage.setItem('nivelDeIngles', '');
+        localStorage.setItem('pieHabil', '');
+        localStorage.setItem('posicion', '');
+        localStorage.setItem('genero', '');
+        localStorage.setItem('estatura', '');
+        localStorage.setItem('peso', '');
+        localStorage.setItem('club', '');
+        localStorage.setItem('categoria', '');
+        localStorage.setItem('condicion', '');
+        localStorage.setItem('presupuesto', '');
     }, [])
 
     return (
@@ -255,7 +274,6 @@ function NuevoJugador() {
                                 id="fotoDePerfil"
                                 src={ fotoPerfil }
                                 marginTop="-287px"
-                                paddingBottom="10px"
                                 height='180px'
                                 width='180px'
                             />
@@ -266,7 +284,6 @@ function NuevoJugador() {
                             <Input placeholder='URL de imagen' value={urlDeImagen} onChange={handleUrlDeImagenChange} />
                         </FormControl>
                         */}
-                        <Divider visibility="hidden" />
                         <SimpleGrid columns={12} gap="32px" w="full">
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNombre}>
