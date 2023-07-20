@@ -85,24 +85,23 @@ const LogIn = () => {
         .then((response) => response.json())
         .then(response => {
             console.log(response)
-            const res = response[0]
-            localStorage.setItem('email', res.email),
-            localStorage.setItem('password', res.password),
-            localStorage.setItem('nombre', res.nombre),
-            localStorage.setItem('apellido', res.apellido),
-            localStorage.setItem('fotoPerfil', res.fotoPerfil),
-            localStorage.setItem('edad', res.edad),
-            localStorage.setItem('nacionalidad', res.nacionalidad),
-            localStorage.setItem('nivelDeIngles', res.nivelDeIngles),
-            localStorage.setItem('pieHabil', res.pieHabil),
-            localStorage.setItem('posicion', res.posicion),
-            localStorage.setItem('genero', res.genero),
-            localStorage.setItem('estatura', res.estatura),
-            localStorage.setItem('peso', res.peso),
-            localStorage.setItem('club', res.club),
-            localStorage.setItem('categoria', res.categoria),
-            localStorage.setItem('condicion', res.condicion),
-            localStorage.setItem('presupuestoresponse', res.presupuesto)
+            localStorage.setItem('email', response.email),
+            localStorage.setItem('password', response.password),
+            localStorage.setItem('nombre', response.nombre),
+            localStorage.setItem('apellido', response.apellido),
+            localStorage.setItem('fotoPerfil', response.fotoPerfil),
+            localStorage.setItem('edad', response.edad),
+            localStorage.setItem('nacionalidad', response.nacionalidad),
+            localStorage.setItem('nivelDeIngles', response.nivelDeIngles),
+            localStorage.setItem('pieHabil', response.pieHabil),
+            localStorage.setItem('posicion', response.posicion),
+            localStorage.setItem('genero', response.genero),
+            localStorage.setItem('estatura', response.estatura),
+            localStorage.setItem('peso', response.peso),
+            localStorage.setItem('club', response.club),
+            localStorage.setItem('categoria', response.categoria),
+            localStorage.setItem('condicion', response.condicion),
+            localStorage.setItem('presupuesto', response.presupuesto)
         })
         
         Router.push({

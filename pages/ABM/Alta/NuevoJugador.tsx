@@ -190,7 +190,6 @@ function NuevoJugador() {
 
     useEffect(() => {
         setDomLoaded(true);
-        localStorage.setItem('email', '');
         localStorage.setItem('fotoPerfil', '')
         localStorage.setItem('logInPassword', '');
         localStorage.setItem('fotoPerfil', '');
