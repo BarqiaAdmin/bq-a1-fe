@@ -88,7 +88,7 @@ export default function Perfil() {
         */
     }
 
-    const [urlDeImagen, setUrlDeImagen] = useState('');
+    const [fotoPerfil, setFotoPerfil] = useState('');
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
     const [club, setClub] = useState('');
@@ -121,7 +121,7 @@ export default function Perfil() {
     ];
     
     useEffect(() => {
-        setUrlDeImagen(localStorage.getItem('urlDeImagen'));
+        setFotoPerfil(localStorage.getItem('fotoPerfil'));
         setNombre(localStorage.getItem('nombre'))
         setApellido(localStorage.getItem('apellido'))
         setClub(localStorage.getItem('club'))
@@ -155,11 +155,13 @@ export default function Perfil() {
                         >
                             <HStack>
                                 <VStack gap="5px">
-                                    <Image alt=''
-                                        marginRight="20px"
-                                        width="150px"
-                                        src='/usuario.png'
-                                        borderRadius='100%'
+                                    <Image
+                                        alt=''
+                                        borderRadius='full'
+                                        id="fotoDePerfil"
+                                        src={ fotoPerfil }
+                                        height='180px'
+                                        width='180px'
                                     />
                                     <Heading>{ nombre } { apellido }</Heading>
                                     <HStack gap="5px">

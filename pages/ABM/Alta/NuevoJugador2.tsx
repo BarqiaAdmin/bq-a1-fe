@@ -63,6 +63,7 @@ class NuevoJugador2 extends Component {
             body: JSON.stringify({
                 email: localStorage.getItem('email'),
                 password: localStorage.getItem('password'),
+                fotoPerfil: localStorage.getItem('fotoPerfil'),
                 nombre: localStorage.getItem('nombre'),
                 apellido: localStorage.getItem('apellido'),
                 urlDeImagen: localStorage.getItem('urlDeImagen'),

@@ -27,6 +27,7 @@ const NavBar = (props) => {
 
         localStorage.setItem('email', '');
         localStorage.setItem('logInPassword', '');
+        localStorage.setItem('fotoPerfil', '');
         localStorage.setItem('nombre', '');
         localStorage.setItem('apellido', '');
         localStorage.setItem('urlDeImagen', '');

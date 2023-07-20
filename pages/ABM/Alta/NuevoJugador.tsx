@@ -40,7 +40,7 @@ function NuevoJugador() {
 
     const [files, selectFiles] = useFileUpload();
 
-    const [urlDeImagen, setUrlDeImagen] = useState('');
+    const [fotoPerfil, setFotoPerfil] = useState('');
     const [inputNombre, setInputNombre] = useState('');
     const [inputApellido, setInputApellido] = useState('');
     const [inputEdad, setInputEdad] = useState('');
@@ -71,8 +71,8 @@ function NuevoJugador() {
     }
     
     const handleUrlDeImagenChange = (e) => {
-        setUrlDeImagen(e.target.value);
-        localStorage.setItem('urlDeImagen', e.target.value);
+        setFotoPerfil(e.target.value);
+        localStorage.setItem('fotoPerfil', e.target.value);
     }
 
     const handleNombreChange = (e) => {
@@ -163,38 +163,30 @@ function NuevoJugador() {
     const isErrorCategoria = false;
 
     const crearJugador = () => {
-        /*
-        axios({
-            method: 'post',
-            url: 'https://bq-a1-be.vercel.app/crearUsuario',
-            data: {
-                email: localStorage.getItem('email'),
-                contrasenia: localStorage.getItem('contraseña'),
-                imagelDePerfil: localStorage.getItem('imagenDePerfil'),
-                nombre: localStorage.getItem('apellido'),
-                apellido: localStorage.getItem('apellido'),
-                club: localStorage.getItem('club'),
-                edad: localStorage.getItem('edad'),
-                nacionalidad: localStorage.getItem('nacionalidad'),
-                nivelDeIngles: localStorage.getItem('nivelDeIngles'),
-                certificaciones: localStorage.getItem('certificaciones'),
-                pieHabil: localStorage.getItem('pieHabil'),
-                posicion: localStorage.getItem('posicion'),
-                genero: localStorage.getItem('genero'),
-                estatura: localStorage.getItem('estatura'),
-                categoria: localStorage.getItem('categoria'),
-                condicion: localStorage.getItem('condicion'),
-                presupuesto: localStorage.getItem('presupuesto'),
-                clubesAnteriores : {},
-                facebook: localStorage.getItem('facebook'),
-                instagram: localStorage.getItem('instagram'),
-                tiktok: localStorage.getItem('tiktok'),
-            }
-        })*/
         Router.push({
             pathname: '/ABM/Alta/NuevoJugador2'
         })
     }
+
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => {
+            resolve(fileReader.result);
+            };
+            fileReader.onerror = (error) => {
+            reject(error);
+            };
+        });
+    };
+
+    const handleFileUpload = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertToBase64(file);
+        setFotoPerfil(base64.toString())
+        localStorage.setItem('fotoPerfil', base64.toString());
+    };
 
     useEffect(() => {
         setDomLoaded(true);
@@ -237,6 +229,7 @@ function NuevoJugador() {
                     >
                         
                         <Image alt=''  src="/ellipse.png" />
+                        {/**
                         <Link
                             id="botonDeSubirImagen"
                             color="#6EC1E4"
@@ -248,14 +241,23 @@ function NuevoJugador() {
                         >
                             Subir imagen
                         </Link>
-                        
+                         */}
+                         <Input
+                            placeholder="Select Date and Time"
+                            size="md"
+                            type="file"
+                            onChange={(e) => handleFileUpload(e)}
+                        />
                         <div>
                             <Image
-                                alt='' 
+                                alt=''
+                                borderRadius='full'
                                 id="fotoDePerfil"
-                                src='/usuario.png'
-                                marginTop="-230px"
+                                src={ fotoPerfil }
+                                marginTop="-287px"
                                 paddingBottom="10px"
+                                height='180px'
+                                width='180px'
                             />
                         </div>
                         {/**
