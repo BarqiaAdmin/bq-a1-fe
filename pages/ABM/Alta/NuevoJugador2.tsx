@@ -184,8 +184,17 @@ class NuevoJugador2 extends Component {
         e.currentTarget.style.color = '#6EC1E4'
     }
     elegirAtributo = (e, IdAtributo) => {
-        e.currentTarget.style.border = '1px solid #6EC1E4'
-        e.currentTarget.style.color = '#6EC1E4'
+        if (e.currentTarget.style.border != '1px solid rgb(110, 193, 228)') {
+            e.currentTarget.style.border = '1px solid rgb(110, 193, 228)'
+            console.log(e.currentTarget.style.border)
+            e.currentTarget.style.color = '#6EC1E4'
+            console.log('Seleccionando atributo')
+        } else {
+            e.currentTarget.style.border = '1px solid #CCCCCC'
+            e.currentTarget.style.color = '#A2A2A2'
+            console.log('Deseleccionando atributo')
+        }
+        
 
         switch (IdAtributo) {
             case 1:
