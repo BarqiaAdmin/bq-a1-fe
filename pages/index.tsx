@@ -59,7 +59,7 @@ const IndexPage = () => {
             window.alert('Las contraseñas no coinciden');
         } else {
             Router.push({
-                pathname: '/ABM/Alta/NuevoJugador'
+                pathname: '/Onboarding/Onboarding'
             });
         }
     };

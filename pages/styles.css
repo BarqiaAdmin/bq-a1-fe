@@ -60,3 +60,26 @@ a {
   border: 1px solid #6EC1E4;
   color: #6EC1E4;
 }
+
+/* Onboarding */
+
+.deporte {
+  border: 2px solid #A2A2A2;
+  border-radius: 7px;
+  color: #A2A2A2;
+  padding: 20px;
+  width: 250px;
+  cursor: pointer
+}
+
+.deporte.deporteSeleccionado {
+  border: 2px solid #5695B1;
+  border-radius: 7px;
+  color: #5695B1;
+  padding: 20px;
+  width: 250px
+}
+
+.tipoDeUsuario HStack, .deporte HStack {
+  text-align: center;
+}
