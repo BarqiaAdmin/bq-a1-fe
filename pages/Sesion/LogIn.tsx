@@ -169,7 +169,7 @@ const LogIn = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Email</FormLabel>
-                            <Input id="inputEmail" placeholder="Ingresa tu email" onChange={handleEmailChange}/>
+                            <Input id="inputEmail" type="email" placeholder="Ingresa tu email" onChange={handleEmailChange}/>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8}>

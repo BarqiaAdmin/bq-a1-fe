@@ -102,7 +102,7 @@ const IndexPage = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Email</FormLabel>
-                            <Input id='inputEmail' placeholder="Ingresa tu email" onChange={handleEmailChange} value={email} />
+                            <Input id='inputEmail' type="email" placeholder="Ingresa tu email" onChange={handleEmailChange} value={email} />
                             <Text display="none" color="green">Debes ingresar una dirección de correo electrónico válida.</Text>
                             <Text display="none" color="red">La dirección de correo electrónico no es válida.</Text>
                         </FormControl>
