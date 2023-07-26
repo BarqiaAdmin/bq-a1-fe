@@ -283,7 +283,7 @@ export default function Perfil() {
                                 >
                                     <GridItem colSpan={1}>
                                         NACIONALIDAD <br />
-                                        <strong>{ nacionalidad }</strong>
+                                        <strong>{ nacionalidad || '(nacionalidad)' }</strong>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         EQUIPO <br />
@@ -293,49 +293,95 @@ export default function Perfil() {
                                             width='25px'
                                         />
                                         */}
-                                        <strong>{ club }</strong>
+                                        <strong>{ club || '(equipo)' }</strong>
                                     </GridItem>
 
                                     <GridItem colSpan={1}>
                                         PIE HÁBIL <br />
-                                        <strong>{ pieHabil }</strong>
+                                        <strong>{ pieHabil || '(pie hábil)' }</strong>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         POSICIÓN <br />
-                                        <strong>{ posicion }</strong>
+                                        <strong>{ posicion || '(posición)' }</strong>
                                     </GridItem>
 
                                     <GridItem colSpan={1}>
                                         CATEGORÍA <br />
-                                        <strong>{ categoria }</strong>
+                                        <strong>{ categoria || '(categoría)' }</strong>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         ALTURA <br />
-                                        <strong>{ estatura }</strong>
+                                        <strong>{ estatura || '(estatura)' }</strong>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         PESO <br />
-                                        <strong>{ peso }</strong>
+                                        <strong>{ peso || '(peso)' }</strong>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         EDAD <br />
-                                        <strong>{ edad }</strong>
+                                        <strong>{ edad || '(edad)' }</strong>
                                     </GridItem>
                                         
                                     <GridItem colSpan={1}>
                                         NIVEL DE INGLÉS <br />
-                                        <strong>{ nivelDeIngles }</strong>
+                                        <strong>{ nivelDeIngles || '(nivel de inglés)' }</strong>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         CONDICIÓN <br />
-                                        <strong>{ condicion }</strong>
+                                        <strong>{ condicion || '(condición)' }</strong>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         PRESUPUESTO <br />
-                                        <strong>{ presupuesto }</strong>
+                                        <strong>{ presupuesto || '(presupuesto)' }</strong>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         <Button>Editar&nbsp;<EditIcon /></Button>
+                                    </GridItem>
+                                    <GridItem colSpan={4}>
+                                        <VStack>
+                                            <Heading
+                                                fontSize="18px" marginBottom='20px'
+                                            >
+                                                LUGAR EN EL CAMPO
+                                            </Heading>
+                                            <Box
+                                                position="relative"
+                                            >
+                                                <Image alt=''  src="/campo.png" />
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 1)} className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 2)} className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 3)} className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 4)} className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 5)} className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 6)} className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 7)} className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 8)} className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 9)} className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 10)} className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 11)} className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                            </Box>
+                                        </VStack>
+                                    </GridItem>
+                                    <GridItem colSpan={4} textAlign='center'>
+                                        <Heading
+                                            fontSize="18px"
+                                            marginBottom='20px'
+                                        >
+                                            ATRIBUTOS
+                                        </Heading>
+                                        <HStack display='inline-block' marginBottom='15px'>
+                                            <Button onClick={(e) => this.elegirAtributo(e, 1)}  className="btn2">Pases</Button>
+                                            <Button onClick={(e) => this.elegirAtributo(e, 2)}  className="btn2">Tiros</Button>
+                                            <Button onClick={(e) => this.elegirAtributo(e, 3)}  className="btn2">Resistencia</Button>
+                                            <Button onClick={(e) => this.elegirAtributo(e, 4)}  className="btn2">Visión de juego</Button>
+                                        </HStack>
+                                        <br />
+                                        <HStack gap='12px' display='inline-block' marginBottom='15px'>
+                                            <Button onClick={(e) => this.elegirAtributo(e, 5)}  className="btn2">1vs1</Button>
+                                            <Button onClick={(e) => this.elegirAtributo(e, 6)}  className="btn2">Tiros libres</Button>
+                                            <Button onClick={(e) => this.elegirAtributo(e, 7)}  className="btn2">Marca</Button>
+                                            <Button onClick={(e) => this.elegirAtributo(e, 8)}  className="btn2">Juego aéreo</Button>
+                                        </HStack>
                                     </GridItem>
                                 </SimpleGrid>
                             </HStack>
@@ -440,7 +486,6 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
-
                                             <iframe width="853" height="480" src={ videoGaleria1 } title="Nirvana&#39;s Nevermind but with the SM64 soundfont" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                         </TabPanel>
                                     </TabPanels>

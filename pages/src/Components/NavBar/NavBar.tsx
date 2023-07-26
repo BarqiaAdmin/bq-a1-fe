@@ -93,13 +93,6 @@ const NavBar = (props) => {
             >
                 
                 <BellIcon w={7} h={7} marginRight='15px' cursor='pointer' />
-                <Badge ml='1'
-                    color='orange'
-                    margin='-15px 20px 0 -15px'
-                    borderRadius='100%'
-                    >
-                    3
-                </Badge>
                 <Image alt='' 
                     
                     borderRadius='full'

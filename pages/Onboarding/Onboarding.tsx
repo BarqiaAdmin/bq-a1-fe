@@ -57,13 +57,14 @@ class Onboarding extends React.Component {
                                 <Heading>Futbol</Heading>
                             </VStack>
                         </Box>
-                        {/** Rugby */}
+                        {/** Rugby
                         <Box className='deporte'>
                             <VStack>
                                 <Image src='/rugby.png' alt='' />
                                 <Heading>Rugby</Heading>
                             </VStack>
                         </Box>
+                         */}
                     </HStack>
                     <Divider />
                     <HStack>

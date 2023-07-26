@@ -24,10 +24,13 @@ import {
     AccordionItem,
     AccordionButton,
     AccordionIcon,
-    AccordionPanel
+    AccordionPanel,
+    Heading,
 } from '@chakra-ui/react';
 
-import axios from 'axios';
+import clubes from '../../../db/clubes';
+import paises from '../../../db/paises';
+
 import { useState, useEffect } from 'react';
 
 import Router from 'next/router';
@@ -43,7 +46,7 @@ function NuevoJugador() {
     const [fotoPerfil, setFotoPerfil] = useState('');
     const [inputNombre, setInputNombre] = useState('');
     const [inputApellido, setInputApellido] = useState('');
-    const [inputEdad, setInputEdad] = useState('');
+    const [inputFechaDeNacimiento, setInputFechaDeNacimiento] = useState('');
     const [inputNacimiento, setInputNacimiento] = useState('');
     const [inputNacionalidad, setInputNacionalidad] = useState('');
     const [inputNivelDeIngles, setInputNivelDeIngles] = useState('');
@@ -85,13 +88,9 @@ function NuevoJugador() {
         localStorage.setItem('apellido', e.target.value);
     }
 
-    const handleEdadChange = (e) => {
-        setInputEdad(e.target.value);
-        localStorage.setItem('edad', e.target.value)
-    }
-
-    const handleNacimientoChange = (e) => {
+    const handleFechaDeNacimiento = (e) => {
         setInputNacimiento(e.target.value);
+        console.log(e.target.value);
         localStorage.setItem('nacimiento', e.target.value);
     }
 
@@ -196,7 +195,7 @@ function NuevoJugador() {
         localStorage.setItem('nombre', '');
         localStorage.setItem('apellido', '');
         localStorage.setItem('urlDeImagen', '');
-        localStorage.setItem('edad', '');
+        localStorage.setItem('FechaDeNacimiento', '');
         localStorage.setItem('pais', '');
         localStorage.setItem('nivelDeIngles', '');
         localStorage.setItem('pieHabil', '');
@@ -312,23 +311,35 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNacimiento}>
-                                    <FormLabel>Edad</FormLabel>
-                                    <Input placeholder="Ingresar edad" onChange={handleEdadChange}/>
+                                    <FormLabel>FechaDeNacimiento</FormLabel>
+                                    <Input
+                                        placeholder="Select Date and Time"
+                                        size="md"
+                                        type="datetime-local"
+                                        onChange={handleFechaDeNacimiento}
+                                    />
+                                    {/**
+                                    <Input placeholder="Ingresar FechaDeNacimiento"/>
+                                     */}
                                     {!isErrorNacimiento ? (
                                         <FormHelperText>
-                                            Ingresa tu edad
+                                            Ingresa tu fecha de nacimiento
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
                                     )}
+                                    
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNacionalidad}>
                                     <FormLabel>Nacionalidad</FormLabel>
                                     <Select placeholder="Seleccionar país" onChange={handleNacionalidadChange}>
-                                        <option>Argentina</option>
-                                        <option>Colombia</option>
+                                        {paises.map((pais, index) => {
+                                            return (
+                                                <option key={index}>{ pais }</option>
+                                            )
+                                        })}
                                     </Select>
                                     {!isErrorNacionalidad ? (
                                         <FormHelperText>
@@ -339,36 +350,7 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={6}>
-                                <FormControl>
-                                    <FormLabel>Nivel de inglés</FormLabel>
-                                    <Select onChange={handleNivelDeInglesChange}>
-                                        <option>Bilingüe</option>
-                                        <option>Avanzado</option>
-                                        <option>Intermedio</option>
-                                        <option>Básico</option>
-                                    </Select>
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={6}>
-                                <Accordion defaultIndex={[1]} allowMultiple marginTop='31px'>
-                                    <AccordionItem>
-                                        <h2>
-                                        <AccordionButton>
-                                            <Box as="span" flex='1' textAlign='left'>
-                                            Certificaciones
-                                            </Box>
-                                            <AccordionIcon />
-                                        </AccordionButton>
-                                        </h2>
-                                        <AccordionPanel pb={4}>
-                                            <Input placeholder="Certificación 1" />
-                                            <Input placeholder="Certificación 2" />
-                                            <Input placeholder="Certificación 3" />
-                                        </AccordionPanel>
-                                    </AccordionItem>
-                                </Accordion>
-                            </GridItem>
+                            
                             <GridItem colSpan={12}>
                                 <Text>SOCIAL</Text>
                             </GridItem>
@@ -473,11 +455,11 @@ function NuevoJugador() {
                                 <FormControl isRequired isInvalid={isErrorClub}>
                                     <FormLabel>Club</FormLabel>
                                     <Select placeholder="Seleccionar club" onChange={handleClubChange}>
-                                        <option>Club 1</option>
-                                        <option>Club 2</option>
-                                        <option>Club 3</option>
-                                        <option>Club 4</option>
-                                        <option>Club 5</option>
+                                        {clubes.map((club, index) => {
+                                            return (
+                                                <option key={ index }>{ club }</option>
+                                            )
+                                        })}
                                     </Select>
                                     {!isErrorClub ? (
                                         <FormHelperText>
@@ -544,6 +526,54 @@ function NuevoJugador() {
                                     </AccordionItem>
                                 </Accordion>
                             </GridItem>
+                            <GridItem colSpan={12}>
+                                <FormLabel>Quiero ser visto por:</FormLabel>
+                            </GridItem>
+                            <GridItem colSpan={4}>
+                                <Checkbox colorScheme='blue'>
+                                    Agentes
+                                </Checkbox>
+                            </GridItem>
+                            <GridItem colSpan={4}>
+                                <Checkbox colorScheme='blue'>
+                                    Clubes
+                                </Checkbox>
+                            </GridItem>
+                            <GridItem colSpan={4}>
+                                <Checkbox colorScheme='blue'>
+                                    Universidades
+                                </Checkbox>
+                            </GridItem>
+                            <GridItem colSpan={6}>
+                                <FormControl>
+                                    <FormLabel>Nivel de inglés</FormLabel>
+                                    <Select onChange={handleNivelDeInglesChange}>
+                                        <option>Bilingüe</option>
+                                        <option>Avanzado</option>
+                                        <option>Intermedio</option>
+                                        <option>Básico</option>
+                                    </Select>
+                                </FormControl>
+                            </GridItem>
+                            <GridItem colSpan={6}>
+                                <Accordion defaultIndex={[1]} allowMultiple marginTop='31px'>
+                                    <AccordionItem>
+                                        <h2>
+                                        <AccordionButton>
+                                            <Box as="span" flex='1' textAlign='left'>
+                                            Certificaciones
+                                            </Box>
+                                            <AccordionIcon />
+                                        </AccordionButton>
+                                        </h2>
+                                        <AccordionPanel pb={4}>
+                                            <Input placeholder="Certificación 1" />
+                                            <Input placeholder="Certificación 2" />
+                                            <Input placeholder="Certificación 3" />
+                                        </AccordionPanel>
+                                    </AccordionItem>
+                                </Accordion>
+                            </GridItem>
                             {/**
                             <GridItem colSpan={12}>
                                 <FormControl>
@@ -574,7 +604,6 @@ function NuevoJugador() {
                             </GridItem>
                             */}
                             <GridItem colSpan={12}>
-
                                 <Link href="/Onboarding/Onboarding">
                                     <Button
                                         className="btn1"
