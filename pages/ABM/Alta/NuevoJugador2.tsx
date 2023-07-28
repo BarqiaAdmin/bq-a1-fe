@@ -47,7 +47,7 @@ class NuevoJugador2 extends Component {
     crearUsuario = () => {
         console.log('Se ha creado un usuario')
         this.Router.push({
-            pathname: 'Perfil-beta',
+            pathname: 'Perfil',
             query: {}
         })
     }
@@ -90,10 +90,10 @@ class NuevoJugador2 extends Component {
         })
 
         Router.push({
-            pathname: '/Usuario/Perfil-beta'
+            pathname: '/Usuario/Perfil'
         })
         
-        //window.location.href = '/Usuario/Perfil-beta'
+        //window.location.href = '/Usuario/Perfil'
     }
 
 

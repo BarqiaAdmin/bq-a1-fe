@@ -58,7 +58,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 
 import { useDisclosure, useToast } from '@chakra-ui/react'
-import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 import clubes from '../../db/clubes';
 import paises from '../../db/paises';
@@ -93,7 +93,7 @@ export default function Perfil() {
     const [estatura, setEstatura] = useState(''); 
     const [peso, setPeso] = useState(''); 
     const [edad, setEdad] = useState(''); 
-    const [nacionalidad, setNacionalidad] = useState(''); 
+    const [pais, setPais] = useState(''); 
     const [pieHabil, setPieHabil] = useState('');
     const [nivelDeIngles, setNivelDeIngles ] = useState('');
     const [certificaciones, setCertificaciones] = useState('');
@@ -114,20 +114,41 @@ export default function Perfil() {
     const imagenesGaleria = [];
     
     useEffect(() => {
-        setFotoPerfil(localStorage.getItem('fotoPerfil'));
-        setNombre(localStorage.getItem('nombre'))
-        setApellido(localStorage.getItem('apellido'))
-        setClub(localStorage.getItem('club'))
-        setPosicion(localStorage.getItem('posicion'));
-        setCategoria(localStorage.getItem('categoria'));
-        setEstatura(localStorage.getItem('estatura'));
-        setPeso(localStorage.getItem('peso'));
-        setEdad(localStorage.getItem('edad'));
-        setNacionalidad(localStorage.getItem('nacionalidad'));
-        setCondicion(localStorage.getItem('condicion'));
-        setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
-        setPresupuesto(localStorage.getItem('presupuesto'));
-        setPieHabil(localStorage.getItem('pieHabil'));
+        let shareLink = window.location.href
+        console.log(shareLink)
+        let pattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/
+        console.log(pattern)
+        let userEmail = shareLink.match(pattern)[0]
+        console.log(userEmail);
+
+        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: userEmail
+            })
+        })
+        .then((response) => response.json())
+        .then(response => {
+            setFotoPerfil(response.fotoPerfil);
+            setNombre(response.nombre)
+            setApellido(response.apellido)
+            setClub(response.club)
+            setPosicion(response.posicion);
+            setCategoria(response.categoria);
+            setEstatura(response.estatura);
+            setPeso(response.peso);
+            setEdad(response.edad);
+            setPais(response.pais);
+            setCondicion(response.condicion);
+            setNivelDeIngles(response.nivelDeIngles);
+            setPresupuesto(response.presupuesto);
+            setPieHabil(response.pieHabil);
+        })
+        
 
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
@@ -145,7 +166,7 @@ export default function Perfil() {
 
         setVideoGaleria1(localStorage.getItem('videoGaleria1'))
         setVideoGaleria2(localStorage.getItem('videoGaleria2'))
-        setVideoGaleria3(localStorage.getItem('videoGaleria3'))  
+        setVideoGaleria3(localStorage.getItem('videoGaleria3'))
     }, []);
     
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -195,6 +216,8 @@ export default function Perfil() {
         }
     }
 
+    const [edicionActivada, setEdicionActivada] = useState(false);
+
     return(
         <>
         <Box>
@@ -240,25 +263,6 @@ export default function Perfil() {
                                         />
                                         <Heading>{ nombre } { apellido }</Heading>
                                         <HStack gap="5px">
-                                            <CircularProgress value={70} color='green.400' size='60px'>
-                                                <CircularProgressLabel>70%</CircularProgressLabel>
-                                            </CircularProgress>
-                                            <Button
-                                                color="white"
-                                                background="#144077"
-                                                onClick={() =>
-                                                    toast({
-                                                        title: 'Enlace copiado al portapapeles',
-                                                        description: "Ya puedes compartir tu perfil",
-                                                        status: 'success',
-                                                        duration: 9000,
-                                                        isClosable: true,
-                                                    })
-                                                }
-                                            >
-                                                <LinkIcon /> &nbsp;Compartir perfil 
-                                            </Button>
-                                            
                                             <Image alt='' 
                                                 src="/like.png"
                                             />
@@ -291,8 +295,15 @@ export default function Perfil() {
                                     gap={12}
                                 >
                                     <GridItem colSpan={1}>
-                                        NACIONALIDAD <br />
-                                        <strong>{ nacionalidad || '(nacionalidad)' }</strong>
+                                        PAIS <br />
+                                        <strong>{ pais }</strong>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar país">
+                                            {paises.map((pais, index) => {
+                                                return (
+                                                    <option key={index}>{ pais }</option>
+                                                )
+                                            })}
+                                        </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         EQUIPO <br />
@@ -302,49 +313,97 @@ export default function Perfil() {
                                             width='25px'
                                         />
                                         */}
-                                        <strong>{ club || '(equipo)' }</strong>
+                                        <strong>{ club }</strong>
+                                        <Select className="campoDeEdicion" placeholder="Seleccionar club" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            {clubes.map((club, index) => {
+                                                return (
+                                                    <option key={ index }>{ club }</option>
+                                                )
+                                            })}
+                                        </Select>
                                     </GridItem>
 
                                     <GridItem colSpan={1}>
                                         PIE HÁBIL <br />
-                                        <strong>{ pieHabil || '(pie hábil)' }</strong>
+                                        <strong>{ pieHabil }</strong>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <option>Izquierdo</option>
+                                            <option>Derecho</option>
+                                        </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         POSICIÓN <br />
-                                        <strong>{ posicion || '(posición)' }</strong>
+                                        <strong>{ posicion }</strong>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <option>Delantero</option>
+                                            <option>Mediocampista</option>
+                                            <option>Defensor</option>
+                                            <option>Arquero</option>
+                                        </Select>
                                     </GridItem>
 
                                     <GridItem colSpan={1}>
                                         CATEGORÍA <br />
-                                        <strong>{ categoria || '(categoría)' }</strong>
+                                        <strong>{ categoria }</strong>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar categoría">
+                                            <option>Pro</option>
+                                            <option>Semi-Pro</option>
+                                            <option>Juvenil</option>
+                                            <option>Amateur</option>
+                                        </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         ALTURA <br />
-                                        <strong>{ estatura || '(estatura)' }</strong>
+                                        <strong>{ estatura }</strong>
+                                        <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Ingresar estatura"/>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         PESO <br />
-                                        <strong>{ peso || '(peso)' }</strong>
+                                        <strong>{ peso }</strong>
+                                        <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Ingresar peso"/>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         EDAD <br />
-                                        <strong>{ edad || '(edad)' }</strong>
+                                        <strong>{ edad }</strong>
+                                        <Input
+                                            className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}
+                                            placeholder="Select Date and Time"
+                                            size="md"
+                                            type="datetime-local"
+                                        />
                                     </GridItem>
                                         
                                     <GridItem colSpan={1}>
                                         NIVEL DE INGLÉS <br />
-                                        <strong>{ nivelDeIngles || '(nivel de inglés)' }</strong>
+                                        <strong>{ nivelDeIngles }</strong>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <option>Bilingüe</option>
+                                            <option>Avanzado</option>
+                                            <option>Intermedio</option>
+                                            <option>Básico</option>
+                                        </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         CONDICIÓN <br />
-                                        <strong>{ condicion || '(condición)' }</strong>
+                                        <strong>{ condicion }</strong>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Condición">
+                                            <option>Libre</option>
+                                            <option>Con contrato</option>
+                                        </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         PRESUPUESTO <br />
-                                        <strong>{ presupuesto || '(presupuesto)' }</strong>
+                                        <strong>{ presupuesto }</strong>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Presupuesto">
+                                            <option>0 - 5.000</option>
+                                            <option>6.0000 - 10.000</option>
+                                            <option>10.000 - 15.000</option>
+                                            <option>16.000 - 20.000</option>
+                                            <option>Más de 20.000</option>
+                                        </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
-                                        <Button>Editar&nbsp;<EditIcon /></Button>
+                                        
                                     </GridItem>
                                     <GridItem colSpan={4}>
                                         <VStack>
@@ -405,20 +464,10 @@ export default function Perfil() {
                                 <Tabs isFitted variant='enclosed'>
                                     <TabList mb='1em'>
                                         <Tab position='relative' >
-                                            Imágenes&nbsp;
-                                            <Tooltip label="Agregar imagen" aria-label='A tooltip'>
-                                                <Link onClick={onOpen} position='absolute' right='20px'>
-                                                    <AddIcon />
-                                                </Link>
-                                            </Tooltip>
+                                            Imágenes
                                         </Tab>
                                         <Tab position='relative'>
-                                            Videos&nbsp;
-                                            <Tooltip label="Agregar video" aria-label='A tooltip'>
-                                                <Link onClick={onOpenVideos} position='absolute' right='20px'>
-                                                    <AddIcon />
-                                                </Link>
-                                            </Tooltip>
+                                            Videos
                                         </Tab>
                                     </TabList>
                                     <TabPanels textAlign='center'>
@@ -614,7 +663,7 @@ export default function Perfil() {
                                                     <Td>43</Td>
                                                     <Td>21</Td>
                                                     <Td>
-                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                        <Link href="/Perfil">Ver Estadísticas</Link>
                                                     </Td>
                                                 </Tr>
                                                 <Tr>
@@ -628,7 +677,7 @@ export default function Perfil() {
                                                     <Td>43</Td>
                                                     <Td>21</Td>
                                                     <Td>
-                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                        <Link href="/Perfil">Ver Estadísticas</Link>
                                                     </Td>
                                                 </Tr>
                                                 <Tr>
@@ -642,7 +691,7 @@ export default function Perfil() {
                                                     <Td>43</Td>
                                                     <Td>21</Td>
                                                     <Td>
-                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                        <Link href="/Perfil">Ver Estadísticas</Link>
                                                     </Td>
                                                 </Tr>
                                                 <Tr>
@@ -656,7 +705,7 @@ export default function Perfil() {
                                                     <Td>43</Td>
                                                     <Td>21</Td>
                                                     <Td>
-                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                        <Link href="/Perfil">Ver Estadísticas</Link>
                                                     </Td>
                                                 </Tr>
                                                 <Tr>
@@ -670,7 +719,7 @@ export default function Perfil() {
                                                     <Td>43</Td>
                                                     <Td>21</Td>
                                                     <Td>
-                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                        <Link href="/Perfil">Ver Estadísticas</Link>
                                                     </Td>
                                                 </Tr>
                                                 <Tr>
@@ -684,7 +733,7 @@ export default function Perfil() {
                                                     <Td>43</Td>
                                                     <Td>21</Td>
                                                     <Td>
-                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                        <Link href="/Perfil">Ver Estadísticas</Link>
                                                     </Td>
                                                 </Tr>
                                                 <Tr>
@@ -698,7 +747,7 @@ export default function Perfil() {
                                                     <Td>43</Td>
                                                     <Td>21</Td>
                                                     <Td>
-                                                        <Link href="/Perfil-beta">Ver Estadísticas</Link>
+                                                        <Link href="/Perfil">Ver Estadísticas</Link>
                                                     </Td>
                                                 </Tr>
                                             </Tbody>
@@ -733,7 +782,6 @@ export default function Perfil() {
                             </HStack>
                         </GridItem>
                         */}
-                        
                     </SimpleGrid>
                 </HStack>
             </VStack>

@@ -7,7 +7,6 @@ body{
   margin: 0;
 }
 
-/* SCOUTING LABS GRADIENT */ 
 .chakra-ui-dark {
     background: rgb(5,13,23);
 }
@@ -82,4 +81,10 @@ a {
 
 .tipoDeUsuario HStack, .deporte HStack {
   text-align: center;
+}
+
+/* Perfil */
+
+.chakra-select__icon-wrapper {
+  display: none !important
 }

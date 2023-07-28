@@ -105,12 +105,12 @@ const LogIn = () => {
         })
         
         Router.push({
-            pathname: '/Usuario/Perfil-beta'
+            pathname: '/Usuario/Perfil'
         });
         
         /*
         Router.push({
-            pathname: '/Usuario/Perfil-beta'
+            pathname: '/Usuario/Perfil'
         })
         */
     }
@@ -126,7 +126,7 @@ const LogIn = () => {
             }
         })
         Router.push({
-            pathname: '/Usuario/Perfil-beta'
+            pathname: '/Usuario/Perfil'
         })
     }
     */
