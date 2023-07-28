@@ -84,6 +84,7 @@ export default function Perfil() {
         */
     }
 
+    const [email, setEmail] = useState('')
     const [fotoPerfil, setFotoPerfil] = useState('');
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
@@ -114,6 +115,7 @@ export default function Perfil() {
     const imagenesGaleria = [];
     
     useEffect(() => {
+        setEmail(localStorage.getItem('email'))
         setFotoPerfil(localStorage.getItem('fotoPerfil'));
         setNombre(localStorage.getItem('nombre'))
         setApellido(localStorage.getItem('apellido'))
@@ -197,6 +199,18 @@ export default function Perfil() {
 
     const [edicionActivada, setEdicionActivada] = useState(false);
 
+    const handleShare = () => {
+        let shareLink = 'https://bq-a1-fe-t8pc.vercel.app/Usuario/' + email
+        navigator.clipboard.writeText(shareLink);
+        toast({
+            title: 'Enlace copiado al portapapeles',
+            description: "Ya puedes compartir tu perfil",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+        })
+    }
+
     return(
         <>
         <Box>
@@ -248,15 +262,7 @@ export default function Perfil() {
                                             <Button
                                                 color="white"
                                                 background="#144077"
-                                                onClick={() =>
-                                                    toast({
-                                                        title: 'Enlace copiado al portapapeles',
-                                                        description: "Ya puedes compartir tu perfil",
-                                                        status: 'success',
-                                                        duration: 9000,
-                                                        isClosable: true,
-                                                    })
-                                                }
+                                                onClick={handleShare}
                                             >
                                                 <LinkIcon /> &nbsp;Compartir perfil 
                                             </Button>
