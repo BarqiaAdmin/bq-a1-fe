@@ -191,6 +191,7 @@ const LogIn = () => {
                             Iniciar sesión
                         </Button>
                     </GridItem>
+                    {/**
                     <GridItem colSpan={8}>
                         <Button w="full">
                             <Image alt=''  src="/google.png" />&nbsp;
@@ -206,6 +207,7 @@ const LogIn = () => {
                             Continuar con Facebook
                         </Button>
                     </GridItem>
+                     */}
                     <GridItem colSpan={8}>
                         <Box textAlign="center">
                             ¿No tienes una cuenta? <Link className="link1" href="/">Regístrate aquí</Link>

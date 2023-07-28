@@ -141,23 +141,27 @@ const IndexPage = () => {
                             </Button>
                         </Link>
                     </GridItem>
+                    {/**
                     <GridItem colSpan={8}>
                         <Button w="full">
                             <Image alt=''  src="/google.png" height='20px' width='20px'/>&nbsp;
                             Continuar con Google
                         </Button>
                     </GridItem>
+                    
                     <GridItem colSpan={8}>
                         <Button w="full">
                             <Image alt=''  src="/facebook.png" height='20px' width='20px'/>&nbsp;
                             Continuar con Facebook
                         </Button>
                     </GridItem>
+                     */}
                     <GridItem colSpan={8}>
                         <Box textAlign="center">
                             Ya tienes cuenta? <Link className="link1" href="Sesion/LogIn">Ingresar</Link>
                         </Box>
                     </GridItem>
+                    
                 </SimpleGrid>
             </VStack>
         </Container>

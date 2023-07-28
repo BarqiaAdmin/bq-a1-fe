@@ -54,32 +54,21 @@ import NavBar from '../src/Components/NavBar/NavBar';
 import { useFileUpload } from 'use-file-upload';
 
 import { useState } from 'react';
-import { useDisclosure } from '@chakra-ui/react'
-import { ChevronRightIcon, EditIcon, AddIcon } from '@chakra-ui/icons';
-
-// Here we have used react-icons package for the icons
-import { BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
-// And react-slick as our Carousel Lib
-import Slider from 'react-slick';
-
-// Settings for the slider
-const settings = {
-    dots: true,
-    arrows: false,
-    fade: true,
-    infinite: true,
-    autoplay: true,
-    speed: 500,
-    autoplaySpeed: 5000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-};
 
 import Router from 'next/router';
+
+import { useDisclosure, useToast } from '@chakra-ui/react'
+import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon } from '@chakra-ui/icons';
+
+import clubes from '../../db/clubes';
+import paises from '../../db/paises';
+
 
 export default function Perfil() {
 
     const [files, selectFiles] = useFileUpload();
+
+    const toast = useToast();
 
     const subirImagen = () => {
         /*
@@ -113,12 +102,10 @@ export default function Perfil() {
     const [imagenGaleria1, setImagenGaleria1] = useState('');
     const [imagenGaleria2, setImagenGaleria2] = useState('');
     const [imagenGaleria3, setImagenGaleria3] = useState('');
+
     const [videoGaleria1, setVideoGaleria1] = useState('');
-
-    // As we have used custom buttons, we need a reference variable to
-    // change the state
-
-    const [slider, setSlider] = React.useState<Slider | null>(null);
+    const [videoGaleria2, setVideoGaleria2] = useState('');
+    const [videoGaleria3, setVideoGaleria3] = useState('');
 
     const top = useBreakpointValue({ base: '90%', md: '50%' });
     const side = useBreakpointValue({ base: '30%', md: '10px' });
@@ -141,17 +128,24 @@ export default function Perfil() {
         setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
         setPresupuesto(localStorage.getItem('presupuesto'));
         setPieHabil(localStorage.getItem('pieHabil'));
-        setImagenGaleria1(localStorage.getItem('imagenGaleria1'))
-        setImagenGaleria2(localStorage.getItem('imagenGaleria2'))
-        setImagenGaleria3(localStorage.getItem('imagenGaleria3'))
-
-        setVideoGaleria1(localStorage.getItem('videoGaleria1'))
 
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
         localStorage.setItem('imagenGaleria1', '');
         localStorage.setItem('imagenGaleria2', '');
         localStorage.setItem('imagenGaleria3', '');
+
+        localStorage.setItem('videoGaleria1', '');
+        localStorage.setItem('videoGaleria2', '');
+        localStorage.setItem('videoGaleria3', '');
+
+        setImagenGaleria1(localStorage.getItem('imagenGaleria1'))
+        setImagenGaleria2(localStorage.getItem('imagenGaleria2'))
+        setImagenGaleria3(localStorage.getItem('imagenGaleria3'))
+
+        setVideoGaleria1(localStorage.getItem('videoGaleria1'))
+        setVideoGaleria2(localStorage.getItem('videoGaleria2'))
+        setVideoGaleria3(localStorage.getItem('videoGaleria3'))  
     }, []);
     
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -177,11 +171,9 @@ export default function Perfil() {
         if (localStorage.getItem('imagenGaleria1') == '') {
             localStorage.setItem('imagenGaleria1', base64.toString());
             setImagenGaleria1(base64.toString());
-            console.log('hey')
         } else if (localStorage.getItem('imagenGaleria2') == '') {
             localStorage.setItem('imagenGaleria2', base64.toString());
             setImagenGaleria2(base64.toString());
-            console.log('hey2')
         } else if (localStorage.getItem('imagenGaleria3') == '') {
             localStorage.setItem('imagenGaleria3', base64.toString());
             setImagenGaleria3(base64.toString());
@@ -191,7 +183,16 @@ export default function Perfil() {
     const handleVideoUpload = (e) => {
         let ytUrl = e.target.value
         ytUrl = ytUrl.replace('/watch?v=', '/embed/')
-        setVideoGaleria1(ytUrl)
+        if (localStorage.getItem('videoGaleria1') == '') {
+            localStorage.setItem('videoGaleria1', ytUrl);
+            setVideoGaleria1(ytUrl);
+        } else if (localStorage.getItem('videoGaleria2') == '') {
+            localStorage.setItem('videoGaleria2', ytUrl);
+            setVideoGaleria2(ytUrl);
+        } else if (localStorage.getItem('videoGaleria3') == '') {
+            localStorage.setItem('videoGaleria3', ytUrl);
+            setVideoGaleria3(ytUrl);
+        }
     }
 
     return(
@@ -245,14 +246,22 @@ export default function Perfil() {
                                             <Button
                                                 color="white"
                                                 background="#144077"
-                                                >
-                                                Compartir perfil &nbsp; <Image alt=''  src="/share.png" />
+                                                onClick={() =>
+                                                    toast({
+                                                        title: 'Enlace copiado al portapapeles',
+                                                        description: "Ya puedes compartir tu perfil",
+                                                        status: 'success',
+                                                        duration: 9000,
+                                                        isClosable: true,
+                                                    })
+                                                }
+                                            >
+                                                <LinkIcon /> &nbsp;Compartir perfil 
                                             </Button>
                                             
                                             <Image alt='' 
                                                 src="/like.png"
-                                            /> 
-                                            <Text>21.6k</Text>
+                                            />
                                         </HStack>
                                         <HStack gap="10px">
                                             <Image alt=''  h="30px" src="/facebook.png" />
@@ -486,7 +495,9 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
-                                            <iframe width="853" height="480" src={ videoGaleria1 } title="Nirvana&#39;s Nevermind but with the SM64 soundfont" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                                            <iframe width="853" height="480" src={ videoGaleria1 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                                            <iframe width="853" height="480" src={ videoGaleria2 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                                            <iframe width="853" height="480" src={ videoGaleria3 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                         </TabPanel>
                                     </TabPanels>
                                 </Tabs>
