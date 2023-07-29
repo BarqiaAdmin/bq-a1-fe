@@ -133,14 +133,6 @@ export default function Perfil() {
 
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
-        localStorage.setItem('imagenGaleria1', '');
-        localStorage.setItem('imagenGaleria2', '');
-        localStorage.setItem('imagenGaleria3', '');
-
-        localStorage.setItem('videoGaleria1', '');
-        localStorage.setItem('videoGaleria2', '');
-        localStorage.setItem('videoGaleria3', '');
-
         setImagenGaleria1(localStorage.getItem('imagenGaleria1'))
         setImagenGaleria2(localStorage.getItem('imagenGaleria2'))
         setImagenGaleria3(localStorage.getItem('imagenGaleria3'))
@@ -515,10 +507,10 @@ export default function Perfil() {
 
                                                     <AlertDialogFooter>
                                                     <Button ref={cancelRef} onClick={onClose}>
-                                                        Cancelar
+                                                        Borrar última
                                                     </Button>
                                                     <Button colorScheme='blue' onClick={onClose} ml={3}>
-                                                        Agregar
+                                                        Listo
                                                     </Button>
                                                     </AlertDialogFooter>
                                                 </AlertDialogContent>
@@ -556,10 +548,10 @@ export default function Perfil() {
 
                                                     <AlertDialogFooter>
                                                     <Button ref={cancelRef} onClick={onCloseVideos}>
-                                                        Cancelar
+                                                        Borrar último
                                                     </Button>
                                                     <Button colorScheme='blue' onClick={onCloseVideos} ml={3}>
-                                                        Agregar
+                                                        Listo
                                                     </Button>
                                                     </AlertDialogFooter>
                                                 </AlertDialogContent>
