@@ -268,18 +268,21 @@ export default function Perfil() {
                                             </Button>
                                             
                                             <Image alt='' 
+                                                cursor='pointer'
                                                 src="/like.png"
                                             />
                                         </HStack>
                                         <HStack gap="10px">
-                                            <Image alt=''  h="30px" src="/facebook.png" />
-                                            <Image alt=''  h="30px" src="/twitter.png" />
-                                            <Image alt=''  h="30px" src="/instagram.png" />
-                                            <Image alt=''  h="30px" src="/icono-tiktok.png" />
+                                            <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
+                                            <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
+                                            <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
+                                            <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
                                         </HStack>
                                     </VStack>
                                     <HStack>
+                                        {/**
                                         <Progress value={75} size='lg' colorScheme='green' />
+                                         */}
                                     </HStack>
                                 </HStack>
                             </VStack>
