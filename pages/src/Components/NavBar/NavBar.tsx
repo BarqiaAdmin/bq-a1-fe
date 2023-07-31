@@ -56,6 +56,13 @@ const NavBar = (props) => {
         localStorage.setItem('condicion', '');
         localStorage.setItem('presupuesto', '');
 
+        localStorage.setItem('imagenGaleria1', '');
+        localStorage.setItem('imagenGaleria2', '');
+        localStorage.setItem('imagenGaleria3', '');
+        localStorage.setItem('videoGaleria1', '');
+        localStorage.setItem('videoGaleria2', '');
+        localStorage.setItem('videoGaleria3', '');
+
         Router.push({
             pathname: '/Sesion/LogIn'
         })  

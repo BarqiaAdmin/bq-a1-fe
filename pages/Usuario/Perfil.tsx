@@ -85,12 +85,14 @@ export default function Perfil() {
     }
 
     const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
     const [fotoPerfil, setFotoPerfil] = useState('');
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
     const [club, setClub] = useState('');
     const [posicion, setPosicion] = useState(''); 
-    const [categoria, setCategoria] = useState(''); 
+    const [categoria, setCategoria] = useState('');
+    const [genero, setGenero] = useState('');
     const [estatura, setEstatura] = useState(''); 
     const [peso, setPeso] = useState(''); 
     const [edad, setEdad] = useState(''); 
@@ -116,12 +118,14 @@ export default function Perfil() {
     
     useEffect(() => {
         setEmail(localStorage.getItem('email'))
+        setPassword(localStorage.getItem('password'));
         setFotoPerfil(localStorage.getItem('fotoPerfil'));
         setNombre(localStorage.getItem('nombre'))
         setApellido(localStorage.getItem('apellido'))
         setClub(localStorage.getItem('club'))
         setPosicion(localStorage.getItem('posicion'));
         setCategoria(localStorage.getItem('categoria'));
+        setGenero(localStorage.getItem('genero'));
         setEstatura(localStorage.getItem('estatura'));
         setPeso(localStorage.getItem('peso'));
         setEdad(localStorage.getItem('edad'));
@@ -175,6 +179,48 @@ export default function Perfil() {
     }
 
     const handleFileUpload = async (e) => {
+        console.log('Subiendo imagen...');
+        console.log('------------------');
+        console.log('Archivo de imagen:')
+        const imagen = e.target.files[0];
+        console.log(imagen);
+        let imagenBase64 = convertToBase64(imagen);
+        console.log('Blob de imagen:');
+        console.log(imagenBase64)
+        imagenesGaleria.push(imagenBase64);
+        console.log('Array de imagenes:')
+        console.log(imagenesGaleria)
+        console.log('*Llamada al Back end*');
+        fetch('http://localhost:5051/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                edad: edad,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleria: imagenesGaleria
+            })
+        })
+        .then(data => {
+            console.log(data);
+        })
+        
+        /*
         const file = e.target.files[0];
         let base64 = await convertToBase64(file);
         if (localStorage.getItem('imagenGaleria1') == '') {
@@ -188,6 +234,7 @@ export default function Perfil() {
             localStorage.setItem('imagenGaleria3', base64.toString());
             setImagenGaleria3(base64.toString());
         }
+        */
     };
 
     const handleVideoUpload = (e) => {

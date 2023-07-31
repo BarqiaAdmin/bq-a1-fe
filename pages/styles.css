@@ -88,3 +88,7 @@ a {
 .chakra-select__icon-wrapper {
   display: none !important
 }
+
+strong {
+  color: #6EC1E4;
+}
