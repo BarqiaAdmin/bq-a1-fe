@@ -159,12 +159,28 @@ export default function Perfil() {
         });
     };
 
+    const uploadImage = (imageBae64) => {
+        console.log(imageBae64)
+        fetch('http://localhost:5051/subirImagen', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                nuevaImagen: imageBae64
+            })
+        })
+    }
+
     const handleFileUpload = async (e) => {
         const file = e.target.files[0];
-        const base64 = await convertToBase64(file);
+        let base64 = await convertToBase64(file);
         if (localStorage.getItem('imagenGaleria1') == '') {
             localStorage.setItem('imagenGaleria1', base64.toString());
             setImagenGaleria1(base64.toString());
+            uploadImage(base64.toString())
         } else if (localStorage.getItem('imagenGaleria2') == '') {
             localStorage.setItem('imagenGaleria2', base64.toString());
             setImagenGaleria2(base64.toString());
@@ -192,7 +208,7 @@ export default function Perfil() {
     const [edicionActivada, setEdicionActivada] = useState(false);
 
     const handleShare = () => {
-        let shareLink = 'https://bq-a1-fe-t8pc.vercel.app/Usuario/' + email
+        let shareLink = 'http://localhost:3000/Usuario/' + email
         navigator.clipboard.writeText(shareLink);
         toast({
             title: 'Enlace copiado al portapapeles',
