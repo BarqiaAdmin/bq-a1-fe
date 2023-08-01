@@ -90,13 +90,13 @@ export default function Perfil() {
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
     const [club, setClub] = useState('');
+    const [pais, setPais] = useState('');
     const [posicion, setPosicion] = useState(''); 
     const [categoria, setCategoria] = useState('');
     const [genero, setGenero] = useState('');
     const [estatura, setEstatura] = useState(''); 
     const [peso, setPeso] = useState(''); 
-    const [edad, setEdad] = useState(''); 
-    const [pais, setPais] = useState(''); 
+    const [nacimiento, setNacimiento] = useState('');
     const [pieHabil, setPieHabil] = useState('');
     const [nivelDeIngles, setNivelDeIngles ] = useState('');
     const [certificaciones, setCertificaciones] = useState('');
@@ -110,73 +110,73 @@ export default function Perfil() {
     }
 
     const handleNombreChange = (e) => {
-        setInputNombre(e.target.value)
+        setNombre(e.target.value)
         localStorage.setItem('nombre', e.target.value);
     }
 
     const handleApellidoChange = (e) => {
-        setInputApellido(e.target.value);
+        setApellido(e.target.value);
         localStorage.setItem('apellido', e.target.value);
     }
 
-    const handleFechaDeNacimiento = (e) => {
-        setInputNacimiento(e.target.value);
+    const handleNacimientoChange = (e) => {
+        setNacimiento(e.target.value);
         console.log(e.target.value);
         localStorage.setItem('nacimiento', e.target.value);
     }
 
-    const handleNacionalidadChange = (e) => {
-        setInputNacionalidad(e.target.value);
-        localStorage.setItem('nacionalidad', e.target.value);
+    const handlePaisChange = (e) => {
+        setPais(e.target.value);
+        localStorage.setItem('pais', e.target.value);
     }
 
     const handleNivelDeInglesChange = (e) => {
-        setInputNivelDeIngles(e.target.value);
+        setNivelDeIngles(e.target.value);
         localStorage.setItem('nivelDeIngles', e.target.value);
     }
 
     const handlePieHabilChange = (e) => {
-        setInputPieHabil(e.target.value);
+        setPieHabil(e.target.value);
         localStorage.setItem('pieHabil', e.target.value);
     }
 
     const handlePosicionChange = (e) => {
-        setInputPosicion(e.target.value);
+        setPosicion(e.target.value);
         localStorage.setItem('posicion', e.target.value);
     }
 
     const handleGeneroChange = (e) => {
-        setInputGenero(e.target.value);
+        setGenero(e.target.value);
         localStorage.setItem('genero', e.target.value);
     }
 
     const handleEstaturaChange = (e) => {
-        setInputEstatura(e.target.value);
+        setEstatura(e.target.value);
         localStorage.setItem('estatura', e.target.value);
     }
 
     const handlePesoChange = (e) => {
-        setInputPeso(e.target.value);
+        setPeso(e.target.value);
         localStorage.setItem('peso', e.target.value);
     }
 
     const handleClubChange = (e) => {
-        setInputClub(e.target.value);
+        setClub(e.target.value);
         localStorage.setItem('club', e.target.value);
     }
 
     const handleCategoriaChange = (e) => {
-        setInputCategoria(e.target.value);
+        setCategoria(e.target.value);
         localStorage.setItem('categoria', e.target.value);
     }
 
     const handleCondicionChange = (e) => {
-        setInputCondicion(e.target.value);
+        setCondicion(e.target.value);
         localStorage.setItem('condicion', e.target.value)
     }
 
     const handlePresupuestoChange = (e) => {
-        setInputPresupuesto(e.target.value);
+        setPresupuesto(e.target.value);
         localStorage.setItem('presupuesto', e.target.value)
     }
     
@@ -194,12 +194,13 @@ export default function Perfil() {
         setGenero(localStorage.getItem('genero'));
         setEstatura(localStorage.getItem('estatura'));
         setPeso(localStorage.getItem('peso'));
-        setEdad(localStorage.getItem('edad'));
+        setNacimiento(localStorage.getItem('nacimiento'));
         setPais(localStorage.getItem('pais'));
         setCondicion(localStorage.getItem('condicion'));
         setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
         setPresupuesto(localStorage.getItem('presupuesto'));
         setPieHabil(localStorage.getItem('pieHabil'));
+        setImagenesGaleria(imagenesGaleria)
     }, []);
     
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -230,6 +231,39 @@ export default function Perfil() {
             };
         });
     };
+
+    const handleUpdate = () => {
+        fetch('http://localhost:5051/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                club: club,
+                nacimiento: nacimiento,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleria: imagenesGaleria
+            })
+        })
+        .then(data => {
+            console.log(data);
+            setEdicionActivada(false)
+        })
+    }
 
     /*
     const uploadImage = (imageBae64) => {
@@ -268,7 +302,7 @@ export default function Perfil() {
                     fotoPerfil: fotoPerfil,
                     nombre: nombre,
                     apellido: apellido,
-                    edad: edad,
+                    nacimiento: nacimiento,
                     nivelDeIngles: nivelDeIngles,
                     pieHabil: pieHabil,
                     posicion: posicion,
@@ -321,38 +355,6 @@ export default function Perfil() {
     }
 
     const [edicionActivada, setEdicionActivada] = useState(false);
-
-    const handleUpdate = () => {
-        fetch('http://localhost:5051/actualizarUsuario', {
-            method: 'post',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                fotoPerfil: fotoPerfil,
-                nombre: nombre,
-                apellido: apellido,
-                edad: edad,
-                nivelDeIngles: nivelDeIngles,
-                pieHabil: pieHabil,
-                posicion: posicion,
-                genero: genero,
-                estatura: estatura,
-                peso: peso,
-                categoria: categoria,
-                condicion: condicion,
-                presupuesto: presupuesto,
-                imagenesGaleria: imagenesGaleria
-            })
-        })
-        .then(data => {
-            console.log(data);
-            setEdicionActivada(false)
-        })
-    }
 
     return(
         <>
@@ -448,7 +450,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         PAIS <br />
                                         <strong>{ pais }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar país">
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar país" onChange={ handlePaisChange }>
                                             {paises.map((pais, index) => {
                                                 return (
                                                     <option key={index}>{ pais }</option>
@@ -465,7 +467,7 @@ export default function Perfil() {
                                         />
                                         */}
                                         <strong>{ club }</strong>
-                                        <Select className="campoDeEdicion" placeholder="Seleccionar club" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <Select className="campoDeEdicion" placeholder="Seleccionar club" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleClubChange }>
                                             {clubes.map((club, index) => {
                                                 return (
                                                     <option key={ index }>{ club }</option>
@@ -477,7 +479,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         PIE HÁBIL <br />
                                         <strong>{ pieHabil }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePieHabilChange }>
                                             <option>Izquierdo</option>
                                             <option>Derecho</option>
                                         </Select>
@@ -485,7 +487,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         POSICIÓN <br />
                                         <strong>{ posicion }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePosicionChange }>
                                             <option>Delantero</option>
                                             <option>Mediocampista</option>
                                             <option>Defensor</option>
@@ -496,7 +498,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         CATEGORÍA <br />
                                         <strong>{ categoria }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar categoría">
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar categoría" onChange={ handleCategoriaChange }>
                                             <option>Pro</option>
                                             <option>Semi-Pro</option>
                                             <option>Juvenil</option>
@@ -506,28 +508,30 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         ALTURA <br />
                                         <strong>{ estatura }</strong>
-                                        <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Ingresar estatura"/>
+                                        <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Ingresar estatura" onChange={ handleEstaturaChange } />
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         PESO <br />
                                         <strong>{ peso }</strong>
-                                        <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Ingresar peso"/>
+                                        <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder={ peso } onChange={ handlePesoChange } />
                                     </GridItem>
                                     <GridItem colSpan={1}>
-                                        EDAD <br />
-                                        <strong>{ edad }</strong>
+                                        Edad  <br />
+                                        <strong>{ nacimiento }</strong>
                                         <Input
                                             className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}
                                             placeholder="Select Date and Time"
                                             size="md"
                                             type="datetime-local"
+
+                                            onChange={ handleNacimientoChange }
                                         />
                                     </GridItem>
                                         
                                     <GridItem colSpan={1}>
                                         NIVEL DE INGLÉS <br />
                                         <strong>{ nivelDeIngles }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleNivelDeInglesChange }>
                                             <option>Bilingüe</option>
                                             <option>Avanzado</option>
                                             <option>Intermedio</option>
@@ -537,7 +541,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         CONDICIÓN <br />
                                         <strong>{ condicion }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Condición">
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Condición" onChange={ handleCondicionChange }>
                                             <option>Libre</option>
                                             <option>Con contrato</option>
                                         </Select>
@@ -545,7 +549,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         PRESUPUESTO <br />
                                         <strong>{ presupuesto }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Presupuesto">
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Presupuesto" onChange={ handlePresupuestoChange }>
                                             <option>0 - 5.000</option>
                                             <option>6.0000 - 10.000</option>
                                             <option>10.000 - 15.000</option>
