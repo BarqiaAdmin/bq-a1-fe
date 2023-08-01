@@ -2,8 +2,8 @@ import { Component, useEffect } from 'react';
 import React from 'react';
 
 import {
-    Box,
     AspectRatio,
+    Box,
     Flex,
     Container,
     Heading,
@@ -102,21 +102,87 @@ export default function Perfil() {
     const [certificaciones, setCertificaciones] = useState('');
     const [condicion, setCondicion] = useState('');
     const [presupuesto, setPresupuesto ] = useState('');
-    const [imagenGaleria1, setImagenGaleria1] = useState('');
-    const [imagenGaleria2, setImagenGaleria2] = useState('');
-    const [imagenGaleria3, setImagenGaleria3] = useState('');
+    const [imagenesGaleria, setImagenesGaleria] = useState([]);
 
-    const [videoGaleria1, setVideoGaleria1] = useState('');
-    const [videoGaleria2, setVideoGaleria2] = useState('');
-    const [videoGaleria3, setVideoGaleria3] = useState('');
+    const handleUrlDeImagenChange = (e) => {
+        setFotoPerfil(e.target.value);
+        localStorage.setItem('fotoPerfil', e.target.value);
+    }
 
-    const top = useBreakpointValue({ base: '90%', md: '50%' });
-    const side = useBreakpointValue({ base: '30%', md: '10px' });
+    const handleNombreChange = (e) => {
+        setInputNombre(e.target.value)
+        localStorage.setItem('nombre', e.target.value);
+    }
 
-    // These are the images used in the slide
-    const imagenesGaleria = [];
+    const handleApellidoChange = (e) => {
+        setInputApellido(e.target.value);
+        localStorage.setItem('apellido', e.target.value);
+    }
+
+    const handleFechaDeNacimiento = (e) => {
+        setInputNacimiento(e.target.value);
+        console.log(e.target.value);
+        localStorage.setItem('nacimiento', e.target.value);
+    }
+
+    const handleNacionalidadChange = (e) => {
+        setInputNacionalidad(e.target.value);
+        localStorage.setItem('nacionalidad', e.target.value);
+    }
+
+    const handleNivelDeInglesChange = (e) => {
+        setInputNivelDeIngles(e.target.value);
+        localStorage.setItem('nivelDeIngles', e.target.value);
+    }
+
+    const handlePieHabilChange = (e) => {
+        setInputPieHabil(e.target.value);
+        localStorage.setItem('pieHabil', e.target.value);
+    }
+
+    const handlePosicionChange = (e) => {
+        setInputPosicion(e.target.value);
+        localStorage.setItem('posicion', e.target.value);
+    }
+
+    const handleGeneroChange = (e) => {
+        setInputGenero(e.target.value);
+        localStorage.setItem('genero', e.target.value);
+    }
+
+    const handleEstaturaChange = (e) => {
+        setInputEstatura(e.target.value);
+        localStorage.setItem('estatura', e.target.value);
+    }
+
+    const handlePesoChange = (e) => {
+        setInputPeso(e.target.value);
+        localStorage.setItem('peso', e.target.value);
+    }
+
+    const handleClubChange = (e) => {
+        setInputClub(e.target.value);
+        localStorage.setItem('club', e.target.value);
+    }
+
+    const handleCategoriaChange = (e) => {
+        setInputCategoria(e.target.value);
+        localStorage.setItem('categoria', e.target.value);
+    }
+
+    const handleCondicionChange = (e) => {
+        setInputCondicion(e.target.value);
+        localStorage.setItem('condicion', e.target.value)
+    }
+
+    const handlePresupuestoChange = (e) => {
+        setInputPresupuesto(e.target.value);
+        localStorage.setItem('presupuesto', e.target.value)
+    }
     
     useEffect(() => {
+        localStorage.setItem('chakra-ui-color-mode', 'dark');
+
         setEmail(localStorage.getItem('email'))
         setPassword(localStorage.getItem('password'));
         setFotoPerfil(localStorage.getItem('fotoPerfil'));
@@ -134,21 +200,23 @@ export default function Perfil() {
         setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
         setPresupuesto(localStorage.getItem('presupuesto'));
         setPieHabil(localStorage.getItem('pieHabil'));
-
-        localStorage.setItem('chakra-ui-color-mode', 'dark');
-
-        setImagenGaleria1(localStorage.getItem('imagenGaleria1'))
-        setImagenGaleria2(localStorage.getItem('imagenGaleria2'))
-        setImagenGaleria3(localStorage.getItem('imagenGaleria3'))
-
-        setVideoGaleria1(localStorage.getItem('videoGaleria1'))
-        setVideoGaleria2(localStorage.getItem('videoGaleria2'))
-        setVideoGaleria3(localStorage.getItem('videoGaleria3'))  
     }, []);
     
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
     const cancelRef = React.useRef()
+
+    const handleShare = () => {
+        let shareLink = 'http://localhost:3000/Usuario/' + email
+        navigator.clipboard.writeText(shareLink);
+        toast({
+            title: 'Enlace copiado al portapapeles',
+            description: "Ya puedes compartir tu perfil",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+        })
+    }
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -163,6 +231,7 @@ export default function Perfil() {
         });
     };
 
+    /*
     const uploadImage = (imageBae64) => {
         console.log(imageBae64)
         fetch('http://localhost:5051/subirImagen', {
@@ -177,20 +246,83 @@ export default function Perfil() {
             })
         })
     }
+    */
 
-    const handleFileUpload = async (e) => {
-        console.log('Subiendo imagen...');
-        console.log('------------------');
-        console.log('Archivo de imagen:')
-        const imagen = e.target.files[0];
-        console.log(imagen);
-        let imagenBase64 = convertToBase64(imagen);
-        console.log('Blob de imagen:');
-        console.log(imagenBase64)
-        imagenesGaleria.push(imagenBase64);
-        console.log('Array de imagenes:')
-        console.log(imagenesGaleria)
-        console.log('*Llamada al Back end*');
+    const handleFileUpload = (e) => {
+        const file = e.target.files[0];
+        let base64 = '';
+        convertToBase64(file).then(data => {
+            console.log(data)
+            base64 = data.toString();
+            setImagenesGaleria([...imagenesGaleria, base64])
+            localStorage.setItem('imagenesGaleria', imagenesGaleria.toString());
+            fetch('http://localhost:5051/actualizarUsuario', {
+                method: 'post',
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                    fotoPerfil: fotoPerfil,
+                    nombre: nombre,
+                    apellido: apellido,
+                    edad: edad,
+                    nivelDeIngles: nivelDeIngles,
+                    pieHabil: pieHabil,
+                    posicion: posicion,
+                    genero: genero,
+                    estatura: estatura,
+                    peso: peso,
+                    categoria: categoria,
+                    condicion: condicion,
+                    presupuesto: presupuesto,
+                    imagenesGaleria: imagenesGaleria
+                })
+            })
+            .then(data => {
+                console.log(data);
+            })
+        })
+        
+        /*
+        const file = e.target.files[0];
+        let base64 = await convertToBase64(file);
+        if (localStorage.getItem('imagenesGaleria1') == '') {
+            localStorage.setItem('imagenesGaleria1', base64.toString());
+            setImagenesGaleria1(base64.toString());
+            uploadImage(base64.toString())
+        } else if (localStorage.getItem('imagenesGaleria2') == '') {
+            localStorage.setItem('imagenesGaleria2', base64.toString());
+            setImagenesGaleria2(base64.toString());
+        } else if (localStorage.getItem('imagenesGaleria3') == '') {
+            localStorage.setItem('imagenesGaleria3', base64.toString());
+            setImagenesGaleria3(base64.toString());
+        }
+        */
+    };
+
+    const handleVideoUpload = (e) => {
+        /*
+        let ytUrl = e.target.value
+        ytUrl = ytUrl.replace('/watch?v=', '/embed/')
+        if (localStorage.getItem('videoGaleria1') == '') {
+            localStorage.setItem('videoGaleria1', ytUrl);
+            setVideoGaleria1(ytUrl);
+        } else if (localStorage.getItem('videoGaleria2') == '') {
+            localStorage.setItem('videoGaleria2', ytUrl);
+            setVideoGaleria2(ytUrl);
+        } else if (localStorage.getItem('videoGaleria3') == '') {
+            localStorage.setItem('videoGaleria3', ytUrl);
+            setVideoGaleria3(ytUrl);
+        }}
+        */
+    }
+
+    const [edicionActivada, setEdicionActivada] = useState(false);
+
+    const handleUpdate = () => {
         fetch('http://localhost:5051/actualizarUsuario', {
             method: 'post',
             headers: {
@@ -218,51 +350,7 @@ export default function Perfil() {
         })
         .then(data => {
             console.log(data);
-        })
-        
-        /*
-        const file = e.target.files[0];
-        let base64 = await convertToBase64(file);
-        if (localStorage.getItem('imagenGaleria1') == '') {
-            localStorage.setItem('imagenGaleria1', base64.toString());
-            setImagenGaleria1(base64.toString());
-            uploadImage(base64.toString())
-        } else if (localStorage.getItem('imagenGaleria2') == '') {
-            localStorage.setItem('imagenGaleria2', base64.toString());
-            setImagenGaleria2(base64.toString());
-        } else if (localStorage.getItem('imagenGaleria3') == '') {
-            localStorage.setItem('imagenGaleria3', base64.toString());
-            setImagenGaleria3(base64.toString());
-        }
-        */
-    };
-
-    const handleVideoUpload = (e) => {
-        let ytUrl = e.target.value
-        ytUrl = ytUrl.replace('/watch?v=', '/embed/')
-        if (localStorage.getItem('videoGaleria1') == '') {
-            localStorage.setItem('videoGaleria1', ytUrl);
-            setVideoGaleria1(ytUrl);
-        } else if (localStorage.getItem('videoGaleria2') == '') {
-            localStorage.setItem('videoGaleria2', ytUrl);
-            setVideoGaleria2(ytUrl);
-        } else if (localStorage.getItem('videoGaleria3') == '') {
-            localStorage.setItem('videoGaleria3', ytUrl);
-            setVideoGaleria3(ytUrl);
-        }
-    }
-
-    const [edicionActivada, setEdicionActivada] = useState(false);
-
-    const handleShare = () => {
-        let shareLink = 'http://localhost:3000/Usuario/' + email
-        navigator.clipboard.writeText(shareLink);
-        toast({
-            title: 'Enlace copiado al portapapeles',
-            description: "Ya puedes compartir tu perfil",
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
+            setEdicionActivada(false)
         })
     }
 
@@ -308,6 +396,7 @@ export default function Perfil() {
                                             src={ fotoPerfil }
                                             height='180px'
                                             width='180px'
+                                            objectFit='cover'
                                         />
                                         <Heading>{ nombre } { apellido }</Heading>
                                         <HStack gap="5px">
@@ -468,7 +557,7 @@ export default function Perfil() {
                                         <Button style={ !edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
                                         <Button color="white"
                                                 background="#144077"
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Guardar&nbsp;<CheckIcon /></Button>&nbsp; &nbsp;
+                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>&nbsp; &nbsp;
                                         <Button style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
                                     </GridItem>
                                     <GridItem colSpan={4}>
@@ -580,9 +669,11 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <HStack width='full'>
-                                                <Image h='330px' src={imagenGaleria1} alt=''/>
-                                                <Image h='330px' src={imagenGaleria2} alt=''/>
-                                                <Image h='330px' src={imagenGaleria3} alt=''/>
+                                                {/**
+                                                <Image h='330px' src={imagenesGaleria1} alt=''/>
+                                                <Image h='330px' src={imagenesGaleria2} alt=''/>
+                                                <Image h='330px' src={imagenesGaleria3} alt=''/>
+                                                 */}
                                             </HStack>
                                         </TabPanel>
                                         <TabPanel>
@@ -620,15 +711,17 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
+                                            {/**
                                             <iframe width="853" height="480" src={ videoGaleria1 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                             <iframe width="853" height="480" src={ videoGaleria2 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                             <iframe width="853" height="480" src={ videoGaleria3 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                                             */}
                                         </TabPanel>
                                     </TabPanels>
                                 </Tabs>
                             </Box>
                             <VStack>
-                                {/**
+                                {/**    
                                 <HStack>
                                     <Image alt='' 
                                         id="foto1"

@@ -86,7 +86,7 @@ const LogIn = () => {
         .then(response => {
             console.log(response)
             localStorage.setItem('email', response.email),
-            localStorage.setItem('password', response.password),
+            localStorage.setItem('password', password),
             localStorage.setItem('nombre', response.nombre),
             localStorage.setItem('apellido', response.apellido),
             localStorage.setItem('fotoPerfil', response.fotoPerfil),

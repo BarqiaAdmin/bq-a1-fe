@@ -55,7 +55,7 @@ const NavBar = (props) => {
         localStorage.setItem('categoria', '');
         localStorage.setItem('condicion', '');
         localStorage.setItem('presupuesto', '');
-
+        localStorage.setItem('imagenesGaleria', '');
         localStorage.setItem('imagenGaleria1', '');
         localStorage.setItem('imagenGaleria2', '');
         localStorage.setItem('imagenGaleria3', '');
@@ -65,8 +65,7 @@ const NavBar = (props) => {
 
         Router.push({
             pathname: '/Sesion/LogIn'
-        })  
-        
+        })
     }
 
     return (
@@ -109,6 +108,8 @@ const NavBar = (props) => {
                     marginRight="20px"
 
                     src={ fotoPerfil }
+
+                    objectFit='cover'
                 />
 
                 <Button marginRight="25px" onClick={cerrarSesion}>
