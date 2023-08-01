@@ -28,7 +28,14 @@ import {
     Heading,
 } from '@chakra-ui/react';
 
-import clubes from '../../../db/clubes';
+import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
+
+import clubesAFA from '../../../db/clubesAFA';;
+import clubesLIGAESCOBARENSE from '../../../db/clubesLIGAESCOBARENSE';
+import clubesAIFA from '../../../db/clubesAIFA';
+import clubesAFABNACIONAL from '../../../db/clubesAFABNACIONAL';
+import clubesBMETRO from '../../../db/clubesBMETRO';
+
 import paises from '../../../db/paises';
 
 import { useState, useEffect } from 'react';
@@ -36,6 +43,7 @@ import { useState, useEffect } from 'react';
 import Router from 'next/router';
 
 import { useFileUpload } from 'use-file-upload';
+import NuevoEquipo from './NuevoEquipo';
 
 function NuevoJugador() {
 
@@ -47,6 +55,7 @@ function NuevoJugador() {
     const [inputNombre, setInputNombre] = useState('');
     const [inputApellido, setInputApellido] = useState('');
     const [inputFechaDeNacimiento, setInputFechaDeNacimiento] = useState('');
+    const [edad, setEdad] = useState('');
     const [inputNacimiento, setInputNacimiento] = useState('');
     const [inputNacionalidad, setInputNacionalidad] = useState('');
     const [inputNivelDeIngles, setInputNivelDeIngles] = useState('');
@@ -60,6 +69,8 @@ function NuevoJugador() {
     const [inputCondicion, setInputCondicion] = useState('');
     const [inputPresupuesto, setInputPresupuesto] = useState('');
 
+    let [inputCustom, setInputCustom] = useState(false);
+
     const subirImagen = () => {
         /*
         selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
@@ -71,8 +82,8 @@ function NuevoJugador() {
             const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
             elementoBotonDeSubirImagen.remove();
         })}*/
-    }
-    
+    }    
+
     const handleUrlDeImagenChange = (e) => {
         setFotoPerfil(e.target.value);
         localStorage.setItem('fotoPerfil', e.target.value);
@@ -88,10 +99,29 @@ function NuevoJugador() {
         localStorage.setItem('apellido', e.target.value);
     }
 
-    const handleFechaDeNacimiento = (e) => {
-        setInputNacimiento(e.target.value);
-        console.log(e.target.value);
-        localStorage.setItem('nacimiento', e.target.value);
+    const age = (dateString) => {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    const handleNacimientoChange = (e) => {
+        let nacimiento = e.target.value
+        console.log('Fecha de nacimiento: ' + nacimiento);
+        console.log('Calculando edad...')
+        let edad = age(e.target.value).toString();
+        console.log(edad);
+        
+        setEdad(edad);
+        setInputNacimiento(nacimiento);
+        
+        localStorage.setItem('nacimiento', nacimiento);
+        localStorage.setItem('edad', edad);
     }
 
     const handleNacionalidadChange = (e) => {
@@ -311,19 +341,15 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNacimiento}>
-                                    <FormLabel>FechaDeNacimiento</FormLabel>
-                                    <Input
-                                        placeholder="Select Date and Time"
-                                        size="md"
-                                        type="datetime-local"
-                                        onChange={handleFechaDeNacimiento}
-                                    />
+                                    <FormLabel>Fecha de Nacimiento</FormLabel>
+                                    <input type='date' onChange={ handleNacimientoChange }/>
                                     {/**
                                     <Input placeholder="Ingresar FechaDeNacimiento"/>
                                      */}
                                     {!isErrorNacimiento ? (
                                         <FormHelperText>
-                                            Ingresa tu fecha de nacimiento
+                                            Ingresa tu fecha de nacimiento <br />
+                                            Tu edad: <Text fontWeight='bold' display='inline-block'>{ edad }</Text>
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -451,16 +477,47 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={6}>
+                            <GridItem colSpan={12}>
                                 <FormControl isRequired isInvalid={isErrorClub}>
                                     <FormLabel>Club</FormLabel>
-                                    <Select placeholder="Seleccionar club" onChange={handleClubChange}>
-                                        {clubes.map((club, index) => {
-                                            return (
-                                                <option key={ index }>{ club }</option>
-                                            )
-                                        })}
-                                    </Select>
+                                    <HStack>
+                                        <Select placeholder="AFA" onChange={ handleClubChange }>
+                                            {clubesAFA.map((club, index) => {
+                                                return (
+                                                    <option key={ index }>{ club }</option>
+                                                )
+                                            })}
+                                        </Select>
+                                        <Select placeholder="AFA B NACIONAL" onChange={ handleClubChange }>
+                                            {clubesAFABNACIONAL.map((club, index) => {
+                                                return (
+                                                    <option key={ index }>{ club }</option>
+                                                )
+                                            })}
+                                        </Select>
+                                        <Select placeholder="B METRO" onChange={ handleClubChange }>
+                                            {clubesBMETRO.map((club, index) => {
+                                                return (
+                                                    <option key={ index }>{ club }</option>
+                                                )
+                                            })}
+                                        </Select>
+                                        <Select placeholder="LIGA ESCOBARENSE" onChange={ handleClubChange }>
+                                            {clubesLIGAESCOBARENSE.map((club, index) => {
+                                                return (
+                                                    <option key={ index }>{ club }</option>
+                                                )
+                                            })}
+                                        </Select>
+                                        <Select placeholder='AIFA' onChange={ handleClubChange }>
+                                            {clubesAIFA.map((club, index) => {
+                                                return (
+                                                    <option key={ index }>{ club }</option>
+                                                )
+                                            })}
+                                        </Select>
+                                    </HStack>
+                                    {/**
                                     {!isErrorClub ? (
                                         <FormHelperText>
                                             Selecciona tu club
@@ -468,7 +525,14 @@ function NuevoJugador() {
                                         ) : (
                                             <FormErrorMessage>Campo obligatorio</FormErrorMessage>
                                     )}
+                                     */}
                                 </FormControl>
+                                <HStack marginTop='20px'>
+                                    <Button onClick={() => setInputCustom(!inputCustom)}>OTRO</Button>
+                                    <Button onClick={() => setInputCustom(false)} style={ inputCustom ? { display: 'block' } : { display: 'none' } }><CloseIcon></CloseIcon></Button>
+                                    <Input style={ inputCustom ? { display: 'block' } : { display: 'none' } } type="text" placeholder="Ingresa el nombre del club al que perteneces" />
+                                    <Button style={ (inputCustom ? { display: 'block' } : { display: 'none' }) }><CheckIcon></CheckIcon></Button>
+                                </HStack>
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorCategoria}>
@@ -490,10 +554,18 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl>
-                                    <Select placeholder="Condición" onChange={handleCondicionChange}>
+                                    <FormLabel>Condición</FormLabel>
+                                    <Select placeholder="Seleccionar categoría" onChange={handleCategoriaChange}>
                                         <option>Libre</option>
                                         <option>Con contrato</option>
                                     </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Selecciona tu condición contractual
+                                        </FormHelperText>
+                                        ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
@@ -505,6 +577,13 @@ function NuevoJugador() {
                                         <option>16.000 - 20.000</option>
                                         <option>Más de 20.000</option>
                                     </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Selecciona tu presupuesto
+                                        </FormHelperText>
+                                        ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={12}>

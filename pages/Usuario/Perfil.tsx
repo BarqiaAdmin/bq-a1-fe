@@ -60,7 +60,7 @@ import Router from 'next/router';
 import { useDisclosure, useToast } from '@chakra-ui/react'
 import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
-import clubes from '../../db/clubes';
+import clubes from '../../db/clubesAFA';
 import paises from '../../db/paises';
 
 
@@ -89,6 +89,7 @@ export default function Perfil() {
     const [fotoPerfil, setFotoPerfil] = useState('');
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
+    const [edad, setEdad] = useState('');
     const [club, setClub] = useState('');
     const [pais, setPais] = useState('');
     const [posicion, setPosicion] = useState(''); 
@@ -188,6 +189,7 @@ export default function Perfil() {
         setFotoPerfil(localStorage.getItem('fotoPerfil'));
         setNombre(localStorage.getItem('nombre'))
         setApellido(localStorage.getItem('apellido'))
+        setEdad(localStorage.getItem('edad'));
         setClub(localStorage.getItem('club'))
         setPosicion(localStorage.getItem('posicion'));
         setCategoria(localStorage.getItem('categoria'));
@@ -506,7 +508,7 @@ export default function Perfil() {
                                         </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
-                                        ALTURA <br />
+                                        ESTATURA <br />
                                         <strong>{ estatura }</strong>
                                         <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Ingresar estatura" onChange={ handleEstaturaChange } />
                                     </GridItem>
@@ -517,17 +519,12 @@ export default function Perfil() {
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         Edad  <br />
-                                        <strong>{ nacimiento }</strong>
-                                        <Input
-                                            className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }}
-                                            placeholder="Select Date and Time"
-                                            size="md"
-                                            type="datetime-local"
-
-                                            onChange={ handleNacimientoChange }
-                                        />
+                                        <strong>{ edad }</strong>
+                                        <VStack style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <input type='date' onChange={ handleNacimientoChange } />
+                                            <Text fontWeight='bold' display='inline-block'>Tu edad: { }</Text>
+                                        </VStack>
                                     </GridItem>
-                                        
                                     <GridItem colSpan={1}>
                                         NIVEL DE INGLÉS <br />
                                         <strong>{ nivelDeIngles }</strong>

@@ -60,7 +60,7 @@ import Router from 'next/router';
 import { useDisclosure, useToast } from '@chakra-ui/react'
 import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
-import clubes from '../../db/clubes';
+import clubes from '../../db/clubesAFA';
 import paises from '../../db/paises';
 
 

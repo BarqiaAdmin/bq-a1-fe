@@ -1,0 +1,32 @@
+const clubesAFA = [
+    'Argentinos',
+    'Arsenal',
+    'Atlético Tucumán',
+    'Banfield',
+    'Barracas Central',
+    'Belgrano',
+    'Boca',
+    'Central Córdoba',
+    'Colón',
+    'Defensa y Justicia',
+    'Estudiantes',
+    'Gimnasia',
+    'Godoy Cruz',
+    'Huracán',
+    'Independiente',
+    'Instituto',
+    'Lanús',
+    "Newell’s",
+    'Platense',
+    'Racing',
+    'River',
+    'Rosario Central',
+    'San Lorenzo',
+    'Sarmiento',
+    'Talleres',
+    'Tigre',
+    'Unión',
+
+]
+
+export default clubesAFA;
