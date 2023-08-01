@@ -195,31 +195,30 @@ class NuevoJugador2 extends Component {
             console.log('Deseleccionando atributo')
         }
         
-
         switch (IdAtributo) {
             case 1:
-                localStorage.setItem("Pases", "true");
+                localStorage.setItem("pases", "true");
                 break;
             case 2:
-                localStorage.setItem("Tiros", "true");
+                localStorage.setItem("tiros", "true");
                 break;
             case 3:
-                localStorage.setItem('Resistencia', 'true');
+                localStorage.setItem('resistencia', 'true');
                 break;
             case 4:
-                localStorage.setItem('Visión de juego', 'true');
+                localStorage.setItem('visionDelJuego', 'true');
                 break;
             case 5:
-                localStorage.setItem('1vs1', 'true');
+                localStorage.setItem('unoVsUno', 'true');
                 break;
             case 6:
-                localStorage.setItem('Tiros libres', 'true');
+                localStorage.setItem('tirosLibres', 'true');
                 break;
             case 7:
-                localStorage.setItem('Marca', 'true');
+                localStorage.setItem('marca', 'true');
                 break;
             case 8:
-                localStorage.setItem('Juego aéreo', 'true');
+                localStorage.setItem('juegoAereo', 'true');
                 break;
         }
     }

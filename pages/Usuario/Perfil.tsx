@@ -358,6 +358,20 @@ export default function Perfil() {
 
     const [edicionActivada, setEdicionActivada] = useState(false);
 
+    const [pases, setPases] = useState (false);
+    const [tiros, setTiros] = useState (false);
+    const [resistencia, setResistencia] = useState (false);
+    const [visionDeJuego, setVisionDeJuego] = useState (false);
+    const [unoVsUno, setUnoVsUno] = useState (false);
+    const [tirosLibres, setTirosLibres] = useState (false);
+    const [marca, setMarca] = useState (false);
+    const [juegoAereo, setJuegoAereo] = useState (false);
+
+
+
+
+
+
     return(
         <>
         <Box>
@@ -594,17 +608,17 @@ export default function Perfil() {
                                             ATRIBUTOS
                                         </Heading>
                                         <HStack display='inline-block' marginBottom='15px'>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 1)}  className="btn2">Pases</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 2)}  className="btn2">Tiros</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 3)}  className="btn2">Resistencia</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 4)}  className="btn2">Visión de juego</Button>
+                                            <Button style={ localStorage.getItem('pases') ? { display: 'inline-block '} : { display: 'none' }} className="btn2">Pases</Button>
+                                            <Button style={ localStorage.getItem('tiros') ? { display: 'inline-block '} : { display: 'none' }} className="btn2">Tiros</Button>
+                                            <Button style={ localStorage.getItem('resistencia') ? { display: 'inline-block '} : { display: 'none' }} className="btn2">Resistencia</Button>
+                                            <Button style={ localStorage.getItem('visionDelJuego') ? { display: 'inline-block '} : { display: 'none' }} className="btn2">Visión de juego</Button>
                                         </HStack>
                                         <br />
                                         <HStack gap='12px' display='inline-block' marginBottom='15px'>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 5)}  className="btn2">1vs1</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 6)}  className="btn2">Tiros libres</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 7)}  className="btn2">Marca</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 8)}  className="btn2">Juego aéreo</Button>
+                                            <Button style={ localStorage.getItem('unoVsUno') ? { display: 'inline-block' } : { display: 'none' }} className="btn2">1vs1</Button>
+                                            <Button style={ localStorage.getItem('tirosLibres') ? { display: 'inline-block' } : { display: 'none' }} className="btn2">Tiros libres</Button>
+                                            <Button style={ localStorage.getItem('marca') ? { display: 'inline-block' } : { display: 'none' }} className="btn2">Marca</Button>
+                                            <Button style={ localStorage.getItem('juegoAereo') ? { display: 'inline-block' } : { display: 'none' }} className="btn2">Juego aéreo</Button>
                                         </HStack>
                                     </GridItem>
                                 </SimpleGrid>
