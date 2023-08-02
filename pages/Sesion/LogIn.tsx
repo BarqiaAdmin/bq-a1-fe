@@ -71,7 +71,7 @@ const LogIn = () => {
             window.alert('No se ha ingresado una contraseña');
         }
 
-        await fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        await fetch('http://localhost:5051/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -83,36 +83,35 @@ const LogIn = () => {
             })
         })
         .then((response) => response.json())
-        .then(response => {
+        .then((response) => {
             console.log(response)
-            localStorage.setItem('email', '');
-            localStorage.setItem('fotoPerfil', '')
-            localStorage.setItem('logInPassword', '');
-            localStorage.setItem('fotoPerfil', '');
-            localStorage.setItem('nombre', '');
-            localStorage.setItem('apellido', '');
-            localStorage.setItem('urlDeImagen', '');
-            localStorage.setItem('edad', '');
-            localStorage.setItem('pais', '');
-            localStorage.setItem('nivelDeIngles', '');
-            localStorage.setItem('pieHabil', '');
-            localStorage.setItem('posicion', '');
-            localStorage.setItem('genero', '');
-            localStorage.setItem('estatura', '');
-            localStorage.setItem('peso', '');
-            localStorage.setItem('club', '');
-            localStorage.setItem('categoria', '');
-            localStorage.setItem('condicion', '');
-            localStorage.setItem('presupuesto', '');
-            localStorage.setItem('imagenesGaleria', '');
-            localStorage.setItem('pases', 'false')
-            localStorage.setItem('tiros', 'false')
-            localStorage.setItem('resistencia', 'false')
-            localStorage.setItem('visionDeJuego', 'false')
-            localStorage.setItem('unoVsUno', 'false')
-            localStorage.setItem('tirosLibres', 'false')
-            localStorage.setItem('marca', 'false')
-            localStorage.setItem('juegoAereo', 'false')
+            localStorage.setItem('email', response.email);
+            localStorage.setItem('password', response.password);
+            localStorage.setItem('fotoPerfil', response.fotoPerfil);
+            localStorage.setItem('nombre', response.nombre);
+            localStorage.setItem('apellido', response.apellido);
+            localStorage.setItem('urlDeImagen', response.urlDeImagen);
+            localStorage.setItem('edad', response.edad);
+            localStorage.setItem('pais', response.pais);
+            localStorage.setItem('nivelDeIngles', response.nivelDeIngles);
+            localStorage.setItem('pieHabil', response.pieHabil);
+            localStorage.setItem('posicion', response.posicion);
+            localStorage.setItem('genero', response.genero);
+            localStorage.setItem('estatura', response.estatura);
+            localStorage.setItem('peso', response.peso);
+            localStorage.setItem('club', response.club);
+            localStorage.setItem('categoria', response.categoria);
+            localStorage.setItem('condicion', response.condicion);
+            localStorage.setItem('presupuesto', response.presupuesto);
+            localStorage.setItem('imagenesGaleria', response.imagenesGaleria);
+            localStorage.setItem('pases', response.pases)
+            localStorage.setItem('tiros', response.tiros)
+            localStorage.setItem('resistencia', response.resistencia)
+            localStorage.setItem('visionDeJuego', response.visionDeJuego)
+            localStorage.setItem('unoVsUno', response.unoVsUno)
+            localStorage.setItem('tirosLibres', response.tirosLibres)
+            localStorage.setItem('marca', response.marca)
+            localStorage.setItem('juegoAereo', response.juegoAereo)
         })
         
         Router.push({
@@ -130,7 +129,7 @@ const LogIn = () => {
     const iniciarSesion = () => {
         axios({
             method: 'post',
-            url: 'https://bq-a1-be.vercel.app//leerUsuario',
+            url: 'http://localhost:5051//leerUsuario',
             data: {
                 email: localStorage.getItem('email'),
                 password: localStorage.getItem('logInPassword'),
@@ -144,16 +143,7 @@ const LogIn = () => {
 
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
-
-        localStorage.setItem('pases', 'false')
-        localStorage.setItem('tiros', 'false')
-        localStorage.setItem('resistencia', 'false')
-        localStorage.setItem('visionDeJuego', 'false')
-        localStorage.setItem('unoVsUno', 'false')
-        localStorage.setItem('tirosLibres', 'false')
-        localStorage.setItem('marca', 'false')
-        localStorage.setItem('juegoAereo', 'false')
-})
+    })
 
     return (
         <Container

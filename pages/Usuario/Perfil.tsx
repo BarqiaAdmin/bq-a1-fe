@@ -103,6 +103,14 @@ export default function Perfil() {
     const [certificaciones, setCertificaciones] = useState('');
     const [condicion, setCondicion] = useState('');
     const [presupuesto, setPresupuesto ] = useState('');
+    const [pases, setPases] = useState(false);
+    const [tiros, setTiros] = useState(false);
+    const [resistencia, setResistencia] = useState(false);
+    const [visionDeJuego, setVisionDeJuego] = useState(false);
+    const [unoVsUno, setUnoVsUno] = useState(false);
+    const [tirosLibres, setTirosLibres] = useState(false);
+    const [marca, setMarca] = useState(false);
+    const [juegoAereo, setJuegoAereo] = useState(false);
     const [imagenesGaleria, setImagenesGaleria] = useState([]);
 
     const handleUrlDeImagenChange = (e) => {
@@ -256,6 +264,7 @@ export default function Perfil() {
                 nombre: nombre,
                 apellido: apellido,
                 club: club,
+                pais: pais,
                 nacimiento: nacimiento,
                 nivelDeIngles: nivelDeIngles,
                 pieHabil: pieHabil,
@@ -266,7 +275,15 @@ export default function Perfil() {
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
-                imagenesGaleria: imagenesGaleria
+                imagenesGaleria: imagenesGaleria,
+                pases: pases,
+                tiros: tiros,
+                resistencia: resistencia,
+                visionDeJuego: visionDeJuego,
+                unoVsUno: unoVsUno,
+                tirosLibres: tirosLibres,
+                marca: marca,
+                juegoAereo: juegoAereo,
             })
         })
         .then(data => {
@@ -373,19 +390,6 @@ export default function Perfil() {
     }
 
     const [edicionActivada, setEdicionActivada] = useState(false);
-
-    const [pases, setPases] = useState (false);
-    const [tiros, setTiros] = useState (false);
-    const [resistencia, setResistencia] = useState (false);
-    const [visionDeJuego, setVisionDeJuego] = useState (false);
-    const [unoVsUno, setUnoVsUno] = useState (false);
-    const [tirosLibres, setTirosLibres] = useState (false);
-    const [marca, setMarca] = useState (false);
-    const [juegoAereo, setJuegoAereo] = useState (false);
-
-
-
-
 
 
     return(

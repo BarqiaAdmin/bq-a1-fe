@@ -39,7 +39,7 @@ class NuevoJugador2 extends Component {
         this.elegirAtributo = this.elegirAtributo.bind(this);
     }
 
-    
+
 
     /**
     Router = useRouter();
@@ -55,7 +55,7 @@ class NuevoJugador2 extends Component {
     */
 
     crearUsuario = () => {
-        fetch('https://bq-a1-be.vercel.app/crearUsuario', {
+        fetch('http://localhost:5051/crearUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -69,7 +69,7 @@ class NuevoJugador2 extends Component {
                 apellido: localStorage.getItem('apellido'),
                 urlDeImagen: localStorage.getItem('urlDeImagen'),
                 edad: localStorage.getItem('edad'),
-                nacionalidad: localStorage.getItem('nacionalidad'),
+                pais: localStorage.getItem('pais'),
                 nivelDeIngles: localStorage.getItem('nivelDeIngles'),
                 certificaciones: [],
                 social: {
@@ -87,6 +87,7 @@ class NuevoJugador2 extends Component {
                 condicion: localStorage.getItem('condicion'),
                 presupuesto: localStorage.getItem('presupuesto'),
                 clubesPrevios: [],
+                imagenesGaleria: localStorage.getItem('imagenesGaleria'),
                 pases: localStorage.getItem('pases'),
                 tiros: localStorage.getItem('tiros'),
                 resistencia: localStorage.getItem('resistencia'),

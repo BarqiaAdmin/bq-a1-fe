@@ -57,7 +57,7 @@ function NuevoJugador() {
     const [inputFechaDeNacimiento, setInputFechaDeNacimiento] = useState('');
     const [edad, setEdad] = useState('');
     const [inputNacimiento, setInputNacimiento] = useState('');
-    const [inputNacionalidad, setInputNacionalidad] = useState('');
+    const [inputPais, setInputPais] = useState('');
     const [inputNivelDeIngles, setInputNivelDeIngles] = useState('');
     const [inputPieHabil, setInputPieHabil] = useState('');
     const [inputPosicion, setInputPosicion] = useState('');
@@ -124,9 +124,9 @@ function NuevoJugador() {
         localStorage.setItem('edad', edad);
     }
 
-    const handleNacionalidadChange = (e) => {
-        setInputNacionalidad(e.target.value);
-        localStorage.setItem('nacionalidad', e.target.value);
+    const handlePaisChange = (e) => {
+        setInputPais(e.target.value);
+        localStorage.setItem('pais', e.target.value);
     }
 
     const handleNivelDeInglesChange = (e) => {
@@ -182,7 +182,7 @@ function NuevoJugador() {
     const isErrorNombre = false;
     const isErrorApellido = false;
     const isErrorNacimiento = false;
-    const isErrorNacionalidad = false;
+    const isErrorPais = false;
     const isErrorPieHabil = false;
     const isErrorPosicion = false;
     const isErrorGenero = false;
@@ -349,7 +349,7 @@ function NuevoJugador() {
                                     {!isErrorNacimiento ? (
                                         <FormHelperText>
                                             Ingresa tu fecha de nacimiento <br />
-                                            Tu edad: <Text fontWeight='bold' display='inline-block'>{ edad }</Text>
+                                            Tu edad: <Text fontWeight='bold' display='inline-block'>{ edad  }</Text>
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -358,18 +358,18 @@ function NuevoJugador() {
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
-                                <FormControl isRequired isInvalid={isErrorNacionalidad}>
-                                    <FormLabel>Nacionalidad</FormLabel>
-                                    <Select placeholder="Seleccionar país" onChange={handleNacionalidadChange}>
+                                <FormControl isRequired isInvalid={isErrorPais}>
+                                    <FormLabel>Pais</FormLabel>
+                                    <Select placeholder="Seleccionar país" onChange={handlePaisChange}>
                                         {paises.map((pais, index) => {
                                             return (
                                                 <option key={index}>{ pais }</option>
                                             )
                                         })}
                                     </Select>
-                                    {!isErrorNacionalidad ? (
+                                    {!isErrorPais ? (
                                         <FormHelperText>
-                                            Selecciona tu nacionalidad
+                                            Selecciona tu pais
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
