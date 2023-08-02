@@ -202,6 +202,14 @@ export default function Perfil() {
         setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
         setPresupuesto(localStorage.getItem('presupuesto'));
         setPieHabil(localStorage.getItem('pieHabil'));
+        setPases((localStorage.getItem('pases') === 'true'))
+        setTiros((localStorage.getItem('tiros') === 'true'))
+        setResistencia((localStorage.getItem('resistencia') === 'true'))
+        setVisionDeJuego((localStorage.getItem('visionDeJuego') === 'true'))
+        setUnoVsUno((localStorage.getItem('unoVsUno') === 'true'))
+        setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
+        setMarca((localStorage.getItem('marca') === 'true' ))
+        setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
         setImagenesGaleria(imagenesGaleria)
     }, []);
     
@@ -284,10 +292,10 @@ export default function Perfil() {
     }
     */
 
-    const handleFileUpload = (e) => {
+    const handleFileUpload = async (e) => {
         const file = e.target.files[0];
         let base64 = '';
-        convertToBase64(file).then(data => {
+        await convertToBase64(file).then(data => {
             console.log(data)
             base64 = data.toString();
             setImagenesGaleria([...imagenesGaleria, base64])
@@ -314,7 +322,15 @@ export default function Perfil() {
                     categoria: categoria,
                     condicion: condicion,
                     presupuesto: presupuesto,
-                    imagenesGaleria: imagenesGaleria
+                    imagenesGaleria: imagenesGaleria,
+                    pases: pases,
+                    tiros: tiros,
+                    resistencia: resistencia,
+                    visionDeJuego: visionDeJuego,
+                    unoVsUno: unoVsUno,
+                    tirosLibres: tirosLibres,
+                    marca: marca,
+                    juegoAereo: juegoAereo,
                 })
             })
             .then(data => {
@@ -608,17 +624,17 @@ export default function Perfil() {
                                             ATRIBUTOS
                                         </Heading>
                                         <HStack display='inline-block' marginBottom='15px'>
-                                            <Button style={ localStorage.getItem('pases') ? { display: 'inline-block '} : { display: 'none' }} className="btn2">Pases</Button>
-                                            <Button style={ localStorage.getItem('tiros') ? { display: 'inline-block '} : { display: 'none' }} className="btn2">Tiros</Button>
-                                            <Button style={ localStorage.getItem('resistencia') ? { display: 'inline-block '} : { display: 'none' }} className="btn2">Resistencia</Button>
-                                            <Button style={ localStorage.getItem('visionDelJuego') ? { display: 'inline-block '} : { display: 'none' }} className="btn2">Visión de juego</Button>
+                                            <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} className="btn2">Pases</Button>
+                                            <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} className="btn2">Tiros</Button>
+                                            <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2">Resistencia</Button>
+                                            <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2">Visión de juego</Button>
                                         </HStack>
                                         <br />
                                         <HStack gap='12px' display='inline-block' marginBottom='15px'>
-                                            <Button style={ localStorage.getItem('unoVsUno') ? { display: 'inline-block' } : { display: 'none' }} className="btn2">1vs1</Button>
-                                            <Button style={ localStorage.getItem('tirosLibres') ? { display: 'inline-block' } : { display: 'none' }} className="btn2">Tiros libres</Button>
-                                            <Button style={ localStorage.getItem('marca') ? { display: 'inline-block' } : { display: 'none' }} className="btn2">Marca</Button>
-                                            <Button style={ localStorage.getItem('juegoAereo') ? { display: 'inline-block' } : { display: 'none' }} className="btn2">Juego aéreo</Button>
+                                            <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2">1vs1</Button>
+                                            <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Tiros libres</Button>
+                                            <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Marca</Button>
+                                            <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Juego aéreo</Button>
                                         </HStack>
                                     </GridItem>
                                 </SimpleGrid>

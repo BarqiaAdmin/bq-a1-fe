@@ -39,6 +39,7 @@ class NuevoJugador2 extends Component {
         this.elegirAtributo = this.elegirAtributo.bind(this);
     }
 
+    
 
     /**
     Router = useRouter();
@@ -86,6 +87,14 @@ class NuevoJugador2 extends Component {
                 condicion: localStorage.getItem('condicion'),
                 presupuesto: localStorage.getItem('presupuesto'),
                 clubesPrevios: [],
+                pases: localStorage.getItem('pases'),
+                tiros: localStorage.getItem('tiros'),
+                resistencia: localStorage.getItem('resistencia'),
+                visionDelJuego: localStorage.getItem('visionDeJuego'),
+                unoVsUno: localStorage.getItem('unoVsUno'),
+                tirosLibres: localStorage.getItem('tirosLibres'),
+                marca: localStorage.getItem('marca'),
+                juegoAereo: localStorage.getItem('juegoAereo')
             })
         })
 

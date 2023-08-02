@@ -35,7 +35,6 @@ const NavBar = (props) => {
     },[])
 
     const cerrarSesion = () => {
-
         localStorage.setItem('email', '');
         localStorage.setItem('fotoPerfil', '')
         localStorage.setItem('logInPassword', '');
@@ -56,12 +55,14 @@ const NavBar = (props) => {
         localStorage.setItem('condicion', '');
         localStorage.setItem('presupuesto', '');
         localStorage.setItem('imagenesGaleria', '');
-        localStorage.setItem('imagenGaleria1', '');
-        localStorage.setItem('imagenGaleria2', '');
-        localStorage.setItem('imagenGaleria3', '');
-        localStorage.setItem('videoGaleria1', '');
-        localStorage.setItem('videoGaleria2', '');
-        localStorage.setItem('videoGaleria3', '');
+        localStorage.setItem('pases', 'false')
+        localStorage.setItem('tiros', 'false')
+        localStorage.setItem('resistencia', 'false')
+        localStorage.setItem('visionDeJuego', 'false')
+        localStorage.setItem('unoVsUno', 'false')
+        localStorage.setItem('tirosLibres', 'false')
+        localStorage.setItem('marca', 'false')
+        localStorage.setItem('juegoAereo', 'false')
 
         Router.push({
             pathname: '/Sesion/LogIn'

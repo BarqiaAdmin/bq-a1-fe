@@ -66,6 +66,36 @@ const IndexPage = () => {
 
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
+
+        localStorage.setItem('email', '');
+        localStorage.setItem('fotoPerfil', '')
+        localStorage.setItem('logInPassword', '');
+        localStorage.setItem('fotoPerfil', '');
+        localStorage.setItem('nombre', '');
+        localStorage.setItem('apellido', '');
+        localStorage.setItem('urlDeImagen', '');
+        localStorage.setItem('edad', '');
+        localStorage.setItem('pais', '');
+        localStorage.setItem('nivelDeIngles', '');
+        localStorage.setItem('pieHabil', '');
+        localStorage.setItem('posicion', '');
+        localStorage.setItem('genero', '');
+        localStorage.setItem('estatura', '');
+        localStorage.setItem('peso', '');
+        localStorage.setItem('club', '');
+        localStorage.setItem('categoria', '');
+        localStorage.setItem('condicion', '');
+        localStorage.setItem('presupuesto', '');
+        localStorage.setItem('imagenesGaleria', '');
+        localStorage.setItem('imagenesGaleria', '');
+        localStorage.setItem('pases', 'false')
+        localStorage.setItem('tiros', 'false')
+        localStorage.setItem('resistencia', 'false')
+        localStorage.setItem('visionDeJuego', 'false')
+        localStorage.setItem('unoVsUno', 'false')
+        localStorage.setItem('tirosLibres', 'false')
+        localStorage.setItem('marca', 'false')
+        localStorage.setItem('juegoAereo', 'false')
     }, [])
 
     return (

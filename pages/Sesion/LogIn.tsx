@@ -85,23 +85,34 @@ const LogIn = () => {
         .then((response) => response.json())
         .then(response => {
             console.log(response)
-            localStorage.setItem('email', response.email),
-            localStorage.setItem('password', password),
-            localStorage.setItem('nombre', response.nombre),
-            localStorage.setItem('apellido', response.apellido),
-            localStorage.setItem('fotoPerfil', response.fotoPerfil),
-            localStorage.setItem('edad', response.edad),
-            localStorage.setItem('nacionalidad', response.nacionalidad),
-            localStorage.setItem('nivelDeIngles', response.nivelDeIngles),
-            localStorage.setItem('pieHabil', response.pieHabil),
-            localStorage.setItem('posicion', response.posicion),
-            localStorage.setItem('genero', response.genero),
-            localStorage.setItem('estatura', response.estatura),
-            localStorage.setItem('peso', response.peso),
-            localStorage.setItem('club', response.club),
-            localStorage.setItem('categoria', response.categoria),
-            localStorage.setItem('condicion', response.condicion),
-            localStorage.setItem('presupuesto', response.presupuesto)
+            localStorage.setItem('email', '');
+            localStorage.setItem('fotoPerfil', '')
+            localStorage.setItem('logInPassword', '');
+            localStorage.setItem('fotoPerfil', '');
+            localStorage.setItem('nombre', '');
+            localStorage.setItem('apellido', '');
+            localStorage.setItem('urlDeImagen', '');
+            localStorage.setItem('edad', '');
+            localStorage.setItem('pais', '');
+            localStorage.setItem('nivelDeIngles', '');
+            localStorage.setItem('pieHabil', '');
+            localStorage.setItem('posicion', '');
+            localStorage.setItem('genero', '');
+            localStorage.setItem('estatura', '');
+            localStorage.setItem('peso', '');
+            localStorage.setItem('club', '');
+            localStorage.setItem('categoria', '');
+            localStorage.setItem('condicion', '');
+            localStorage.setItem('presupuesto', '');
+            localStorage.setItem('imagenesGaleria', '');
+            localStorage.setItem('pases', 'false')
+            localStorage.setItem('tiros', 'false')
+            localStorage.setItem('resistencia', 'false')
+            localStorage.setItem('visionDeJuego', 'false')
+            localStorage.setItem('unoVsUno', 'false')
+            localStorage.setItem('tirosLibres', 'false')
+            localStorage.setItem('marca', 'false')
+            localStorage.setItem('juegoAereo', 'false')
         })
         
         Router.push({
@@ -133,7 +144,16 @@ const LogIn = () => {
 
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
-    })
+
+        localStorage.setItem('pases', 'false')
+        localStorage.setItem('tiros', 'false')
+        localStorage.setItem('resistencia', 'false')
+        localStorage.setItem('visionDeJuego', 'false')
+        localStorage.setItem('unoVsUno', 'false')
+        localStorage.setItem('tirosLibres', 'false')
+        localStorage.setItem('marca', 'false')
+        localStorage.setItem('juegoAereo', 'false')
+})
 
     return (
         <Container
