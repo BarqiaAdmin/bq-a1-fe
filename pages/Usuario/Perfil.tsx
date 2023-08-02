@@ -112,6 +112,7 @@ export default function Perfil() {
     const [marca, setMarca] = useState(false);
     const [juegoAereo, setJuegoAereo] = useState(false);
     const [imagenesGaleria, setImagenesGaleria] = useState([]);
+    const [videosGaleria, setVideosGaleria] = useState([])
 
     const handleUrlDeImagenChange = (e) => {
         setFotoPerfil(e.target.value);
@@ -189,53 +190,9 @@ export default function Perfil() {
         localStorage.setItem('presupuesto', e.target.value)
     }
     
-    useEffect(() => {
-        localStorage.setItem('chakra-ui-color-mode', 'dark');
-
-        setEmail(localStorage.getItem('email'))
-        setPassword(localStorage.getItem('password'));
-        setFotoPerfil(localStorage.getItem('fotoPerfil'));
-        setNombre(localStorage.getItem('nombre'))
-        setApellido(localStorage.getItem('apellido'))
-        setEdad(localStorage.getItem('edad'));
-        setClub(localStorage.getItem('club'))
-        setPosicion(localStorage.getItem('posicion'));
-        setCategoria(localStorage.getItem('categoria'));
-        setGenero(localStorage.getItem('genero'));
-        setEstatura(localStorage.getItem('estatura'));
-        setPeso(localStorage.getItem('peso'));
-        setNacimiento(localStorage.getItem('nacimiento'));
-        setPais(localStorage.getItem('pais'));
-        setCondicion(localStorage.getItem('condicion'));
-        setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
-        setPresupuesto(localStorage.getItem('presupuesto'));
-        setPieHabil(localStorage.getItem('pieHabil'));
-        setPases((localStorage.getItem('pases') === 'true'))
-        setTiros((localStorage.getItem('tiros') === 'true'))
-        setResistencia((localStorage.getItem('resistencia') === 'true'))
-        setVisionDeJuego((localStorage.getItem('visionDeJuego') === 'true'))
-        setUnoVsUno((localStorage.getItem('unoVsUno') === 'true'))
-        setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
-        setMarca((localStorage.getItem('marca') === 'true' ))
-        setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
-        setImagenesGaleria(imagenesGaleria)
-    }, []);
-    
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
     const cancelRef = React.useRef()
-
-    const handleShare = () => {
-        let shareLink = 'http://localhost:3000/Usuario/' + email
-        navigator.clipboard.writeText(shareLink);
-        toast({
-            title: 'Enlace copiado al portapapeles',
-            description: "Ya puedes compartir tu perfil",
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-        })
-    }
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -249,6 +206,18 @@ export default function Perfil() {
             };
         });
     };
+
+    const handleShare = () => {
+        let shareLink = 'http://localhost:3000/Usuario/' + email
+        navigator.clipboard.writeText(shareLink);
+        toast({
+            title: 'Enlace copiado al portapapeles',
+            description: "Ya puedes compartir tu perfil",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+        })
+    }
 
     const handleUpdate = () => {
         fetch('http://localhost:5051/actualizarUsuario', {
@@ -276,6 +245,7 @@ export default function Perfil() {
                 condicion: condicion,
                 presupuesto: presupuesto,
                 imagenesGaleria: imagenesGaleria,
+                videosGaleria: videosGaleria,
                 pases: pases,
                 tiros: tiros,
                 resistencia: resistencia,
@@ -315,6 +285,7 @@ export default function Perfil() {
         await convertToBase64(file).then(data => {
             console.log(data)
             base64 = data.toString();
+            //base64 = base64.slice(0, base64.length - 1);
             setImagenesGaleria([...imagenesGaleria, base64])
             localStorage.setItem('imagenesGaleria', imagenesGaleria.toString());
             fetch('http://localhost:5051/actualizarUsuario', {
@@ -373,6 +344,50 @@ export default function Perfil() {
     };
 
     const handleVideoUpload = (e) => {
+        let ytUrl = e.target.value;
+        ytUrl = ytUrl.replace('/watch?v=', '/embed/')
+        let newVideosGaleria = [...videosGaleria, ytUrl]
+        setVideosGaleria(newVideosGaleria)
+        console.log(videosGaleria)
+        localStorage.setItem('videosGaleria', videosGaleria.toString());
+        fetch('http://localhost:5051/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                nacimiento: nacimiento,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleria: imagenesGaleria,
+                videosGaleria: videosGaleria,
+                pases: pases,
+                tiros: tiros,
+                resistencia: resistencia,
+                visionDeJuego: visionDeJuego,
+                unoVsUno: unoVsUno,
+                tirosLibres: tirosLibres,
+                marca: marca,
+                juegoAereo: juegoAereo,
+            })
+        })
+        .then(data => {
+            console.log(data);
+        })
+
         /*
         let ytUrl = e.target.value
         ytUrl = ytUrl.replace('/watch?v=', '/embed/')
@@ -391,6 +406,49 @@ export default function Perfil() {
 
     const [edicionActivada, setEdicionActivada] = useState(false);
 
+    useEffect(() => {
+        localStorage.setItem('chakra-ui-color-mode', 'dark');
+
+        setEmail(localStorage.getItem('email'))
+        setPassword(localStorage.getItem('password'));
+        setFotoPerfil(localStorage.getItem('fotoPerfil'));
+        setNombre(localStorage.getItem('nombre'))
+        setApellido(localStorage.getItem('apellido'))
+        setEdad(localStorage.getItem('edad'));
+        setClub(localStorage.getItem('club'))
+        setPosicion(localStorage.getItem('posicion'));
+        setCategoria(localStorage.getItem('categoria'));
+        setGenero(localStorage.getItem('genero'));
+        setEstatura(localStorage.getItem('estatura'));
+        setPeso(localStorage.getItem('peso'));
+        setNacimiento(localStorage.getItem('nacimiento'));
+        setPais(localStorage.getItem('pais'));
+        setCondicion(localStorage.getItem('condicion'));
+        setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
+        setPresupuesto(localStorage.getItem('presupuesto'));
+        setPieHabil(localStorage.getItem('pieHabil'));
+        setPases((localStorage.getItem('pases') === 'true'))
+        setTiros((localStorage.getItem('tiros') === 'true'))
+        setResistencia((localStorage.getItem('resistencia') === 'true'))
+        setVisionDeJuego((localStorage.getItem('visionDeJuego') === 'true'))
+        setUnoVsUno((localStorage.getItem('unoVsUno') === 'true'))
+        setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
+        setMarca((localStorage.getItem('marca') === 'true' ))
+        setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
+        console.log(localStorage.getItem('imagenesGaleria'))
+        let imagenesGaleriaString = localStorage.getItem('imagenesGaleria')
+        console.log(imagenesGaleriaString)
+        imagenesGaleriaString = imagenesGaleriaString.toString();
+        let imagenesGaleriaArray = imagenesGaleriaString.split('data:image/png;base64,')
+        console.log(imagenesGaleriaArray)
+        for (let i = 0; i < imagenesGaleriaArray.length; i++) {
+            imagenesGaleriaArray[i] = 'data:image/png;base64,' + imagenesGaleriaArray[i]
+            imagenesGaleriaArray[i] = imagenesGaleriaArray[i].slice(0, imagenesGaleriaArray[i].length - 1)
+        }
+        console.log(imagenesGaleriaArray)
+        setImagenesGaleria(imagenesGaleriaArray);
+        //setImagenesGaleria(imagenesGaleriaArray)
+    }, []);
 
     return(
         <>
@@ -704,11 +762,11 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <HStack width='full'>
-                                                {/**
-                                                <Image h='330px' src={imagenesGaleria1} alt=''/>
-                                                <Image h='330px' src={imagenesGaleria2} alt=''/>
-                                                <Image h='330px' src={imagenesGaleria3} alt=''/>
-                                                 */}
+                                                { imagenesGaleria.map((blobImagen, index) => {
+                                                    return (
+                                                        <Image key={ index } h='330px' src= { blobImagen } alt='' />
+                                                    )
+                                                })}
                                             </HStack>
                                         </TabPanel>
                                         <TabPanel>
@@ -746,11 +804,13 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
-                                            {/**
-                                            <iframe width="853" height="480" src={ videoGaleria1 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                                            <iframe width="853" height="480" src={ videoGaleria2 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                                            <iframe width="853" height="480" src={ videoGaleria3 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                                             */}
+                                                {
+                                                    videosGaleria.map((videoUrl, index) => {
+                                                        return (
+                                                            <iframe key={ index } width="853" height="480" src={ videoUrl } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                                                        )
+                                                    })
+                                                }
                                         </TabPanel>
                                     </TabPanels>
                                 </Tabs>

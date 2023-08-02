@@ -69,7 +69,8 @@ function NuevoJugador() {
     const [inputCondicion, setInputCondicion] = useState('');
     const [inputPresupuesto, setInputPresupuesto] = useState('');
 
-    let [inputCustom, setInputCustom] = useState(false);
+    const [inputCustom, setInputCustom] = useState(false);
+    const [inputUniversidades, setInputUniversidades] = useState(false);
 
     const subirImagen = () => {
         /*
@@ -618,14 +619,16 @@ function NuevoJugador() {
                                     Clubes
                                 </Checkbox>
                             </GridItem>
-                            <GridItem colSpan={4}>
-                                <Checkbox colorScheme='blue'>
+                            <GridItem colSpan={4} >
+                                <Button onClick={ () => setInputUniversidades(!inputUniversidades) }>Universidades</Button>
+                                {/**<Checkbox colorScheme='blue'>
                                     Universidades
                                 </Checkbox>
+                                        */}
                             </GridItem>
                             <GridItem colSpan={6}>
-                                <FormControl>
-                                    <FormLabel>Nivel de inglés</FormLabel>
+                                <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
+                                    <FormLabel >Nivel de inglés</FormLabel>
                                     <Select onChange={handleNivelDeInglesChange}>
                                         <option>Bilingüe</option>
                                         <option>Avanzado</option>
@@ -635,7 +638,14 @@ function NuevoJugador() {
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
-                                <Accordion defaultIndex={[1]} allowMultiple marginTop='31px'>
+                                <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
+                                    <FormLabel >Certificaciones</FormLabel>
+                                    <Input type="text" placeholder="Certificaciones (separar con coma)" />
+                                </FormControl>
+                            </GridItem>
+                            {/**
+                            <GridItem colSpan={6}>
+                                <Accordion defaultIndex={[1]} allowMultiple marginTop='31px' style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <AccordionItem>
                                         <h2>
                                         <AccordionButton>
@@ -653,6 +663,7 @@ function NuevoJugador() {
                                     </AccordionItem>
                                 </Accordion>
                             </GridItem>
+                             */}
                             {/**
                             <GridItem colSpan={12}>
                                 <FormControl>
