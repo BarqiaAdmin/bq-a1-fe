@@ -31,7 +31,6 @@ import { Component, useState } from 'react';
 import Router from 'next/router';
 
 class NuevoJugador2 extends Component {
-
     constructor(props) {
         super(props);
         this.elegirLugarEnElCampo = this.elegirLugarEnElCampo.bind(this);

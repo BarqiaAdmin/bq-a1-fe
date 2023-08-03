@@ -26,32 +26,37 @@ import {
     AccordionIcon,
     AccordionPanel,
     Heading,
+
+    NumberInput,
+    NumberInputField,
+    NumberInputStepper,
+    NumberIncrementStepper,
+    NumberDecrementStepper,
 } from '@chakra-ui/react';
 
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
-import clubesAFA from '../../../db/clubesAFA';;
-import clubesLIGAESCOBARENSE from '../../../db/clubesLIGAESCOBARENSE';
-import clubesAIFA from '../../../db/clubesAIFA';
-import clubesAFABNACIONAL from '../../../db/clubesAFABNACIONAL';
-import clubesBMETRO from '../../../db/clubesBMETRO';
+import clubesAFA from '../../db/clubesAFA';;
+import clubesLIGAESCOBARENSE from '../../db/clubesLIGAESCOBARENSE';
+import clubesAIFA from '../../db/clubesAIFA';
+import clubesAFABNACIONAL from '../../db/clubesAFABNACIONAL';
+import clubesBMETRO from '../../db/clubesBMETRO';
 
-import paises from '../../../db/paises';
+import paises from '../../db/paises';
 
 import { useState, useEffect } from 'react';
 
 import Router from 'next/router';
 
 import { useFileUpload } from 'use-file-upload';
-import NuevoEquipo from './NuevoEquipo';
 
 function NuevoJugador() {
-
     const [domLoaded, setDomLoaded] = useState(false);
 
     const [files, selectFiles] = useFileUpload();
 
     const [fotoPerfil, setFotoPerfil] = useState('');
+    const [inputEmail, setInputEmail] = useState('');
     const [inputNombre, setInputNombre] = useState('');
     const [inputApellido, setInputApellido] = useState('');
     const [inputFechaDeNacimiento, setInputFechaDeNacimiento] = useState('');
@@ -180,6 +185,10 @@ function NuevoJugador() {
         localStorage.setItem('presupuesto', e.target.value)
     }
 
+    const handleCertificacionesChange = (e) => {
+
+    }
+
     const isErrorNombre = false;
     const isErrorApellido = false;
     const isErrorNacimiento = false;
@@ -220,24 +229,38 @@ function NuevoJugador() {
 
     useEffect(() => {
         setDomLoaded(true);
-        localStorage.setItem('fotoPerfil', '')
-        localStorage.setItem('logInPassword', '');
-        localStorage.setItem('fotoPerfil', '');
-        localStorage.setItem('nombre', '');
-        localStorage.setItem('apellido', '');
-        localStorage.setItem('urlDeImagen', '');
-        localStorage.setItem('FechaDeNacimiento', '');
-        localStorage.setItem('pais', '');
-        localStorage.setItem('nivelDeIngles', '');
-        localStorage.setItem('pieHabil', '');
-        localStorage.setItem('posicion', '');
-        localStorage.setItem('genero', '');
-        localStorage.setItem('estatura', '');
-        localStorage.setItem('peso', '');
-        localStorage.setItem('club', '');
-        localStorage.setItem('categoria', '');
-        localStorage.setItem('condicion', '');
-        localStorage.setItem('presupuesto', '');
+        
+        let inputEmail = localStorage.getItem('email')
+        setInputEmail(inputEmail);
+        console.log(inputEmail)
+
+        setInputNombre(localStorage.getItem('password'));
+        
+        setInputNombre(localStorage.getItem('fotoPerfi'));
+
+        let inputNombre = localStorage.getItem('nombre')
+        setInputNombre(inputNombre);
+        //(document.getElementById("inputNombre") as HTMLInputElement).defaultValue = inputNombre;
+        console.log(inputNombre);
+
+        setInputNombre(localStorage.getItem('apellido'));
+        console.log(inputApellido);
+        
+        setInputNombre(localStorage.getItem('fotoPerfil'));
+        
+        setInputNombre(localStorage.getItem('urlDeImagen'));
+        setInputNombre(localStorage.getItem('FechaDeNacimiento'));
+        setInputNombre(localStorage.getItem('pais'));
+        setInputNombre(localStorage.getItem('nivelDeIngles'));
+        setInputNombre(localStorage.getItem('pieHabil'));
+        setInputNombre(localStorage.getItem('posicion'));
+        setInputNombre(localStorage.getItem('genero'));
+        setInputNombre(localStorage.getItem('estatura'));
+        setInputNombre(localStorage.getItem('peso'));
+        setInputNombre(localStorage.getItem('club'));
+        setInputNombre(localStorage.getItem('categoria'));
+        setInputNombre(localStorage.getItem('condicion'));
+        setInputNombre(localStorage.getItem('presupuesto'));
     }, [])
 
     return (
@@ -317,7 +340,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNombre}>
                                     <FormLabel>Nombre</FormLabel>
-                                    <Input placeholder="Ingresar nombre" value={inputNombre} onChange={handleNombreChange} />
+                                    <Input id="inputNombre" placeholder="Ingresar nombre" value={ localStorage.getItem('nombre') } onChange={handleNombreChange} />
                                     {!isErrorNombre ? (
                                         <FormHelperText>
                                             Ingresa tu nombre
@@ -330,7 +353,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorApellido}>
                                     <FormLabel>Apellido</FormLabel>
-                                    <Input placeholder="Ingresar apellido" onChange={handleApellidoChange}/>
+                                    <Input placeholder="Ingresar apellido" value={ localStorage.getItem('apellido') } onChange={handleApellidoChange}/>
                                     {!isErrorApellido ? (
                                         <FormHelperText>
                                             Ingresa tu apellido
@@ -343,7 +366,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNacimiento}>
                                     <FormLabel>Fecha de Nacimiento</FormLabel>
-                                    <input type='date' onChange={ handleNacimientoChange }/>
+                                    <input type='date' value={ localStorage.getItem('nacimiento') } onChange={ handleNacimientoChange }/>
                                     {/**
                                     <Input placeholder="Ingresar FechaDeNacimiento"/>
                                      */}
@@ -361,7 +384,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorPais}>
                                     <FormLabel>Pais</FormLabel>
-                                    <Select placeholder="Seleccionar país" onChange={handlePaisChange}>
+                                    <Select placeholder="Seleccionar país" value={ localStorage.getItem('pais') } onChange={handlePaisChange}>
                                         {paises.map((pais, index) => {
                                             return (
                                                 <option key={index}>{ pais }</option>
@@ -384,19 +407,19 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl>
                                     <FormLabel>Facebook</FormLabel>
-                                    <Input placeholder="Ingresar usuario" onChange={(e) => localStorage.setItem("facebook", e.target.value)}/>
+                                    <Input placeholder="Ingresar usuario" value={ localStorage.getItem('facebook') } onChange={(e) => localStorage.setItem("facebook", e.target.value)}/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={4}>
                                 <FormControl>
                                     <FormLabel>Instagram</FormLabel>
-                                    <Input placeholder="Ingresar usuario" onChange={(e) => localStorage.setItem("instagram", e.target.value)}/>
+                                    <Input placeholder="Ingresar usuario" value={ localStorage.getItem('instagram') } onChange={(e) => localStorage.setItem("instagram", e.target.value)}/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={4}>
                                 <FormControl>
                                     <FormLabel>Tiktok</FormLabel>
-                                    <Input placeholder="Ingresar usuario" onChange={(e) => localStorage.setItem("tiktok", e.target.value)}/>
+                                    <Input placeholder="Ingresar usuario" value={ localStorage.getItem('tiktok') } onChange={(e) => localStorage.setItem("tiktok", e.target.value)}/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={12}>
@@ -405,7 +428,8 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorPieHabil}>
                                     <FormLabel>Pie hábil</FormLabel>
-                                    <Select onChange={handlePieHabilChange}>
+                                    <Select value={ localStorage.getItem('pieHabil') } onChange={handlePieHabilChange}>
+                                        <option>Seleccionar</option>
                                         <option>Izquierdo</option>
                                         <option>Derecho</option>
                                     </Select>
@@ -421,7 +445,8 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorPosicion}>
                                     <FormLabel>Posición</FormLabel>
-                                    <Select onChange={handlePosicionChange}>
+                                    <Select value={ localStorage.getItem('posicion') } onChange={handlePosicionChange}>
+                                        <option>Seleccionar</option>
                                         <option>Delantero</option>
                                         <option>Mediocampista</option>
                                         <option>Defensor</option>
@@ -439,7 +464,8 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorGenero}>
                                     <FormLabel>Género</FormLabel>
-                                    <Select onChange={handleGeneroChange}>
+                                    <Select value={ localStorage.getItem('genero') } onChange={handleGeneroChange}>
+                                        <option>Seleccionar</option>
                                         <option>Femenino</option>
                                         <option>Masculino</option>
                                     </Select>
@@ -455,10 +481,16 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorEstatura}>
                                     <FormLabel>Estatura</FormLabel>
-                                    <Input placeholder="Ingresar estatura" onChange={handleEstaturaChange}/>
+                                    <NumberInput>
+                                        <NumberInputField placeholder="Ej: 1.76m" onChange={handleEstaturaChange} />
+                                        <NumberInputStepper>
+                                            <NumberIncrementStepper />
+                                            <NumberDecrementStepper />
+                                        </NumberInputStepper>
+                                    </NumberInput>
                                     {!isErrorEstatura ? (
                                         <FormHelperText>
-                                            Ingresa tu estatura
+                                            Ingresa tu estatura en metros, separando con punto
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -468,10 +500,16 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorPeso}>
                                     <FormLabel>Peso</FormLabel>
-                                    <Input placeholder="Ingresar peso" onChange={handlePesoChange}/>
+                                    <NumberInput>
+                                        <NumberInputField placeholder="Ej: 80kg" onChange={handlePesoChange} />
+                                        <NumberInputStepper>
+                                            <NumberIncrementStepper />
+                                            <NumberDecrementStepper />
+                                        </NumberInputStepper>
+                                    </NumberInput>
                                     {!isErrorPeso ? (
                                         <FormHelperText>
-                                            Ingresa tu peso
+                                            Ingresa tu peso en kilos, separando con punto
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -479,9 +517,9 @@ function NuevoJugador() {
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={12}>
-                                <FormControl isRequired isInvalid={isErrorClub}>
+                                <FormControl isInvalid={isErrorClub}>
                                     <FormLabel>Club</FormLabel>
-                                    <HStack>
+                                    <HStack>                                    
                                         <Select placeholder="AFA" onChange={ handleClubChange }>
                                             {clubesAFA.map((club, index) => {
                                                 return (
@@ -518,74 +556,13 @@ function NuevoJugador() {
                                             })}
                                         </Select>
                                     </HStack>
-                                    {/**
-                                    {!isErrorClub ? (
-                                        <FormHelperText>
-                                            Selecciona tu club
-                                            </FormHelperText>
-                                        ) : (
-                                            <FormErrorMessage>Campo obligatorio</FormErrorMessage>
-                                    )}
-                                     */}
                                 </FormControl>
                                 <HStack marginTop='20px'>
-                                    <Button onClick={() => setInputCustom(!inputCustom)}>OTRO</Button>
+                                    <Button onClick={() => setInputCustom(!inputCustom)} style={ inputCustom ? { display: 'none' } : { display: 'inline-block' } }>OTRO</Button>
                                     <Button onClick={() => setInputCustom(false)} style={ inputCustom ? { display: 'block' } : { display: 'none' } }><CloseIcon></CloseIcon></Button>
-                                    <Input style={ inputCustom ? { display: 'block' } : { display: 'none' } } type="text" placeholder="Ingresa el nombre del club al que perteneces" />
-                                    <Button style={ (inputCustom ? { display: 'block' } : { display: 'none' }) }><CheckIcon></CheckIcon></Button>
+                                    <Input style={ inputCustom ? { display: 'block' } : { display: 'none' } } type="text" placeholder="Club al que perteneces actualmente" />
+                                    <Button onClick={() => setInputCustom(false)} style={ inputCustom ? { display: 'block' } : { display: 'none' } }><CheckIcon></CheckIcon></Button>
                                 </HStack>
-                            </GridItem>
-                            <GridItem colSpan={6}>
-                                <FormControl isRequired isInvalid={isErrorCategoria}>
-                                    <FormLabel>Categoría</FormLabel>
-                                    <Select placeholder="Seleccionar categoría" onChange={handleCategoriaChange}>
-                                        <option>Pro</option>
-                                        <option>Semi-Pro</option>
-                                        <option>Juvenil</option>
-                                        <option>Amateur</option>
-                                    </Select>
-                                    {!isErrorCategoria ? (
-                                        <FormHelperText>
-                                            Selecciona tu categoría
-                                        </FormHelperText>
-                                        ) : (
-                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
-                                    )}
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={6}>
-                                <FormControl>
-                                    <FormLabel>Condición</FormLabel>
-                                    <Select placeholder="Seleccionar categoría" onChange={handleCategoriaChange}>
-                                        <option>Libre</option>
-                                        <option>Con contrato</option>
-                                    </Select>
-                                    {!isErrorCategoria ? (
-                                        <FormHelperText>
-                                            Selecciona tu condición contractual
-                                        </FormHelperText>
-                                        ) : (
-                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
-                                    )}
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={6}>
-                                <FormControl>
-                                    <Select placeholder="Presupuesto" onChange={handlePresupuestoChange}>
-                                        <option>0 - 5.000</option>
-                                        <option>6.0000 - 10.000</option>
-                                        <option>10.000 - 15.000</option>
-                                        <option>16.000 - 20.000</option>
-                                        <option>Más de 20.000</option>
-                                    </Select>
-                                    {!isErrorCategoria ? (
-                                        <FormHelperText>
-                                            Selecciona tu presupuesto
-                                        </FormHelperText>
-                                        ) : (
-                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
-                                    )}
-                                </FormControl>
                             </GridItem>
                             <GridItem colSpan={12}>
                                 <Accordion defaultIndex={[1]} allowMultiple>
@@ -606,6 +583,59 @@ function NuevoJugador() {
                                     </AccordionItem>
                                 </Accordion>
                             </GridItem>
+                            <GridItem colSpan={6}>
+                                <FormControl isRequired isInvalid={isErrorCategoria}>
+                                    <FormLabel>Categoría</FormLabel>
+                                    <Select value={ localStorage.getItem('categoria') } placeholder="Seleccionar" onChange={handleCategoriaChange}>
+                                        <option>Seleccionar</option>
+                                        <option>Pro</option>
+                                        <option>Semi-Pro</option>
+                                        <option>Juvenil</option>
+                                        <option>Amateur</option>
+                                    </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Selecciona tu categoría
+                                        </FormHelperText>
+                                        ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
+                                </FormControl>
+                            </GridItem>
+                            <GridItem colSpan={6}>
+                                <FormControl>
+                                    <FormLabel>Condición</FormLabel>
+                                    <Select value={ localStorage.getItem('condicion') } placeholder="Seleccionar" onChange={handleCategoriaChange}>
+                                        <option>Libre</option>
+                                        <option>Con contrato</option>
+                                    </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Selecciona tu condición contractual actual
+                                        </FormHelperText>
+                                        ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
+                                </FormControl>
+                            </GridItem>
+                            <GridItem colSpan={6}>
+                                <FormControl>
+                                    <Select value={ localStorage.getItem('presupuesto') } placeholder="Seleccionar" onChange={handlePresupuestoChange}>
+                                        <option>0 - 5.000</option>
+                                        <option>6.0000 - 10.000</option>
+                                        <option>10.000 - 15.000</option>
+                                        <option>16.000 - 20.000</option>
+                                        <option>Más de 20.000</option>
+                                    </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Selecciona tu presupuesto
+                                        </FormHelperText>
+                                        ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
+                                </FormControl>
+                            </GridItem>
                             <GridItem colSpan={12}>
                                 <FormLabel>Quiero ser visto por:</FormLabel>
                             </GridItem>
@@ -620,7 +650,7 @@ function NuevoJugador() {
                                 </Checkbox>
                             </GridItem>
                             <GridItem colSpan={4} >
-                                <Button onClick={ () => setInputUniversidades(!inputUniversidades) }>Universidades</Button>
+                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => setInputUniversidades(!inputUniversidades) }>Universidades</Button>
                                 {/**<Checkbox colorScheme='blue'>
                                     Universidades
                                 </Checkbox>
@@ -629,7 +659,8 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel >Nivel de inglés</FormLabel>
-                                    <Select onChange={handleNivelDeInglesChange}>
+                                    <Select value={ localStorage.getItem('nivelDeIngles') } onChange={handleNivelDeInglesChange}>
+                                        <option>Seleccionar</option>
                                         <option>Bilingüe</option>
                                         <option>Avanzado</option>
                                         <option>Intermedio</option>
@@ -640,7 +671,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel >Certificaciones</FormLabel>
-                                    <Input type="text" placeholder="Certificaciones (separar con coma)" />
+                                    <Input onChange={ handleCertificacionesChange } type="text" placeholder="Certificaciones (separar con coma)" />
                                 </FormControl>
                             </GridItem>
                             {/**
