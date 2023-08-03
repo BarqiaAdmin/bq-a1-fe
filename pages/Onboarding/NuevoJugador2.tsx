@@ -335,7 +335,7 @@ class NuevoJugador2 extends Component {
                                 position="relative"
                                 zIndex="0"
                             >
-                                <Link href='/ABM/Alta/NuevoJugador'>
+                                <Link href='/Onboarding/NuevoJugador'>
                                     Volver
                                 </Link>
                             </Button>

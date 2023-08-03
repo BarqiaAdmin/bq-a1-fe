@@ -194,7 +194,7 @@ function NuevoJugador() {
 
     const crearJugador = () => {
         Router.push({
-            pathname: '/ABM/Alta/NuevoJugador2'
+            pathname: '/Onboarding/NuevoJugador2'
         })
     }
 
