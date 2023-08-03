@@ -55,6 +55,7 @@ const NavBar = (props) => {
         localStorage.setItem('condicion', '');
         localStorage.setItem('presupuesto', '');
         localStorage.setItem('imagenesGaleria', '');
+        localStorage.setItem('videosGaleria', '');
         localStorage.setItem('pases', 'false')
         localStorage.setItem('tiros', 'false')
         localStorage.setItem('resistencia', 'false')

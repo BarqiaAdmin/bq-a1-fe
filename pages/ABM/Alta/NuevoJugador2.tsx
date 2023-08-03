@@ -88,6 +88,7 @@ class NuevoJugador2 extends Component {
                 presupuesto: localStorage.getItem('presupuesto'),
                 clubesPrevios: [],
                 imagenesGaleria: localStorage.getItem('imagenesGaleria'),
+                videosGaleria: localStorage.getItem('videosGaleria'),
                 pases: localStorage.getItem('pases'),
                 tiros: localStorage.getItem('tiros'),
                 resistencia: localStorage.getItem('resistencia'),

@@ -103,10 +103,18 @@ const LogIn = () => {
             localStorage.setItem('categoria', response.categoria);
             localStorage.setItem('condicion', response.condicion);
             localStorage.setItem('presupuesto', response.presupuesto);
+            
+            // Imagenes
             let imagenesGaleria = response.imagenesGaleria
             imagenesGaleria = imagenesGaleria.toString();
             console.log(imagenesGaleria);
             localStorage.setItem('imagenesGaleria', imagenesGaleria);
+            // Videos
+            let videosGaleria = response.videosGaleria;
+            videosGaleria = videosGaleria.toString();
+            console.log(videosGaleria);
+            localStorage.setItem('videosGaleria', videosGaleria);
+
             localStorage.setItem('pases', response.pases)
             localStorage.setItem('tiros', response.tiros)
             localStorage.setItem('resistencia', response.resistencia)

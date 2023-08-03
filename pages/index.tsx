@@ -87,7 +87,7 @@ const IndexPage = () => {
         localStorage.setItem('condicion', '');
         localStorage.setItem('presupuesto', '');
         localStorage.setItem('imagenesGaleria', '');
-        localStorage.setItem('imagenesGaleria', '');
+        localStorage.setItem('videosGaleria', '');
         localStorage.setItem('pases', 'false')
         localStorage.setItem('tiros', 'false')
         localStorage.setItem('resistencia', 'false')
@@ -191,7 +191,6 @@ const IndexPage = () => {
                             Ya tienes cuenta? <Link className="link1" href="Sesion/LogIn">Ingresar</Link>
                         </Box>
                     </GridItem>
-                    
                 </SimpleGrid>
             </VStack>
         </Container>

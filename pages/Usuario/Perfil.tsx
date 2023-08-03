@@ -311,6 +311,7 @@ export default function Perfil() {
                     condicion: condicion,
                     presupuesto: presupuesto,
                     imagenesGaleria: imagenesGaleria,
+                    videosGaleria: videosGaleria,
                     pases: pases,
                     tiros: tiros,
                     resistencia: resistencia,
@@ -436,6 +437,8 @@ export default function Perfil() {
         setMarca((localStorage.getItem('marca') === 'true' ))
         setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
         console.log(localStorage.getItem('imagenesGaleria'))
+
+        // Imagenes
         let imagenesGaleriaString = localStorage.getItem('imagenesGaleria')
         console.log(imagenesGaleriaString)
         imagenesGaleriaString = imagenesGaleriaString.toString();
@@ -447,7 +450,17 @@ export default function Perfil() {
         }
         console.log(imagenesGaleriaArray)
         setImagenesGaleria(imagenesGaleriaArray);
-        //setImagenesGaleria(imagenesGaleriaArray)
+
+        //Videos
+        let videosGaleriaString = localStorage.getItem('videosGaleria')
+        console.log(videosGaleriaString)
+        imagenesGaleriaString = imagenesGaleriaString.toString();
+        let videosGaleriaArray = videosGaleriaString.split('https://www.youtube.com/')
+        for (let i = 0; i < videosGaleriaArray.length; i++) {
+            videosGaleriaArray[i] = 'https://www.youtube.com/' + videosGaleriaArray[i]
+        }
+        console.log(videosGaleriaArray)
+        setVideosGaleria(videosGaleriaArray);
     }, []);
 
     return(
@@ -806,10 +819,11 @@ export default function Perfil() {
                                             </AlertDialog>
                                                 {
                                                     videosGaleria.map((videoUrl, index) => {
+                                                        console.log(videoUrl);
                                                         return (
-                                                            <iframe key={ index } width="853" height="480" src={ videoUrl } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                                                        )
-                                                    })
+                                                            <iframe key={ index } width="853" height="480" src={ videoUrl } title=""    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;   picture-in-picture; web-share"></iframe>
+                                                        )}
+                                                    )
                                                 }
                                         </TabPanel>
                                     </TabPanels>

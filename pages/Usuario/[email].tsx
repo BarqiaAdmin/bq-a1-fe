@@ -106,12 +106,6 @@ export default function Perfil() {
     const [videoGaleria1, setVideoGaleria1] = useState('');
     const [videoGaleria2, setVideoGaleria2] = useState('');
     const [videoGaleria3, setVideoGaleria3] = useState('');
-
-    const top = useBreakpointValue({ base: '90%', md: '50%' });
-    const side = useBreakpointValue({ base: '30%', md: '10px' });
-
-    // These are the images used in the slide
-    const imagenesGaleria = [];
     
     useEffect(() => {
         let shareLink = window.location.href
