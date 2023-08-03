@@ -617,7 +617,7 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={6}>
+                            <GridItem colSpan={12}>
                                 <FormControl>
                                     <FormLabel>Condición</FormLabel>
                                     <Select value={ localStorage.getItem('condicion') } placeholder="Seleccionar" onChange={handleCategoriaChange}>
@@ -627,24 +627,6 @@ function NuevoJugador() {
                                     {!isErrorCategoria ? (
                                         <FormHelperText>
                                             Selecciona tu condición contractual actual
-                                        </FormHelperText>
-                                        ) : (
-                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
-                                    )}
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={6}>
-                                <FormControl>
-                                    <Select value={ localStorage.getItem('presupuesto') } placeholder="Seleccionar" onChange={handlePresupuestoChange}>
-                                        <option>0 - 5.000</option>
-                                        <option>6.0000 - 10.000</option>
-                                        <option>10.000 - 15.000</option>
-                                        <option>16.000 - 20.000</option>
-                                        <option>Más de 20.000</option>
-                                    </Select>
-                                    {!isErrorCategoria ? (
-                                        <FormHelperText>
-                                            Selecciona tu presupuesto
                                         </FormHelperText>
                                         ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -681,12 +663,44 @@ function NuevoJugador() {
                                         <option>Intermedio</option>
                                         <option>Básico</option>
                                     </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Selecciona tu nivel de inglés
+                                        </FormHelperText>
+                                        ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel >Certificaciones</FormLabel>
                                     <Input onChange={ handleCertificacionesChange } type="text" placeholder="Certificaciones (separar con coma)" />
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Ingresa tus certificados separados por coma: Ej: CAE, First, etc 
+                                        </FormHelperText>
+                                        ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
+                                </FormControl>
+                            </GridItem>
+                            <GridItem colSpan={12}>
+                                <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
+                                    <Select value={ localStorage.getItem('presupuesto') } placeholder="Seleccionar" onChange={handlePresupuestoChange}>
+                                        <option>0 - 5.000</option>
+                                        <option>6.0000 - 10.000</option>
+                                        <option>10.000 - 15.000</option>
+                                        <option>16.000 - 20.000</option>
+                                        <option>Más de 20.000</option>
+                                    </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Selecciona tu presupuesto
+                                        </FormHelperText>
+                                        ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
                                 </FormControl>
                             </GridItem>
                             {/**
