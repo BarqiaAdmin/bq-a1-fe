@@ -41,6 +41,7 @@ import clubesLIGAESCOBARENSE from '../../db/clubesLIGAESCOBARENSE';
 import clubesAIFA from '../../db/clubesAIFA';
 import clubesAFABNACIONAL from '../../db/clubesAFABNACIONAL';
 import clubesBMETRO from '../../db/clubesBMETRO';
+import clubes from '../../db/clubes';
 
 import paises from '../../db/paises';
 
@@ -202,9 +203,21 @@ function NuevoJugador() {
     const isErrorCategoria = false;
 
     const crearJugador = () => {
-        Router.push({
-            pathname: '/Onboarding/NuevoJugador2'
-        })
+        if (inputNombre != '') {
+            Router.push({
+                pathname: '/Onboarding/NuevoJugador2'
+            })
+        } else {
+            alert('El campo "Nombre" no puede estar vacío')
+        }
+
+        if (inputApellido != '') {
+            Router.push({
+                pathname: '/Onboarding/NuevoJugador2'
+            })
+        } else {
+            alert('El campo "Apellido" no puede estar vacío')
+        }
     }
 
     const convertToBase64 = (file) => {
@@ -520,13 +533,14 @@ function NuevoJugador() {
                                 <FormControl isInvalid={isErrorClub}>
                                     <FormLabel>Club</FormLabel>
                                     <HStack>                                    
-                                        <Select placeholder="AFA" onChange={ handleClubChange }>
-                                            {clubesAFA.map((club, index) => {
+                                        <Select placeholder="Seleccionar" onChange={ handleClubChange }>
+                                            {clubes.map((club, index) => {
                                                 return (
                                                     <option key={ index }>{ club }</option>
                                                 )
                                             })}
                                         </Select>
+                                        {/**
                                         <Select placeholder="AFA B NACIONAL" onChange={ handleClubChange }>
                                             {clubesAFABNACIONAL.map((club, index) => {
                                                 return (
@@ -555,6 +569,7 @@ function NuevoJugador() {
                                                 )
                                             })}
                                         </Select>
+                                         */}
                                     </HStack>
                                 </FormControl>
                                 <HStack marginTop='20px'>
