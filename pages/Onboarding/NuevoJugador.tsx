@@ -34,6 +34,8 @@ import {
     NumberDecrementStepper,
 } from '@chakra-ui/react';
 
+import NavBar from '../src/Components/NavBar/NavBar'
+
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 import clubesAFA from '../../db/clubesAFA';;
@@ -204,83 +206,81 @@ function NuevoJugador() {
     const isErrorCategoria = false;
 
     const crearJugador = () => {
-        if (inputNombre != '') {
+        let validacionesPrimarias = localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != ''
+
+        if (!validacionesPrimarias) {
+            alert('Por favor, llena todos los campos obligatorios (*)')
+            return
+        }
+
+        if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
             Router.push({
                 pathname: '/Onboarding/NuevoJugador2'
             })
-        } else {
+        } else if (localStorage.getItem('nombre') == '' && localStorage.getItem('apellido') == '' && localStorage.getItem('nacimiento') == '' && localStorage.getItem('pieHabil') == '' && localStorage.getItem('posicion') == '' && localStorage.getItem('genero') == '' && localStorage.getItem('estatura') == '' && localStorage.getItem('kilos') == '' && localStorage.getItem('categoria') == '') {
             alert('El campo "Nombre" no puede estar vacío')
-        }
-
-        if (inputApellido != '') {
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '')  {
             Router.push({
-                pathname: '/Onboarding/NuevoJugador2'
+                pathname: 'Onboarding/NuevoJugador2'
             })
-        } else {
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
             alert('El campo "Apellido" no puede estar vacío')
-        }
-
-        if (inputNacimiento != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        } else {
-            alert('Por favor, seleccione una fecha de nacimiento válida')
-        }
-
-        console.log(inputPais)
-        if (inputPais != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        } else {
-            alert('Por favor, seleccione un país válido')
-        }
-
-        if (inputPieHabil != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        } else {
-            alert('Por favor, selecciona tu pie hábil')
-        }
-
-        if (inputPosicion != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        } else {
-            alert('Por favor, selecciona tu posición')
-        }
-
-        if (inputGenero != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        }
-
-        if (inputEstatura != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2',
-            })
-        } else {
-            alert('Ingresa tu altura en metros')
-        }
-
-        if (inputPeso != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2',
-            })
-        } else {
-            alert('Ingresa tu peso en kilos');
-        };
-
-        if (inputPeso != '') {
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
             Router.push({
                 pathname: 'Onboarding/NuevoJugador2',
             });
-        } else {
-            alert('Selecciona una Categoría')
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+            alert('Por favor, ingresa tu fecha de nacimiento')
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2'
+            })
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+            alert('Por favor, selecciona un país')
+        }
+        
+        else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2'
+            })
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           alert('Por favor, selecciona un país')
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           Router.push({
+               pathname: 'Onboarding/NuevoJugador2'
+           })
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           alert('Por favor, selecciona un país')
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           Router.push({
+               pathname: 'Onboarding/NuevoJugador2'
+           })
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           alert('Por favor, selecciona tu posición')
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           Router.push({
+               pathname: 'Onboarding/NuevoJugador2'
+           })
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           alert('Por favor, selecciona tu género')
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           Router.push({
+               pathname: 'Onboarding/NuevoJugador2',
+           })
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           alert('Ingresa tu altura en metros')
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           Router.push({
+               pathname: 'Onboarding/NuevoJugador2',
+           })
+        } else if (true) {
+           alert('Ingresa tu peso en kilos');
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+           Router.push({
+               pathname: 'Onboarding/NuevoJugador2',
+           });
+        } else if (true) {
+           alert('Selecciona una Categoría')
         };
     }
 
@@ -343,10 +343,11 @@ function NuevoJugador() {
     return (
         <>
             {domLoaded && (
-                    <Container
+                <Container
                     maxW="100%"
                     p={10}
                 >
+                    <NavBar />
                     <Image alt='' 
                         position="fixed"
                         left="0"
@@ -819,7 +820,7 @@ function NuevoJugador() {
                             </GridItem>
                             */}
                             <GridItem colSpan={12}>
-                                <Link href="/Onboarding/Onboarding">
+                                <Link href="/">
                                     <Button
                                         className="btn1"
                                         p="10px 24px 12px"

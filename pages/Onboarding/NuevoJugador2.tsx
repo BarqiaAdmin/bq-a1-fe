@@ -38,8 +38,6 @@ class NuevoJugador2 extends Component {
         this.elegirAtributo = this.elegirAtributo.bind(this);
     }
 
-
-
     /**
     Router = useRouter();
 
