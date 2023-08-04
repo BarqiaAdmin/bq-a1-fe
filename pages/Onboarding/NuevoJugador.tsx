@@ -75,7 +75,8 @@ function NuevoJugador() {
     const [inputCondicion, setInputCondicion] = useState('');
     const [inputPresupuesto, setInputPresupuesto] = useState('');
 
-    const [inputCustom, setInputCustom] = useState(false);
+    const [inputClubCustom, setInputClubCustom] = useState(false);
+    const [inputClubCustomName, setInputClubCustomName] = useState(false);
     const [inputUniversidades, setInputUniversidades] = useState(false);
 
     const subirImagen = () => {
@@ -218,6 +219,69 @@ function NuevoJugador() {
         } else {
             alert('El campo "Apellido" no puede estar vacío')
         }
+
+        if (inputNacimiento != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2'
+            })
+        } else {
+            alert('Por favor, seleccione una fecha de nacimiento válida')
+        }
+
+        console.log(inputPais)
+        if (inputPais != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2'
+            })
+        } else {
+            alert('Por favor, seleccione un país válido')
+        }
+
+        if (inputPieHabil != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2'
+            })
+        } else {
+            alert('Por favor, selecciona tu pie hábil')
+        }
+
+        if (inputPosicion != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2'
+            })
+        } else {
+            alert('Por favor, selecciona tu posición')
+        }
+
+        if (inputGenero != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2'
+            })
+        }
+
+        if (inputEstatura != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2',
+            })
+        } else {
+            alert('Ingresa tu altura en metros')
+        }
+
+        if (inputPeso != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2',
+            })
+        } else {
+            alert('Ingresa tu peso en kilos');
+        };
+
+        if (inputPeso != '') {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2',
+            });
+        } else {
+            alert('Selecciona una Categoría')
+        };
     }
 
     const convertToBase64 = (file) => {
@@ -386,7 +450,7 @@ function NuevoJugador() {
                                     {!isErrorNacimiento ? (
                                         <FormHelperText>
                                             Ingresa tu fecha de nacimiento <br />
-                                            Tu edad: <Text fontWeight='bold' display='inline-block'>{ edad  }</Text>
+                                            Tu edad: <Text fontWeight='bold' display='inline-block'>{ localStorage.getItem('edad') }</Text>
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -413,7 +477,7 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            
+                            <Divider />
                             <GridItem colSpan={12}>
                                 <Text>SOCIAL</Text>
                             </GridItem>
@@ -441,7 +505,7 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorPieHabil}>
                                     <FormLabel>Pie hábil</FormLabel>
-                                    <Select value={ localStorage.getItem('pieHabil') } onChange={handlePieHabilChange}>
+                                    <Select value={ localStorage.getItem('pieHabil') } onChange={ (e) => localStorage.setItem('pieHabil', e.target.value) }>
                                         <option>Seleccionar</option>
                                         <option>Izquierdo</option>
                                         <option>Derecho</option>
@@ -458,7 +522,7 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorPosicion}>
                                     <FormLabel>Posición</FormLabel>
-                                    <Select value={ localStorage.getItem('posicion') } onChange={handlePosicionChange}>
+                                    <Select value={ localStorage.getItem('posicion') } onChange={ (e) => localStorage.setItem('posicion', e.target.value) }>
                                         <option>Seleccionar</option>
                                         <option>Delantero</option>
                                         <option>Mediocampista</option>
@@ -477,7 +541,7 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorGenero}>
                                     <FormLabel>Género</FormLabel>
-                                    <Select value={ localStorage.getItem('genero') } onChange={handleGeneroChange}>
+                                    <Select value={ localStorage.getItem('genero') } onChange={ (e) => localStorage.setItem('genero', e.target.value )}>
                                         <option>Seleccionar</option>
                                         <option>Femenino</option>
                                         <option>Masculino</option>
@@ -495,7 +559,7 @@ function NuevoJugador() {
                                 <FormControl isRequired isInvalid={isErrorEstatura}>
                                     <FormLabel>Estatura</FormLabel>
                                     <NumberInput>
-                                        <NumberInputField placeholder="Ej: 1.76m" onChange={handleEstaturaChange} />
+                                        <NumberInputField value={ localStorage.getItem('estatura') } placeholder="Ej: 1.76m" onChange={ (e) => localStorage.setItem('estatura', e.target.value) } />
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
                                             <NumberDecrementStepper />
@@ -513,8 +577,8 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorPeso}>
                                     <FormLabel>Peso</FormLabel>
-                                    <NumberInput>
-                                        <NumberInputField placeholder="Ej: 80kg" onChange={handlePesoChange} />
+                                    <NumberInput value={ localStorage.getItem('peso') }>
+                                        <NumberInputField placeholder="Ej: 80kg" onChange={ (e) => localStorage.setItem('peso', e.target.value) } />
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
                                             <NumberDecrementStepper />
@@ -531,9 +595,9 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={12}>
                                 <FormControl isInvalid={isErrorClub}>
-                                    <FormLabel>Club</FormLabel>
+                                    <FormLabel>Club<Text style={ (!inputClubCustom && !inputClubCustomName) ? { display: 'none' } : { display: 'inline-block' } }> { ': ' + localStorage.getItem('club') } </Text></FormLabel>
                                     <HStack>                                    
-                                        <Select placeholder="Seleccionar" onChange={ handleClubChange }>
+                                        <Select value={ localStorage.getItem('club') } style={ (inputClubCustom && inputClubCustomName) ? { display: 'none' } : { display: 'inline-block '} } placeholder="Seleccionar" onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } }>
                                             {clubes.map((club, index) => {
                                                 return (
                                                     <option key={ index }>{ club }</option>
@@ -573,10 +637,10 @@ function NuevoJugador() {
                                     </HStack>
                                 </FormControl>
                                 <HStack marginTop='20px'>
-                                    <Button onClick={() => setInputCustom(!inputCustom)} style={ inputCustom ? { display: 'none' } : { display: 'inline-block' } }>OTRO</Button>
-                                    <Button onClick={() => setInputCustom(false)} style={ inputCustom ? { display: 'block' } : { display: 'none' } }><CloseIcon></CloseIcon></Button>
-                                    <Input style={ inputCustom ? { display: 'block' } : { display: 'none' } } type="text" placeholder="Club al que perteneces actualmente" />
-                                    <Button onClick={() => setInputCustom(false)} style={ inputCustom ? { display: 'block' } : { display: 'none' } }><CheckIcon></CheckIcon></Button>
+                                    <Button onClick={ () => { setInputClubCustom(true), setInputClubCustomName(true); } } style={ inputClubCustom ? { display: 'none' } : { display: 'inline-block' } }>No encuentro mi club</Button>
+                                    <Button onClick={ (e) => { setInputClubCustom(false); localStorage.setItem('clubCustom', '' )} } style={ inputClubCustom ? { display: 'block' } : { display: 'none' } }><CloseIcon></CloseIcon></Button>
+                                    <Input onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } } style={ inputClubCustom ? { display: 'block' } : { display: 'none' } } type="text" placeholder="Club al que perteneces actualmente" />
+                                    <Button onClick={ () => { setInputClubCustom(false); setInputClubCustomName(true) } } style={ inputClubCustom ? { display: 'block' } : { display: 'none' } }><CheckIcon></CheckIcon></Button>
                                 </HStack>
                             </GridItem>
                             <GridItem colSpan={12}>
@@ -591,9 +655,9 @@ function NuevoJugador() {
                                         </AccordionButton>
                                         </h2>
                                         <AccordionPanel pb={4}>
-                                            <Input placeholder="Club previo 1" />
-                                            <Input placeholder="Club previo 2" />
-                                            <Input placeholder="Club previo 3" />
+                                            <Input value={ localStorage.getItem('clubPrevio1') } onChange={ (e) => localStorage.setItem('clubPrevio1', e.target.value) }placeholder="Club previo 1" />
+                                            <Input value={ localStorage.getItem('clubPrevio2') } onChange={ (e) => localStorage.setItem('clubPrevio2', e.target.value) }placeholder="Club previo 2" />
+                                            <Input value={ localStorage.getItem('clubPrevio3') } onChange={ (e) => localStorage.setItem('clubPrevio3', e.target.value) }placeholder="Club previo 3" />
                                         </AccordionPanel>
                                     </AccordionItem>
                                 </Accordion>
@@ -601,7 +665,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorCategoria}>
                                     <FormLabel>Categoría</FormLabel>
-                                    <Select value={ localStorage.getItem('categoria') } placeholder="Seleccionar" onChange={handleCategoriaChange}>
+                                    <Select value={ localStorage.getItem('categoria') } onChange={ (e) => localStorage.setItem('categoria', e.target.value) } placeholder="Seleccionar">
                                         <option>Seleccionar</option>
                                         <option>Pro</option>
                                         <option>Semi-Pro</option>
@@ -617,16 +681,16 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={12}>
+                            <GridItem colSpan={6}>
                                 <FormControl>
                                     <FormLabel>Condición</FormLabel>
-                                    <Select value={ localStorage.getItem('condicion') } placeholder="Seleccionar" onChange={handleCategoriaChange}>
+                                    <Select value={ localStorage.getItem('condicion') } placeholder="Seleccionar" onChange={ (e) => localStorage.setItem('condicion', e.target.value) }>
                                         <option>Libre</option>
                                         <option>Con contrato</option>
                                     </Select>
                                     {!isErrorCategoria ? (
                                         <FormHelperText>
-                                            Selecciona tu condición contractual actual
+                                            Selecciona tu condición contractual
                                         </FormHelperText>
                                         ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -637,17 +701,17 @@ function NuevoJugador() {
                                 <FormLabel>Quiero ser visto por:</FormLabel>
                             </GridItem>
                             <GridItem colSpan={4}>
-                                <Checkbox colorScheme='blue'>
+                                <Checkbox colorScheme='blue' onClick={ () => localStorage.setItem('agentes', 'true')}>
                                     Agentes
                                 </Checkbox>
                             </GridItem>
                             <GridItem colSpan={4}>
-                                <Checkbox colorScheme='blue'>
+                                <Checkbox colorScheme='blue' onClick={ () => localStorage.setItem('clubes', 'true') }>
                                     Clubes
                                 </Checkbox>
                             </GridItem>
                             <GridItem colSpan={4} >
-                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => setInputUniversidades(!inputUniversidades) }>Universidades</Button>
+                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') }}>Universidades</Button>
                                 {/**<Checkbox colorScheme='blue'>
                                     Universidades
                                 </Checkbox>
@@ -656,7 +720,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel >Nivel de inglés</FormLabel>
-                                    <Select value={ localStorage.getItem('nivelDeIngles') } onChange={handleNivelDeInglesChange}>
+                                    <Select value={ localStorage.getItem('nivelDeIngles') } onChange={ (e) => localStorage.setItem('nivelDeIngles', e.target.value) }>
                                         <option>Seleccionar</option>
                                         <option>Bilingüe</option>
                                         <option>Avanzado</option>
@@ -675,7 +739,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel >Certificaciones</FormLabel>
-                                    <Input onChange={ handleCertificacionesChange } type="text" placeholder="Certificaciones (separar con coma)" />
+                                    <Input onChange={ (e) => localStorage.setItem('certificaciones', 'true') } type="text" placeholder="Certificaciones" />
                                     {!isErrorCategoria ? (
                                         <FormHelperText>
                                             Ingresa tus certificados separados por coma: Ej: CAE, First, etc 
@@ -687,7 +751,8 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={12}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
-                                    <Select value={ localStorage.getItem('presupuesto') } placeholder="Seleccionar" onChange={handlePresupuestoChange}>
+                                    <FormLabel>Presupuesto</FormLabel>
+                                    <Select value={ localStorage.getItem('presupuesto') }placeholder="Seleccionar" onChange={ (e) => localStorage.setItem('prespupesto', e.target.value) }>
                                         <option>0 - 5.000</option>
                                         <option>6.0000 - 10.000</option>
                                         <option>10.000 - 15.000</option>
