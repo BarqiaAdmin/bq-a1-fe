@@ -220,7 +220,7 @@ export default function Perfil() {
     }
 
     const handleUpdate = () => {
-        fetch('http://localhost:5051/actualizarUsuario', {
+        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -265,7 +265,7 @@ export default function Perfil() {
     /*
     const uploadImage = (imageBae64) => {
         console.log(imageBae64)
-        fetch('http://localhost:5051/subirImagen', {
+        fetch('https://bq-a1-be.vercel.app/subirImagen', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -283,12 +283,11 @@ export default function Perfil() {
         const file = e.target.files[0];
         let base64 = '';
         await convertToBase64(file).then(data => {
-            console.log(data)
             base64 = data.toString();
             //base64 = base64.slice(0, base64.length - 1);
-            setImagenesGaleria([...imagenesGaleria, base64])
+            imagenesGaleria.push(base64)
             localStorage.setItem('imagenesGaleria', imagenesGaleria.toString());
-            fetch('http://localhost:5051/actualizarUsuario', {
+            fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
                 method: 'post',
                 headers: {
                     "Accept": "application/json",
@@ -351,7 +350,7 @@ export default function Perfil() {
         setVideosGaleria(newVideosGaleria)
         console.log(videosGaleria)
         localStorage.setItem('videosGaleria', videosGaleria.toString());
-        fetch('http://localhost:5051/actualizarUsuario', {
+        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -460,6 +459,7 @@ export default function Perfil() {
             videosGaleriaArray[i] = 'https://www.youtube.com/' + videosGaleriaArray[i]
         }
         console.log(videosGaleriaArray)
+       
         setVideosGaleria(videosGaleriaArray);
     }, []);
 

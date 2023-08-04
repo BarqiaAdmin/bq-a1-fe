@@ -332,7 +332,7 @@ function NuevoJugador() {
         setInputEmail(inputEmail);
         console.log(inputEmail)
 
-        setInputInputFotoPerfil(localStorage.getItem('inputFotoPerfil'));
+        setInputFotoPerfil(localStorage.getItem('inputFotoPerfil'));
 
         let inputNombre = localStorage.getItem('nombre')
         setInputNombre(inputNombre);
