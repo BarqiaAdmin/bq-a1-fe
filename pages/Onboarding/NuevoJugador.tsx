@@ -62,9 +62,8 @@ function NuevoJugador() {
     const [inputEmail, setInputEmail] = useState('');
     const [inputNombre, setInputNombre] = useState('');
     const [inputApellido, setInputApellido] = useState('');
-    const [inputFechaDeNacimiento, setInputFechaDeNacimiento] = useState('');
-    const [edad, setEdad] = useState('');
     const [inputNacimiento, setInputNacimiento] = useState('');
+    const [edad, setEdad] = useState('');
     const [inputPais, setInputPais] = useState('');
     const [inputNivelDeIngles, setInputNivelDeIngles] = useState('');
     const [inputPieHabil, setInputPieHabil] = useState('');
@@ -206,82 +205,104 @@ function NuevoJugador() {
     const isErrorCategoria = false;
 
     const crearJugador = () => {
-        let validacionesPrimarias = localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != ''
 
+        let validacionesPrimarias = localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != ''
+        
         if (!validacionesPrimarias) {
             alert('Por favor, llena todos los campos obligatorios (*)')
             return
+        } else {
+            Router.push({
+                pathname: 'NuevoJugador2',
+            });
         }
 
-        if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
-            Router.push({
-                pathname: '/Onboarding/NuevoJugador2'
-            })
-        } else if (localStorage.getItem('nombre') == '' && localStorage.getItem('apellido') == '' && localStorage.getItem('nacimiento') == '' && localStorage.getItem('pieHabil') == '' && localStorage.getItem('posicion') == '' && localStorage.getItem('genero') == '' && localStorage.getItem('estatura') == '' && localStorage.getItem('kilos') == '' && localStorage.getItem('categoria') == '') {
-            alert('El campo "Nombre" no puede estar vacío')
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '')  {
+        
+        /*
+        if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais')) {
             Router.push({
                 pathname: 'Onboarding/NuevoJugador2'
             })
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        } else if (localStorage.getItem('nombre') == '') {
+            alert('El campo "Nombre" no puede estar vacío')
+
+
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais'))  {
+            Router.push({
+                pathname: 'Onboarding/NuevoJugador2'
+            })
+        } else if (localStorage.getItem('apellido') == '') {
             alert('El campo "Apellido" no puede estar vacío')
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+
+
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais')) {
             Router.push({
                 pathname: 'Onboarding/NuevoJugador2',
             });
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
-            alert('Por favor, ingresa tu fecha de nacimiento')
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        } else if (localStorage.getItem('nacimiento') == '') {
+            alert('Ingresa tu Fecha de nacimiento')
+
+
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
             Router.push({
                 pathname: 'Onboarding/NuevoJugador2'
             })
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        } else if (localStorage.getItem('pais') == '') {
             alert('Por favor, selecciona un país')
+
+
         }
         
-        else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
             Router.push({
                 pathname: 'Onboarding/NuevoJugador2'
             })
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
-           alert('Por favor, selecciona un país')
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        } else if (localStorage.getItem('pieHabil') == '') {
+           alert('Por favor, selecciona tu Pie Hábil')
+           
+           
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' &&        localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('peso') != '') {
            Router.push({
                pathname: 'Onboarding/NuevoJugador2'
            })
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
-           alert('Por favor, selecciona un país')
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        } else if (localStorage.getItem('posicion') == '') {
+           alert('Por favor, selecciona tu Posicion')
+
+
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
            Router.push({
                pathname: 'Onboarding/NuevoJugador2'
            })
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
-           alert('Por favor, selecciona tu posición')
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        } else if (localStorage.getItem('genero') == '') {
+           alert('Por favor, selecciona tu Género')
+
+
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
            Router.push({
                pathname: 'Onboarding/NuevoJugador2'
            })
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
-           alert('Por favor, selecciona tu género')
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        } else if (localStorage.getItem('estatura') == '') {
+           alert('Por favor, ingresa tu Estatura (en metros, ej: "1.68")')
+
+
+        } else if (localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais')) {
            Router.push({
                pathname: 'Onboarding/NuevoJugador2',
            })
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
-           alert('Ingresa tu altura en metros')
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
+        } else if (localStorage.getItem('peso') == '') {
+           alert('Ingresa tu peso en KG')
+
+
+        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
            Router.push({
                pathname: 'Onboarding/NuevoJugador2',
            })
-        } else if (true) {
-           alert('Ingresa tu peso en kilos');
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('kilos') != '' && localStorage.getItem('categoria') != '') {
-           Router.push({
-               pathname: 'Onboarding/NuevoJugador2',
-           });
-        } else if (true) {
-           alert('Selecciona una Categoría')
-        };
+        } else if (localStorage.getItem('categoria')) {
+           alert('Por favor, selecciona una Categoría');
+
+
+        }
+        */
     }
 
     const convertToBase64 = (file) => {
@@ -311,33 +332,30 @@ function NuevoJugador() {
         setInputEmail(inputEmail);
         console.log(inputEmail)
 
-        setInputNombre(localStorage.getItem('password'));
-        
-        setInputNombre(localStorage.getItem('fotoPerfi'));
+        setInputNombre(localStorage.getItem('fotoPerfil'));
 
         let inputNombre = localStorage.getItem('nombre')
         setInputNombre(inputNombre);
         //(document.getElementById("inputNombre") as HTMLInputElement).defaultValue = inputNombre;
         console.log(inputNombre);
 
-        setInputNombre(localStorage.getItem('apellido'));
+        setInputApellido(localStorage.getItem('apellido'));
         console.log(inputApellido);
         
-        setInputNombre(localStorage.getItem('fotoPerfil'));
         
-        setInputNombre(localStorage.getItem('urlDeImagen'));
-        setInputNombre(localStorage.getItem('FechaDeNacimiento'));
-        setInputNombre(localStorage.getItem('pais'));
-        setInputNombre(localStorage.getItem('nivelDeIngles'));
-        setInputNombre(localStorage.getItem('pieHabil'));
-        setInputNombre(localStorage.getItem('posicion'));
-        setInputNombre(localStorage.getItem('genero'));
-        setInputNombre(localStorage.getItem('estatura'));
-        setInputNombre(localStorage.getItem('peso'));
-        setInputNombre(localStorage.getItem('club'));
-        setInputNombre(localStorage.getItem('categoria'));
-        setInputNombre(localStorage.getItem('condicion'));
-        setInputNombre(localStorage.getItem('presupuesto'));
+        
+        setInputNacimiento(localStorage.getItem('nacimiento'));
+        setInputPais(localStorage.getItem('pais'));
+        setInputNivelDeIngles(localStorage.getItem('nivelDeIngles'));
+        setInputPieHabil(localStorage.getItem('pieHabil'));
+        setInputPosicion(localStorage.getItem('posicion'));
+        setInputGenero(localStorage.getItem('genero'));
+        setInputEstatura(localStorage.getItem('estatura'));
+        setInputPeso(localStorage.getItem('peso'));
+        setInputClub(localStorage.getItem('club'));
+        setInputCategoria(localStorage.getItem('categoria'));
+        setInputCondicion(localStorage.getItem('condicion'));
+        setInputPresupuesto(localStorage.getItem('presupuesto'));
     }, [])
 
     return (
@@ -418,7 +436,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNombre}>
                                     <FormLabel>Nombre</FormLabel>
-                                    <Input id="inputNombre" placeholder="Ingresar nombre" value={ localStorage.getItem('nombre') } onChange={handleNombreChange} />
+                                    <Input id="inputNombre" placeholder="Ingresar nombre" value={ inputNombre } onChange={handleNombreChange} />
                                     {!isErrorNombre ? (
                                         <FormHelperText>
                                             Ingresa tu nombre
@@ -431,7 +449,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorApellido}>
                                     <FormLabel>Apellido</FormLabel>
-                                    <Input placeholder="Ingresar apellido" value={ localStorage.getItem('apellido') } onChange={handleApellidoChange}/>
+                                    <Input placeholder="Ingresar apellido" value={ inputApellido } onChange={handleApellidoChange}/>
                                     {!isErrorApellido ? (
                                         <FormHelperText>
                                             Ingresa tu apellido
@@ -444,14 +462,14 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorNacimiento}>
                                     <FormLabel>Fecha de Nacimiento</FormLabel>
-                                    <input type='date' value={ localStorage.getItem('nacimiento') } onChange={ handleNacimientoChange }/>
+                                    <input type='date' value={ inputNacimiento } onChange={ handleNacimientoChange }/>
                                     {/**
-                                    <Input placeholder="Ingresar FechaDeNacimiento"/>
+                                    <Input placeholder="Ingresar Nacimiento"/>
                                      */}
                                     {!isErrorNacimiento ? (
                                         <FormHelperText>
                                             Ingresa tu fecha de nacimiento <br />
-                                            Tu edad: <Text fontWeight='bold' display='inline-block'>{ localStorage.getItem('edad') }</Text>
+                                            Tu edad: <Text fontWeight='bold' display='inline-block'>{ edad }</Text>
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -462,7 +480,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorPais}>
                                     <FormLabel>Pais</FormLabel>
-                                    <Select placeholder="Seleccionar país" value={ localStorage.getItem('pais') } onChange={handlePaisChange}>
+                                    <Select placeholder="Seleccionar país" value={ inputPais } onChange={handlePaisChange}>
                                         {paises.map((pais, index) => {
                                             return (
                                                 <option key={index}>{ pais }</option>
@@ -506,7 +524,7 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorPieHabil}>
                                     <FormLabel>Pie hábil</FormLabel>
-                                    <Select value={ localStorage.getItem('pieHabil') } onChange={ (e) => localStorage.setItem('pieHabil', e.target.value) }>
+                                    <Select value={ inputPieHabil } onChange={ (e) => { localStorage.setItem('pieHabil', e.target.value); setInputPieHabil(e.target.value) } }>
                                         <option>Seleccionar</option>
                                         <option>Izquierdo</option>
                                         <option>Derecho</option>
@@ -523,7 +541,7 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorPosicion}>
                                     <FormLabel>Posición</FormLabel>
-                                    <Select value={ localStorage.getItem('posicion') } onChange={ (e) => localStorage.setItem('posicion', e.target.value) }>
+                                    <Select value={ inputPosicion } onChange={ (e) => { localStorage.setItem('posicion', e.target.value); setInputPosicion(e.target.value) } }>
                                         <option>Seleccionar</option>
                                         <option>Delantero</option>
                                         <option>Mediocampista</option>
@@ -542,7 +560,7 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl isRequired isInvalid={isErrorGenero}>
                                     <FormLabel>Género</FormLabel>
-                                    <Select value={ localStorage.getItem('genero') } onChange={ (e) => localStorage.setItem('genero', e.target.value )}>
+                                    <Select value={ inputGenero } onChange={ (e) => { localStorage.setItem('genero', e.target.value ); setInputGenero(e.target.value) } }>
                                         <option>Seleccionar</option>
                                         <option>Femenino</option>
                                         <option>Masculino</option>
@@ -560,7 +578,7 @@ function NuevoJugador() {
                                 <FormControl isRequired isInvalid={isErrorEstatura}>
                                     <FormLabel>Estatura</FormLabel>
                                     <NumberInput>
-                                        <NumberInputField value={ localStorage.getItem('estatura') } placeholder="Ej: 1.76m" onChange={ (e) => localStorage.setItem('estatura', e.target.value) } />
+                                        <NumberInputField value={ inputEstatura } placeholder="Ej: 1.76m" onChange={ (e) => localStorage.setItem('estatura', e.target.value) } />
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
                                             <NumberDecrementStepper />
@@ -578,8 +596,8 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorPeso}>
                                     <FormLabel>Peso</FormLabel>
-                                    <NumberInput value={ localStorage.getItem('peso') }>
-                                        <NumberInputField placeholder="Ej: 80kg" onChange={ (e) => localStorage.setItem('peso', e.target.value) } />
+                                    <NumberInput>
+                                        <NumberInputField value={ inputPeso } placeholder="Ej: 80kg" onChange={ (e) => localStorage.setItem('peso', e.target.value) } />
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
                                             <NumberDecrementStepper />
@@ -598,7 +616,7 @@ function NuevoJugador() {
                                 <FormControl isInvalid={isErrorClub}>
                                     <FormLabel>Club<Text style={ (!inputClubCustom && !inputClubCustomName) ? { display: 'none' } : { display: 'inline-block' } }> { ': ' + localStorage.getItem('club') } </Text></FormLabel>
                                     <HStack>                                    
-                                        <Select value={ localStorage.getItem('club') } style={ (inputClubCustom && inputClubCustomName) ? { display: 'none' } : { display: 'inline-block '} } placeholder="Seleccionar" onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } }>
+                                        <Select value={ inputClub } style={ (inputClubCustom && inputClubCustomName) ? { display: 'none' } : { display: 'inline-block '} } placeholder="Seleccionar" onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } }>
                                             {clubes.map((club, index) => {
                                                 return (
                                                     <option key={ index }>{ club }</option>
@@ -666,8 +684,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl isRequired isInvalid={isErrorCategoria}>
                                     <FormLabel>Categoría</FormLabel>
-                                    <Select value={ localStorage.getItem('categoria') } onChange={ (e) => localStorage.setItem('categoria', e.target.value) } placeholder="Seleccionar">
-                                        <option>Seleccionar</option>
+                                    <Select value={ inputCategoria } onChange={ (e) => { localStorage.setItem('categoria', e.target.value); setInputCategoria(e.target.value) } } placeholder="Seleccionar">
                                         <option>Pro</option>
                                         <option>Semi-Pro</option>
                                         <option>Juvenil</option>
@@ -685,7 +702,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl>
                                     <FormLabel>Condición</FormLabel>
-                                    <Select value={ localStorage.getItem('condicion') } placeholder="Seleccionar" onChange={ (e) => localStorage.setItem('condicion', e.target.value) }>
+                                    <Select value={ inputCondicion } placeholder="Seleccionar" onChange={ (e) => { localStorage.setItem('condicion', e.target.value); setInputCondicion(e.target.value) } }>
                                         <option>Libre</option>
                                         <option>Con contrato</option>
                                     </Select>
