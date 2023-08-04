@@ -58,7 +58,7 @@ function NuevoJugador() {
 
     const [files, selectFiles] = useFileUpload();
 
-    const [fotoPerfil, setFotoPerfil] = useState('');
+    const [inputFotoPerfil, setInputFotoPerfil] = useState('');
     const [inputEmail, setInputEmail] = useState('');
     const [inputNombre, setInputNombre] = useState('');
     const [inputApellido, setInputApellido] = useState('');
@@ -94,8 +94,8 @@ function NuevoJugador() {
     }    
 
     const handleUrlDeImagenChange = (e) => {
-        setFotoPerfil(e.target.value);
-        localStorage.setItem('fotoPerfil', e.target.value);
+        setInputFotoPerfil(e.target.value);
+        localStorage.setItem('inputFotoPerfil', e.target.value);
     }
 
     const handleNombreChange = (e) => {
@@ -321,8 +321,8 @@ function NuevoJugador() {
     const handleFileUpload = async (e) => {
         const file = e.target.files[0];
         const base64 = await convertToBase64(file);
-        setFotoPerfil(base64.toString())
-        localStorage.setItem('fotoPerfil', base64.toString());
+        setInputFotoPerfil(base64.toString())
+        localStorage.setItem('inputFotoPerfil', base64.toString());
     };
 
     useEffect(() => {
@@ -332,7 +332,7 @@ function NuevoJugador() {
         setInputEmail(inputEmail);
         console.log(inputEmail)
 
-        setInputNombre(localStorage.getItem('fotoPerfil'));
+        setInputInputFotoPerfil(localStorage.getItem('inputFotoPerfil'));
 
         let inputNombre = localStorage.getItem('nombre')
         setInputNombre(inputNombre);
@@ -420,7 +420,7 @@ function NuevoJugador() {
                                 alt=''
                                 borderRadius='full'
                                 id="fotoDePerfil"
-                                src={ fotoPerfil }
+                                src={ inputFotoPerfil }
                                 marginTop="-287px"
                                 height='180px'
                                 width='180px'
@@ -578,7 +578,7 @@ function NuevoJugador() {
                                 <FormControl isRequired isInvalid={isErrorEstatura}>
                                     <FormLabel>Estatura</FormLabel>
                                     <NumberInput>
-                                        <NumberInputField value={ inputEstatura } placeholder="Ej: 1.76m" onChange={ (e) => localStorage.setItem('estatura', e.target.value) } />
+                                        <NumberInputField value={ inputEstatura } placeholder="Ej: 1.76m" onChange={ (e) => { localStorage.setItem('estatura', e.target.value); setInputEstatura(e.target.value) } }/>
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
                                             <NumberDecrementStepper />
@@ -597,7 +597,7 @@ function NuevoJugador() {
                                 <FormControl isRequired isInvalid={isErrorPeso}>
                                     <FormLabel>Peso</FormLabel>
                                     <NumberInput>
-                                        <NumberInputField value={ inputPeso } placeholder="Ej: 80kg" onChange={ (e) => localStorage.setItem('peso', e.target.value) } />
+                                        <NumberInputField value={ inputPeso } placeholder="Ej: 80kg" onChange={ (e) => { localStorage.setItem('peso', e.target.value); setInputPeso(e.target.value) } }/>
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
                                             <NumberDecrementStepper />
