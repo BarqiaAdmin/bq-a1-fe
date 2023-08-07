@@ -162,6 +162,9 @@ const LogIn = () => {
             w='100%'
         >
             <Image alt='' 
+
+                className="artwork2"
+
                 position="fixed"
                 bottom="0"
                 left="0"
@@ -170,6 +173,9 @@ const LogIn = () => {
                 src='/artwork2.png'
             />
             <Image alt='' 
+
+                className="artwork3"
+
                 position='fixed'
                 top='0'
                 right='0'
@@ -190,7 +196,7 @@ const LogIn = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Email</FormLabel>
-                            <Input id="inputEmail" type="email" placeholder="Ingresa tu email" onChange={handleEmailChange}/>
+                            <Input id="inputEmail" type="email" placeholder="Ingresa tu email" onChange={handleEmailChange} style={{ marginRight: "15px" }}/>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8}>

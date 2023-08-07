@@ -94,8 +94,7 @@ function NuevoJugador() {
     }    
 
     const handleUrlDeImagenChange = (e) => {
-        setInputFotoPerfil(e.target.value);
-        localStorage.setItem('inputFotoPerfil', e.target.value);
+        
     }
 
     const handleNombreChange = (e) => {
@@ -319,10 +318,12 @@ function NuevoJugador() {
     };
 
     const handleFileUpload = async (e) => {
+        setInputFotoPerfil(e.target.value);
+        localStorage.setItem('fotoPerfil', e.target.value);
         const file = e.target.files[0];
         const base64 = await convertToBase64(file);
         setInputFotoPerfil(base64.toString())
-        localStorage.setItem('inputFotoPerfil', base64.toString());
+        localStorage.setItem('fotoPerfil', base64.toString());
     };
 
     useEffect(() => {

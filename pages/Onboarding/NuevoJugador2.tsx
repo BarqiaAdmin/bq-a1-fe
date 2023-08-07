@@ -51,8 +51,8 @@ class NuevoJugador2 extends Component {
     }
     */
 
-    crearUsuario = () => {
-        fetch('http://localhost:5051/crearUsuario', {
+    actualizarUsuario = () => {
+        fetch('http://localhost:5051/actualizarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -86,6 +86,7 @@ class NuevoJugador2 extends Component {
                 clubesPrevios: [],
                 imagenesGaleria: localStorage.getItem('imagenesGaleria'),
                 videosGaleria: localStorage.getItem('videosGaleria'),
+                lugarEnElCampo: localStorage.getItem('lugarEnElCampo'),
                 pases: localStorage.getItem('pases'),
                 tiros: localStorage.getItem('tiros'),
                 resistencia: localStorage.getItem('resistencia'),
@@ -276,17 +277,17 @@ class NuevoJugador2 extends Component {
                         position="relative"
                     >
                         <Image alt=''  src="/campo.png" />
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 1)} className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 2)} className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 3)} className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 4)} className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 5)} className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 6)} className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 7)} className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 8)} className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 9)} className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 10)} className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={(e) => this.elegirLugarEnElCampo(e, 11)} className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 1) } className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 2) } className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 3) } className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 4) } className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 5) } className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 6) } className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 7) } className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 8) } className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 9) } className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 10) } className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 11) } className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
                     </Box>
                     {/*
                     <Heading
@@ -349,7 +350,7 @@ class NuevoJugador2 extends Component {
                                 fontSize="21px"
                                 color="#A2A2A2"
 
-                                onClick={this.crearUsuario}
+                                onClick={this.actualizarUsuario}
                             >
                                 Finalizar
                             </Button>
