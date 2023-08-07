@@ -92,3 +92,9 @@ a {
 strong {
   color: #6EC1E4;
 }
+
+@media only screen and (max-width: 720px) {
+  .artwork2, .artwork3 {
+    display: none !important;
+  }
+}

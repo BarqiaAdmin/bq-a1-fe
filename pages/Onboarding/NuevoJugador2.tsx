@@ -52,7 +52,7 @@ class NuevoJugador2 extends Component {
     */
 
     crearUsuario = () => {
-        fetch('https://bq-a1-be.vercel.app/crearUsuario', {
+        fetch('http://localhost:5051/crearUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

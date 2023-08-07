@@ -40,6 +40,53 @@ const IndexPage = () => {
         localStorage.setItem('repeatPassword', e.target.value)
     }
 
+    const crearUsuario = () => {
+        fetch('http://localhost:5051/crearUsuario', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: localStorage.getItem('email'),
+                password: localStorage.getItem('password'),
+                fotoPerfil: localStorage.getItem('fotoPerfil'),
+                nombre: localStorage.getItem('nombre'),
+                apellido: localStorage.getItem('apellido'),
+                urlDeImagen: localStorage.getItem('urlDeImagen'),
+                edad: localStorage.getItem('edad'),
+                pais: localStorage.getItem('pais'),
+                nivelDeIngles: localStorage.getItem('nivelDeIngles'),
+                certificaciones: [],
+                social: {
+                    facebook: '',
+                    instagram: '',
+                    tiktok: '',
+                },
+                pieHabil: localStorage.getItem('pieHabil'),
+                posicion: localStorage.getItem('posicion'),
+                genero: localStorage.getItem('genero'),
+                estatura: localStorage.getItem('estatura'),
+                peso: localStorage.getItem('peso'),
+                club: localStorage.getItem('club'),
+                categoria: localStorage.getItem('categoria'),
+                condicion: localStorage.getItem('condicion'),
+                presupuesto: localStorage.getItem('presupuesto'),
+                clubesPrevios: [],
+                imagenesGaleria: localStorage.getItem('imagenesGaleria'),
+                videosGaleria: localStorage.getItem('videosGaleria'),
+                pases: localStorage.getItem('pases'),
+                tiros: localStorage.getItem('tiros'),
+                resistencia: localStorage.getItem('resistencia'),
+                visionDelJuego: localStorage.getItem('visionDeJuego'),
+                unoVsUno: localStorage.getItem('unoVsUno'),
+                tirosLibres: localStorage.getItem('tirosLibres'),
+                marca: localStorage.getItem('marca'),
+                juegoAereo: localStorage.getItem('juegoAereo')
+            })
+        })
+    }
+
     const handleRegister = () => {
         //console.log('Signing up');
         let inputEmail = (document.getElementById('inputEmail') as HTMLInputElement).value;
@@ -58,6 +105,7 @@ const IndexPage = () => {
         if (!(inputPassword == inputPasswordRepeat)) {
             window.alert('Las contraseñas no coinciden');
         } else {
+            crearUsuario();
             Router.push({
                 pathname: '/Onboarding/NuevoJugador'
             });
@@ -103,7 +151,7 @@ const IndexPage = () => {
             h='100%'
             w='100%'
         >
-            <Image alt='' 
+            <Image className="artwork2" alt='' 
                 position="fixed"
                 bottom="0"
                 left="0"
@@ -111,7 +159,7 @@ const IndexPage = () => {
                 zIndex="0"
                 src='/artwork2.png'
             />
-            <Image alt='' 
+            <Image className="artwork3" alt='' 
                 position='fixed'
                 top='0'
                 right='0'

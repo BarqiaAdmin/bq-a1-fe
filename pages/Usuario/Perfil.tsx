@@ -220,7 +220,7 @@ export default function Perfil() {
     }
 
     const handleUpdate = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('http://localhost:5051/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -265,7 +265,7 @@ export default function Perfil() {
     /*
     const uploadImage = (imageBae64) => {
         console.log(imageBae64)
-        fetch('https://bq-a1-be.vercel.app/subirImagen', {
+        fetch('http://localhost:5051/subirImagen', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -287,7 +287,7 @@ export default function Perfil() {
             //base64 = base64.slice(0, base64.length - 1);
             imagenesGaleria.push(base64)
             localStorage.setItem('imagenesGaleria', imagenesGaleria.toString());
-            fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+            fetch('http://localhost:5051/actualizarUsuario', {
                 method: 'post',
                 headers: {
                     "Accept": "application/json",
@@ -350,7 +350,7 @@ export default function Perfil() {
         setVideosGaleria(newVideosGaleria)
         console.log(videosGaleria)
         localStorage.setItem('videosGaleria', videosGaleria.toString());
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('http://localhost:5051/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
