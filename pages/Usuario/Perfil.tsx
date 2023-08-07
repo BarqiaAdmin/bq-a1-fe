@@ -498,16 +498,31 @@ export default function Perfil() {
                             >
                                 <HStack>
                                     <VStack gap="5px">
-                                        <Image
-                                            alt=''
-                                            borderRadius='full'
-                                            id="fotoDePerfil"
-                                            src={ fotoPerfil }
-                                            height='180px'
-                                            width='180px'
-                                            objectFit='cover'
-                                        />
+                                        <HStack>
+                                            <Image
+                                                alt=''
+                                                borderRadius='full'
+                                                id="fotoDePerfil"
+                                                src={ fotoPerfil }
+                                                height='180px'
+                                                width='180px'
+                                                objectFit='cover'
+                                            />
+                                            <Box
+                                                cursor='pointer'
+                                                color=''
+                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                                <EditIcon/>
+                                            </Box>
+                                        </HStack>
+                                        
                                         <Heading>{ nombre } { apellido }</Heading>
+                                        <Box
+                                            cursor='pointer'
+                                            color=''
+                                            style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                            <EditIcon/>
+                                        </Box>
                                         <HStack gap="5px">
                                             <CircularProgress value={70} color='green.400' size='60px'>
                                                 <CircularProgressLabel>70%</CircularProgressLabel>
@@ -530,6 +545,12 @@ export default function Perfil() {
                                             <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
+                                            <Box
+                                                cursor='pointer'
+                                                color=''
+                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                                <EditIcon/>
+                                            </Box>
                                         </HStack>
                                     </VStack>
                                     <HStack>

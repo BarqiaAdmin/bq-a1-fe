@@ -93,6 +93,14 @@ strong {
   color: #6EC1E4;
 }
 
+.css-1nwp9e0 {
+  transition: 0.2s
+}
+
+.css-1nwp9e0:hover {
+  color: #144077
+}
+
 @media only screen and (max-width: 720px) {
   .artwork2, .artwork3 {
     display: none !important;
