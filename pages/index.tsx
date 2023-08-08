@@ -73,7 +73,7 @@ const IndexPage = () => {
                 condicion: localStorage.getItem('condicion'),
                 presupuesto: localStorage.getItem('presupuesto'),
                 clubesPrevios: [],
-                imagenesGaleria: localStorage.getItem('imagenesGaleria'),
+                imagenesGaleriaArray: localStorage.getItem('imagenesGaleriaArray'),
                 videosGaleria: localStorage.getItem('videosGaleria'),
                 pases: localStorage.getItem('pases'),
                 tiros: localStorage.getItem('tiros'),
@@ -134,7 +134,7 @@ const IndexPage = () => {
         localStorage.setItem('categoria', '');
         localStorage.setItem('condicion', '');
         localStorage.setItem('presupuesto', '');
-        localStorage.setItem('imagenesGaleria', '');
+        localStorage.setItem('imagenesGaleriaArray', '');
         localStorage.setItem('videosGaleria', '');
         localStorage.setItem('pases', 'false')
         localStorage.setItem('tiros', 'false')

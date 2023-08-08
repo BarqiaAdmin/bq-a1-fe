@@ -105,10 +105,9 @@ const LogIn = () => {
             localStorage.setItem('presupuesto', response.presupuesto);
             
             // Imagenes
-            let imagenesGaleria = response.imagenesGaleria
-            imagenesGaleria = imagenesGaleria.toString();
-            console.log(imagenesGaleria);
-            localStorage.setItem('imagenesGaleria', imagenesGaleria);
+            let imagenesGaleriaArray = response.imagenesGaleriaArray
+            //localStorage.setItem('imagenesGaleriaArray', imagenesGaleriaArray);
+            
             // Videos
             let videosGaleria = response.videosGaleria;
             videosGaleria = videosGaleria.toString();
