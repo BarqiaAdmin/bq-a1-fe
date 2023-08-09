@@ -879,7 +879,7 @@ export default function Perfil() {
                                                         Borrar última
                                                     </Button>
                                                     <Button colorScheme='blue' onClick={uploadImage} ml={3}>
-                                                        Listo
+                                                        Guardar
                                                     </Button>
                                                     </AlertDialogFooter>
                                                 </AlertDialogContent>
@@ -922,7 +922,7 @@ export default function Perfil() {
                                                         Borrar último
                                                     </Button>
                                                     <Button colorScheme='blue' onClick={onCloseVideos} ml={3}>
-                                                        Listo
+                                                        Guardar
                                                     </Button>
                                                     </AlertDialogFooter>
                                                 </AlertDialogContent>
