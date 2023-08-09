@@ -38,6 +38,10 @@ a {
   padding: 0;
 }
 
+.bt1 {
+  width: 100%;
+}
+
 .btn1:hover {
   background: #163F75 !important;
 } 

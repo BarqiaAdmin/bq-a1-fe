@@ -40,6 +40,14 @@ const IndexPage = () => {
         localStorage.setItem('repeatPassword', e.target.value)
     }
 
+    let isTerminosYCondicionesClicked = false;
+
+    const handleTerminosYCondiciones = (e) => {
+        console.log('Valor del checkbox: ')
+        console.log(e.target.checked)
+        isTerminosYCondicionesClicked = !isTerminosYCondicionesClicked
+    }
+
     const crearUsuario = () => {
         fetch('http://localhost:5051/crearUsuario', {
             method: 'POST',
@@ -92,6 +100,7 @@ const IndexPage = () => {
         let inputEmail = (document.getElementById('inputEmail') as HTMLInputElement).value;
         let inputPassword = (document.getElementById('inputPassword') as HTMLInputElement).value;
         let inputPasswordRepeat = (document.getElementById('inputPasswordRepeat') as HTMLInputElement).value;
+        let checkboxTerminosYCondiciones = (document.getElementById('checkboxTerminosYCondiciones') as HTMLInputElement).value;
 
         if (inputEmail == '') {
             window.alert('No se ha ingresado un correo electrónico');
@@ -104,6 +113,9 @@ const IndexPage = () => {
         } else
         if (!(inputPassword == inputPasswordRepeat)) {
             window.alert('Las contraseñas no coinciden');
+        } else 
+        if (!isTerminosYCondicionesClicked) {
+            window.alert('Debes aceptar los términos y condiciones');
         } else {
             crearUsuario();
             Router.push({
@@ -180,7 +192,7 @@ const IndexPage = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Email</FormLabel>
-                            <Input id='inputEmail' type="email" placeholder="Ingresa tu email" onChange={handleEmailChange} value={email} style={{ marginRight: "20px" }}/>
+                            <Input id='inputEmail' type="email" placeholder="Ingresa tu email" onChange={ handleEmailChange } value={email} style={{ marginRight: "20px" }}/>
                             <Text display="none" color="green">Debes ingresar una dirección de correo electrónico válida.</Text>
                             <Text display="none" color="red">La dirección de correo electrónico no es válida.</Text>
                         </FormControl>
@@ -188,7 +200,7 @@ const IndexPage = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Contraseña</FormLabel>
-                            <Input id='inputPassword' type="password" placeholder="Ingresa tu contraseña" onChange={handlePasswordChange} value={password}/>
+                            <Input id='inputPassword' type="password" placeholder="Ingresa tu contraseña" onChange={ handlePasswordChange } value={password}/>
                             <Text display='none' color="green">La contraseña debe tener por lo menos 8 caracteres.</Text>
                             <Text display='none' color="red">La contraseña no es válida.</Text>
                         </FormControl>
@@ -196,14 +208,14 @@ const IndexPage = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Repetir contraseña</FormLabel>
-                            <Input id='inputPasswordRepeat' type="password" placeholder="Repetí tu contraseña" onChange={handleRepeatPasswordChange} value={repeatPassword}/>
+                            <Input id='inputPasswordRepeat' type="password" placeholder="Repetí tu contraseña" onChange={ handleRepeatPasswordChange } value={repeatPassword}/>
                             <Text display='none' color="green">La contraseña debe tener por lo menos 8 caracteres.</Text>
                             <Text display='none' color="red">La contraseña no es válida o no corresponde a la dirección de correo electrónico.</Text>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={5}>
-                        <Checkbox fontSize='10px'>
-                            Acepto los <Link className="link1">Términos y condiciones</Link>
+                        <Checkbox id="checkboxTerminosYCondiciones" fontSize='10px' onChange={ handleTerminosYCondiciones }>
+                            Acepto los <Link className="link1" href="https://scoutinglabs.com/politicas.pdf">Términos y condiciones</Link>
                         </Checkbox>
                     </GridItem>
                     <GridItem colSpan={3} fontSize='14px' textAlign='right'>
@@ -213,7 +225,7 @@ const IndexPage = () => {
                         <Link className="link1" onClick={handleRegister}>
                             <Button
                                 w="full"
-                                className="btn1"
+                                className="btn2"
                             >
                                 Registrarme
                             </Button>
@@ -236,7 +248,14 @@ const IndexPage = () => {
                      */}
                     <GridItem colSpan={8}>
                         <Box textAlign="center">
-                            Ya tienes cuenta? <Link className="link1" href="Sesion/LogIn">Ingresar</Link>
+                            <VStack>
+                                <Text>Ya tengo una cuenta:</Text>
+                                <Link className="link1" href="Sesion/LogIn">
+                                    <Button type="button" className='btn1'>
+                                        Iniciar sesión
+                                    </Button>
+                                </Link>
+                            </VStack>
                         </Box>
                     </GridItem>
                 </SimpleGrid>

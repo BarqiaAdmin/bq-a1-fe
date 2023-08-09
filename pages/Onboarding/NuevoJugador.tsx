@@ -328,12 +328,14 @@ function NuevoJugador() {
 
     useEffect(() => {
         setDomLoaded(true);
+
+        localStorage.setItem('chakra-ui-color-mode', 'dark');
         
         let inputEmail = localStorage.getItem('email')
         setInputEmail(inputEmail);
         console.log(inputEmail)
 
-        setInputFotoPerfil(localStorage.getItem('inputFotoPerfil'));
+        setInputFotoPerfil('');
 
         let inputNombre = localStorage.getItem('nombre')
         setInputNombre(inputNombre);
@@ -421,7 +423,7 @@ function NuevoJugador() {
                                 alt=''
                                 borderRadius='full'
                                 id="fotoDePerfil"
-                                src={ inputFotoPerfil }
+                                src={ inputFotoPerfil == '' ? 'https://png.pngtree.com/png-vector/20190307/ourlarge/pngtree-vector-add-user-icon-png-image_780603.jpg' : inputFotoPerfil }
                                 marginTop="-287px"
                                 height='180px'
                                 width='180px'
