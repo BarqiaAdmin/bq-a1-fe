@@ -477,6 +477,7 @@ export default function Perfil() {
                                     </TabList>
                                     <TabPanels textAlign='center'>
                                         <TabPanel>
+                                            {/**
                                             <AlertDialog
                                                 isOpen={isOpen}
                                                 leastDestructiveRef={cancelRef}
@@ -508,6 +509,7 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
+                                             */}
                                             <HStack width='full'>
                                                 { galeriaImagenes.map((imagen, index) => {
                                                     return (
@@ -517,6 +519,7 @@ export default function Perfil() {
                                             </HStack>
                                         </TabPanel>
                                         <TabPanel>
+                                            {/**
                                             <AlertDialog
                                                 isOpen={isOpenVideos}
                                                 leastDestructiveRef={cancelRef}
@@ -551,6 +554,7 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
+                                            */}
                                             {/**
                                             <iframe width="853" height="480" src={ videoGaleria1 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                             <iframe width="853" height="480" src={ videoGaleria2 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
