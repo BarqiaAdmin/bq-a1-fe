@@ -57,7 +57,7 @@ import { useState } from 'react';
 
 import Router from 'next/router';
 
-import { useDisclosure, useToast } from '@chakra-ui/react'
+import { useToast, useDisclosure } from '@chakra-ui/react'
 import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 import clubes from '../../db/clubesAFA';
@@ -69,6 +69,12 @@ export default function Perfil() {
     const [files, selectFiles] = useFileUpload();
 
     const toast = useToast();
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
+    const cancelRef = React.useRef()
+
+    const [edicionActivada, setEdicionActivada] = useState(false);
 
     const subirImagen = () => {
         /*
@@ -94,18 +100,22 @@ export default function Perfil() {
     const [peso, setPeso] = useState(''); 
     const [edad, setEdad] = useState(''); 
     const [pais, setPais] = useState(''); 
-    const [pieHabil, setPieHabil] = useState('');
+
     const [nivelDeIngles, setNivelDeIngles ] = useState('');
     const [certificaciones, setCertificaciones] = useState('');
     const [condicion, setCondicion] = useState('');
     const [presupuesto, setPresupuesto ] = useState('');
-    const [imagenGaleria1, setImagenGaleria1] = useState('');
-    const [imagenGaleria2, setImagenGaleria2] = useState('');
-    const [imagenGaleria3, setImagenGaleria3] = useState('');
 
-    const [videoGaleria1, setVideoGaleria1] = useState('');
-    const [videoGaleria2, setVideoGaleria2] = useState('');
-    const [videoGaleria3, setVideoGaleria3] = useState('');
+    const [lugarEnElCampo, setLugarEnElCampo] = useState('');
+
+    const [pieHabil, setPieHabil] = useState('');
+
+
+
+
+    const [galeriaImagenes, setGaleriaImagenes] = useState([]);
+    const [galeriaVideos, setGaleriaVideos] = useState([]);
+    
     
     useEffect(() => {
         let shareLink = window.location.href
@@ -140,29 +150,18 @@ export default function Perfil() {
             setCondicion(response.condicion);
             setNivelDeIngles(response.nivelDeIngles);
             setPresupuesto(response.presupuesto);
+            setLugarEnElCampo(response.lugarEnElCampo);
             setPieHabil(response.pieHabil);
+
+            setGaleriaImagenes(response.galeriaImagenes)
+            setGaleriaVideos(response.galeriaVideos)
         })
         
 
         localStorage.setItem('chakra-ui-color-mode', 'dark');
-
-        localStorage.setItem('imagenGaleria1', '');
-        localStorage.setItem('imagenGaleria2', '');
-        localStorage.setItem('imagenGaleria3', '');
-
-        localStorage.setItem('videoGaleria1', '');
-        localStorage.setItem('videoGaleria2', '');
-        localStorage.setItem('videoGaleria3', '');
-
-        setImagenGaleria1(localStorage.getItem('imagenGaleria1'))
-        setImagenGaleria2(localStorage.getItem('imagenGaleria2'))
-        setImagenGaleria3(localStorage.getItem('imagenGaleria3'))
-
-        setVideoGaleria1(localStorage.getItem('videoGaleria1'))
-        setVideoGaleria2(localStorage.getItem('videoGaleria2'))
-        setVideoGaleria3(localStorage.getItem('videoGaleria3'))
     }, []);
     
+    {/**
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
     const cancelRef = React.useRef()
@@ -211,17 +210,22 @@ export default function Perfil() {
     }
 
     const [edicionActivada, setEdicionActivada] = useState(false);
+     */}
 
     return(
         <>
         <Box>
+            {/*
             <NavBar />
+            */}
             {/**
             <SideBar />
              */}
+             
             
             <VStack>
                 <HStack marginTop='100px'>
+                    {/**
                     <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />} zIndex='9999'>
                         <BreadcrumbItem>
                             <BreadcrumbLink href='' color='#6EC1E4'>Home</BreadcrumbLink>
@@ -235,6 +239,7 @@ export default function Perfil() {
                             <BreadcrumbLink href='#'>Detalle jugador</BreadcrumbLink>
                         </BreadcrumbItem>
                     </Breadcrumb>
+                     */}
                 </HStack>
                 <HStack>
                     <SimpleGrid columns={4} marginTop='-70px'>
@@ -257,16 +262,20 @@ export default function Perfil() {
                                         />
                                         <Heading>{ nombre } { apellido }</Heading>
                                         <HStack gap="5px">
+                                            {/**
                                             <Image alt='' 
                                                 cursor='pointer'
                                                 src="/like.png"
                                             />
+                                             */}
                                         </HStack>
                                         <HStack gap="10px">
+                                            {/**
                                             <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
+                                             */}
                                         </HStack>
                                     </VStack>
                                     <HStack>{/**
@@ -500,9 +509,11 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <HStack width='full'>
-                                                <Image h='330px' src={imagenGaleria1} alt=''/>
-                                                <Image h='330px' src={imagenGaleria2} alt=''/>
-                                                <Image h='330px' src={imagenGaleria3} alt=''/>
+                                                { galeriaImagenes.map((imagen, index) => {
+                                                    return (
+                                                        <Image key={ index } width='330px' src={ imagen } />
+                                                    )
+                                                })}
                                             </HStack>
                                         </TabPanel>
                                         <TabPanel>
@@ -540,9 +551,11 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
+                                            {/**
                                             <iframe width="853" height="480" src={ videoGaleria1 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                             <iframe width="853" height="480" src={ videoGaleria2 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
                                             <iframe width="853" height="480" src={ videoGaleria3 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+                                             */}
                                         </TabPanel>
                                     </TabPanels>
                                 </Tabs>

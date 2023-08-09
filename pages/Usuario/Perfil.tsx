@@ -103,6 +103,17 @@ export default function Perfil() {
     const [certificaciones, setCertificaciones] = useState('');
     const [condicion, setCondicion] = useState('');
     const [presupuesto, setPresupuesto ] = useState('');
+    const [lugarEnElCampo1, setLugarEnElCampo1] = useState(false)
+    const [lugarEnElCampo2, setLugarEnElCampo2] = useState(false)
+    const [lugarEnElCampo3, setLugarEnElCampo3] = useState(false)
+    const [lugarEnElCampo4, setLugarEnElCampo4] = useState(false)
+    const [lugarEnElCampo5, setLugarEnElCampo5] = useState(false)
+    const [lugarEnElCampo6, setLugarEnElCampo6] = useState(false)
+    const [lugarEnElCampo7, setLugarEnElCampo7] = useState(false)	
+    const [lugarEnElCampo8, setLugarEnElCampo8] = useState(false)	
+    const [lugarEnElCampo9, setLugarEnElCampo9] = useState(false)
+    const [lugarEnElCampo10, setLugarEnElCampo10] = useState(false)
+    const [lugarEnElCampo11, setLugarEnElCampo11] = useState(false)
     const [pases, setPases] = useState(false);
     const [tiros, setTiros] = useState(false);
     const [resistencia, setResistencia] = useState(false);
@@ -467,6 +478,7 @@ export default function Perfil() {
             localStorage.setItem('edad', response.edad);
             localStorage.setItem('pais', response.pais);
             localStorage.setItem('nivelDeIngles', response.nivelDeIngles);
+            localStorage.setItem('lugarEnElCampo', response.lugarEnElCampo);
             localStorage.setItem('pieHabil', response.pieHabil);
             localStorage.setItem('posicion', response.posicion);
             localStorage.setItem('genero', response.genero);
@@ -496,6 +508,17 @@ export default function Perfil() {
         setCondicion(localStorage.getItem('condicion'));
         setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
         setPresupuesto(localStorage.getItem('presupuesto'));
+        setLugarEnElCampo1(lugarEnElCampo1);
+        setLugarEnElCampo2(lugarEnElCampo2);
+        setLugarEnElCampo3(lugarEnElCampo3);
+        setLugarEnElCampo4(lugarEnElCampo4);
+        setLugarEnElCampo5(lugarEnElCampo5);
+        setLugarEnElCampo6(lugarEnElCampo6);
+        setLugarEnElCampo7(lugarEnElCampo7);
+        setLugarEnElCampo8(lugarEnElCampo8);
+        setLugarEnElCampo9(lugarEnElCampo9);
+        setLugarEnElCampo10(lugarEnElCampo10);
+        setLugarEnElCampo11(lugarEnElCampo11);
         setPieHabil(localStorage.getItem('pieHabil'));
         setPases((localStorage.getItem('pases') === 'true'))
         setTiros((localStorage.getItem('tiros') === 'true'))
@@ -586,9 +609,11 @@ export default function Perfil() {
                                             <EditIcon/>
                                         </Box>
                                         <HStack gap="5px">
+                                            {/**
                                             <CircularProgress value={70} color='green.400' size='60px'>
                                                 <CircularProgressLabel>70%</CircularProgressLabel>
                                             </CircularProgress>
+                                             */}
                                             <Button
                                                 color="white"
                                                 background="#144077"
@@ -596,17 +621,20 @@ export default function Perfil() {
                                             >
                                                 <LinkIcon /> &nbsp;Compartir perfil 
                                             </Button>
-                                            
+                                            {/**
                                             <Image alt='' 
                                                 cursor='pointer'
                                                 src="/like.png"
                                             />
+                                             */}
                                         </HStack>
                                         <HStack gap="10px">
+                                            {/**
                                             <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
+                                             */}
                                             <Box
                                                 cursor='pointer'
                                                 color=''
@@ -760,17 +788,17 @@ export default function Perfil() {
                                                 position="relative"
                                             >
                                                 <Image alt=''  src="/campo.png" />
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 1)} className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 2)} className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 3)} className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 4)} className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 5)} className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 6)} className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 7)} className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 8)} className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 9)} className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 10)} className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 11)} className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
                                             </Box>
                                         </VStack>
                                     </GridItem>
@@ -857,13 +885,13 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
-                                            <HStack width='full'>
+                                            <VStack width='full'>
                                                 { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                     return (
-                                                        <Image key={ index } h='330px' src= { imagenBase64 } alt='' />
+                                                        <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
                                                     )
                                                 })}
-                                            </HStack>
+                                            </VStack>
                                         </TabPanel>
                                         <TabPanel>
                                             <AlertDialog
