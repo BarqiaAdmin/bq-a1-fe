@@ -101,17 +101,26 @@ export default function Perfil() {
     const [edad, setEdad] = useState(''); 
     const [pais, setPais] = useState(''); 
 
-    const [nivelDeIngles, setNivelDeIngles ] = useState('');
-    const [certificaciones, setCertificaciones] = useState('');
-    const [condicion, setCondicion] = useState('');
-    const [presupuesto, setPresupuesto ] = useState('');
+    const [genero, setGenero] = useState(false);
+    const [nacimiento, setNacimiento] = useState(false);
+
+    const [pases, setPases] = useState(false);
+    const [tiros, setTiros] = useState(false);
+    const [resistencia, setResistencia] = useState(false);
+    const [visionDeJuego, setVisionDeJuego] = useState(false);
+    const [unoVsUno, setUnoVsUno] = useState(false);
+    const [tirosLibres, setTirosLibres] = useState(false);
+    const [marca, setMarca] = useState(false);
+    const [juegoAereo, setJuegoAereo] = useState(false);
 
     const [lugarEnElCampo, setLugarEnElCampo] = useState('');
 
     const [pieHabil, setPieHabil] = useState('');
 
-
-
+    const [nivelDeIngles, setNivelDeIngles ] = useState('');
+    const [certificaciones, setCertificaciones] = useState('');
+    const [condicion, setCondicion] = useState('');
+    const [presupuesto, setPresupuesto ] = useState('');
 
     const [galeriaImagenes, setGaleriaImagenes] = useState([]);
     const [galeriaVideos, setGaleriaVideos] = useState([]);
@@ -139,22 +148,31 @@ export default function Perfil() {
         .then(response => {
             setFotoPerfil(response.fotoPerfil);
             setNombre(response.nombre)
-            setApellido(response.apellido)
+            setApellido(response.apellido);
+            setEdad(response.edad);
             setClub(response.club)
             setPosicion(response.posicion);
-            setCategoria(response.categoria);
+            setCategoria(response.catgoria);
+            setGenero(response.genero);
             setEstatura(response.estatura);
             setPeso(response.peso);
-            setEdad(response.edad);
+            setNacimiento(response.nacimiento);
             setPais(response.pais);
+            setPieHabil(response.pieHabil);
             setCondicion(response.condicion);
             setNivelDeIngles(response.nivelDeIngles);
             setPresupuesto(response.presupuesto);
-            setLugarEnElCampo(response.lugarEnElCampo);
-            setPieHabil(response.pieHabil);
 
-            setGaleriaImagenes(response.galeriaImagenes)
-            setGaleriaVideos(response.galeriaVideos)
+            // (Lugar en el campo)
+
+            setPases((response.pases === 'true'))
+            setTiros((response.tiros === 'true'))
+            setResistencia((response.resistencia === 'true'))
+            setVisionDeJuego((response.visionDeJuego === 'true'))
+            setUnoVsUno((response.unoVsUno === 'true'))
+            setTirosLibres((response.tirosLibres === 'true' ))
+            setMarca((response.marca === 'true' ))
+            setJuegoAereo((response.juegoAereo === 'true' ))
         })
         
 
@@ -218,13 +236,49 @@ export default function Perfil() {
             {/*
             <NavBar />
             */}
+            <HStack
+                bg="#131619"
+                w="100%"
+                h="65px"
+                alignItems="center"
+                justifyContent="space-between"
+                position="fixed"
+                top='0'
+                zIndex="9999"
+            >
+                <Flex
+                    alignItems="center"
+                    marginLeft="25px"
+                >
+                    <Image alt='' 
+                        w="130px"
+                        src="/logo.png"
+                    />
+                </Flex>
+                <Flex
+                    alignItems="center"
+                >
+                    <Link>
+                        <Button className='btn1' marginRight="25px" onClick={() => {}}>
+                            Iniciar sesión
+                        </Button>
+                    </Link>
+                    
+                    <Link>
+                        <Button className='btn2' marginRight="25px" onClick={() => {}}>
+                            Registrarse
+                        </Button>
+                    </Link>
+                    
+                </Flex>
+            </HStack>
             {/**
             <SideBar />
              */}
              
             
             <VStack>
-                <HStack marginTop='100px'>
+                <HStack marginTop='180px'>
                     {/**
                     <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />} zIndex='9999'>
                         <BreadcrumbItem>
@@ -248,7 +302,6 @@ export default function Perfil() {
                             >
                             <VStack
                                 gap="5px"
-                                paddingTop="100px"
                             >
                                 <HStack>
                                     <VStack gap="5px">
