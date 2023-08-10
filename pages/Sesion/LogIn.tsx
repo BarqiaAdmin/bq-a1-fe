@@ -71,7 +71,7 @@ const LogIn = () => {
             window.alert('No se ha ingresado una contraseña');
         }
 
-        await fetch('http://localhost:5051/buscarUsuario', {
+        await fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -139,7 +139,7 @@ const LogIn = () => {
     const iniciarSesion = () => {
         axios({
             method: 'post',
-            url: 'http://localhost:5051//leerUsuario',
+            url: 'https://bq-a1-be.vercel.app//leerUsuario',
             data: {
                 email: localStorage.getItem('email'),
                 password: localStorage.getItem('logInPassword'),
