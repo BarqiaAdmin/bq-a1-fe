@@ -233,7 +233,7 @@ export default function Perfil() {
     }
 
     const handleUpdate = () => {
-        fetch('http://localhost:5051/actualizarUsuario', {
+        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -278,7 +278,7 @@ export default function Perfil() {
     /*
     const uploadImage = (imageBae64) => {
         console.log(imageBae64)
-        fetch('http://localhost:5051/subirImagen', {
+        fetch('https://bq-a1-be.vercel.app/subirImagen', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -326,7 +326,7 @@ export default function Perfil() {
                     setImagenesGaleriaArray([...imagenesGaleriaArray, base64]);
                     console.log(imagenesGaleriaArray)
                     localStorage.setItem('imagenesGaleriaArray', imagenesGaleriaArray.toString());
-                    fetch('http://localhost:5051/actualizarUsuario', {
+                    fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
                         method: 'post',
                         headers: {
                             "Accept": "application/json",
@@ -413,7 +413,7 @@ export default function Perfil() {
     const [edicionActivada, setEdicionActivada] = useState(false);
 
     const uploadImage = () => {
-        fetch('http://localhost:5051/actualizarUsuario', {
+        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -456,7 +456,7 @@ export default function Perfil() {
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
-        fetch('http://localhost:5051/buscarUsuario', {
+        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

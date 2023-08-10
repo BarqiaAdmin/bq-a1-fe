@@ -12,7 +12,8 @@ import {
     Checkbox,
     Link,
     Button,
-    Text
+    Text,
+    Divider
 } from '@chakra-ui/react';
 
 import { useState, useEffect } from 'react';
@@ -49,7 +50,7 @@ const IndexPage = () => {
     }
 
     const crearUsuario = () => {
-        fetch('http://localhost:5051/crearUsuario', {
+        fetch('https://bq-a1-be.vercel.app/crearUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -246,7 +247,7 @@ const IndexPage = () => {
                         </Button>
                     </GridItem>
                      */}
-                    <GridItem colSpan={8}>
+                    <GridItem colSpan={8} marginTop='25px'>
                         <Box textAlign="center">
                             <VStack>
                                 <Text>Ya tengo una cuenta:</Text>
