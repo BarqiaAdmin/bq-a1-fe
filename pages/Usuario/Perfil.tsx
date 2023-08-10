@@ -233,7 +233,7 @@ export default function Perfil() {
     }
 
     const handleUpdate = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('http://localhost:5051/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -278,7 +278,7 @@ export default function Perfil() {
     /*
     const uploadImage = (imageBae64) => {
         console.log(imageBae64)
-        fetch('https://bq-a1-be.vercel.app/subirImagen', {
+        fetch('http://localhost:5051/subirImagen', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -326,7 +326,7 @@ export default function Perfil() {
                     setImagenesGaleriaArray([...imagenesGaleriaArray, base64]);
                     console.log(imagenesGaleriaArray)
                     localStorage.setItem('imagenesGaleriaArray', imagenesGaleriaArray.toString());
-                    fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+                    fetch('http://localhost:5051/actualizarUsuario', {
                         method: 'post',
                         headers: {
                             "Accept": "application/json",
@@ -413,7 +413,7 @@ export default function Perfil() {
     const [edicionActivada, setEdicionActivada] = useState(false);
 
     const uploadImage = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('http://localhost:5051/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -456,7 +456,7 @@ export default function Perfil() {
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
-        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        fetch('http://localhost:5051/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -538,12 +538,12 @@ export default function Perfil() {
         console.log(videosGaleriaString)
         videosGaleriaString = videosGaleriaString.toString();
         let videosGaleriaArray = videosGaleriaString.split('https://www.youtube.com/')
-        for (let i = 0; i < videosGaleriaArray.length; i++) {
+        for (let i = 1; i < videosGaleriaArray.length; i++) {
             videosGaleriaArray[i] = 'https://www.youtube.com/' + videosGaleriaArray[i]
         }
         console.log(videosGaleriaArray)
        
-        setVideosGaleria(videosGaleriaArray);
+        //setVideosGaleria(videosGaleriaArray);
     }, []);
 
     
@@ -876,7 +876,7 @@ export default function Perfil() {
 
                                                     <AlertDialogFooter>
                                                     <Button ref={cancelRef} onClick={onClose}>
-                                                        Borrar última
+                                                        Cancelar
                                                     </Button>
                                                     <Button colorScheme='blue' onClick={uploadImage} ml={3}>
                                                         Guardar
@@ -885,7 +885,8 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
-                                            <VStack width='full'>
+                                            <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                            <Text>Aún no has subido ninguna imagen.</Text>
                                                 { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                     return (
                                                         <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
@@ -919,7 +920,7 @@ export default function Perfil() {
 
                                                     <AlertDialogFooter>
                                                     <Button ref={cancelRef} onClick={onCloseVideos}>
-                                                        Borrar último
+                                                        Cancelar
                                                     </Button>
                                                     <Button colorScheme='blue' onClick={onCloseVideos} ml={3}>
                                                         Guardar
@@ -928,14 +929,17 @@ export default function Perfil() {
                                                 </AlertDialogContent>
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
+                                            <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                            <Text>Aún no has subido ningún video.</Text>
                                                 {
                                                     videosGaleria.map((videoUrl, index) => {
                                                         console.log(videoUrl);
                                                         return (
-                                                            <iframe key={ index } width="853" height="480" src={ videoUrl } title=""    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;   picture-in-picture; web-share"></iframe>
+                                                            <iframe key={ index } width="853" height="480" src={ videoUrl } title=""></iframe>
                                                         )}
                                                     )
                                                 }
+                                            </VStack>
                                         </TabPanel>
                                     </TabPanels>
                                 </Tabs>

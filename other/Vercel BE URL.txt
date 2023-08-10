@@ -1,1 +1,1 @@
-https://bq-a1-be.vercel.app/
+http://localhost:5051/
