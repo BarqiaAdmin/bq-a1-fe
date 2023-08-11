@@ -134,7 +134,7 @@ export default function Perfil() {
         let userEmail = shareLink.match(pattern)[0]
         console.log(userEmail);
 
-        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        fetch('http://localhost:5051/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -150,9 +150,9 @@ export default function Perfil() {
             setNombre(response.nombre)
             setApellido(response.apellido);
             setEdad(response.edad);
-            setClub(response.club)
+            setClub(response.club);
             setPosicion(response.posicion);
-            setCategoria(response.catgoria);
+            setCategoria(response.categoria);
             setGenero(response.genero);
             setEstatura(response.estatura);
             setPeso(response.peso);
@@ -326,12 +326,10 @@ export default function Perfil() {
                                              */}
                                         </HStack>
                                         <HStack gap="10px">
-                                            {/**
                                             <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
-                                             */}
                                         </HStack>
                                     </VStack>
                                     <HStack>{/**
@@ -499,17 +497,17 @@ export default function Perfil() {
                                             ATRIBUTOS
                                         </Heading>
                                         <HStack display='inline-block' marginBottom='15px'>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 1)}  className="btn2">Pases</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 2)}  className="btn2">Tiros</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 3)}  className="btn2">Resistencia</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 4)}  className="btn2">Visión de juego</Button>
+                                            <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} className="btn2">Pases</Button>
+                                            <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} className="btn2">Tiros</Button>
+                                            <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2">Resistencia</Button>
+                                            <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2">Visión de juego</Button>
                                         </HStack>
                                         <br />
                                         <HStack gap='12px' display='inline-block' marginBottom='15px'>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 5)}  className="btn2">1vs1</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 6)}  className="btn2">Tiros libres</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 7)}  className="btn2">Marca</Button>
-                                            <Button onClick={(e) => this.elegirAtributo(e, 8)}  className="btn2">Juego aéreo</Button>
+                                            <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2">1vs1</Button>
+                                            <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Tiros libres</Button>
+                                            <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Marca</Button>
+                                            <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Juego aéreo</Button>
                                         </HStack>
                                     </GridItem>
                                 </SimpleGrid>

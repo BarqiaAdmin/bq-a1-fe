@@ -46,7 +46,8 @@ import {
     AlertDialogContent,
     AlertDialogOverlay,
     AlertDialogCloseButton,
-    Tooltip
+    Tooltip,
+    FormHelperText
 } from '@chakra-ui/react';
 
 import NavBar from '../src/Components/NavBar/NavBar';
@@ -233,7 +234,7 @@ export default function Perfil() {
     }
 
     const handleUpdate = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('http://localhost:5051/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -278,7 +279,7 @@ export default function Perfil() {
     /*
     const uploadImage = (imageBae64) => {
         console.log(imageBae64)
-        fetch('https://bq-a1-be.vercel.app/subirImagen', {
+        fetch('http://localhost:5051/subirImagen', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -326,7 +327,7 @@ export default function Perfil() {
                     setImagenesGaleriaArray([...imagenesGaleriaArray, base64]);
                     console.log(imagenesGaleriaArray)
                     localStorage.setItem('imagenesGaleriaArray', imagenesGaleriaArray.toString());
-                    fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+                    fetch('http://localhost:5051/actualizarUsuario', {
                         method: 'post',
                         headers: {
                             "Accept": "application/json",
@@ -389,10 +390,46 @@ export default function Perfil() {
     const handleVideoUpload = (e) => {
         let ytUrl = e.target.value;
         ytUrl = ytUrl.replace('/watch?v=', '/embed/')
-        let newVideosGaleria = [...videosGaleria, ytUrl]
-        setVideosGaleria(newVideosGaleria)
-        console.log(videosGaleria)
-        localStorage.setItem('videosGaleria', videosGaleria.toString());
+        setVideosGaleria([...videosGaleria, ytUrl])
+
+        fetch('http://localhost:5051/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                nacimiento: nacimiento,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleriaArray: imagenesGaleriaArray,
+                videosGaleria: videosGaleria,
+                pases: pases,
+                tiros: tiros,
+                resistencia: resistencia,
+                visionDeJuego: visionDeJuego,
+                unoVsUno: unoVsUno,
+                tirosLibres: tirosLibres,
+                marca: marca,
+                juegoAereo: juegoAereo,
+            })
+        })
+        .then(data => {
+            console.log(data);
+            onClose()
+        })
 
         /*
         let ytUrl = e.target.value
@@ -413,7 +450,7 @@ export default function Perfil() {
     const [edicionActivada, setEdicionActivada] = useState(false);
 
     const uploadImage = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('http://localhost:5051/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -456,7 +493,7 @@ export default function Perfil() {
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
-        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        fetch('http://localhost:5051/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -630,12 +667,10 @@ export default function Perfil() {
                                              */}
                                         </HStack>
                                         <HStack gap="10px">
-                                            {/**
                                             <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
                                             <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
-                                             */}
                                             <Box
                                                 cursor='pointer'
                                                 color=''
@@ -669,7 +704,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         PAIS <br />
                                         <strong>{ pais }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar país" onChange={ handlePaisChange }>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar" onChange={ handlePaisChange }>
                                             {paises.map((pais, index) => {
                                                 return (
                                                     <option key={index}>{ pais }</option>
@@ -686,7 +721,7 @@ export default function Perfil() {
                                         />
                                         */}
                                         <strong>{ club }</strong>
-                                        <Select className="campoDeEdicion" placeholder="Seleccionar club" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleClubChange }>
+                                        <Select className="campoDeEdicion" placeholder="Seleccionar" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleClubChange }>
                                             {clubes.map((club, index) => {
                                                 return (
                                                     <option key={ index }>{ club }</option>
@@ -698,7 +733,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         PIE HÁBIL <br />
                                         <strong>{ pieHabil }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePieHabilChange }>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePieHabilChange }>
                                             <option>Izquierdo</option>
                                             <option>Derecho</option>
                                         </Select>
@@ -706,7 +741,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         POSICIÓN <br />
                                         <strong>{ posicion }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePosicionChange }>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePosicionChange }>
                                             <option>Delantero</option>
                                             <option>Mediocampista</option>
                                             <option>Defensor</option>
@@ -717,7 +752,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         CATEGORÍA <br />
                                         <strong>{ categoria }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar categoría" onChange={ handleCategoriaChange }>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCategoriaChange }>
                                             <option>Pro</option>
                                             <option>Semi-Pro</option>
                                             <option>Juvenil</option>
@@ -727,25 +762,33 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         ESTATURA <br />
                                         <strong>{ estatura }</strong>
-                                        <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Ingresar estatura" onChange={ handleEstaturaChange } />
+                                        <Input className="campoDeEdicion" placeholder='Ingresar estatura' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleEstaturaChange } />
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         PESO <br />
                                         <strong>{ peso }</strong>
-                                        <Input className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder={ peso } onChange={ handlePesoChange } />
+                                        <Input className="campoDeEdicion" placeholder='Ingresar peso' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePesoChange } />
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         Edad  <br />
                                         <strong>{ edad }</strong>
                                         <VStack style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                            <input type='date' onChange={ handleNacimientoChange } />
-                                            <Text fontWeight='bold' display='inline-block'>Tu edad: { }</Text>
+                                            <FormControl>
+                                                <input type='date' onChange={ handleNacimientoChange }/>
+                                                {/**
+                                                <Input placeholder="Ingresar Nacimiento"/>
+                                                */}
+                                                <FormHelperText>
+                                                    Ingresa tu fecha de nacimiento <br />
+                                                    Tu edad: <Text fontWeight='bold' display='inline-block'>{ edad }</Text>
+                                                </FormHelperText>
+                                            </FormControl>
                                         </VStack>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         NIVEL DE INGLÉS <br />
                                         <strong>{ nivelDeIngles }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleNivelDeInglesChange }>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleNivelDeInglesChange }>
                                             <option>Bilingüe</option>
                                             <option>Avanzado</option>
                                             <option>Intermedio</option>
@@ -755,7 +798,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         CONDICIÓN <br />
                                         <strong>{ condicion }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Condición" onChange={ handleCondicionChange }>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCondicionChange }>
                                             <option>Libre</option>
                                             <option>Con contrato</option>
                                         </Select>
@@ -763,7 +806,7 @@ export default function Perfil() {
                                     <GridItem colSpan={1}>
                                         PRESUPUESTO <br />
                                         <strong>{ presupuesto }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Presupuesto" onChange={ handlePresupuestoChange }>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePresupuestoChange }>
                                             <option>0 - 5.000</option>
                                             <option>6.0000 - 10.000</option>
                                             <option>10.000 - 15.000</option>
@@ -772,11 +815,13 @@ export default function Perfil() {
                                         </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
-                                        <Button style={ !edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
-                                        <Button color="white"
-                                                background="#144077"
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>&nbsp; &nbsp;
-                                        <Button style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
+                                        <HStack>
+                                            <Button style={ !edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
+                                            <Button style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
+                                            <Button color="white"
+                                                    background="#144077"
+                                                    style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
+                                        </HStack>
                                     </GridItem>
                                     <GridItem colSpan={4}>
                                         <VStack>

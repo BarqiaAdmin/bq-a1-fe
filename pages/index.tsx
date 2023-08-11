@@ -50,7 +50,7 @@ const IndexPage = () => {
     }
 
     const crearUsuario = () => {
-        fetch('https://bq-a1-be.vercel.app/crearUsuario', {
+        fetch('http://localhost:5051/crearUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -82,8 +82,8 @@ const IndexPage = () => {
                 condicion: localStorage.getItem('condicion'),
                 presupuesto: localStorage.getItem('presupuesto'),
                 clubesPrevios: [],
-                imagenesGaleriaArray: localStorage.getItem('imagenesGaleriaArray'),
-                videosGaleria: localStorage.getItem('videosGaleria'),
+                imagenesGaleriaArray: [],
+                videosGaleria: [],
                 pases: localStorage.getItem('pases'),
                 tiros: localStorage.getItem('tiros'),
                 resistencia: localStorage.getItem('resistencia'),

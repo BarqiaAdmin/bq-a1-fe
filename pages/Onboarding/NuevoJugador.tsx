@@ -420,7 +420,7 @@ function NuevoJugador() {
                                 alt=''
                                 borderRadius='full'
                                 id="fotoDePerfil"
-                                src={ inputFotoPerfil == '' ? 'https://png.pngtree.com/png-vector/20190307/ourlarge/pngtree-vector-add-user-icon-png-image_780603.jpg' : inputFotoPerfil }
+                                src={ localStorage.getItem('fotoPerfil') == '' ? 'https://png.pngtree.com/png-vector/20190307/ourlarge/pngtree-vector-add-user-icon-png-image_780603.jpg' : localStorage.getItem('fotoPerfil') }
                                 marginTop="-287px"
                                 height='180px'
                                 width='180px'
@@ -474,7 +474,6 @@ function NuevoJugador() {
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
                                     )}
-                                    
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
@@ -503,19 +502,19 @@ function NuevoJugador() {
                             <GridItem colSpan={4}>
                                 <FormControl>
                                     <FormLabel>Facebook</FormLabel>
-                                    <Input placeholder="Ingresar usuario" value={ localStorage.getItem('facebook') } onChange={(e) => localStorage.setItem("facebook", e.target.value)}/>
+                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('facebook') } onChange={(e) => localStorage.setItem("facebook", e.target.value)}/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={4}>
                                 <FormControl>
                                     <FormLabel>Instagram</FormLabel>
-                                    <Input placeholder="Ingresar usuario" value={ localStorage.getItem('instagram') } onChange={(e) => localStorage.setItem("instagram", e.target.value)}/>
+                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('instagram') } onChange={(e) => localStorage.setItem("instagram", e.target.value)}/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={4}>
                                 <FormControl>
                                     <FormLabel>Tiktok</FormLabel>
-                                    <Input placeholder="Ingresar usuario" value={ localStorage.getItem('tiktok') } onChange={(e) => localStorage.setItem("tiktok", e.target.value)}/>
+                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('tiktok') } onChange={(e) => localStorage.setItem("tiktok", e.target.value)}/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={12}>
@@ -702,7 +701,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl>
                                     <FormLabel>Condición</FormLabel>
-                                    <Select value={ inputCondicion } placeholder="Seleccionar" onChange={ (e) => { localStorage.setItem('condicion', e.target.value); setInputCondicion(e.target.value) } }>
+                                    <Select value={ inputCondicion } onChange={ (e) => { localStorage.setItem('condicion', e.target.value); setInputCondicion(e.target.value) } } placeholder="Seleccionar">
                                         <option>Libre</option>
                                         <option>Con contrato</option>
                                     </Select>
@@ -738,7 +737,7 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel >Nivel de inglés</FormLabel>
-                                    <Select value={ localStorage.getItem('nivelDeIngles') } onChange={ (e) => localStorage.setItem('nivelDeIngles', e.target.value) }>
+                                    <Select value={ inputNivelDeIngles } onChange={ (e) => { localStorage.setItem('nivelDeIngles', e.target.value); setInputNivelDeIngles(e.target.value) } }>
                                         <option>Seleccionar</option>
                                         <option>Bilingüe</option>
                                         <option>Avanzado</option>
@@ -770,7 +769,7 @@ function NuevoJugador() {
                             <GridItem colSpan={12}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel>Presupuesto</FormLabel>
-                                    <Select value={ localStorage.getItem('presupuesto') }placeholder="Seleccionar" onChange={ (e) => localStorage.setItem('prespupesto', e.target.value) }>
+                                    <Select value={ inputPresupuesto } onChange={ (e) => { localStorage.setItem('presupuesto', e.target.value); setInputPresupuesto(e.target.value) } } placeholder="Seleccionar">
                                         <option>0 - 5.000</option>
                                         <option>6.0000 - 10.000</option>
                                         <option>10.000 - 15.000</option>
