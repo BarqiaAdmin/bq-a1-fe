@@ -127,6 +127,8 @@ export default function Perfil() {
     
     
     useEffect(() => {
+        localStorage.setItem('chakra-ui-color-mode', 'dark');
+
         let shareLink = window.location.href
         console.log(shareLink)
         let pattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/
@@ -134,7 +136,7 @@ export default function Perfil() {
         let userEmail = shareLink.match(pattern)[0]
         console.log(userEmail);
 
-        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -178,9 +180,6 @@ export default function Perfil() {
 
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
         })
-        
-
-        localStorage.setItem('chakra-ui-color-mode', 'dark');
     }, []);
     
     {/**
