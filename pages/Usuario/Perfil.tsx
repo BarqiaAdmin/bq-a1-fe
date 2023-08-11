@@ -222,7 +222,7 @@ export default function Perfil() {
     };
 
     const handleShare = () => {
-        let shareLink = 'http://localhost:3000/Usuario/' + email
+        let shareLink = 'https://bq-a1-fe-t8pc.vercel.app/' + email
         navigator.clipboard.writeText(shareLink);
         toast({
             title: 'Enlace copiado al portapapeles',
