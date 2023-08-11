@@ -488,6 +488,7 @@ export default function Perfil() {
             localStorage.setItem('categoria', response.categoria);
             localStorage.setItem('condicion', response.condicion);
             localStorage.setItem('presupuesto', response.presupuesto);
+
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
         })
                 
@@ -557,7 +558,7 @@ export default function Perfil() {
              */}
             
             <VStack>
-                <HStack marginTop='100px'>
+                <HStack marginTop='100px' zIndex='1'>
                     <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />} zIndex='9999'>
                         <BreadcrumbItem>
                             <BreadcrumbLink href='' color='#6EC1E4'>Home</BreadcrumbLink>
@@ -789,7 +790,7 @@ export default function Perfil() {
                                             >
                                                 <Image alt=''  src="/campo.png" />
                                                 <div className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: '#2DA0E4', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
                                                 <div className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
                                                 <div className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
                                                 <div className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
@@ -886,7 +887,7 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                            <Text>Aún no has subido ninguna imagen.</Text>
+                                                <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no has subido ninguna imagen.</Text>
                                                 { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                     return (
                                                         <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
@@ -930,7 +931,7 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                            <Text>Aún no has subido ningún video.</Text>
+                                                <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no has subido ningún video.</Text>
                                                 {
                                                     videosGaleria.map((videoUrl, index) => {
                                                         console.log(videoUrl);

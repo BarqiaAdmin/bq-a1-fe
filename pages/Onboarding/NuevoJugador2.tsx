@@ -90,7 +90,7 @@ class NuevoJugador2 extends Component {
                 pases: localStorage.getItem('pases'),
                 tiros: localStorage.getItem('tiros'),
                 resistencia: localStorage.getItem('resistencia'),
-                visionDelJuego: localStorage.getItem('visionDeJuego'),
+                visionDeJuego: localStorage.getItem('visionDeJuego'),
                 unoVsUno: localStorage.getItem('unoVsUno'),
                 tirosLibres: localStorage.getItem('tirosLibres'),
                 marca: localStorage.getItem('marca'),
@@ -108,7 +108,7 @@ class NuevoJugador2 extends Component {
 
     elegirLugarEnElCampo = (e, idLugarEnElCampo) => {
         if (this.LugarEnElCampoSeleccionado == false) {
-            e.currentTarget.style.backgroundColor = '#6EC1E4'
+            e.currentTarget.style.backgroundColor = '#2DA0E4'
             this.LugarEnElCampoSeleccionado = true
             console.log(idLugarEnElCampo)
             switch (idLugarEnElCampo) {
@@ -215,7 +215,7 @@ class NuevoJugador2 extends Component {
                 localStorage.setItem('resistencia', 'true');
                 break;
             case 4:
-                localStorage.setItem('visionDelJuego', 'true');
+                localStorage.setItem('visionDeJuego', 'true');
                 break;
             case 5:
                 localStorage.setItem('unoVsUno', 'true');

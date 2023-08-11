@@ -122,8 +122,8 @@ export default function Perfil() {
     const [condicion, setCondicion] = useState('');
     const [presupuesto, setPresupuesto ] = useState('');
 
-    const [galeriaImagenes, setGaleriaImagenes] = useState([]);
-    const [galeriaVideos, setGaleriaVideos] = useState([]);
+    const [imagenesGaleriaArray, setImagenesGaleriaArray] = useState([]);
+    const [videosGaleria, setVideosGaleria] = useState([]);
     
     
     useEffect(() => {
@@ -173,6 +173,10 @@ export default function Perfil() {
             setTirosLibres((response.tirosLibres === 'true' ))
             setMarca((response.marca === 'true' ))
             setJuegoAereo((response.juegoAereo === 'true' ))
+
+            // Galería
+
+            setImagenesGaleriaArray(response.imagenesGaleriaArray)
         })
         
 
@@ -258,18 +262,17 @@ export default function Perfil() {
                 <Flex
                     alignItems="center"
                 >
-                    <Link>
+                    <Link href='/Sesion/Login'>
                         <Button className='btn1' marginRight="25px" onClick={() => {}}>
                             Iniciar sesión
                         </Button>
                     </Link>
                     
-                    <Link>
+                    <Link href='/'>
                         <Button className='btn2' marginRight="25px" onClick={() => {}}>
                             Registrarse
                         </Button>
                     </Link>
-                    
                 </Flex>
             </HStack>
             {/**
@@ -474,17 +477,17 @@ export default function Perfil() {
                                                 position="relative"
                                             >
                                                 <Image alt=''  src="/campo.png" />
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 1)} className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 2)} className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 3)} className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 4)} className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 5)} className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 6)} className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 7)} className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 8)} className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 9)} className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 10)} className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                                                <div onClick={(e) => this.elegirLugarEnElCampo(e, 11)} className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: '#2DA0E4', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                                                <div className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
                                             </Box>
                                         </VStack>
                                     </GridItem>
@@ -563,13 +566,14 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                              */}
-                                            <HStack width='full'>
-                                                { galeriaImagenes.map((imagen, index) => {
+                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no hay imágenes.</Text>
+                                                { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                     return (
-                                                        <Image key={ index } width='330px' src={ imagen } />
+                                                        <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
                                                     )
                                                 })}
-                                            </HStack>
+                                            </VStack>
                                         </TabPanel>
                                         <TabPanel>
                                             {/**
@@ -608,11 +612,17 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             */}
-                                            {/**
-                                            <iframe width="853" height="480" src={ videoGaleria1 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                                            <iframe width="853" height="480" src={ videoGaleria2 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                                            <iframe width="853" height="480" src={ videoGaleria3 } title="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-                                             */}
+                                            <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay videos.</Text>
+                                                {
+                                                    videosGaleria.map((videoUrl, index) => {
+                                                        console.log(videoUrl);
+                                                        return (
+                                                            <iframe key={ index } width="853" height="480" src={ videoUrl } title=""></iframe>
+                                                        )}
+                                                    )
+                                                }
+                                            </VStack>
                                         </TabPanel>
                                     </TabPanels>
                                 </Tabs>

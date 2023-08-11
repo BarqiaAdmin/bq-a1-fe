@@ -87,7 +87,7 @@ const IndexPage = () => {
                 pases: localStorage.getItem('pases'),
                 tiros: localStorage.getItem('tiros'),
                 resistencia: localStorage.getItem('resistencia'),
-                visionDelJuego: localStorage.getItem('visionDeJuego'),
+                visionDeJuego: localStorage.getItem('visionDeJuego'),
                 unoVsUno: localStorage.getItem('unoVsUno'),
                 tirosLibres: localStorage.getItem('tirosLibres'),
                 marca: localStorage.getItem('marca'),

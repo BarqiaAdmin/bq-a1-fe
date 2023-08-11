@@ -345,8 +345,6 @@ function NuevoJugador() {
         setInputApellido(localStorage.getItem('apellido'));
         console.log(inputApellido);
         
-        
-        
         setInputNacimiento(localStorage.getItem('nacimiento'));
         setInputPais(localStorage.getItem('pais'));
         setInputNivelDeIngles(localStorage.getItem('nivelDeIngles'));
@@ -368,7 +366,6 @@ function NuevoJugador() {
                     maxW="100%"
                     p={10}
                 >
-                    <NavBar />
                     <Image alt='' 
                         position="fixed"
                         left="0"
