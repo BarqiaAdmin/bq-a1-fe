@@ -391,60 +391,6 @@ export default function Perfil() {
         let ytUrl = e.target.value;
         ytUrl = ytUrl.replace('/watch?v=', '/embed/')
         setVideosGaleria([...videosGaleria, ytUrl])
-
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
-            method: 'post',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                fotoPerfil: fotoPerfil,
-                nombre: nombre,
-                apellido: apellido,
-                nacimiento: nacimiento,
-                nivelDeIngles: nivelDeIngles,
-                pieHabil: pieHabil,
-                posicion: posicion,
-                genero: genero,
-                estatura: estatura,
-                peso: peso,
-                categoria: categoria,
-                condicion: condicion,
-                presupuesto: presupuesto,
-                imagenesGaleriaArray: imagenesGaleriaArray,
-                videosGaleria: videosGaleria,
-                pases: pases,
-                tiros: tiros,
-                resistencia: resistencia,
-                visionDeJuego: visionDeJuego,
-                unoVsUno: unoVsUno,
-                tirosLibres: tirosLibres,
-                marca: marca,
-                juegoAereo: juegoAereo,
-            })
-        })
-        .then(data => {
-            console.log(data);
-            onClose()
-        })
-
-        /*
-        let ytUrl = e.target.value
-        ytUrl = ytUrl.replace('/watch?v=', '/embed/')
-        if (localStorage.getItem('videoGaleria1') == '') {
-            localStorage.setItem('videoGaleria1', ytUrl);
-            setVideoGaleria1(ytUrl);
-        } else if (localStorage.getItem('videoGaleria2') == '') {
-            localStorage.setItem('videoGaleria2', ytUrl);
-            setVideoGaleria2(ytUrl);
-        } else if (localStorage.getItem('videoGaleria3') == '') {
-            localStorage.setItem('videoGaleria3', ytUrl);
-            setVideoGaleria3(ytUrl);
-        }}
-        */
     }
 
     const [edicionActivada, setEdicionActivada] = useState(false);
@@ -490,6 +436,47 @@ export default function Perfil() {
         })
     }
 
+    const uploadVideo = () => {
+        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                nacimiento: nacimiento,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleriaArray: imagenesGaleriaArray,
+                videosGaleria: videosGaleria,
+                pases: pases,
+                tiros: tiros,
+                resistencia: resistencia,
+                visionDeJuego: visionDeJuego,
+                unoVsUno: unoVsUno,
+                tirosLibres: tirosLibres,
+                marca: marca,
+                juegoAereo: juegoAereo,
+            })
+        })
+        .then(data => {
+            console.log(data);
+            onCloseVideos()
+        })
+    }
+
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
@@ -527,6 +514,7 @@ export default function Perfil() {
             localStorage.setItem('presupuesto', response.presupuesto);
 
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
+            setVideosGaleria(response.videosGaleria);
         })
                 
         setEmail(localStorage.getItem('email'))
@@ -572,6 +560,7 @@ export default function Perfil() {
         
         
         //Videos
+        /*
         let videosGaleriaString = localStorage.getItem('videosGaleria')
         console.log(videosGaleriaString)
         videosGaleriaString = videosGaleriaString.toString();
@@ -582,6 +571,7 @@ export default function Perfil() {
         console.log(videosGaleriaArray)
        
         //setVideosGaleria(videosGaleriaArray);
+        */
     }, []);
 
     
@@ -968,7 +958,7 @@ export default function Perfil() {
                                                     <Button ref={cancelRef} onClick={onCloseVideos}>
                                                         Cancelar
                                                     </Button>
-                                                    <Button colorScheme='blue' onClick={onCloseVideos} ml={3}>
+                                                    <Button colorScheme='blue' onClick={uploadVideo} ml={3}>
                                                         Guardar
                                                     </Button>
                                                     </AlertDialogFooter>
