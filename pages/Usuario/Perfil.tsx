@@ -71,20 +71,6 @@ export default function Perfil() {
 
     const toast = useToast();
 
-    const subirImagen = () => {
-        /*
-        selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
-            const elementoFoto1 = document.getElementById('foto1');
-            //elementoFoto1.style.borderRadius = "100%"
-            //elementoFoto1.style.width = "170px"
-            //elementoFoto1.style.marginTop = "-170px "
-            //elementoFoto1.style.marginLeft = "0px"
-            const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
-            elementoBotonDeSubirImagen.remove();
-        })
-        */
-    }
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
     const [fotoPerfil, setFotoPerfil] = useState('');
@@ -128,24 +114,257 @@ export default function Perfil() {
     const [videosGaleria, setVideosGaleria] = useState([])
     const [imagenesGaleriaArray, setImagenesGaleriaArray] = useState([]);
 
-    const [galeriaPartidos, setGaleriaPartidos] = useState([]);
+    const [galeriaPartidos, setGaleriaPartidos] = useState([
+        {
+                equipoA: 'Equipo A Test',
+                equipoB: 'Equipo B Test',
+                urlDelVideoPartido: 'URL del video del partido Test',
+                resultadoA: 'Resultado A Test',
+                resultadoB: 'Resultado B Test'
+        },
+    ]);
+    
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
+    const { isOpen: isOpenPartidos, onOpen: onOpenPartidos, onClose: onClosePartidos } = useDisclosure();
 
+    const cancelRef = React.useRef()
 
-    const handleUrlDeImagenChange = (e) => {
-        setFotoPerfil(e.target.value);
-        localStorage.setItem('fotoPerfil', e.target.value);
+    const [equipoA, setEquipoA] = useState('');
+    const [equipoB, setEquipoB] = useState('');
+    const [urlDelVideoPartido, setUrlDelVideoPartido] = useState('');
+    const [resultadoA, setResultadoA] = useState('');
+    const [resultadoB, setResultadoB] = useState('');
+
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => {
+            resolve(fileReader.result);
+            };
+            fileReader.onerror = (error) => {
+            reject(error);
+            };
+        });
+    };
+
+    const handleShare = () => {
+        let shareLink = 'https://bq-a1-fe-t8pc.vercel.app/Usuario/' + email
+        navigator.clipboard.writeText(shareLink);
+        toast({
+            title: 'Enlace copiado al portapapeles',
+            description: "Ya puedes compartir tu perfil",
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+        })
     }
 
-    const handleNombreChange = (e) => {
-        setNombre(e.target.value)
-        localStorage.setItem('nombre', e.target.value);
+    const handleUpdate = () => {
+        fetch('http://localhost:5051/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                club: club,
+                pais: pais,
+                nacimiento: nacimiento,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleriaArray: imagenesGaleriaArray,
+                videosGaleria: videosGaleria,
+
+                galeriaPartidos: galeriaPartidos,
+
+                pases: pases,
+                tiros: tiros,
+                resistencia: resistencia,
+                visionDeJuego: visionDeJuego,
+                unoVsUno: unoVsUno,
+                tirosLibres: tirosLibres,
+                marca: marca,
+                juegoAereo: juegoAereo,
+            })
+        })
+        .then(data => {
+            console.log(data);
+            setEdicionActivada(false)
+        })
     }
 
-    const handleApellidoChange = (e) => {
-        setApellido(e.target.value);
-        localStorage.setItem('apellido', e.target.value);
+    const handleFileUpload = (e) => {
+        console.log("handleFileUpload ejecutándose");
+        const imagenArchivo = e.target.files[0];
+        convertToBase64(imagenArchivo)
+        .then(imagenBase64 => {
+            setImagenesGaleriaArray([...imagenesGaleriaArray, imagenBase64])
+        })
     }
 
+    const handleVideoUpload = (e) => {
+        let ytUrl = e.target.value;
+        ytUrl = ytUrl.replace('/watch?v=', '/embed/')
+        setVideosGaleria([...videosGaleria, ytUrl])
+    }
+
+    const [edicionActivada, setEdicionActivada] = useState(false);
+
+    const uploadImage = () => {
+        fetch('http://localhost:5051/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                nacimiento: nacimiento,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleriaArray: imagenesGaleriaArray,
+                videosGaleria: videosGaleria,
+
+                galeriaPartidos: galeriaPartidos,
+
+                pases: pases,
+                tiros: tiros,
+                resistencia: resistencia,
+                visionDeJuego: visionDeJuego,
+                unoVsUno: unoVsUno,
+                tirosLibres: tirosLibres,
+                marca: marca,
+                juegoAereo: juegoAereo,
+            })
+        })
+        .then(data => {
+            console.log(data);
+            onClose()
+        })
+    }
+
+    const uploadVideo = () => {
+        fetch('http://localhost:5051/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                nacimiento: nacimiento,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleriaArray: imagenesGaleriaArray,
+                videosGaleria: videosGaleria,
+
+                galeriaPartidos: galeriaPartidos,
+
+                pases: pases,
+                tiros: tiros,
+                resistencia: resistencia,
+                visionDeJuego: visionDeJuego,
+                unoVsUno: unoVsUno,
+                tirosLibres: tirosLibres,
+                marca: marca,
+                juegoAereo: juegoAereo,
+            })
+        })
+        .then(data => {
+            console.log(data);
+            onCloseVideos()
+        })
+    }
+
+    const handleUpdatePartidos = () => {
+        setGaleriaPartidos([...galeriaPartidos, {
+            equipoA: equipoA,
+            equipoB: equipoB,
+            urlDelVideoPartido: urlDelVideoPartido,
+            resultadoA: resultadoA,
+            resultadoB: resultadoB
+        }])
+
+        fetch('http://localhost:5051/actualizarUsuario', {
+            method: 'post',
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                fotoPerfil: fotoPerfil,
+                nombre: nombre,
+                apellido: apellido,
+                nacimiento: nacimiento,
+                nivelDeIngles: nivelDeIngles,
+                pieHabil: pieHabil,
+                posicion: posicion,
+                genero: genero,
+                estatura: estatura,
+                peso: peso,
+                categoria: categoria,
+                condicion: condicion,
+                presupuesto: presupuesto,
+                imagenesGaleriaArray: imagenesGaleriaArray,
+                videosGaleria: videosGaleria,
+
+                galeriaPartidos: galeriaPartidos,
+
+                pases: pases,
+                tiros: tiros,
+                resistencia: resistencia,
+                visionDeJuego: visionDeJuego,
+                unoVsUno: unoVsUno,
+                tirosLibres: tirosLibres,
+                marca: marca,
+                juegoAereo: juegoAereo,
+            })
+        })
+        .then(data => {
+            console.log(data);
+            onCloseVideos()
+        })
+
+    }
+    
     const handleNacimientoChange = (e) => {
         setNacimiento(e.target.value);
         console.log(e.target.value);
@@ -170,11 +389,6 @@ export default function Perfil() {
     const handlePosicionChange = (e) => {
         setPosicion(e.target.value);
         localStorage.setItem('posicion', e.target.value);
-    }
-
-    const handleGeneroChange = (e) => {
-        setGenero(e.target.value);
-        localStorage.setItem('genero', e.target.value);
     }
 
     const handleEstaturaChange = (e) => {
@@ -206,287 +420,13 @@ export default function Perfil() {
         setPresupuesto(e.target.value);
         localStorage.setItem('presupuesto', e.target.value)
     }
-    
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
-    const { isOpen: isOpenPartidos, onOpen: onOpenPartidos, onClose: onClosePartidos } = useDisclosure();
-
-
-    const cancelRef = React.useRef()
-
-    const convertToBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-            fileReader.onload = () => {
-            resolve(fileReader.result);
-            };
-            fileReader.onerror = (error) => {
-            reject(error);
-            };
-        });
-    };
-
-    const handleShare = () => {
-        let shareLink = 'https://bq-a1-fe-t8pc.vercel.app/Usuario/' + email
-        navigator.clipboard.writeText(shareLink);
-        toast({
-            title: 'Enlace copiado al portapapeles',
-            description: "Ya puedes compartir tu perfil",
-            status: 'success',
-            duration: 9000,
-            isClosable: true,
-        })
-    }
-
-    const handleUpdate = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
-            method: 'post',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                fotoPerfil: fotoPerfil,
-                nombre: nombre,
-                apellido: apellido,
-                club: club,
-                pais: pais,
-                nacimiento: nacimiento,
-                nivelDeIngles: nivelDeIngles,
-                pieHabil: pieHabil,
-                posicion: posicion,
-                genero: genero,
-                estatura: estatura,
-                peso: peso,
-                categoria: categoria,
-                condicion: condicion,
-                presupuesto: presupuesto,
-                imagenesGaleriaArray: imagenesGaleriaArray,
-                videosGaleria: videosGaleria,
-                pases: pases,
-                tiros: tiros,
-                resistencia: resistencia,
-                visionDeJuego: visionDeJuego,
-                unoVsUno: unoVsUno,
-                tirosLibres: tirosLibres,
-                marca: marca,
-                juegoAereo: juegoAereo,
-            })
-        })
-        .then(data => {
-            console.log(data);
-            setEdicionActivada(false)
-        })
-    }
-
-    /*
-    const uploadImage = (imageBae64) => {
-        console.log(imageBae64)
-        fetch('https://bq-a1-be.vercel.app/subirImagen', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: email,
-                nuevaImagen: imageBae64
-            })
-        })
-    }
-    */
-
-    const handleFileUpload = (e) => {
-        console.log("handleFileUpload ejecutándose");
-        const imagenArchivo = e.target.files[0];
-        convertToBase64(imagenArchivo)
-        .then(imagenBase64 => {
-            setImagenesGaleriaArray([...imagenesGaleriaArray, imagenBase64])
-        })
-
-        //localStorage.setItem('imagenesGaleriaArray', imagenesGaleriaArray.toString())
-        
-
-        // Imagenes
-        /*
-        let imagenesGaleriaArrayString = localStorage.getItem('imagenesGaleriaArray')
-        console.log(imagenesGaleriaArrayString)
-        imagenesGaleriaArrayString = imagenesGaleriaArrayString.toString();
-        for (let i = 0; i < imagenesGaleriaArray.length; i++) {
-            if(imagenesGaleriaArray[i].includes('data:image/png;base64,')) {
-                console.log('Saltea el index que no está vacío')
-            } else {
-                setImagenesGaleriaArray([imagenesGaleriaArray]);
-                console.log("handleFileUpload ejecutándose");
-                const file = e.target.files[0];
-                console.log(file);
-                let base64 = '';
-                console.log(base64);
-                await convertToBase64(file).then(data => {
-                    base64 = data.toString();
-                    console.log(base64)
-                    //base64 = base64.slice(0, base64.length - 1);
-                    setImagenesGaleriaArray([...imagenesGaleriaArray, base64]);
-                    setImagenesGaleriaArray([...imagenesGaleriaArray, base64]);
-                    console.log(imagenesGaleriaArray)
-                    localStorage.setItem('imagenesGaleriaArray', imagenesGaleriaArray.toString());
-                    fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
-                        method: 'post',
-                        headers: {
-                            "Accept": "application/json",
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            email: email,
-                            password: password,
-                            fotoPerfil: fotoPerfil,
-                            nombre: nombre,
-                            apellido: apellido,
-                            nacimiento: nacimiento,
-                            nivelDeIngles: nivelDeIngles,
-                            pieHabil: pieHabil,
-                            posicion: posicion,
-                            genero: genero,
-                            estatura: estatura,
-                            peso: peso,
-                            categoria: categoria,
-                            condicion: condicion,
-                            presupuesto: presupuesto,
-                            imagenesGaleriaArray: imagenesGaleriaArray,
-                            videosGaleria: videosGaleria,
-                            pases: pases,
-                            tiros: tiros,
-                            resistencia: resistencia,
-                            visionDeJuego: visionDeJuego,
-                            unoVsUno: unoVsUno,
-                            tirosLibres: tirosLibres,
-                            marca: marca,
-                            juegoAereo: juegoAereo,
-                        })
-                    })
-                    .then(data => {
-                        console.log(data);
-                        console.log("handleFileUpload ejecutándose");
-                    }) 
-                })
-            }
-            
-        }
-        
-        /*
-        const file = e.target.files[0];
-        let base64 = await convertToBase64(file);
-        if (localStorage.getItem('imagenesGaleriaArray1') == '') {
-            localStorage.setItem('imagenesGaleriaArray1', base64.toString());
-            setImagenesGaleriaArray1(base64.toString());
-            uploadImage(base64.toString())
-        } else if (localStorage.getItem('imagenesGaleriaArray2') == '') {
-            localStorage.setItem('imagenesGaleriaArray2', base64.toString());
-            setImagenesGaleriaArray2(base64.toString());
-        } else if (localStorage.getItem('imagenesGaleriaArray3') == '') {
-            localStorage.setItem('imagenesGaleriaArray3', base64.toString());
-            setImagenesGaleriaArray3(base64.toString());
-        }
-        */
-    };
-
-    const handleVideoUpload = (e) => {
-        let ytUrl = e.target.value;
-        ytUrl = ytUrl.replace('/watch?v=', '/embed/')
-        setVideosGaleria([...videosGaleria, ytUrl])
-    }
-
-    const [edicionActivada, setEdicionActivada] = useState(false);
-
-    const uploadImage = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
-            method: 'post',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                fotoPerfil: fotoPerfil,
-                nombre: nombre,
-                apellido: apellido,
-                nacimiento: nacimiento,
-                nivelDeIngles: nivelDeIngles,
-                pieHabil: pieHabil,
-                posicion: posicion,
-                genero: genero,
-                estatura: estatura,
-                peso: peso,
-                categoria: categoria,
-                condicion: condicion,
-                presupuesto: presupuesto,
-                imagenesGaleriaArray: imagenesGaleriaArray,
-                videosGaleria: videosGaleria,
-                pases: pases,
-                tiros: tiros,
-                resistencia: resistencia,
-                visionDeJuego: visionDeJuego,
-                unoVsUno: unoVsUno,
-                tirosLibres: tirosLibres,
-                marca: marca,
-                juegoAereo: juegoAereo,
-            })
-        })
-        .then(data => {
-            console.log(data);
-            onClose()
-        })
-    }
-
-    const uploadVideo = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
-            method: 'post',
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password,
-                fotoPerfil: fotoPerfil,
-                nombre: nombre,
-                apellido: apellido,
-                nacimiento: nacimiento,
-                nivelDeIngles: nivelDeIngles,
-                pieHabil: pieHabil,
-                posicion: posicion,
-                genero: genero,
-                estatura: estatura,
-                peso: peso,
-                categoria: categoria,
-                condicion: condicion,
-                presupuesto: presupuesto,
-                imagenesGaleriaArray: imagenesGaleriaArray,
-                videosGaleria: videosGaleria,
-                pases: pases,
-                tiros: tiros,
-                resistencia: resistencia,
-                visionDeJuego: visionDeJuego,
-                unoVsUno: unoVsUno,
-                tirosLibres: tirosLibres,
-                marca: marca,
-                juegoAereo: juegoAereo,
-            })
-        })
-        .then(data => {
-            console.log(data);
-            onCloseVideos()
-        })
-    }
 
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
-        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        console.log(galeriaPartidos);
+
+        fetch('http://localhost:5051/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -521,6 +461,8 @@ export default function Perfil() {
 
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
             setVideosGaleria(response.videosGaleria);
+
+            setGaleriaPartidos(response.galeriaPartidos);
         })
                 
         setEmail(localStorage.getItem('email'))
@@ -560,24 +502,6 @@ export default function Perfil() {
         setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
         setMarca((localStorage.getItem('marca') === 'true' ))
         setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
-
-        console.log(imagenesGaleriaArray);
-        
-        
-        
-        //Videos
-        /*
-        let videosGaleriaString = localStorage.getItem('videosGaleria')
-        console.log(videosGaleriaString)
-        videosGaleriaString = videosGaleriaString.toString();
-        let videosGaleriaArray = videosGaleriaString.split('https://www.youtube.com/')
-        for (let i = 1; i < videosGaleriaArray.length; i++) {
-            videosGaleriaArray[i] = 'https://www.youtube.com/' + videosGaleriaArray[i]
-        }
-        console.log(videosGaleriaArray)
-       
-        //setVideosGaleria(videosGaleriaArray);
-        */
     }, []);
 
     
@@ -1007,17 +931,28 @@ export default function Perfil() {
                                                     </AlertDialogHeader>
 
                                                     <AlertDialogBody>
+
                                                         <Text>Equipos:</Text>
-                                                        <Input type="text" placeholder="Equipo A" />
-                                                        <Input type="text" placeholder="Equipo B" />
+                                                        <Input type="text" placeholder="Equipo A" onChange={ (e) => { localStorage.setItem('Equipo A', e.target.value); setEquipoA(e.target.value) } }/>
+                                                        <Input type="text" placeholder="Equipo B" onChange={ (e) => { localStorage.setItem('Equipo B', e.target.value); setEquipoB(e.target.value) } }/>
 
                                                         <Text>URL del video:</Text>
-                                                        <Input type="text" placeholder="Url del video" />
+                                                        <Input type="text" placeholder="Url del video" onChange={ (e) => {
+                                                            localStorage.setItem('Url del video Partido', e.target.value);
+                                                            setUrlDelVideoPartido(e.target.value)
+                                                        } }/>
 
                                                         <Text>Resultado:</Text>
                                                         <HStack>
-                                                            <Input type="text" placeholder="Resultado A" />
-                                                            <Input type="text" placeholder="Resultado B" />
+                                                            <Input type="text" placeholder="Resultado A" onChange={ (e) => {
+                                                                localStorage.setItem('Resultado A', e.target.value);
+                                                                setResultadoA(e.target.value);
+                                                            } }/>
+                                                            <Input type="text" placeholder="Resultado B" onChange={ (e) => {
+                                                                localStorage.setItem('Resultado B', e.target.value);
+                                                                setResultadoB(e.target.value);
+                                                            }
+                                                             }/>
                                                         </HStack>
                                                     </AlertDialogBody>
 
@@ -1025,7 +960,7 @@ export default function Perfil() {
                                                     <Button ref={cancelRef} onClick={onClosePartidos}>
                                                         Cancelar
                                                     </Button>
-                                                    <Button colorScheme='blue' onClick={handleUpdate} ml={3}>
+                                                    <Button colorScheme='blue' onClick={handleUpdatePartidos} ml={3}>
                                                         Guardar
                                                     </Button>
                                                     </AlertDialogFooter>
@@ -1033,12 +968,19 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                <Text style={ galeriaPartidos.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no has agregado partidos.</Text>
-                                                { galeriaPartidos.map((imagenBase64, index) => {
-                                                    return (
-                                                        <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
-                                                    )
-                                                })}
+                                                {
+                                                    galeriaPartidos.map((partido, index) => {
+                                                        return (
+                                                            <Box key={ index }>
+                                                                <Text>{ partido.equipoA }</Text>
+                                                                <Text>{ partido.equipoB }</Text>
+                                                                <Text>{ partido.urlDelVideoPartido }</Text>
+                                                                <Text>{ partido.resultadoA }</Text>
+                                                                <Text>{ partido.resultadoB }</Text>
+                                                            </Box>
+                                                        )
+                                                    })
+                                                }
                                             </VStack>
                                         </TabPanel>
                                     </TabPanels>
