@@ -110,40 +110,39 @@ class NuevoJugador2 extends Component {
         if (this.LugarEnElCampoSeleccionado == false) {
             e.currentTarget.style.backgroundColor = '#2DA0E4'
             this.LugarEnElCampoSeleccionado = true
-            console.log(idLugarEnElCampo)
             switch (idLugarEnElCampo) {
                 case 1:
-                    localStorage.setItem("Lugar en el campo 1", "true");
+                    localStorage.setItem("lugarEnElCampo", "1");
                     break;
                 case 2:
-                    localStorage.setItem("Lugar en el campo 2", "true");
+                    localStorage.setItem("lugarEnElCampo", "2");
                     break;
                 case 3:
-                    localStorage.setItem('Lugar en el campo 3', 'true');
+                    localStorage.setItem('lugarEnElCampo', '3');
                     break;
                 case 4:
-                    localStorage.setItem('Lugar en el campo 4', 'true');
+                    localStorage.setItem('lugarEnElCampo', '4');
                     break;
                 case 5:
-                    localStorage.setItem('Lugar en el campo 5', 'true');
+                    localStorage.setItem('lugarEnElCampo', '5');
                     break;
                 case 6:
-                    localStorage.setItem('Lugar en el campo 6', 'true');
+                    localStorage.setItem('lugarEnElCampo', '6');
                     break;
                 case 7:
-                    localStorage.setItem('Lugar en el campo 7', 'true');
+                    localStorage.setItem('lugarEnElCampo', '7');
                     break;
                 case 8:
-                    localStorage.setItem('Lugar en el campo 8', 'true');
+                    localStorage.setItem('lugarEnElCampo', '8');
                     break;
                 case 9:
-                    localStorage.setItem('Lugar en el campo 9', 'true');
+                    localStorage.setItem('lugarEnElCampo', '9');
                     break;
                 case 10:
-                    localStorage.setItem('Lugar en el campo 10', 'true');
+                    localStorage.setItem('lugarEnElCampo', '10');
                     break;
                 case 11:
-                    localStorage.setItem('Lugar en el campo 11', 'true');
+                    localStorage.setItem('lugarEnElCampo', '11');
                     break;
             }
         } else {
