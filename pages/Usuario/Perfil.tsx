@@ -123,9 +123,12 @@ export default function Perfil() {
     const [tirosLibres, setTirosLibres] = useState(false);
     const [marca, setMarca] = useState(false);
     const [juegoAereo, setJuegoAereo] = useState(false);
+
+
     const [videosGaleria, setVideosGaleria] = useState([])
     const [imagenesGaleriaArray, setImagenesGaleriaArray] = useState([]);
 
+    const [galeriaPartidos, setGaleriaPartidos] = useState([]);
 
 
     const handleUrlDeImagenChange = (e) => {
@@ -206,6 +209,9 @@ export default function Perfil() {
     
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
+    const { isOpen: isOpenPartidos, onOpen: onOpenPartidos, onClose: onClosePartidos } = useDisclosure();
+
+
     const cancelRef = React.useRef()
 
     const convertToBase64 = (file) => {
@@ -871,6 +877,7 @@ export default function Perfil() {
                             <Box width='full' padding='0 150px' suppressHydrationWarning>
                                 <Tabs isFitted variant='enclosed'>
                                     <TabList mb='1em'>
+                                        {/** IMAGENES */}
                                         <Tab position='relative' >
                                             Imágenes&nbsp;
                                             <Tooltip label="Agregar imagen" aria-label='A tooltip'>
@@ -879,10 +886,20 @@ export default function Perfil() {
                                                 </Link>
                                             </Tooltip>
                                         </Tab>
+                                        {/** VIDEOS */}
                                         <Tab position='relative'>
                                             Videos&nbsp;
                                             <Tooltip label="Agregar video" aria-label='A tooltip'>
                                                 <Link onClick={onOpenVideos} position='absolute' right='20px'>
+                                                    <AddIcon />
+                                                </Link>
+                                            </Tooltip>
+                                        </Tab>
+                                        {/** PARTIDOS */}
+                                        <Tab position='relative'>
+                                            Partidos&nbsp;
+                                            <Tooltip label="Agregar partido" aria-label='A tooltip'>
+                                                <Link onClick={onOpenPartidos} position='absolute' right='20px'>
                                                     <AddIcon />
                                                 </Link>
                                             </Tooltip>
@@ -977,6 +994,53 @@ export default function Perfil() {
                                                 }
                                             </VStack>
                                         </TabPanel>
+                                        <TabPanel>
+                                            <AlertDialog
+                                                isOpen={isOpenPartidos}
+                                                leastDestructiveRef={cancelRef}
+                                                onClose={onClosePartidos}
+                                            >
+                                                <AlertDialogOverlay>
+                                                <AlertDialogContent>
+                                                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                                    Agregar Partido
+                                                    </AlertDialogHeader>
+
+                                                    <AlertDialogBody>
+                                                        <Text>Equipos:</Text>
+                                                        <Input type="text" placeholder="Equipo A" />
+                                                        <Input type="text" placeholder="Equipo B" />
+
+                                                        <Text>URL del video:</Text>
+                                                        <Input type="text" placeholder="Url del video" />
+
+                                                        <Text>Resultado:</Text>
+                                                        <HStack>
+                                                            <Input type="text" placeholder="Resultado A" />
+                                                            <Input type="text" placeholder="Resultado B" />
+                                                        </HStack>
+                                                    </AlertDialogBody>
+
+                                                    <AlertDialogFooter>
+                                                    <Button ref={cancelRef} onClick={onClosePartidos}>
+                                                        Cancelar
+                                                    </Button>
+                                                    <Button colorScheme='blue' onClick={handleUpdate} ml={3}>
+                                                        Guardar
+                                                    </Button>
+                                                    </AlertDialogFooter>
+                                                </AlertDialogContent>
+                                                </AlertDialogOverlay>
+                                            </AlertDialog>
+                                            <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                <Text style={ galeriaPartidos.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no has agregado partidos.</Text>
+                                                { galeriaPartidos.map((imagenBase64, index) => {
+                                                    return (
+                                                        <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
+                                                    )
+                                                })}
+                                            </VStack>
+                                        </TabPanel>
                                     </TabPanels>
                                 </Tabs>
                             </Box>
@@ -1039,7 +1103,7 @@ export default function Perfil() {
                                         <BiRightArrowAlt />
                                     </IconButton>
                                     <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                                        {imagenesGaleriaArray.map((url, index) => (
+                                    {imagenesGaleriaArray.map((url, index) => (
                                         <Box
                                             key={index}
                                             height={'6xl'}
