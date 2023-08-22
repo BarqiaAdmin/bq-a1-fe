@@ -550,7 +550,10 @@ export default function Perfil() {
             setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
             setMarca((localStorage.getItem('marca') === 'true' ))
             setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
-            })
+        })
+
+        Router.reload();
+
     }, []);
 
     return(
@@ -859,7 +862,7 @@ export default function Perfil() {
                                     <TabList mb='1em'>
                                         {/** IMAGENES */}
                                         <Tab position='relative' >
-                                            Imágenes&nbsp;
+                                            Imágenes&nbsp;&nbsp;&nbsp;
                                             <Tooltip label="Agregar imagen" aria-label='A tooltip'>
                                                 <Link onClick={onOpen} position='absolute' right='20px'>
                                                     <AddIcon />
@@ -868,7 +871,7 @@ export default function Perfil() {
                                         </Tab>
                                         {/** VIDEOS */}
                                         <Tab position='relative'>
-                                            Videos&nbsp;
+                                            Videos&nbsp;&nbsp;&nbsp;
                                             <Tooltip label="Agregar video" aria-label='A tooltip'>
                                                 <Link onClick={onOpenVideos} position='absolute' right='20px'>
                                                     <AddIcon />
