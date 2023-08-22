@@ -634,17 +634,17 @@ export default function Perfil() {
                                              */}
                                         </HStack>
                                         <HStack gap="10px">
-                                            <Link src={ facebook }>
-                                            <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
+                                            <Link href={ facebook }>
+                                                <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
                                             </Link>
-                                            <Link src={ twitter }>
-                                            <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
+                                            <Link href={ twitter }>
+                                                <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
                                             </Link>
-                                            <Link src={ instagram }>
-                                            <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
+                                            <Link href={ instagram }>
+                                                <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
                                             </Link>
-                                            <Link src={ tiktok }>
-                                            <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
+                                            <Link href={ tiktok }>
+                                                <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
                                             </Link>
                                             <Box
                                                 cursor='pointer'
