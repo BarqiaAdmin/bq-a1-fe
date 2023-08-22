@@ -550,10 +550,9 @@ export default function Perfil() {
             setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
             setMarca((localStorage.getItem('marca') === 'true' ))
             setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
+
+            Router.reload();
         })
-
-        Router.reload();
-
     }, []);
 
     return(
