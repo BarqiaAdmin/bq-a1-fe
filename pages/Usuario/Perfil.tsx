@@ -226,6 +226,10 @@ export default function Perfil() {
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
                 apellido: apellido,
+                facebook: facebook,
+                twitter: twitter,
+                instagram: instagram,
+                tiktok: tiktok,
                 nacimiento: nacimiento,
                 nivelDeIngles: nivelDeIngles,
                 pieHabil: pieHabil,
@@ -407,6 +411,48 @@ export default function Perfil() {
         localStorage.setItem('presupuesto', e.target.value)
     }
 
+    const elegirLugarEnElCampo = (e, idLugarEnElCampo) => {
+        if (this.LugarEnElCampoSeleccionado == false) {
+            e.currentTarget.style.backgroundColor = '#2DA0E4'
+            this.LugarEnElCampoSeleccionado = true
+            switch (idLugarEnElCampo) {
+                case 1:
+                    localStorage.setItem("lugarEnElCampo", "1");
+                    break;
+                case 2:
+                    localStorage.setItem("lugarEnElCampo", "2");
+                    break;
+                case 3:
+                    localStorage.setItem('lugarEnElCampo', '3');
+                    break;
+                case 4:
+                    localStorage.setItem('lugarEnElCampo', '4');
+                    break;
+                case 5:
+                    localStorage.setItem('lugarEnElCampo', '5');
+                    break;
+                case 6:
+                    localStorage.setItem('lugarEnElCampo', '6');
+                    break;
+                case 7:
+                    localStorage.setItem('lugarEnElCampo', '7');
+                    break;
+                case 8:
+                    localStorage.setItem('lugarEnElCampo', '8');
+                    break;
+                case 9:
+                    localStorage.setItem('lugarEnElCampo', '9');
+                    break;
+                case 10:
+                    localStorage.setItem('lugarEnElCampo', '10');
+                    break;
+                case 11:
+                    localStorage.setItem('lugarEnElCampo', '11');
+                    break;
+            }
+        }
+    }
+
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
@@ -470,8 +516,6 @@ export default function Perfil() {
 
             setLugarEnElCampo(localStorage.getItem('lugarEnElCampo'));
 
-            console.log(lugarEnElCampo)
-
             setPieHabil(localStorage.getItem('pieHabil'));
             setPases((localStorage.getItem('pases') === 'true'))
             setTiros((localStorage.getItem('tiros') === 'true'))
@@ -483,8 +527,6 @@ export default function Perfil() {
             setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
             })
     }, []);
-
-    
 
     return(
         <>
@@ -730,21 +772,22 @@ export default function Perfil() {
                                             >
                                                 LUGAR EN EL CAMPO
                                             </Heading>
+
                                             <Box
                                                 position="relative"
                                             >
                                                 <Image alt=''  src="/campo.png" />
-                                                <div className="playerPosition" style={ lugarEnElCampo != '1' ? { background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9 !important', top: '45%', left: '2%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '2' ? { background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '45%', left: '40%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '3' ? { background: 'white', top: '30%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '30%', left: '14%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '4' ? { background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '55%', left: '14%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '5' ? { background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '10%', left: '20%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '6' ? { background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '80%', left: '20%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '7' ? { background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '76%', left: '49%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '8' ? { background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '15%', left: '49%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '9' ? { background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '45%', left: '70%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '10' ? { background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '25%', left: '80%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" style={ lugarEnElCampo != '11' ? { background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '65%', left: '80%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('1') } } } style={ lugarEnElCampo != '1' ? { background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9 !important', top: '45%', left: '2%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('2') } } } style={ lugarEnElCampo != '2' ? { background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '45%', left: '40%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('3') } } } style={ lugarEnElCampo != '3' ? { background: 'white', top: '30%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '30%', left: '14%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('4') } } } style={ lugarEnElCampo != '4' ? { background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '55%', left: '14%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('5') } } } style={ lugarEnElCampo != '5' ? { background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '10%', left: '20%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('6') } } } style={ lugarEnElCampo != '6' ? { background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '80%', left: '20%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('7') } } } style={ lugarEnElCampo != '7' ? { background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '76%', left: '49%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('8') } } } style={ lugarEnElCampo != '8' ? { background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '15%', left: '49%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('9') } } } style={ lugarEnElCampo != '9' ? { background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '45%', left: '70%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('10') } } } style={ lugarEnElCampo != '10' ? { background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '25%', left: '80%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('11') } } } style={ lugarEnElCampo != '11' ? { background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '65%', left: '80%', position: 'absolute !important', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
                                             </Box>
                                         </VStack>
                                     </GridItem>

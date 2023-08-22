@@ -65,15 +65,14 @@ class NuevoJugador2 extends Component {
                 nombre: localStorage.getItem('nombre'),
                 apellido: localStorage.getItem('apellido'),
                 urlDeImagen: localStorage.getItem('urlDeImagen'),
+                facebook: localStorage.getItem('facebook'),
+                twitter: localStorage.getItem('twitter'),
+                instagram: localStorage.getItem('instagram'),
+                tiktok: localStorage.getItem('tiktok'),
                 edad: localStorage.getItem('edad'),
                 pais: localStorage.getItem('pais'),
                 nivelDeIngles: localStorage.getItem('nivelDeIngles'),
                 certificaciones: [],
-                social: {
-                    facebook: '',
-                    instagram: '',
-                    tiktok: '',
-                },
                 pieHabil: localStorage.getItem('pieHabil'),
                 posicion: localStorage.getItem('posicion'),
                 genero: localStorage.getItem('genero'),
@@ -104,7 +103,6 @@ class NuevoJugador2 extends Component {
         
         //window.location.href = '/Usuario/Perfil'
     }
-
 
     elegirLugarEnElCampo = (e, idLugarEnElCampo) => {
         if (this.LugarEnElCampoSeleccionado == false) {
@@ -184,7 +182,6 @@ class NuevoJugador2 extends Component {
                     break;
             }
         }
-        
     }
 
     elegirPieHabil = (e, IdPie) => {

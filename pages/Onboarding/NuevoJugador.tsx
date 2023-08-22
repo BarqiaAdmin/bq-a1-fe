@@ -32,6 +32,7 @@ import {
     NumberInputStepper,
     NumberIncrementStepper,
     NumberDecrementStepper,
+    AspectRatio,
 } from '@chakra-ui/react';
 
 import NavBar from '../src/Components/NavBar/NavBar'
@@ -424,6 +425,7 @@ function NuevoJugador() {
                                 marginTop="-287px"
                                 height='180px'
                                 width='180px'
+                                objectFit='cover'
                             />
                         </div>
                         {/**

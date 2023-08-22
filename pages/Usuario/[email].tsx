@@ -312,8 +312,7 @@ export default function Perfil() {
                                             borderRadius='full'
                                             id="fotoDePerfil"
                                             src={ fotoPerfil }
-                                            height='180px'
-                                            width='180px'
+                                            objectFit='cover'
                                         />
                                         <Heading>{ nombre } { apellido }</Heading>
                                         <HStack gap="5px">
