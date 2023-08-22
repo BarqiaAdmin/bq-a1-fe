@@ -76,6 +76,12 @@ export default function Perfil() {
     const [fotoPerfil, setFotoPerfil] = useState('');
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
+
+    const [facebook, setFacebook] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [twitter, setTwitter] = useState('');
+    const [tiktok, setTiktok] = useState('');
+
     const [edad, setEdad] = useState('');
     const [club, setClub] = useState('');
     const [pais, setPais] = useState('');
@@ -164,6 +170,10 @@ export default function Perfil() {
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
                 apellido: apellido,
+                facebook: facebook,
+                instagram: instagram,
+                twitter: twitter,
+                tiktok: tiktok,
                 club: club,
                 pais: pais,
                 nacimiento: nacimiento,
@@ -273,6 +283,10 @@ export default function Perfil() {
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
                 apellido: apellido,
+                facebook: facebook,
+                instagram: instagram,
+                twitter: twitter,
+                tiktok: tiktok,
                 nacimiento: nacimiento,
                 nivelDeIngles: nivelDeIngles,
                 pieHabil: pieHabil,
@@ -324,6 +338,10 @@ export default function Perfil() {
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
                 apellido: apellido,
+                facebook: facebook,
+                instagram: instagram,
+                twitter: twitter,
+                tiktok: tiktok,
                 nacimiento: nacimiento,
                 nivelDeIngles: nivelDeIngles,
                 pieHabil: pieHabil,
@@ -501,6 +519,13 @@ export default function Perfil() {
             setFotoPerfil(localStorage.getItem('fotoPerfil'));
             setNombre(localStorage.getItem('nombre'))
             setApellido(localStorage.getItem('apellido'))
+
+            setFacebook(localStorage.getItem('facebook'));
+            setInstagram(localStorage.getItem('instagram'));
+            setTwitter(localStorage.getItem('twitter'))
+            setTiktok(localStorage.getItem('tiktok'));
+
+
             setEdad(localStorage.getItem('edad'));
             setClub(localStorage.getItem('club'))
             setPosicion(localStorage.getItem('posicion'));
@@ -609,10 +634,18 @@ export default function Perfil() {
                                              */}
                                         </HStack>
                                         <HStack gap="10px">
+                                            <Link src={ facebook }>
                                             <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
+                                            </Link>
+                                            <Link src={ twitter }>
                                             <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
+                                            </Link>
+                                            <Link src={ instagram }>
                                             <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
+                                            </Link>
+                                            <Link src={ tiktok }>
                                             <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
+                                            </Link>
                                             <Box
                                                 cursor='pointer'
                                                 color=''
@@ -844,7 +877,7 @@ export default function Perfil() {
                                         </Tab>
                                         {/** PARTIDOS */}
                                         <Tab position='relative'>
-                                            Partidos&nbsp;
+                                            Partidos&nbsp;&nbsp;&nbsp;
                                             <Tooltip label="Agregar partido" aria-label='A tooltip'>
                                                 <Link onClick={onOpenPartidos} position='absolute' right='20px'>
                                                     <AddIcon />

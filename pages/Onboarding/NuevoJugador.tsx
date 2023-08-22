@@ -63,6 +63,12 @@ function NuevoJugador() {
     const [inputEmail, setInputEmail] = useState('');
     const [inputNombre, setInputNombre] = useState('');
     const [inputApellido, setInputApellido] = useState('');
+
+    const [inputFacebook, setInputFacebook] = useState('');
+    const [inputInstagram, setInputInstagram] = useState('');
+    const [inputTwitter, setInputTwitter] = useState('');
+    const [inputTiktok, setInputTiktok] = useState('');
+
     const [inputNacimiento, setInputNacimiento] = useState('');
     const [edad, setEdad] = useState('');
     const [inputPais, setInputPais] = useState('');
@@ -345,6 +351,11 @@ function NuevoJugador() {
 
         setInputApellido(localStorage.getItem('apellido'));
         console.log(inputApellido);
+
+        setInputFacebook(localStorage.getItem('facebook'));
+        setInputInstagram(localStorage.getItem('instagram'));
+        setInputTwitter(localStorage.getItem('twitter'));
+        setInputTiktok(localStorage.getItem('tiktok'));
         
         setInputNacimiento(localStorage.getItem('nacimiento'));
         setInputPais(localStorage.getItem('pais'));
@@ -501,24 +512,31 @@ function NuevoJugador() {
                             <GridItem colSpan={12}>
                                 <Text>SOCIAL</Text>
                             </GridItem>
-                            <GridItem colSpan={4}>
+                            <GridItem colSpan={6}>
                                 <FormControl>
                                     <FormLabel>Facebook</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('facebook') } onChange={(e) => localStorage.setItem("facebook", e.target.value)}/>
+                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('facebook') } onChange={(e) => { localStorage.setItem("facebook", e.target.value); setInputFacebook(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={4}>
+                            <GridItem colSpan={6}>
                                 <FormControl>
                                     <FormLabel>Instagram</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('instagram') } onChange={(e) => localStorage.setItem("instagram", e.target.value)}/>
+                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('instagram') } onChange={(e) => { localStorage.setItem("instagram", e.target.value); setInputInstagram(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={4}>
+                            <GridItem colSpan={6}>
                                 <FormControl>
-                                    <FormLabel>Tiktok</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('tiktok') } onChange={(e) => localStorage.setItem("tiktok", e.target.value)}/>
+                                <FormLabel>Twitter</FormLabel>
+                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('instagram') } onChange={(e) => { localStorage.setItem("titkok", e.target.value); setInputTiktok(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
+                            <GridItem colSpan={6}>
+                                <FormControl>
+                                <FormLabel>Tiktok</FormLabel>
+                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('twitter') } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTwitter(e.target.value) } }/>
+                                </FormControl>
+                            </GridItem>
+                            <Divider />
                             <GridItem colSpan={12}>
                                 <Text>CARACTERISTICAS JUGADOR</Text>
                             </GridItem>
@@ -613,9 +631,10 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
+                            <Divider />
                             <GridItem colSpan={12}>
                                 <FormControl isInvalid={isErrorClub}>
-                                    <FormLabel>Club<Text style={ (!inputClubCustom && !inputClubCustomName) ? { display: 'none' } : { display: 'inline-block' } }> { ': ' + localStorage.getItem('club') } </Text></FormLabel>
+                                    <FormLabel>EQUIPO<Text style={ (!inputClubCustom && !inputClubCustomName) ? { display: 'none' } : { display: 'inline-block' } }> { ': ' + localStorage.getItem('club') } </Text></FormLabel>
                                     <HStack>                                    
                                         <Select value={ inputClub } style={ (inputClubCustom && inputClubCustomName) ? { display: 'none' } : { display: 'inline-block '} } placeholder="Seleccionar" onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } }>
                                             {clubes.map((club, index) => {
