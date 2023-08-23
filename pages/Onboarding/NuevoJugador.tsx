@@ -515,25 +515,25 @@ function NuevoJugador() {
                             <GridItem colSpan={6}>
                                 <FormControl>
                                     <FormLabel>Facebook</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('facebook') } onChange={(e) => { localStorage.setItem("facebook", e.target.value); setInputFacebook(e.target.value) } }/>
+                                    <Input placeholder="URL del perfil" value={ inputFacebook } onChange={(e) => { localStorage.setItem("facebook", e.target.value); setInputFacebook(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl>
                                     <FormLabel>Instagram</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('instagram') } onChange={(e) => { localStorage.setItem("instagram", e.target.value); setInputInstagram(e.target.value) } }/>
+                                    <Input placeholder="URL del perfil" value={ inputInstagram } onChange={(e) => { localStorage.setItem("instagram", e.target.value); setInputInstagram(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl>
                                 <FormLabel>Twitter</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('instagram') } onChange={(e) => { localStorage.setItem("titkok", e.target.value); setInputTiktok(e.target.value) } }/>
+                                    <Input placeholder="URL del perfil" value={ inputTwitter } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTwitter(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={6}>
                                 <FormControl>
                                 <FormLabel>Tiktok</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ localStorage.getItem('twitter') } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTwitter(e.target.value) } }/>
+                                    <Input placeholder="URL del perfil" value={ inputTiktok } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTiktok(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
                             <Divider />

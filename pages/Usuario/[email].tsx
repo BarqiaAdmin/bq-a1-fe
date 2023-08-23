@@ -79,6 +79,12 @@ export default function Perfil() {
     const [fotoPerfil, setFotoPerfil] = useState('');
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
+
+    const [facebook, setFacebook] = useState('');
+    const [instagram, setInstagram] = useState('');
+    const [twitter, setTwitter] = useState('');
+    const [tiktok, setTiktok] = useState('');
+
     const [club, setClub] = useState('');
     const [posicion, setPosicion] = useState(''); 
     const [categoria, setCategoria] = useState(''); 
@@ -142,6 +148,12 @@ export default function Perfil() {
             setFotoPerfil(response.fotoPerfil);
             setNombre(response.nombre)
             setApellido(response.apellido);
+
+            setFacebook(response.facebook);
+            setTwitter(response.twitter);
+            setInstagram(response.instagram);
+            setTiktok(response.tiktok);
+
             setEdad(response.edad);
             setClub(response.club);
             setPosicion(response.posicion);
@@ -247,16 +259,15 @@ export default function Perfil() {
                             >
                                 <HStack>
                                     <VStack gap="5px">
-                                        <AspectRatio ratio={4/3}>
-                                            <Image
-                                                alt=''
-                                                borderRadius='full'
-                                                id="fotoDePerfil"
-                                                src={ fotoPerfil }
-                                                w='180px'
-                                                objectFit='cover'
-                                            />
-                                        </AspectRatio>
+                                        <Image
+                                            alt=''
+                                            borderRadius='full'
+                                            id="fotoDePerfil"
+                                            src={ fotoPerfil }
+                                            h='180px'
+                                            w='180px'
+                                            objectFit='cover'
+                                        />
                                         
                                         <Heading>{ nombre } { apellido }</Heading>
                                         <HStack gap="5px">
@@ -268,10 +279,24 @@ export default function Perfil() {
                                              */}
                                         </HStack>
                                         <HStack gap="10px">
-                                            <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
-                                            <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
-                                            <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
-                                            <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
+                                            <Link href={ facebook } target='blank' >
+                                                <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
+                                            </Link>
+                                            <Link href={ twitter } target='blank' >
+                                                <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
+                                            </Link>
+                                            <Link href={ instagram } target='blank' >
+                                                <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
+                                            </Link>
+                                            <Link href={ tiktok } target='blank' >
+                                                <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
+                                            </Link>
+                                            <Box
+                                                cursor='pointer'
+                                                color=''
+                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                                <EditIcon/>
+                                            </Box>
                                         </HStack>
                                     </VStack>
                                     <HStack>{/**
