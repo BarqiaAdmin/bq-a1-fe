@@ -76,20 +76,6 @@ export default function Perfil() {
 
     const [edicionActivada, setEdicionActivada] = useState(false);
 
-    const subirImagen = () => {
-        /*
-        selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
-            const elementoFoto1 = document.getElementById('foto1');
-            //elementoFoto1.style.borderRadius = "100%"
-            //elementoFoto1.style.width = "170px"
-            //elementoFoto1.style.marginTop = "-170px "
-            //elementoFoto1.style.marginLeft = "0px"
-            const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
-            elementoBotonDeSubirImagen.remove();
-        })
-        */
-    }
-
     const [fotoPerfil, setFotoPerfil] = useState('');
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
@@ -122,8 +108,13 @@ export default function Perfil() {
     const [condicion, setCondicion] = useState('');
     const [presupuesto, setPresupuesto ] = useState('');
 
+
     const [imagenesGaleriaArray, setImagenesGaleriaArray] = useState([]);
+
     const [videosGaleria, setVideosGaleria] = useState([]);
+    const [galeriaVideos, setGaleriaVideosYoutube] = useState([]);
+
+    const [galeriaPartidos, setGaleriaPartidos] = useState([]);
     
     
     useEffect(() => {
@@ -179,14 +170,11 @@ export default function Perfil() {
             // Galería
 
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
-        })
+            setGaleriaVideosYoutube(response.galeriaVideosYoutube);
+            setGaleriaPartidos(response.galeriaPartidos);
+        });
     }, []);
     
-    {/**
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
-    const cancelRef = React.useRef()
-
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
             const fileReader = new FileReader();
@@ -199,39 +187,6 @@ export default function Perfil() {
             };
         });
     };
-
-    const handleFileUpload = async (e) => {
-        const file = e.target.files[0];
-        const base64 = await convertToBase64(file);
-        if (localStorage.getItem('imagenGaleria1') == '') {
-            localStorage.setItem('imagenGaleria1', base64.toString());
-            setImagenGaleria1(base64.toString());
-        } else if (localStorage.getItem('imagenGaleria2') == '') {
-            localStorage.setItem('imagenGaleria2', base64.toString());
-            setImagenGaleria2(base64.toString());
-        } else if (localStorage.getItem('imagenGaleria3') == '') {
-            localStorage.setItem('imagenGaleria3', base64.toString());
-            setImagenGaleria3(base64.toString());
-        }
-    };
-
-    const handleVideoUpload = (e) => {
-        let ytUrl = e.target.value
-        ytUrl = ytUrl.replace('/watch?v=', '/embed/')
-        if (localStorage.getItem('videoGaleria1') == '') {
-            localStorage.setItem('videoGaleria1', ytUrl);
-            setVideoGaleria1(ytUrl);
-        } else if (localStorage.getItem('videoGaleria2') == '') {
-            localStorage.setItem('videoGaleria2', ytUrl);
-            setVideoGaleria2(ytUrl);
-        } else if (localStorage.getItem('videoGaleria3') == '') {
-            localStorage.setItem('videoGaleria3', ytUrl);
-            setVideoGaleria3(ytUrl);
-        }
-    }
-
-    const [edicionActivada, setEdicionActivada] = useState(false);
-     */}
 
     return(
         <>
@@ -307,13 +262,17 @@ export default function Perfil() {
                             >
                                 <HStack>
                                     <VStack gap="5px">
-                                        <Image
-                                            alt=''
-                                            borderRadius='full'
-                                            id="fotoDePerfil"
-                                            src={ fotoPerfil }
-                                            objectFit='cover'
-                                        />
+                                        <AspectRatio ratio={4/3}>
+                                            <Image
+                                                alt=''
+                                                borderRadius='full'
+                                                id="fotoDePerfil"
+                                                src={ fotoPerfil }
+                                                w='180px'
+                                                objectFit='cover'
+                                            />
+                                        </AspectRatio>
+                                        
                                         <Heading>{ nombre } { apellido }</Heading>
                                         <HStack gap="5px">
                                             {/**

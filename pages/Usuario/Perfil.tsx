@@ -146,7 +146,7 @@ export default function Perfil() {
     };
 
     const handleShare = () => {
-        let shareLink = 'https://bq-a1-fe-t8pc.vercel.app/Usuario/' + email
+        let shareLink = 'http://localhost:3000/Usuario/' + email
         navigator.clipboard.writeText(shareLink);
         toast({
             title: 'Enlace copiado al portapapeles',
@@ -494,6 +494,9 @@ export default function Perfil() {
             localStorage.setItem('fotoPerfil', response.fotoPerfil);
             localStorage.setItem('nombre', response.nombre);
             localStorage.setItem('apellido', response.apellido);
+
+
+
             localStorage.setItem('urlDeImagen', response.urlDeImagen);
             localStorage.setItem('edad', response.edad);
             localStorage.setItem('pais', response.pais);
@@ -550,8 +553,6 @@ export default function Perfil() {
             setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
             setMarca((localStorage.getItem('marca') === 'true' ))
             setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
-
-            Router.reload();
         })
     }, []);
 
@@ -883,7 +884,7 @@ export default function Perfil() {
                                             <Tooltip label="Agregar partido" aria-label='A tooltip'>
                                                 <Link onClick={onOpenPartidos} position='absolute' right='20px'>
                                                     <AddIcon />
-                                                </Link>
+                                                </Link> 
                                             </Tooltip>
                                         </Tab>
                                     </TabList>
@@ -990,25 +991,30 @@ export default function Perfil() {
 
                                                     <AlertDialogBody>
 
-                                                        <Text>Equipos:</Text>
-                                                        <Input type="text" placeholder="Equipo A" onChange={ (e) => { localStorage.setItem('Equipo A', e.target.value); setEquipoA(e.target.value) } }/>
-                                                        <Input type="text" placeholder="Equipo B" onChange={ (e) => { localStorage.setItem('Equipo B', e.target.value); setEquipoB(e.target.value) } }/>
-
-                                                        <Text>URL del video:</Text>
-                                                        <Input type="text" placeholder="Url del video" onChange={ (e) => {
+                                                        <Text marginBottom='10px' marginBottom='10px'>URL del video:</Text>
+                                                        <Input type="txt" placeholder="Url del video" onChange={ (e) => {
                                                             localStorage.setItem('Url del video Partido', e.target.value);
                                                             setUrlDelVideoPartido(e.target.value)
                                                         } }/>
 
-                                                        <Text>Resultado:</Text>
+                                                        <Text marginTop='10px' marginBottom='10px'>Fecha:</Text>
+                                                        <Input type="date" />
+
+                                                        <Text marginTop='10px' marginBottom='10px'>Equipos:</Text>
+                                                        <HStack marginBottom='10px'>
+                                                            <Input type="text" placeholder="Equipo A" onChange={ (e) => { localStorage.setItem('Equipo A', e.target.value); setEquipoA(e.target.value) } }/>
+                                                            <Input type="text" placeholder="Equipo B" onChange={ (e) => { localStorage.setItem('Equipo B', e.target.value); setEquipoB(e.target.value) } }/>
+                                                        </HStack>
+
+                                                        <Text marginBottom='10px'>Resultado:</Text>
                                                         <HStack>
-                                                            <Input type="text" placeholder="Resultado A" onChange={ (e) => {
-                                                                localStorage.setItem('Resultado A', e.target.value);
+                                                            <Input type="text" placeholder="Goles Equipo A" onChange={ (e) => {
+                                                                localStorage.setItem('Goles Equipo A', e.target.value);
                                                                 setResultadoA(e.target.value);
                                                             } }/>
-                                                            <Input type="text" placeholder="Resultado B" onChange={ (e) => {
-                                                                localStorage.setItem('Resultado B', e.target.value);
-                                                                setResultadoB(e.target.value);
+                                                            <Input type="text" placeholder="Goles Equipo B" onChange={ (e) => {
+                                                                localStorage.setItem('Goles Equipo 1 B', e.target.value);
+                                                                setResultadoB(e.target.value);  
                                                             }
                                                              }/>
                                                         </HStack>
