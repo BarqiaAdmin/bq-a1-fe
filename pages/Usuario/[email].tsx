@@ -182,7 +182,7 @@ export default function Perfil() {
             // Galería
 
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
-            setGaleriaVideosYoutube(response.galeriaVideosYoutube);
+            setVideosGaleria(response.videosGaleria);
             setGaleriaPartidos(response.galeriaPartidos);
         });
     }, []);
