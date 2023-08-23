@@ -90,6 +90,11 @@ export default function Perfil() {
     const [genero, setGenero] = useState('');
     const [estatura, setEstatura] = useState(''); 
     const [peso, setPeso] = useState(''); 
+
+    const [vistoPorAgentes, setVistoPorAgentes] = useState(false);
+    const [vistoPorClubes, setPorClubes] = useState(false);
+    const [vistoPorUniversidades, setVistoPorUniversidades] = useState(false);
+
     const [nacimiento, setNacimiento] = useState('');
     const [pieHabil, setPieHabil] = useState('');
     const [nivelDeIngles, setNivelDeIngles ] = useState('');
@@ -169,26 +174,36 @@ export default function Perfil() {
                 password: password,
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
+
                 apellido: apellido,
                 facebook: facebook,
                 instagram: instagram,
                 twitter: twitter,
                 tiktok: tiktok,
+
                 club: club,
                 pais: pais,
                 nacimiento: nacimiento,
-                nivelDeIngles: nivelDeIngles,
+                
                 pieHabil: pieHabil,
                 posicion: posicion,
                 genero: genero,
                 estatura: estatura,
                 peso: peso,
+
+                vistoPorAgentes: vistoPorAgentes,
+                vistoPorClubes: vistoPorClubes,
+                vistoPorUniversidades: vistoPorUniversidades,
+
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
+                nivelDeIngles: nivelDeIngles,
+
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
                 galeriaPartidos: galeriaPartidos,
+
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
                 tiros: tiros,
@@ -250,9 +265,11 @@ export default function Perfil() {
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
+
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
                 galeriaPartidos: galeriaPartidos,
+
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
                 tiros: tiros,
@@ -297,9 +314,11 @@ export default function Perfil() {
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
+
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
                 galeriaPartidos: galeriaPartidos,
+
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
                 tiros: tiros,
@@ -352,9 +371,11 @@ export default function Perfil() {
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
+
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
                 galeriaPartidos: galeriaPartidos,
+
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
                 tiros: tiros,
@@ -507,15 +528,15 @@ export default function Perfil() {
             localStorage.setItem('genero', response.genero);
             localStorage.setItem('estatura', response.estatura);
             localStorage.setItem('peso', response.peso);
+
+            localStorage.setItem('imagenesGalerArray', response.imagenesGaleriaArray)
+            localStorage.setItem('videosGaleria', response.videosGaleria);
+            localStorage.setItem('galeriaPartidos', response.galeriaPartidos);
+
             localStorage.setItem('club', response.club);
             localStorage.setItem('categoria', response.categoria);
             localStorage.setItem('condicion', response.condicion);
             localStorage.setItem('presupuesto', response.presupuesto);
-
-            setImagenesGaleriaArray(response.imagenesGaleriaArray)
-            setVideosGaleria(response.videosGaleria);
-
-            setGaleriaPartidos(response.galeriaPartidos);
 
             setEmail(localStorage.getItem('email'))
             setPassword(localStorage.getItem('password'));
@@ -528,7 +549,6 @@ export default function Perfil() {
             setTwitter(localStorage.getItem('twitter'))
             setTiktok(localStorage.getItem('tiktok'));
 
-
             setEdad(localStorage.getItem('edad'));
             setClub(localStorage.getItem('club'))
             setPosicion(localStorage.getItem('posicion'));
@@ -536,6 +556,11 @@ export default function Perfil() {
             setGenero(localStorage.getItem('genero'));
             setEstatura(localStorage.getItem('estatura'));
             setPeso(localStorage.getItem('peso'));
+
+            setImagenesGaleriaArray(response.imagenesGaleriaArray)
+            setVideosGaleria(response.videosGaleria);
+            setGaleriaPartidos(response.galeriaPartidos);
+
             setNacimiento(localStorage.getItem('nacimiento'));
             setPais(localStorage.getItem('pais'));
             setCondicion(localStorage.getItem('condicion'));
@@ -922,7 +947,7 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no has subido ninguna imagen.</Text>
+                                                <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no hay imágenes.</Text>
                                                 { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                     return (
                                                         <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
@@ -966,7 +991,7 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no has subido ningún video.</Text>
+                                                <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay videos.</Text>
                                                 {
                                                     videosGaleria.map((videoUrl, index) => {
                                                         console.log(videoUrl);
@@ -991,7 +1016,7 @@ export default function Perfil() {
 
                                                     <AlertDialogBody>
 
-                                                        <Text marginBottom='10px' marginBottom='10px'>URL del video:</Text>
+                                                        <Text marginBottom='10px'>URL del video:</Text>
                                                         <Input type="txt" placeholder="Url del video" onChange={ (e) => {
                                                             localStorage.setItem('Url del video Partido', e.target.value);
                                                             setUrlDelVideoPartido(e.target.value)
@@ -1032,6 +1057,7 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay partidos.</Text>
                                                 {
                                                     galeriaPartidos.map((partido, index) => {
                                                         return (
@@ -1050,238 +1076,7 @@ export default function Perfil() {
                                     </TabPanels>
                                 </Tabs>
                             </Box>
-                            <VStack>
-                                {/**    
-                                <HStack>
-                                    <Image alt='' 
-                                        id="foto1"
-                                        src={files?.source || '/sl-icono-cuadrado-2.png'}
-                                    />
-                                    <Link
-                                        id="botonDeSubirImagen"
-                                        color="#6EC1E4"
-                                        zIndex="9999"
-                                        onClick={subirImagen}
-                                    >
-                                        Subir imagen
-                                    </Link>
-                                </HStack>
-                                */}
-                                {/**
-                                <Box
-                                    position={'relative'}
-                                    height={'600px'}
-                                    width={'full'}
-                                    overflow={'hidden'}>
-                                    <link
-                                        rel="stylesheet"
-                                        type="text/css"
-                                        charSet="UTF-8"
-                                        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-                                    />
-                                    <link
-                                        rel="stylesheet"
-                                        type="text/css"
-                                        href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-                                    />
-                                    <IconButton
-                                        aria-label="left-arrow"
-                                        colorScheme="messenger"
-                                        borderRadius="full"
-                                        position="absolute"
-                                        left={side}
-                                        top={top}
-                                        transform={'translate(0%, -50%)'}
-                                        zIndex={2}
-                                        onClick={() => slider?.slickPrev()}>
-                                        <BiLeftArrowAlt />
-                                    </IconButton>
-                                    <IconButton
-                                        aria-label="right-arrow"
-                                        colorScheme="messenger"
-                                        borderRadius="full"
-                                        position="absolute"
-                                        right={side}
-                                        top={top}
-                                        transform={'translate(0%, -50%)'}
-                                        zIndex={2}
-                                        onClick={() => slider?.slickNext()}>
-                                        <BiRightArrowAlt />
-                                    </IconButton>
-                                    <Slider {...settings} ref={(slider) => setSlider(slider)}>
-                                    {imagenesGaleriaArray.map((url, index) => (
-                                        <Box
-                                            key={index}
-                                            height={'6xl'}
-                                            position="relative"
-                                            backgroundPosition="center"
-                                            backgroundRepeat="no-repeat"
-                                            backgroundSize="cover"
-                                            backgroundImage={`url(${url})`}
-                                        />
-                                        ))}
-                                    </Slider>
-                                </Box>
-                                 */}
-                            </VStack>
-                            
-                            {/**
-                            <Box>
-                                <HStack>
-                                    <Text>ESTADISTICAS</Text>
-                                    <FormControl>
-                                        <Input placeholder="Buscar por nombre del club rival" />
-                                    </FormControl>
-                                </HStack>
-                                <HStack>
-                                    <TableContainer m='auto' fontSize='15px'>
-                                        <Table variant='simple'>
-                                            <Thead>
-                                                <Tr>
-                                                    <Th>PARTIDO</Th>
-                                                    <Th>FECHA</Th>
-                                                    <Th>POS</Th>
-                                                    <Th>NRO</Th>
-                                                    <Th>M Jugados</Th>
-                                                    <Th>G</Th>
-                                                    <Th>Asist</Th>
-                                                    <Th>% Remates</Th>
-                                                    <Th>% Pases</Th>
-                                                    <Th>Estadísticas</Th>
-                                                </Tr>
-                                            </Thead>
-                                            <Tbody>
-                                                <Tr>
-                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                    <Td>26/03/22</Td>
-                                                    <Td>DC</Td>
-                                                    <Td>21</Td>
-                                                    <Td>81.82</Td>
-                                                    <Td>0</Td>
-                                                    <Td>2</Td>
-                                                    <Td>43</Td>
-                                                    <Td>21</Td>
-                                                    <Td>
-                                                        <Link href="/Perfil">Ver Estadísticas</Link>
-                                                    </Td>
-                                                </Tr>
-                                                <Tr>
-                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                    <Td>26/03/22</Td>
-                                                    <Td>DC</Td>
-                                                    <Td>21</Td>
-                                                    <Td>81.82</Td>
-                                                    <Td>0</Td>
-                                                    <Td>2</Td>
-                                                    <Td>43</Td>
-                                                    <Td>21</Td>
-                                                    <Td>
-                                                        <Link href="/Perfil">Ver Estadísticas</Link>
-                                                    </Td>
-                                                </Tr>
-                                                <Tr>
-                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                    <Td>26/03/22</Td>
-                                                    <Td>DC</Td>
-                                                    <Td>21</Td>
-                                                    <Td>81.82</Td>
-                                                    <Td>0</Td>
-                                                    <Td>2</Td>
-                                                    <Td>43</Td>
-                                                    <Td>21</Td>
-                                                    <Td>
-                                                        <Link href="/Perfil">Ver Estadísticas</Link>
-                                                    </Td>
-                                                </Tr>
-                                                <Tr>
-                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                    <Td>26/03/22</Td>
-                                                    <Td>DC</Td>
-                                                    <Td>21</Td>
-                                                    <Td>81.82</Td>
-                                                    <Td>0</Td>
-                                                    <Td>2</Td>
-                                                    <Td>43</Td>
-                                                    <Td>21</Td>
-                                                    <Td>
-                                                        <Link href="/Perfil">Ver Estadísticas</Link>
-                                                    </Td>
-                                                </Tr>
-                                                <Tr>
-                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                    <Td>26/03/22</Td>
-                                                    <Td>DC</Td>
-                                                    <Td>21</Td>
-                                                    <Td>81.82</Td>
-                                                    <Td>0</Td>
-                                                    <Td>2</Td>
-                                                    <Td>43</Td>
-                                                    <Td>21</Td>
-                                                    <Td>
-                                                        <Link href="/Perfil">Ver Estadísticas</Link>
-                                                    </Td>
-                                                </Tr>
-                                                <Tr>
-                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                    <Td>26/03/22</Td>
-                                                    <Td>DC</Td>
-                                                    <Td>21</Td>
-                                                    <Td>81.82</Td>
-                                                    <Td>0</Td>
-                                                    <Td>2</Td>
-                                                    <Td>43</Td>
-                                                    <Td>21</Td>
-                                                    <Td>
-                                                        <Link href="/Perfil">Ver Estadísticas</Link>
-                                                    </Td>
-                                                </Tr>
-                                                <Tr>
-                                                    <Td>{ '>'} Casa Madero F.C. 7-0 Amarula</Td>
-                                                    <Td>26/03/22</Td>
-                                                    <Td>DC</Td>
-                                                    <Td>21</Td>
-                                                    <Td>81.82</Td>
-                                                    <Td>0</Td>
-                                                    <Td>2</Td>
-                                                    <Td>43</Td>
-                                                    <Td>21</Td>
-                                                    <Td>
-                                                        <Link href="/Perfil">Ver Estadísticas</Link>
-                                                    </Td>
-                                                </Tr>
-                                            </Tbody>
-                                        </Table>
-                                    </TableContainer>
-                                </HStack>
-                            </Box>
-                            */}
                         </GridItem>
-
-                        
-
-                        {/** Redes sociales
-
-                        <GridItem colSpan={15} marginTop="150px" paddingLeft="240px" textAlign="center">
-                            <HStack margin="auto" textAlign="center">
-                                <HStack color="white">
-                                    
-                                    <blockquote className="tiktok-embed" cite="https://www.tiktok.com/@riquelmefutbol10/video/7113220013762366725" data-video-id="7113220013762366725" style={{ maxWidth: '605px', minWidth: '325px'}} > <section> <a target="_blank" title="@riquelmefutbol10" href="https://www.tiktok.com/@riquelmefutbol10?refer=embed">@riquelmefutbol10</a> Se cumplen 16 años del golazo a México 🔥 <a title="maxirodriguez" target="_blank" href="https://www.tiktok.com/tag/maxirodriguez?refer=embed">#maxirodriguez</a> <a title="riquelme" target="_blank" href="https://www.tiktok.com/tag/riquelme?refer=embed">#riquelme</a> <a title="golazo" target="_blank" href="https://www.tiktok.com/tag/golazo?refer=embed">#golazo</a> <a title="fyp" target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> <a title="parati" target="_blank" href="https://www.tiktok.com/tag/parati?refer=embed">#parati</a> <a title="viral" target="_blank" href="https://www.tiktok.com/tag/viral?refer=embed">#viral</a> <a target="_blank" title="♬ sonido original - riquelmefutbol10" href="https://www.tiktok.com/music/sonido-original-7113220003352464133?refer=embed">♬ sonido original - riquelmefutbol10</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
-                                    
-                                </HStack>
-                                <HStack>
-                                    <iframe width="295" src="https://www.youtube.com/embed/w_tALGi2wVI" title="Gol De Messi A Serbia 2006 HD (Relatos Argentinos)" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                                </HStack>
-                                <HStack
-                                    data-mc-src="2d37e04a-d910-4611-9e80-79d30ba70618#instagram">
-                                    <script 
-                                        src="https://cdn2.woxo.tech/a.js#6460d15fbbb40bc502b1e839" 
-                                        async data-usrc>
-                                    </script>
-                                </HStack>
-                            </HStack>
-                        </GridItem>
-                        */}
-                        
                     </SimpleGrid>
                 </HStack>
             </VStack>
