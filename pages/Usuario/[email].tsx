@@ -184,6 +184,11 @@ export default function Perfil() {
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
             setVideosGaleria(response.videosGaleria);
             setGaleriaPartidos(response.galeriaPartidos);
+        })
+        .then((res) => {
+            Router.push({
+                pathname: '/Usuario/Perfil/' + EmailIcon;
+            })
         });
     }, []);
     

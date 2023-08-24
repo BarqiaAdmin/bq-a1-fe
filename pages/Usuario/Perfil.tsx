@@ -72,10 +72,28 @@ export default function Perfil() {
     const toast = useToast();
 
     const [email, setEmail] = useState('')
+
+    const [videosGaleria, setVideosGaleria] = useState([])
+    const [imagenesGaleriaArray, setImagenesGaleriaArray] = useState([]);
+
+    const [galeriaPartidos, setGaleriaPartidos] = useState([
+        {
+                equipoA: 'Equipo A Test',
+                equipoB: 'Equipo B Test',
+                urlDelVideoPartido: 'URL del video del partido Test',
+                resultadoA: 'Resultado A Test',
+                resultadoB: 'Resultado B Test'
+        },
+    ]);
+
     const [password, setPassword] = useState('');
+
     const [fotoPerfil, setFotoPerfil] = useState('');
+
     const [nombre, setNombre] = useState('')
     const [apellido, setApellido] = useState('');
+
+    const [nacimiento, setNacimiento] = useState('');
 
     const [facebook, setFacebook] = useState('');
     const [instagram, setInstagram] = useState('');
@@ -83,19 +101,16 @@ export default function Perfil() {
     const [tiktok, setTiktok] = useState('');
 
     const [edad, setEdad] = useState('');
-    const [club, setClub] = useState('');
-    const [pais, setPais] = useState('');
-    const [posicion, setPosicion] = useState(''); 
-    const [categoria, setCategoria] = useState('');
-    const [genero, setGenero] = useState('');
     const [estatura, setEstatura] = useState(''); 
     const [peso, setPeso] = useState(''); 
+    const [genero, setGenero] = useState('');
 
-    const [vistoPorAgentes, setVistoPorAgentes] = useState(false);
-    const [vistoPorClubes, setPorClubes] = useState(false);
-    const [vistoPorUniversidades, setVistoPorUniversidades] = useState(false);
+    const [club, setClub] = useState('');
 
-    const [nacimiento, setNacimiento] = useState('');
+    const [pais, setPais] = useState('');
+
+    const [posicion, setPosicion] = useState('');
+
     const [pieHabil, setPieHabil] = useState('');
     const [nivelDeIngles, setNivelDeIngles ] = useState('');
     const [certificaciones, setCertificaciones] = useState('');
@@ -111,19 +126,13 @@ export default function Perfil() {
     const [marca, setMarca] = useState(false);
     const [juegoAereo, setJuegoAereo] = useState(false);
 
+    const [categoria, setCategoria] = useState('');
 
-    const [videosGaleria, setVideosGaleria] = useState([])
-    const [imagenesGaleriaArray, setImagenesGaleriaArray] = useState([]);
+    const [vistoPorAgentes, setVistoPorAgentes] = useState(false);
+    const [vistoPorClubes, setPorClubes] = useState(false);
+    const [vistoPorUniversidades, setVistoPorUniversidades] = useState(false);
 
-    const [galeriaPartidos, setGaleriaPartidos] = useState([
-        {
-                equipoA: 'Equipo A Test',
-                equipoB: 'Equipo B Test',
-                urlDelVideoPartido: 'URL del video del partido Test',
-                resultadoA: 'Resultado A Test',
-                resultadoB: 'Resultado B Test'
-        },
-    ]);
+
     
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { isOpen: isOpenVideos, onOpen: onOpenVideos, onClose: onCloseVideos } = useDisclosure();
@@ -136,6 +145,13 @@ export default function Perfil() {
     const [urlDelVideoPartido, setUrlDelVideoPartido] = useState('');
     const [resultadoA, setResultadoA] = useState('');
     const [resultadoB, setResultadoB] = useState('');
+
+    let shareLink = window.location.href
+    console.log(shareLink)
+    let pattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/
+    console.log(pattern)
+    let userEmail = shareLink.match(pattern)[0]
+    console.log(userEmail);
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
