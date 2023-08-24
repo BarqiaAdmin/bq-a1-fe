@@ -50,7 +50,7 @@ const IndexPage = () => {
     }
 
     const crearUsuario = () => {
-        fetch('https://bq-a1-be.vercel.app/crearUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app:3002/crearUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

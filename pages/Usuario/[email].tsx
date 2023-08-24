@@ -133,7 +133,7 @@ export default function Perfil() {
         let userEmail = shareLink.match(pattern)[0]
         console.log(userEmail);
 
-        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app:3002/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

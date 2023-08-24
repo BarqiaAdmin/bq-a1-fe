@@ -1,1 +1,1 @@
-https://bq-a1-be.vercel.app/
+https://bq-a1-fe-t8pc.vercel.app:3002/

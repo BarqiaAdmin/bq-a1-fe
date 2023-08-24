@@ -163,7 +163,7 @@ export default function Perfil() {
     }
 
     const handleUpdate = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app:3002/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -239,7 +239,7 @@ export default function Perfil() {
     const [edicionActivada, setEdicionActivada] = useState(false);
 
     const uploadImage = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app:3002/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -288,7 +288,7 @@ export default function Perfil() {
     }
 
     const uploadVideo = () => {
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app:3002/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -345,7 +345,7 @@ export default function Perfil() {
             resultadoB: resultadoB
         }])
 
-        fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app:3002/actualizarUsuario', {
             method: 'post',
             headers: {
                 "Accept": "application/json",
@@ -497,7 +497,7 @@ export default function Perfil() {
 
         console.log(galeriaPartidos);
 
-        fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app:3002/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
