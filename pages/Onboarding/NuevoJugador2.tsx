@@ -52,7 +52,7 @@ class NuevoJugador2 extends Component {
     */
 
     actualizarUsuario = () => {
-        fetch('https://bq-a1-fe-t8pc.vercel.app:3002/actualizarUsuario', {
+        fetch('https://bq-a1-fe-t8pc.vercel.app/actualizarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
