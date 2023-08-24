@@ -516,8 +516,6 @@ export default function Perfil() {
             localStorage.setItem('nombre', response.nombre);
             localStorage.setItem('apellido', response.apellido);
 
-
-
             localStorage.setItem('urlDeImagen', response.urlDeImagen);
             localStorage.setItem('edad', response.edad);
             localStorage.setItem('pais', response.pais);

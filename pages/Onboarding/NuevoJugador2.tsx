@@ -96,9 +96,10 @@ class NuevoJugador2 extends Component {
                 juegoAereo: localStorage.getItem('juegoAereo')
             })
         })
-
-        Router.push({
-            pathname: '/Usuario/Perfil'
+        .then((res) => {
+            Router.push({
+                pathname: '/Usuario/Perfil'
+            })
         })
         
         //window.location.href = '/Usuario/Perfil'
