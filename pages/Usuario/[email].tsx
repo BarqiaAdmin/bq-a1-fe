@@ -187,7 +187,7 @@ export default function Perfil() {
         })
         .then((res) => {
             Router.push({
-                pathname: '/Usuario/Perfil/' + EmailIcon;
+                pathname: '/Usuario/Perfil/' + EmailIcon,
             })
         });
     }, []);
