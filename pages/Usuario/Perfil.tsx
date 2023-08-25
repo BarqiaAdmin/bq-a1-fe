@@ -513,7 +513,7 @@ export default function Perfil() {
 
         console.log(galeriaPartidos);
 
-        fetch('https://https://bq-a1-fe-t8pc.vercel.ap*p/buscarUsuario', {
+        fetch('https://https://bq-a1-fe-t8pc.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
