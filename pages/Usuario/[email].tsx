@@ -186,10 +186,8 @@ export default function Perfil() {
             setGaleriaPartidos(response.galeriaPartidos);
         })
         .then((res) => {
-            Router.push({
-                pathname: '/Usuario/Perfil/' + EmailIcon,
-            })
-        });
+            console.log(res)
+        })
     }, []);
     
     const convertToBase64 = (file) => {
