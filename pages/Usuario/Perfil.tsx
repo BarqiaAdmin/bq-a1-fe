@@ -666,7 +666,7 @@ export default function Perfil() {
                                                 background="#144077"
                                                 onClick={handleShare}
                                             >
-                                                <LinkIcon /> &nbsp;Compartir perfil 
+                                                <LinkIcon />&nbsp;Compartir perfil 
                                             </Button>
                                             {/**
                                             <Image alt='' 
