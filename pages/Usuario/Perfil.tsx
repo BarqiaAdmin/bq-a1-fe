@@ -146,7 +146,10 @@ export default function Perfil() {
     const [resultadoA, setResultadoA] = useState('');
     const [resultadoB, setResultadoB] = useState('');
 
-    let shareLink = window.location.href
+    let shareLink
+    if (typeof window !== 'undefined') {
+        shareLink = window.location.href
+    }
     console.log(shareLink)
     let pattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)/
     console.log(pattern)
