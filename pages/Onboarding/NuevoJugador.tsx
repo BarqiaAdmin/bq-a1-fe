@@ -87,19 +87,6 @@ function NuevoJugador() {
     const [inputClubCustomName, setInputClubCustomName] = useState(false);
     const [inputUniversidades, setInputUniversidades] = useState(false);
 
-    const subirImagen = () => {
-        /*
-        selectFiles({ accept: 'image/*'}, ({ name, size, source, file }) => {
-            const elementoFotoDePerfil = document.getElementById('fotoDePerfil');
-            //elementoFotoDePerfil.style.borderRadius = "100%"
-            elementoFotoDePerfil.style.width = "170px"
-            elementoFotoDePerfil.style.marginTop = "-170px"
-            elementoFotoDePerfil.style.marginLeft = "0px"
-            const elementoBotonDeSubirImagen = document.getElementById('botonDeSubirImagen');
-            elementoBotonDeSubirImagen.remove();
-        })}*/
-    }    
-
     const handleUrlDeImagenChange = (e) => {
         
     }
@@ -222,93 +209,6 @@ function NuevoJugador() {
                 pathname: 'NuevoJugador2',
             });
         }
-
-        
-        /*
-        if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais')) {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        } else if (localStorage.getItem('nombre') == '') {
-            alert('El campo "Nombre" no puede estar vacío')
-
-
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais'))  {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        } else if (localStorage.getItem('apellido') == '') {
-            alert('El campo "Apellido" no puede estar vacío')
-
-
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais')) {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2',
-            });
-        } else if (localStorage.getItem('nacimiento') == '') {
-            alert('Ingresa tu Fecha de nacimiento')
-
-
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        } else if (localStorage.getItem('pais') == '') {
-            alert('Por favor, selecciona un país')
-
-
-        }
-        
-        else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
-            Router.push({
-                pathname: 'Onboarding/NuevoJugador2'
-            })
-        } else if (localStorage.getItem('pieHabil') == '') {
-           alert('Por favor, selecciona tu Pie Hábil')
-           
-           
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' &&        localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('peso') != '') {
-           Router.push({
-               pathname: 'Onboarding/NuevoJugador2'
-           })
-        } else if (localStorage.getItem('posicion') == '') {
-           alert('Por favor, selecciona tu Posicion')
-
-
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
-           Router.push({
-               pathname: 'Onboarding/NuevoJugador2'
-           })
-        } else if (localStorage.getItem('genero') == '') {
-           alert('Por favor, selecciona tu Género')
-
-
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
-           Router.push({
-               pathname: 'Onboarding/NuevoJugador2'
-           })
-        } else if (localStorage.getItem('estatura') == '') {
-           alert('Por favor, ingresa tu Estatura (en metros, ej: "1.68")')
-
-
-        } else if (localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais')) {
-           Router.push({
-               pathname: 'Onboarding/NuevoJugador2',
-           })
-        } else if (localStorage.getItem('peso') == '') {
-           alert('Ingresa tu peso en KG')
-
-
-        } else if (localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != '') {
-           Router.push({
-               pathname: 'Onboarding/NuevoJugador2',
-           })
-        } else if (localStorage.getItem('categoria')) {
-           alert('Por favor, selecciona una Categoría');
-
-
-        }
-        */
     }
 
     const convertToBase64 = (file) => {
@@ -643,36 +543,6 @@ function NuevoJugador() {
                                                 )
                                             })}
                                         </Select>
-                                        {/**
-                                        <Select placeholder="AFA B NACIONAL" onChange={ handleClubChange }>
-                                            {clubesAFABNACIONAL.map((club, index) => {
-                                                return (
-                                                    <option key={ index }>{ club }</option>
-                                                )
-                                            })}
-                                        </Select>
-                                        <Select placeholder="B METRO" onChange={ handleClubChange }>
-                                            {clubesBMETRO.map((club, index) => {
-                                                return (
-                                                    <option key={ index }>{ club }</option>
-                                                )
-                                            })}
-                                        </Select>
-                                        <Select placeholder="LIGA ESCOBARENSE" onChange={ handleClubChange }>
-                                            {clubesLIGAESCOBARENSE.map((club, index) => {
-                                                return (
-                                                    <option key={ index }>{ club }</option>
-                                                )
-                                            })}
-                                        </Select>
-                                        <Select placeholder='AIFA' onChange={ handleClubChange }>
-                                            {clubesAIFA.map((club, index) => {
-                                                return (
-                                                    <option key={ index }>{ club }</option>
-                                                )
-                                            })}
-                                        </Select>
-                                         */}
                                     </HStack>
                                 </FormControl>
                                 <HStack marginTop='20px'>
@@ -806,56 +676,6 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            {/**
-                            <GridItem colSpan={6}>
-                                <Accordion defaultIndex={[1]} allowMultiple marginTop='31px' style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
-                                    <AccordionItem>
-                                        <h2>
-                                        <AccordionButton>
-                                            <Box as="span" flex='1' textAlign='left'>
-                                            Certificaciones
-                                            </Box>
-                                            <AccordionIcon />
-                                        </AccordionButton>
-                                        </h2>
-                                        <AccordionPanel pb={4}>
-                                            <Input placeholder="Certificación 1" />
-                                            <Input placeholder="Certificación 2" />
-                                            <Input placeholder="Certificación 3" />
-                                        </AccordionPanel>
-                                    </AccordionItem>
-                                </Accordion>
-                            </GridItem>
-                             */}
-                            {/**
-                            <GridItem colSpan={12}>
-                                <FormControl>
-                                    <FormLabel>
-                                        Perfil visible a:
-                                    </FormLabel>
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={3}>
-                                <FormControl>
-                                    <Checkbox onChange={() => localStorage.setItem("scouts", "true")}>Scouts</Checkbox>
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={3}>
-                                <FormControl>
-                                    <Checkbox onChange={() => localStorage.setItem("clubes", "true")}>Clubes</Checkbox>
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={3}>
-                                <FormControl>
-                                    <Checkbox onChange={() => localStorage.setItem("universidades", "true")}>Universidades</Checkbox>
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={3}>
-                                <FormControl>
-                                    <Checkbox onChange={() => localStorage.setItem("privado", "true")}>Privado</Checkbox>
-                                </FormControl>
-                            </GridItem>
-                            */}
                             <GridItem colSpan={12}>
                                 <Link href="/">
                                     <Button
