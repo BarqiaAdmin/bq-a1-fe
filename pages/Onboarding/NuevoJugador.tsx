@@ -402,7 +402,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorCategoria}>
                                     <FormLabel fontSize={[40, 15]}>Categoría</FormLabel>
-                                    <Select value={ inputCategoria } onChange={ (e) => { localStorage.setItem('categoria', e.target.value); setInputCategoria(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px'  marginLeft='-50px'>
+                                    <Select value={ inputCategoria } onChange={ (e) => { localStorage.setItem('categoria', e.target.value); setInputCategoria(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
                                         <option>Pro</option>
                                         <option>Semi-Pro</option>
                                         <option>Juvenil</option>
@@ -420,7 +420,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPais}>
                                     <FormLabel fontSize={[40, 15]}>Nacionalidad</FormLabel>
-                                    <Select placeholder="Seleccionar país" value={ inputPais } onChange={handlePaisChange} fontSize={[30, 30]} padding={[10, 10, 20, 20]}  height={[82]} paddingLeft='50px' marginLeft='-50px'>
+                                    <Select placeholder="Seleccionar país" value={ inputPais } onChange={handlePaisChange} fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
                                         {paises.map((pais, index) => {
                                             return (
                                                 <option key={index}>{ pais }</option>
@@ -439,7 +439,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPosicion}>
                                     <FormLabel fontSize={[40, 15]}>Posición</FormLabel>
-                                    <Select value={ inputPosicion } onChange={ (e) => { localStorage.setItem('posicion', e.target.value); setInputPosicion(e.target.value) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
+                                    <Select value={ inputPosicion } onChange={ (e) => { localStorage.setItem('posicion', e.target.value); setInputPosicion(e.target.value) } }  fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
                                         <option>Seleccionar</option>
                                         <option>Delantero</option>
                                         <option>Mediocampista</option>
@@ -458,7 +458,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPieHabil}>
                                     <FormLabel fontSize={[40, 15]}>Pie hábil</FormLabel>
-                                    <Select value={ inputPieHabil } onChange={ (e) => { localStorage.setItem('pieHabil', e.target.value); setInputPieHabil(e.target.value) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
+                                    <Select value={ inputPieHabil } onChange={ (e) => { localStorage.setItem('pieHabil', e.target.value); setInputPieHabil(e.target.value) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} height={[82]} width='625px' marginLeft='-50px'>
                                         <option>Seleccionar</option>
                                         <option>Izquierdo</option>
                                         <option>Derecho</option>
@@ -515,7 +515,7 @@ function NuevoJugador() {
                                 <FormControl isInvalid={isErrorClub}>
                                     <FormLabel fontSize={[60, 10]}>Club<Text style={ (!inputClubCustom && !inputClubCustomName) ? { display: 'none' } : { display: 'inline-block' } }> { ': ' + localStorage.getItem('club') } </Text></FormLabel>
                                     <HStack>                                    
-                                        <Select value={ inputClub } style={ (inputClubCustom && inputClubCustomName) ? { display: 'none' } : { display: 'inline-block '} } placeholder="Seleccionar" onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px'  marginLeft='-50px'>
+                                        <Select value={ inputClub } style={ (inputClubCustom && inputClubCustomName) ? { display: 'none' } : { display: 'inline-block '} } placeholder="Seleccionar" onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
                                             {clubes.map((club, index) => {
                                                 return (
                                                     <option key={ index }>{ club }</option>
@@ -534,7 +534,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl>
                                     <FormLabel fontSize={[40, 15]}>Condición</FormLabel>
-                                    <Select value={ inputCondicion } onChange={ (e) => { localStorage.setItem('condicion', e.target.value); setInputCondicion(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
+                                    <Select value={ inputCondicion } onChange={ (e) => { localStorage.setItem('condicion', e.target.value); setInputCondicion(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
                                         <option>Libre</option>
                                         <option>Con contrato</option>
                                     </Select>
@@ -569,27 +569,32 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormLabel fontSize={[50, 15]}>Quiero ser visto por:</FormLabel>
                             </GridItem>
-                            <GridItem colSpan={4}>
-                                <Checkbox colorScheme='blue' onClick={ () => localStorage.setItem('agentes', 'true')} fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
-                                    Agentes
-                                </Checkbox>
-                            </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
-                                <Checkbox colorScheme='blue' onClick={ () => localStorage.setItem('clubes', 'true') } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
-                                    Clubes
-                                </Checkbox>
-                            </GridItem>
-                            <GridItem colSpan={[12, 12, 6, 6]}>
-                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') } } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>Universidades</Button>
+                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} width='full'>Agentes</Button>
                                 {/**<Checkbox colorScheme='blue'>
-                                    Universidades
+                                    Universidadesword
+                                </Checkbox>
+                                        */}
+                            </GridItem>
+                            <GridItem colSpan={[12, 12, 6, 6]}>
+                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} width='full'>Clubes</Button>
+                                {/**<Checkbox colorScheme='blue'>
+                                    Universidadesword
+                                </Checkbox>
+                                        */}
+                            </GridItem>
+                                
+                            <GridItem colSpan={[12, 12, 6, 6]}>
+                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} width='full'>Universidades</Button>
+                                {/**<Checkbox colorScheme='blue'>
+                                    Universidadesword
                                 </Checkbox>
                                         */}
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Nivel de inglés</FormLabel>
-                                    <Select value={ inputNivelDeIngles } onChange={ (e) => { localStorage.setItem('nivelDeIngles', e.target.value); setInputNivelDeIngles(e.target.value) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
+                                    <Select value={ inputNivelDeIngles } onChange={ (e) => { localStorage.setItem('nivelDeIngles', e.target.value); setInputNivelDeIngles(e.target.value) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
                                         <option>Seleccionar</option>
                                         <option>Bilingüe</option>
                                         <option>Avanzado</option>
@@ -608,7 +613,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Certificaciones</FormLabel>
-                                    <Input onChange={ (e) => localStorage.setItem('certificaciones', 'true') } type="text" placeholder="Certificaciones"  fontSize={[30, 30]} padding={[10, 10, 20, 20]} />
+                                    <Input onChange={ (e) => localStorage.setItem('certificaciones', 'true') } type="text" placeholder="Certificaciones" fontSize={[30, 30]} padding={[10, 10, 20, 20]} />
                                     {!isErrorCategoria ? (
                                         <FormHelperText>
                                             Ingresa tus certificados separados por coma: Ej: CAE, First, etc 
@@ -621,7 +626,7 @@ function NuevoJugador() {
                             <GridItem colSpan={12}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Presupuesto</FormLabel>
-                                    <Select value={ inputPresupuesto } onChange={ (e) => { localStorage.setItem('presupuesto', e.target.value); setInputPresupuesto(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
+                                    <Select value={ inputPresupuesto } onChange={ (e) => { localStorage.setItem('presupuesto', e.target.value); setInputPresupuesto(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
                                         <option>0 - 5.000</option>
                                         <option>6.0000 - 10.000</option>
                                         <option>10.000 - 15.000</option>
@@ -674,8 +679,10 @@ function NuevoJugador() {
                                         h="57px"
                                         bg="#353535"
                                         borderRadius="5px"
-                                        fontSize="21px"
                                         color="#A2A2A2"
+                                        height='100px'
+                                        width='220px'
+                                        fontSize='35px'
                                     >
                                         Atrás
                                     </Button>
@@ -687,9 +694,11 @@ function NuevoJugador() {
                                     h="57px"
                                     bg="#353535"
                                     borderRadius="5px"
-                                    fontSize="21px"
                                     color="#A2A2A2"
                                     float='right'
+                                    height='100px'
+                                    width='220px'
+                                    fontSize='35px'
 
                                     onClick={crearJugador}
                                 >
