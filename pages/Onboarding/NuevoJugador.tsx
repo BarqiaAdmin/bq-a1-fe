@@ -215,6 +215,27 @@ function NuevoJugador() {
 
             alert('Por favor, llena todos los campos obligatorios (*)')
             
+            console.log('Nombre')
+            console.log(localStorage.getItem('nombre'));
+            console.log('Apellido')
+            console.log(localStorage.getItem('apellido'));
+            console.log('Nacimiento')
+            console.log(localStorage.getItem('nacimiento'));
+            console.log('pieHabil')
+            console.log(localStorage.getItem('pieHabil'))
+            console.log('Posicion')
+            console.log(localStorage.getItem('posicion'))
+            console.log('genero')
+            console.log(localStorage.getItem('genero'));
+            console.log('estatura')
+            console.log(localStorage.getItem('estatura'));
+            console.log('peso')
+            console.log(localStorage.getItem('peso'));
+            console.log('categoria')
+            console.log(localStorage.getItem('categoria'));
+            console.log('pais')
+            console.log(localStorage.getItem('pais'))
+            
             return
         } else {
             Router.push({
@@ -384,8 +405,13 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorApellido}>
+<<<<<<<<< Temporary merge branch 1
+                                    <FormLabel>Apellido</FormLabel>
+                                    <Input id='inputApellido' placeholder="Ingresar apellido" value={ inputApellido } onChange={handleApellidoChange}/>
+=========
                                     <FormLabel fontSize={[40, 15]}>Apellido</FormLabel>
                                     <Input placeholder="Ingresar apellido" value={ inputApellido } onChange={handleApellidoChange} fontSize={[30, 30]} padding={[10, 10, 20, 20]}/>
+>>>>>>>>> Temporary merge branch 2
                                     {!isErrorApellido ? (
                                         <FormHelperText>
                                             Ingresa tu apellido
