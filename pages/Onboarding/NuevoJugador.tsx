@@ -491,7 +491,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPieHabil}>
                                     <FormLabel fontSize={[40, 15]}>Pie hábil</FormLabel>
-                                    <Select value={ inputPieHabil } onChange={ (e) => { localStorage.setItem('pieHabil', e.target.value); setInputPieHabil(e.target.value) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} height={[82]} width='625px' marginLeft='-50px'>
+                                    <Select value={ inputPieHabil } onChange={ (e) => { localStorage.setItem('pieHabil', e.target.value); setInputPieHabil(e.target.value) } } fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
                                         <option>Seleccionar</option>
                                         <option>Izquierdo</option>
                                         <option>Derecho</option>
@@ -676,7 +676,7 @@ function NuevoJugador() {
                             <GridItem colSpan={12}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Presupuesto</FormLabel>
-                                    <Select value={ inputPresupuesto } onChange={ (e) => { localStorage.setItem('presupuesto', e.target.value); setInputPresupuesto(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
+                                    <Select value={ inputPresupuesto } onChange={ (e) => { localStorage.setItem('presupuesto', e.target.value); setInputPresupuesto(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
                                         <option>0 - 5.000</option>
                                         <option>6.0000 - 10.000</option>
                                         <option>10.000 - 15.000</option>
