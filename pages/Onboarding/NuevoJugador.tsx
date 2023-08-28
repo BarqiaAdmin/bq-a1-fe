@@ -202,7 +202,19 @@ function NuevoJugador() {
         let validacionesPrimarias = localStorage.getItem('nombre') != '' && localStorage.getItem('apellido') != '' && localStorage.getItem('nacimiento') != '' && localStorage.getItem('pieHabil') != '' && localStorage.getItem('posicion') != '' && localStorage.getItem('genero') != '' && localStorage.getItem('estatura') != '' && localStorage.getItem('peso') != '' && localStorage.getItem('categoria') != '' && localStorage.getItem('pais') != ''
         
         if (!validacionesPrimarias) {
+            console.log(localStorage.getItem('nombre'))
+            console.log(localStorage.getItem('apellido'))
+            console.log(localStorage.getItem('nacimiento'))
+            console.log(localStorage.getItem('pieHabil'))
+            console.log(localStorage.getItem('posicion'))
+            console.log(localStorage.getItem('genero'))
+            console.log(localStorage.getItem('estatura'))
+            console.log(localStorage.getItem('peso'))
+            console.log(localStorage.getItem('categoria'))
+            console.log(localStorage.getItem('pais'))
+
             alert('Por favor, llena todos los campos obligatorios (*)')
+            
             return
         } else {
             Router.push({
@@ -430,6 +442,22 @@ function NuevoJugador() {
                                     {!isErrorPais ? (
                                         <FormHelperText>
                                             Selecciona tu pais
+                                        </FormHelperText>
+                                    ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
+                                </FormControl>
+                            </GridItem>
+                            <GridItem colSpan={[12, 12, 6, 6]}>
+                                <FormControl isRequired isInvalid={isErrorCategoria}>
+                                    <FormLabel fontSize={[40, 15]}>Género</FormLabel>
+                                    <Select value={ inputGenero } onChange={ (e) => { localStorage.setItem('genero', e.target.value); setInputGenero(e.target.value) } }  fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
+                                        <option>Femenino</option>
+                                        <option>Masculino</option>
+                                    </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Ingresa tu estatura en metros, separando con punto
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
