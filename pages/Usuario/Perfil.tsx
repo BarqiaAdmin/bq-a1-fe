@@ -76,15 +76,7 @@ export default function Perfil() {
     const [videosGaleria, setVideosGaleria] = useState([])
     const [imagenesGaleriaArray, setImagenesGaleriaArray] = useState([]);
 
-    const [galeriaPartidos, setGaleriaPartidos] = useState([
-        {
-                equipoA: 'Equipo A Test',
-                equipoB: 'Equipo B Test',
-                urlDelVideoPartido: 'URL del video del partido Test',
-                resultadoA: 'Resultado A Test',
-                resultadoB: 'Resultado B Test'
-        },
-    ]);
+    //const [galeriaPartidos, setGaleriaPartidos] = useState([]);
 
     const [password, setPassword] = useState('');
 
@@ -146,6 +138,7 @@ export default function Perfil() {
     const [resultadoA, setResultadoA] = useState('');
     const [resultadoB, setResultadoB] = useState('');
 
+    /**
     let shareLink
     if (typeof window !== 'undefined') {
         shareLink = window.location.href
@@ -155,6 +148,7 @@ export default function Perfil() {
     console.log(pattern)
     let userEmail = shareLink.match(pattern)[0]
     console.log(userEmail);
+     */
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -221,7 +215,7 @@ export default function Perfil() {
 
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
-                galeriaPartidos: galeriaPartidos,
+                //galeriaPartidos: galeriaPartidos,
 
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
@@ -287,7 +281,7 @@ export default function Perfil() {
 
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
-                galeriaPartidos: galeriaPartidos,
+                //galeriaPartidos: galeriaPartidos,
 
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
@@ -336,7 +330,7 @@ export default function Perfil() {
 
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
-                galeriaPartidos: galeriaPartidos,
+                //galeriaPartidos: galeriaPartidos,
 
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
@@ -355,7 +349,10 @@ export default function Perfil() {
         })
     }
 
+    
     const handleUpdatePartidos = () => {
+        console.log("Handle upload partidos")
+        /*
         setGaleriaPartidos([...galeriaPartidos, {
             equipoA: equipoA,
             equipoB: equipoB,
@@ -410,9 +407,11 @@ export default function Perfil() {
             console.log(data);
             onCloseVideos()
         })
-
+        ** */
     }
     
+    
+
     const handleNacimientoChange = (e) => {
         setNacimiento(e.target.value);
         console.log(e.target.value);
@@ -514,7 +513,7 @@ export default function Perfil() {
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
-        console.log(galeriaPartidos);
+        //console.log(galeriaPartidos);
 
         fetch('https://https://bq-a1-fe-t8pc.vercel.app/buscarUsuario', {
             method: 'POST',
@@ -547,8 +546,8 @@ export default function Perfil() {
             localStorage.setItem('peso', response.peso);
 
             localStorage.setItem('imagenesGalerArray', response.imagenesGaleriaArray)
-            localStorage.setItem('videosGaleria', response.videosGaleria);
-            localStorage.setItem('galeriaPartidos', response.galeriaPartidos);
+            //localStorage.setItem('videosGaleria', response.videosGaleria);
+            //localStorage.setItem('galeriaPartidos', 'en construcción');
 
             localStorage.setItem('club', response.club);
             localStorage.setItem('categoria', response.categoria);
@@ -575,8 +574,8 @@ export default function Perfil() {
             setPeso(localStorage.getItem('peso'));
 
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
-            setVideosGaleria(response.videosGaleria);
-            setGaleriaPartidos(response.galeriaPartidos);
+            //setVideosGaleria(response.videosGaleria);
+            //setGaleriaPartidos();
 
             setNacimiento(localStorage.getItem('nacimiento'));
             setPais(localStorage.getItem('pais'));
@@ -1008,6 +1007,7 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                {/**
                                                 <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay videos.</Text>
                                                 {
                                                     videosGaleria.map((videoUrl, index) => {
@@ -1017,6 +1017,7 @@ export default function Perfil() {
                                                         )}
                                                     )
                                                 }
+                                                 */}
                                             </VStack>
                                         </TabPanel>
                                         <TabPanel>
@@ -1074,6 +1075,7 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                {/**
                                                 <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay partidos.</Text>
                                                 {
                                                     galeriaPartidos.map((partido, index) => {
@@ -1088,6 +1090,7 @@ export default function Perfil() {
                                                         )
                                                     })
                                                 }
+                                                 */}
                                             </VStack>
                                         </TabPanel>
                                     </TabPanels>
