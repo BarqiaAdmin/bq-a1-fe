@@ -314,31 +314,31 @@ class NuevoJugador2 extends Component {
                         ATRIBUTOS
                     </Heading>
                     <VStack>
-                        <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px'>Pases</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 2)} fontSize='40px' height='100px'>Tiros</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 3)} fontSize='40px' height='100px'>Resistencia</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 4)} fontSize='40px' height='100px'>Visión de juego</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px' width='450px' >Pases</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 2)} fontSize='40px' height='100px' width='450px' >Tiros</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 3)} fontSize='40px' height='100px' width='450px' >Resistencia</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 4)} fontSize='40px' height='100px' width='450px' >Visión de juego</Button>
                     </VStack>
                     <VStack>
-                        <Button onClick={(e) => this.elegirAtributo(e, 5)} fontSize='40px' height='100px'>1vs1</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 6)} fontSize='40px' height='100px'>Tiros libres</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 7)} fontSize='40px' height='100px'>Marca</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 8)} fontSize='40px' height='100px'>Juego aéreo</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 5)} fontSize='40px' height='100px' width='450px' >1vs1</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 6)} fontSize='40px' height='100px' width='450px' >Tiros libres</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 7)} fontSize='40px' height='100px' width='450px' >Marca</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 8)} fontSize='40px' height='100px' width='450px' >Juego aéreo</Button>
                     </VStack>
                     <SimpleGrid columns={2} w="full" paddingTop='20px'>
                         <GridItem colSpan={1}>
                             <Button
-                                className='btn1'
-
+                                className="btn1"
                                 p="10px 24px 12px"
                                 w="161px"
                                 h="57px"
                                 bg="#353535"
                                 borderRadius="5px"
-                                fontSize="21px"
                                 color="#A2A2A2"
-                                position="relative"
-                                zIndex="0"
+                                float='right'
+                                height='100px'
+                                width='220px'
+                                fontSize='35px'
                             >
                                 <Link href='/Onboarding/NuevoJugador'>
                                     Volver
@@ -348,14 +348,16 @@ class NuevoJugador2 extends Component {
                         <GridItem colSpan={1} textAlign="right">
                             <Button
                                 className="btn1"
-
                                 p="10px 24px 12px"
                                 w="161px"
                                 h="57px"
                                 bg="#353535"
                                 borderRadius="5px"
-                                fontSize="21px"
                                 color="#A2A2A2"
+                                float='right'
+                                height='100px'
+                                width='220px'
+                                fontSize='35px'
 
                                 onClick={this.actualizarUsuario}
                             >

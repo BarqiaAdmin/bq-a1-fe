@@ -412,24 +412,6 @@ function NuevoJugador() {
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
-                                <FormControl isRequired isInvalid={isErrorCategoria}>
-                                    <FormLabel fontSize={[40, 15]}>Categoría</FormLabel>
-                                    <Select value={ inputCategoria } onChange={ (e) => { localStorage.setItem('categoria', e.target.value); setInputCategoria(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
-                                        <option>Pro</option>
-                                        <option>Semi-Pro</option>
-                                        <option>Juvenil</option>
-                                        <option>Amateur</option>
-                                    </Select>
-                                    {!isErrorCategoria ? (
-                                        <FormHelperText>
-                                            Selecciona tu categoría
-                                        </FormHelperText>
-                                        ) : (
-                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
-                                    )}
-                                </FormControl>
-                            </GridItem>
-                            <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPais}>
                                     <FormLabel fontSize={[40, 15]}>Nacionalidad</FormLabel>
                                     <Select placeholder="Seleccionar país" value={ inputPais } onChange={handlePaisChange} fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
@@ -450,17 +432,18 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorCategoria}>
-                                    <FormLabel fontSize={[40, 15]}>Género</FormLabel>
-                                    <Select value={ inputGenero } onChange={ (e) => { localStorage.setItem('genero', e.target.value); setInputGenero(e.target.value) } }  fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
-                                        <option>Seleccionar</option>
-                                        <option>Femenino</option>
-                                        <option>Masculino</option>
+                                    <FormLabel fontSize={[40, 15]}>Categoría</FormLabel>
+                                    <Select value={ inputCategoria } onChange={ (e) => { localStorage.setItem('categoria', e.target.value); setInputCategoria(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
+                                        <option>Pro</option>
+                                        <option>Semi-Pro</option>
+                                        <option>Juvenil</option>
+                                        <option>Amateur</option>
                                     </Select>
                                     {!isErrorCategoria ? (
                                         <FormHelperText>
-                                            Ingresa tu estatura en metros, separando con punto
+                                            Selecciona tu categoría
                                         </FormHelperText>
-                                    ) : (
+                                        ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
                                     )}
                                 </FormControl>
@@ -533,6 +516,23 @@ function NuevoJugador() {
                                     {!isErrorPeso ? (
                                         <FormHelperText>
                                             Ingresa tu peso en kilos, separando con punto
+                                        </FormHelperText>
+                                    ) : (
+                                        <FormErrorMessage>Campo obligatorio</FormErrorMessage>
+                                    )}
+                                </FormControl>
+                            </GridItem>
+                            <GridItem colSpan={[12, 12, 6, 6]}>
+                                <FormControl isRequired isInvalid={isErrorCategoria}>
+                                    <FormLabel fontSize={[40, 15]}>Género</FormLabel>
+                                    <Select value={ inputGenero } onChange={ (e) => { localStorage.setItem('genero', e.target.value); setInputGenero(e.target.value) } }  fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
+                                        <option>Seleccionar</option>
+                                        <option>Femenino</option>
+                                        <option>Masculino</option>
+                                    </Select>
+                                    {!isErrorCategoria ? (
+                                        <FormHelperText>
+                                            Ingresa tu estatura en metros, separando con punto
                                         </FormHelperText>
                                     ) : (
                                         <FormErrorMessage>Campo obligatorio</FormErrorMessage>
@@ -671,6 +671,7 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
+                            
                             <GridItem colSpan={12}>
                                 <Text fontSize={[50, 10]}>Redes sociales</Text>
                             </GridItem>
