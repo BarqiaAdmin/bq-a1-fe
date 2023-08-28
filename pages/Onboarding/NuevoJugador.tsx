@@ -452,6 +452,7 @@ function NuevoJugador() {
                                 <FormControl isRequired isInvalid={isErrorCategoria}>
                                     <FormLabel fontSize={[40, 15]}>Género</FormLabel>
                                     <Select value={ inputGenero } onChange={ (e) => { localStorage.setItem('genero', e.target.value); setInputGenero(e.target.value) } }  fontSize={[30, 30]} padding={[10, 10, 20, 20]} height={[82]} width='625px' marginLeft='-50px'>
+                                        <option>Seleccionar</option>
                                         <option>Femenino</option>
                                         <option>Masculino</option>
                                     </Select>

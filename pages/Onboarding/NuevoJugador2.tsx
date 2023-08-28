@@ -266,11 +266,21 @@ class NuevoJugador2 extends Component {
                     paddingTop="100px"
                 >
                     <Heading
-                        fontSize="18px"
+                        textAlign='center'
+                        fontSize="60px"
                     >
                         SELECCIONA TU LUGAR EN EL CAMPO
                     </Heading>
+                    <Image alt='' 
+                        left="0"
+                        bottom="0"
+                        width='full'
+                        src="/campo-vertical.JPG"
+                        display={['block', 'none']}
+                    />
+                    {/** */}
                     <Box
+                        display={['none', 'block']}
                         position="relative"
                     >
                         <Image alt=''  src="/campo.png" />
@@ -299,22 +309,22 @@ class NuevoJugador2 extends Component {
                     </HStack>
                     */}
                     <Heading
-                        fontSize="18px"
+                        fontSize="60px"
                     >
                         ATRIBUTOS
                     </Heading>
-                    <HStack>
-                        <Button onClick={(e) => this.elegirAtributo(e, 1)} className="btn2">Pases</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 2)} className="btn2">Tiros</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 3)} className="btn2">Resistencia</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 4)} className="btn2">Visión de juego</Button>
-                    </HStack>
-                    <HStack>
-                        <Button onClick={(e) => this.elegirAtributo(e, 5)} className="btn2">1vs1</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 6)} className="btn2">Tiros libres</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 7)} className="btn2">Marca</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 8)} className="btn2">Juego aéreo</Button>
-                    </HStack>
+                    <VStack>
+                        <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px'>Pases</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 2)} fontSize='40px' height='100px'>Tiros</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 3)} fontSize='40px' height='100px'>Resistencia</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 4)} fontSize='40px' height='100px'>Visión de juego</Button>
+                    </VStack>
+                    <VStack>
+                        <Button onClick={(e) => this.elegirAtributo(e, 5)} fontSize='40px' height='100px'>1vs1</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 6)} fontSize='40px' height='100px'>Tiros libres</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 7)} fontSize='40px' height='100px'>Marca</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 8)} fontSize='40px' height='100px'>Juego aéreo</Button>
+                    </VStack>
                     <SimpleGrid columns={2} w="full" paddingTop='20px'>
                         <GridItem colSpan={1}>
                             <Button
