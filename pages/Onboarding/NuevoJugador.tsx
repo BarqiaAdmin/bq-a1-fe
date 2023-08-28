@@ -269,6 +269,7 @@ function NuevoJugador() {
         //(document.getElementById("inputNombre") as HTMLInputElement).defaultValue = inputNombre;
         console.log(inputNombre);
 
+        let inputApellido = localStorage.getItem('apellido')
         setInputApellido(localStorage.getItem('apellido'));
         console.log(inputApellido);
 
@@ -382,7 +383,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorApellido}>
                                     <FormLabel>Apellido</FormLabel>
-                                    <Input placeholder="Ingresar apellido" value={ inputApellido } onChange={handleApellidoChange}/>
+                                    <Input id='inputApellido' placeholder="Ingresar apellido" value={ inputApellido } onChange={handleApellidoChange}/>
                                     {!isErrorApellido ? (
                                         <FormHelperText>
                                             Ingresa tu apellido
