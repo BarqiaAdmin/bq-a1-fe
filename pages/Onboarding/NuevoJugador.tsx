@@ -203,6 +203,26 @@ function NuevoJugador() {
         
         if (!validacionesPrimarias) {
             alert('Por favor, llena todos los campos obligatorios (*)')
+            console.log('Nombre')
+            console.log(localStorage.getItem('nombre'));
+            console.log('Apellido')
+            console.log(localStorage.getItem('apellido'));
+            console.log('Nacimiento')
+            console.log(localStorage.getItem('nacimiento'));
+            console.log('pieHabil')
+            console.log(localStorage.getItem('pieHabil'))
+            console.log('Posicion')
+            console.log(localStorage.getItem('posicion'))
+            console.log('genero')
+            console.log(localStorage.getItem('genero'));
+            console.log('estatura')
+            console.log(localStorage.getItem('estatura'));
+            console.log('peso')
+            console.log(localStorage.getItem('peso'));
+            console.log('categoria')
+            console.log(localStorage.getItem('categoria'));
+            console.log('pais')
+            console.log(localStorage.getItem('pais'))
             return
         } else {
             Router.push({
