@@ -308,7 +308,6 @@ function NuevoJugador() {
                         paddingTop="100px"
                     >
                         
-                        <Image alt=''  src="/ellipse.png" />
                         {/**
                         <Link
                             id="botonDeSubirImagen"
@@ -322,10 +321,16 @@ function NuevoJugador() {
                             Subir imagen
                         </Link>
                          */}
+                        <GridItem colSpan={12} marginTop='170px'>
+                            <Text fontSize={[60, 10]}>Foto de perfil:</Text>
+                        </GridItem>
                          <Input
                             placeholder="Select Date and Time"
                             size="md"
                             type="file"
+                            fontSize="40px"
+                            height='70px'
+                            width='370px'
                             onChange={(e) => handleFileUpload(e)}
                         />
                         <Box>
@@ -334,10 +339,10 @@ function NuevoJugador() {
                                 borderRadius='full'
                                 id="fotoDePerfil"
                                 src={ localStorage.getItem('fotoPerfil') == '' ? 'https://png.pngtree.com/png-vector/20190307/ourlarge/pngtree-vector-add-user-icon-png-image_780603.jpg' : localStorage.getItem('fotoPerfil') }
-                                marginTop="-287px"
                                 height='180px'
                                 width='180px'
                                 objectFit='cover'
+                                marginTop='-450px'
                             />
                         </Box>
                         {/**
@@ -348,7 +353,7 @@ function NuevoJugador() {
                         */}
                         
                         <GridItem colSpan={12}>
-                            <Text fontSize={[60, 10]} textAlign='left'>Datos:</Text>
+                            <Text fontSize={[60, 10]}>Datos:</Text>
                         </GridItem>
                         <SimpleGrid columns={12} gap="32px" w="full">
                             <GridItem colSpan={[12, 12, 12, 6]} >
