@@ -269,6 +269,7 @@ function NuevoJugador() {
     useEffect(() => {
         setDomLoaded(true);
 
+
         localStorage.setItem('chakra-ui-color-mode', 'dark');
         
         let inputEmail = localStorage.getItem('email')
@@ -405,13 +406,8 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorApellido}>
-<<<<<<<<< Temporary merge branch 1
-                                    <FormLabel>Apellido</FormLabel>
-                                    <Input id='inputApellido' placeholder="Ingresar apellido" value={ inputApellido } onChange={handleApellidoChange}/>
-=========
                                     <FormLabel fontSize={[40, 15]}>Apellido</FormLabel>
                                     <Input placeholder="Ingresar apellido" value={ inputApellido } onChange={handleApellidoChange} fontSize={[30, 30]} padding={[10, 10, 20, 20]}/>
->>>>>>>>> Temporary merge branch 2
                                     {!isErrorApellido ? (
                                         <FormHelperText>
                                             Ingresa tu apellido
