@@ -314,16 +314,18 @@ class NuevoJugador2 extends Component {
                         ATRIBUTOS
                     </Heading>
                     <VStack>
-                        <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px' width='450px' >Pases</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 2)} fontSize='40px' height='100px' width='450px' >Tiros</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 3)} fontSize='40px' height='100px' width='450px' >Resistencia</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 4)} fontSize='40px' height='100px' width='450px' >Visión de juego</Button>
-                    </VStack>
-                    <VStack>
+                        <Button onClick={(e) => this.elegirAtributo(e, 9)} fontSize='40px' height='100px' width='450px'>Fuerza</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 10)} fontSize='40px' height='100px' width='450px'>Velocidad</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px' width='450px'>Pases</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 2)} fontSize='40px' height='100px' width='450px'>Tiros</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 3)} fontSize='40px' height='100px' width='450px'>Resistencia</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 4)} fontSize='40px' height='100px' width='450px'>Visión de juego</Button>
                         <Button onClick={(e) => this.elegirAtributo(e, 5)} fontSize='40px' height='100px' width='450px' >1vs1</Button>
                         <Button onClick={(e) => this.elegirAtributo(e, 6)} fontSize='40px' height='100px' width='450px' >Tiros libres</Button>
                         <Button onClick={(e) => this.elegirAtributo(e, 7)} fontSize='40px' height='100px' width='450px' >Marca</Button>
                         <Button onClick={(e) => this.elegirAtributo(e, 8)} fontSize='40px' height='100px' width='450px' >Juego aéreo</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 9)} fontSize='40px' height='100px' width='450px'>Fuerza</Button>
+                        <Button onClick={(e) => this.elegirAtributo(e, 10)} fontSize='40px' height='100px' width='450px'>Velocidad</Button>
                     </VStack>
                     <SimpleGrid columns={2} w="full" paddingTop='20px'>
                         <GridItem colSpan={1}>
