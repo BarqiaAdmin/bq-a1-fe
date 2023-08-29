@@ -37,6 +37,7 @@ import {
 
 import NavBar from '../src/Components/NavBar/NavBar'
 
+
 import { CheckIcon, CloseIcon } from '@chakra-ui/icons';
 
 import clubesAFA from '../../db/clubesAFA';;

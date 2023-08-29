@@ -51,6 +51,7 @@ import {
 } from '@chakra-ui/react';
 
 import NavBar from '../src/Components/NavBar/NavBar';
+import NavBarMobile from '../src/Components/NavBar/NavBarMobile'
 
 import { useFileUpload } from 'use-file-upload';
 
@@ -601,6 +602,7 @@ export default function Perfil() {
         <>
         <Box>
             <NavBar />
+            <NavBarMobile />
             {/**
             <SideBar />
              */}
@@ -1007,7 +1009,6 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                {/**
                                                 <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay videos.</Text>
                                                 {
                                                     videosGaleria.map((videoUrl, index) => {
@@ -1017,7 +1018,6 @@ export default function Perfil() {
                                                         )}
                                                     )
                                                 }
-                                                 */}
                                             </VStack>
                                         </TabPanel>
                                         <TabPanel>
@@ -1075,6 +1075,9 @@ export default function Perfil() {
                                                 </AlertDialogOverlay>
                                             </AlertDialog>
                                             <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                
+                                                <Text>Aún no hay partidos.</Text>
+                                                
                                                 {/**
                                                 <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay partidos.</Text>
                                                 {
