@@ -85,12 +85,6 @@ const NavBar = (props) => {
                 alignItems="center"
                 marginLeft="25px"
             >
-                <Image alt=''  
-                    w="22px"
-                    h="19px"
-                    marginRight="28px"
-                    src="/menu.png"
-                />
                 <Image alt='' 
                     w="130px"
                     src="/logo.png"

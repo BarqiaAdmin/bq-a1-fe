@@ -602,13 +602,18 @@ export default function Perfil() {
         <>
         <Box>
             <NavBar />
+
+            {/**
             <NavBarMobile />
+             */}
+
+
             {/**
             <SideBar />
              */}
             
             <VStack>
-                <HStack marginTop='100px' zIndex='1'>
+                <HStack display={['none', 'block']} marginTop='100px' zIndex='1'>
                     <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />} zIndex='9999'>
                         <BreadcrumbItem>
                             <BreadcrumbLink href='' color='#6EC1E4'>Home</BreadcrumbLink>
@@ -640,8 +645,10 @@ export default function Perfil() {
                                                 borderRadius='full'
                                                 id="fotoDePerfil"
                                                 src={ fotoPerfil }
-                                                height='180px'
-                                                width='180px'
+                                                height={['360px', '180px']}
+                                                width={['360px', '180px']}
+                                                marginTop={['70px', '']}
+                                                marginLeft={['55px', '']}
                                                 objectFit='cover'
                                             />
                                             <Box
@@ -652,23 +659,27 @@ export default function Perfil() {
                                             </Box>
                                         </HStack>
                                         
-                                        <Heading>{ nombre } { apellido }</Heading>
+                                        <Heading fontSize={['70px', '']} paddingLeft={['70px', '']}>{ nombre } { apellido }</Heading>
                                         <Box
                                             cursor='pointer'
                                             color=''
-                                            style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                            style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}
+                                            >
                                             <EditIcon/>
                                         </Box>
                                         <HStack gap="5px">
                                             {/**
                                             <CircularProgress value={70} color='green.400' size='60px'>
                                                 <CircularProgressLabel>70%</CircularProgressLabel>
-                                            </CircularProgress>
+                                            </CircularProgres   s>
                                              */}
                                             <Button
                                                 color="white"
                                                 background="#144077"
+                                                padding='50px'
                                                 onClick={handleShare}
+                                                fontSize={['40px', '']}
+                                                
                                             >
                                                 <LinkIcon />&nbsp;Compartir perfil 
                                             </Button>
@@ -681,16 +692,16 @@ export default function Perfil() {
                                         </HStack>
                                         <HStack gap="10px">
                                             <Link href={ facebook } target='blank' >
-                                                <Image cursor='pointer' alt=''  h="30px" src="/facebook.png" />
+                                                <Image cursor='pointer' alt=''  h={["70", "30px"]} src="/facebook.png" />
                                             </Link>
                                             <Link href={ twitter } target='blank' >
-                                                <Image cursor='pointer' alt=''  h="30px" src="/twitter.png" />
+                                                <Image cursor='pointer' alt=''  h={["70", "30px"]} src="/twitter.png" />
                                             </Link>
                                             <Link href={ instagram } target='blank' >
-                                                <Image cursor='pointer' alt=''  h="30px" src="/instagram.png" />
+                                                <Image cursor='pointer' alt=''  h={["70", "30px"]} src="/instagram.png" />
                                             </Link>
                                             <Link href={ tiktok } target='blank' >
-                                                <Image cursor='pointer' alt=''  h="30px" src="/icono-tiktok.png" />
+                                                <Image cursor='pointer' alt=''  h={["70", "30px"]} src="/icono-tiktok.png" />
                                             </Link>
                                             <Box
                                                 cursor='pointer'
