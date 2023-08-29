@@ -896,17 +896,17 @@ export default function Perfil() {
                                             ATRIBUTOS
                                         </Heading>
                                         <HStack display='inline-block' marginBottom='15px'>
-                                            <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} className="btn2">Pases</Button>
-                                            <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} className="btn2">Tiros</Button>
-                                            <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2">Resistencia</Button>
-                                            <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2">Visión de juego</Button>
+                                            <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width='450px'>Pases</Button>
+                                            <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width='450px'>Tiros</Button>
+                                            <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Resistencia</Button>
+                                            <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Visión de juego</Button>
                                         </HStack>
                                         <br />
                                         <HStack gap='12px' display='inline-block' marginBottom='15px'>
-                                            <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2">1vs1</Button>
-                                            <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Tiros libres</Button>
-                                            <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Marca</Button>
-                                            <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2">Juego aéreo</Button>
+                                            <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>1vs1</Button>
+                                            <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Tiros libres</Button>
+                                            <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Marca</Button>
+                                            <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Juego aéreo</Button>
                                         </HStack>
                                     </GridItem>
                                 </SimpleGrid>
@@ -916,7 +916,42 @@ export default function Perfil() {
 
                         {/* "Top Torneos (Figma)" */}
 
-                        <GridItem colSpan={15}>
+
+                        <GridItem colSpan={15} display={['block', 'none']}>
+                            <Heading>Galería:</Heading>
+                        </GridItem>
+
+                        <GridItem colSpan={15} display={['block', 'none']}>
+                            <Heading
+                                fontSize="40px"
+                                marginBottom='20px'
+                            >
+                                IMAGENES
+                            <Text>Aún no hay imagenes.</Text>
+                            </Heading>
+                        </GridItem>
+
+                        <GridItem colSpan={15} display={['block', 'none']}>
+                            <Heading
+                                fontSize="40px"
+                                marginBottom='20px'
+                            >
+                                VIDEOS
+                            <Text>Aún no hay videos.</Text>
+                            </Heading>
+                        </GridItem>
+
+                        <GridItem colSpan={15} display={['block', 'none']}>
+                            <Heading
+                                fontSize="40px"
+                                marginBottom='20px'
+                            >
+                                GRABACIONES
+                            </Heading>
+                            <Text>Aún no hay grabaciones.</Text>
+                        </GridItem>
+
+                        <GridItem colSpan={15} display={['none', 'block']}>
                         
                             <Box width='full' padding='0 150px' suppressHydrationWarning>
                                 <Tabs isFitted variant='enclosed'>
