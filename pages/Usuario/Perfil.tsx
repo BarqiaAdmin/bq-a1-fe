@@ -674,12 +674,12 @@ export default function Perfil() {
                                             </CircularProgres   s>
                                              */}
                                             <Button
+                                                onClick={handleShare}
+
                                                 color="white"
                                                 background="#144077"
+                                                fontSize={['30px', '']}
                                                 padding='50px'
-                                                onClick={handleShare}
-                                                fontSize={['40px', '']}
-                                                
                                             >
                                                 <LinkIcon />&nbsp;Compartir perfil 
                                             </Button>
@@ -730,21 +730,10 @@ export default function Perfil() {
                                     margin='auto'
                                     padding='30px'
                                     textAlign='center'
-
+                                    fontSize='40px'
                                     gap={12}
                                 >
-                                    <GridItem colSpan={1}>
-                                        PAIS <br />
-                                        <strong>{ pais }</strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar" onChange={ handlePaisChange }>
-                                            {paises.map((pais, index) => {
-                                                return (
-                                                    <option key={index}>{ pais }</option>
-                                                )
-                                            })}
-                                        </Select>
-                                    </GridItem>
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]}>
                                         EQUIPO <br />
                                         {/**
                                         <Image src='/escudo.png' alt=''
@@ -752,8 +741,8 @@ export default function Perfil() {
                                             width='25px'
                                         />
                                         */}
-                                        <strong>{ club }</strong>
-                                        <Select className="campoDeEdicion" placeholder="Seleccionar" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleClubChange }>
+                                        <strong><em>{ club }</em></strong>
+                                        <Select className="campoDeEdicion" placeholder="Seleccionar" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleClubChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
                                             {clubes.map((club, index) => {
                                                 return (
                                                     <option key={ index }>{ club }</option>
@@ -762,18 +751,30 @@ export default function Perfil() {
                                         </Select>
                                     </GridItem>
 
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]}>
+                                        PAIS <br />
+                                        <strong><em>{ pais }</em></strong>
+                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar" onChange={ handlePaisChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
+                                            {paises.map((pais, index) => {
+                                                return (
+                                                    <option key={index}>{  pais }</option>
+                                                )
+                                            })}
+                                        </Select>
+                                    </GridItem>
+
+                                    <GridItem colSpan={[4, 1]}>
                                         PIE HÁBIL <br />
-                                        <strong>{ pieHabil }</strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePieHabilChange }>
+                                        <strong><em>{ pieHabil }</em></strong>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePieHabilChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
                                             <option>Izquierdo</option>
                                             <option>Derecho</option>
                                         </Select>
                                     </GridItem>
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]}>
                                         POSICIÓN <br />
-                                        <strong>{ posicion }</strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePosicionChange }>
+                                        <strong><em>{ posicion }</em></strong>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePosicionChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
                                             <option>Delantero</option>
                                             <option>Mediocampista</option>
                                             <option>Defensor</option>
@@ -781,29 +782,29 @@ export default function Perfil() {
                                         </Select>
                                     </GridItem>
 
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]}>
                                         CATEGORÍA <br />
-                                        <strong>{ categoria }</strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCategoriaChange }>
+                                        <strong><em>{ categoria }</em></strong>
+                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCategoriaChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
                                             <option>Pro</option>
                                             <option>Semi-Pro</option>
                                             <option>Juvenil</option>
                                             <option>Amateur</option>
                                         </Select>
                                     </GridItem>
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]}>
                                         ESTATURA <br />
-                                        <strong>{ estatura }</strong>
-                                        <Input className="campoDeEdicion" placeholder='Ingresar estatura' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleEstaturaChange } />
+                                        <strong><em>{ estatura }</em></strong>
+                                        <Input className="campoDeEdicion" placeholder='Ingresar estatura' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleEstaturaChange }  fontSize={[30, 30]} padding={[10, 10, 20, 20]}/>
                                     </GridItem>
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]}>
                                         PESO <br />
-                                        <strong>{ peso }</strong>
-                                        <Input className="campoDeEdicion" placeholder='Ingresar peso' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePesoChange } />
+                                        <strong><em>{ peso }</em></strong>
+                                        <Input className="campoDeEdicion" placeholder='Ingresar peso' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePesoChange }  fontSize={[30, 30]} padding={[10, 10, 20, 20]}/>
                                     </GridItem>
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]}>
                                         Edad  <br />
-                                        <strong>{ edad }</strong>
+                                        <strong><em>{ edad }</em></strong>
                                         <VStack style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                             <FormControl>
                                                 <input type='date' onChange={ handleNacimientoChange }/>
@@ -817,9 +818,9 @@ export default function Perfil() {
                                             </FormControl>
                                         </VStack>
                                     </GridItem>
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]} display='none'>
                                         NIVEL DE INGLÉS <br />
-                                        <strong>{ nivelDeIngles }</strong>
+                                        <strong><em>{ nivelDeIngles }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleNivelDeInglesChange }>
                                             <option>Bilingüe</option>
                                             <option>Avanzado</option>
@@ -827,17 +828,17 @@ export default function Perfil() {
                                             <option>Básico</option>
                                         </Select>
                                     </GridItem>
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]} display='none'>
                                         CONDICIÓN <br />
-                                        <strong>{ condicion }</strong>
+                                        <strong><em>{ condicion }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCondicionChange }>
                                             <option>Libre</option>
                                             <option>Con contrato</option>
                                         </Select>
                                     </GridItem>
-                                    <GridItem colSpan={1}>
+                                    <GridItem colSpan={[4, 1]} display='none'>
                                         PRESUPUESTO <br />
-                                        <strong>{ presupuesto }</strong>
+                                        <strong><em>{ presupuesto }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePresupuestoChange }>
                                             <option>0 - 5.000</option>
                                             <option>6.0000 - 10.000</option>
@@ -847,18 +848,24 @@ export default function Perfil() {
                                         </Select>
                                     </GridItem>
                                     <GridItem colSpan={1}>
-                                        <HStack>
-                                            <Button style={ !edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
-                                            <Button style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
+                                        <HStack display={['none', 'block']}>
+                                            <Button style={ !edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }fontSize={['30px', '']} padding='50px'>Editar&nbsp;<EditIcon /></Button>
+                                            <Button style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }fontSize={['30px', '']} padding='50px'>Cancelar&nbsp;<CloseIcon /></Button>
                                             <Button color="white"
                                                     background="#144077"
-                                                    style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
+                                                    style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px'>Guardar&nbsp;<CheckIcon /></Button>
+                                        </HStack>
+
+                                        <HStack display={['block', 'none']}>        
+                                                <Button fontSize='40px' padding='50px' style={ !edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
+                                                <Button fontSize='40px' padding='50px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
+                                                <Button fontSize='40px' padding='50px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
                                         </HStack>
                                     </GridItem>
-                                    <GridItem colSpan={4}>
+                                    <GridItem colSpan={4} fontSize='40px'>
                                         <VStack>
                                             <Heading
-                                                fontSize="18px" marginBottom='20px'
+                                                fontSize="40px" marginBottom='20px'
                                             >
                                                 LUGAR EN EL CAMPO
                                             </Heading>
@@ -883,7 +890,7 @@ export default function Perfil() {
                                     </GridItem>
                                     <GridItem colSpan={4} textAlign='center'>
                                         <Heading
-                                            fontSize="18px"
+                                            fontSize="40px"
                                             marginBottom='20px'
                                         >
                                             ATRIBUTOS
