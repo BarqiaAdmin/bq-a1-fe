@@ -93,8 +93,9 @@ const NavBar = (props) => {
             <Flex
                 alignItems="center"
             >
-                
+                {/**
                 <BellIcon w={7} h={7} marginRight='15px' cursor='pointer' />
+                 */}
                 <Image alt='' 
                     
                     borderRadius='full'

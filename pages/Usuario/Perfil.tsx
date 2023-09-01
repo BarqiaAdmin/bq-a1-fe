@@ -613,7 +613,7 @@ export default function Perfil() {
              */}
             
             <VStack>
-                <HStack display={['none', 'block']} marginTop='100px' zIndex='1'>
+                <HStack display={['none', 'none']} marginTop='100px' zIndex='1'>
                     <Breadcrumb spacing='8px' separator={<ChevronRightIcon color='gray.500' />} zIndex='9999'>
                         <BreadcrumbItem>
                             <BreadcrumbLink href='' color='#6EC1E4'>Home</BreadcrumbLink>
@@ -629,9 +629,9 @@ export default function Perfil() {
                     </Breadcrumb>
                 </HStack>
                 <HStack>
-                    <SimpleGrid columns={4} marginTop='-70px'>
+                    <SimpleGrid columns={4}>
                         <GridItem
-                            colSpan={4}
+                            colSpan={2}
                             >
                             <VStack
                                 gap="5px"
@@ -648,7 +648,6 @@ export default function Perfil() {
                                                 height={['120px', '200px']}
                                                 width={['120px', '200px']}
                                                 marginTop={['70px', '']}
-                                                marginLeft={['55px', '']}
                                                 objectFit='cover'
                                                 float='left'
                                             />
@@ -660,7 +659,7 @@ export default function Perfil() {
                                             </Box>
                                         </HStack>
                                         
-                                        <Heading fontSize={['70px', '']} paddingLeft={['70px', '']}>{ nombre } { apellido }</Heading>
+                                        <Heading fontSize={['30px', '30px']}>{ nombre } { apellido }</Heading>
                                         <Box
                                             cursor='pointer'
                                             color=''
@@ -680,7 +679,7 @@ export default function Perfil() {
                                                 color="white"
                                                 background="#144077"
                                                 fontSize={['30px', '']}
-                                                padding='50px'
+                                                padding='10px'
                                             >
                                                 <LinkIcon />&nbsp;Compartir perfil 
                                             </Button>
@@ -693,16 +692,16 @@ export default function Perfil() {
                                         </HStack>
                                         <HStack gap="10px">
                                             <Link href={ facebook } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["70", "30px"]} src="/facebook.png" />
+                                                <Image cursor='pointer' alt=''  h={["30px", "30px"]} src="/facebook.png" />
                                             </Link>
                                             <Link href={ twitter } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["70", "30px"]} src="/twitter.png" />
+                                                <Image cursor='pointer' alt=''  h={["30px", "30px"]} src="/twitter.png" />
                                             </Link>
                                             <Link href={ instagram } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["70", "30px"]} src="/instagram.png" />
+                                                <Image cursor='pointer' alt=''  h={["30px", "30px"]} src="/instagram.png" />
                                             </Link>
                                             <Link href={ tiktok } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["70", "30px"]} src="/icono-tiktok.png" />
+                                                <Image cursor='pointer' alt=''  h={["30px", "30px"]} src="/icono-tiktok.png" />
                                             </Link>
                                             <Box
                                                 cursor='pointer'
@@ -719,7 +718,10 @@ export default function Perfil() {
                                     </HStack>
                                 </HStack>
                             </VStack>
-                            <HStack
+                        </GridItem>
+
+                        <GridItem colSpan={[4, 2, 2]}>
+                        <HStack
                                 marginTop='40px'
                                 marginBottom='40px'
                             >
@@ -731,7 +733,7 @@ export default function Perfil() {
                                     margin='auto'
                                     padding='30px'
                                     textAlign='center'
-                                    fontSize={['40px', '10px']}
+                                    fontSize={['40px', '14px', '20px']}
                                     gap={12}
                                 >
                                     <GridItem colSpan={[4, 1]}>
@@ -863,296 +865,300 @@ export default function Perfil() {
                                                 <Button fontSize='40px' padding='50px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
                                         </HStack>
                                     </GridItem>
-                                    <GridItem colSpan={4} fontSize='40px'>
-                                        <VStack>
-                                            <Heading
-                                                fontSize="40px" marginBottom='20px'
-                                            >
-                                                LUGAR EN EL CAMPO
-                                            </Heading>
-
-                                            <Box
-                                                position="relative"
-                                            >
-                                                <Image alt=''  src="/campo.png" />
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('1') } } } style={ lugarEnElCampo != '1' ? { background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9 !important', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('2') } } } style={ lugarEnElCampo != '2' ? { background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('3') } } } style={ lugarEnElCampo != '3' ? { background: 'white', top: '30%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '30%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('4') } } } style={ lugarEnElCampo != '4' ? { background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('5') } } } style={ lugarEnElCampo != '5' ? { background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('6') } } } style={ lugarEnElCampo != '6' ? { background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('7') } } } style={ lugarEnElCampo != '7' ? { background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('8') } } } style={ lugarEnElCampo != '8' ? { background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('9') } } } style={ lugarEnElCampo != '9' ? { background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('10') } } } style={ lugarEnElCampo != '10' ? { background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                                <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('11') } } } style={ lugarEnElCampo != '11' ? { background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
-                                            </Box>
-                                        </VStack>
-                                    </GridItem>
-                                    <GridItem colSpan={4} textAlign='center'>
-                                        <Heading
-                                            fontSize="40px"
-                                            marginBottom='20px'
-                                        >
-                                            ATRIBUTOS
-                                        </Heading>
-                                        <HStack display='inline-block' marginBottom='15px'>
-                                            <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width='450px'>Pases</Button>
-                                            <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width='450px'>Tiros</Button>
-                                            <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Resistencia</Button>
-                                            <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Visión de juego</Button>
-                                        </HStack>
-                                        <br />
-                                        <HStack gap='12px' display='inline-block' marginBottom='15px'>
-                                            <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>1vs1</Button>
-                                            <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Tiros libres</Button>
-                                            <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Marca</Button>
-                                            <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Juego aéreo</Button>
-                                        </HStack>
-                                    </GridItem>
                                 </SimpleGrid>
                             </HStack>
                         </GridItem>
-                            
-
-                        {/* "Top Torneos (Figma)" */}
-
-
-                        <GridItem colSpan={15} display={['block', 'none']}>
-                            <Heading>Galería:</Heading>
-                        </GridItem>
-
-                        <GridItem colSpan={15} display={['block', 'none']}>
-                            <Heading
-                                fontSize="40px"
-                                marginBottom='20px'
-                            >
-                                IMAGENES
-                            <Text>Aún no hay imagenes.</Text>
-                            </Heading>
-                        </GridItem>
-
-                        <GridItem colSpan={15} display={['block', 'none']}>
-                            <Heading
-                                fontSize="40px"
-                                marginBottom='20px'
-                            >
-                                VIDEOS
-                            <Text>Aún no hay videos.</Text>
-                            </Heading>
-                        </GridItem>
-
-                        <GridItem colSpan={15} display={['block', 'none']}>
-                            <Heading
-                                fontSize="40px"
-                                marginBottom='20px'
-                            >
-                                GRABACIONES
-                            </Heading>
-                            <Text>Aún no hay grabaciones.</Text>
-                        </GridItem>
-
-                        <GridItem colSpan={15} display={['none', 'block']}>
                         
-                            <Box width='full' padding='0 150px' suppressHydrationWarning>
-                                <Tabs isFitted variant='enclosed'>
-                                    <TabList mb='1em'>
-                                        {/** IMAGENES */}
-                                        <Tab position='relative' >
-                                            Imágenes&nbsp;&nbsp;&nbsp;
-                                            <Tooltip label="Agregar imagen" aria-label='A tooltip'>
-                                                <Link onClick={onOpen} position='absolute' right='20px'>
-                                                    <AddIcon />
-                                                </Link>
-                                            </Tooltip>
-                                        </Tab>
-                                        {/** VIDEOS */}
-                                        <Tab position='relative'>
-                                            Videos&nbsp;&nbsp;&nbsp;
-                                            <Tooltip label="Agregar video" aria-label='A tooltip'>
-                                                <Link onClick={onOpenVideos} position='absolute' right='20px'>
-                                                    <AddIcon />
-                                                </Link>
-                                            </Tooltip>
-                                        </Tab>
-                                        {/** PARTIDOS */}
-                                        <Tab position='relative'>
-                                            Partidos&nbsp;&nbsp;&nbsp;
-                                            <Tooltip label="Agregar partido" aria-label='A tooltip'>
-                                                <Link onClick={onOpenPartidos} position='absolute' right='20px'>
-                                                    <AddIcon />
-                                                </Link> 
-                                            </Tooltip>
-                                        </Tab>
-                                    </TabList>
-                                    <TabPanels textAlign='center'>
-                                        <TabPanel>
-                                            <AlertDialog
-                                                isOpen={isOpen}
-                                                leastDestructiveRef={cancelRef}
-                                                onClose={onClose}
-                                            >
-                                                <AlertDialogOverlay>
-                                                <AlertDialogContent>
-                                                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-                                                    Agregar imagen
-                                                    </AlertDialogHeader>
+                        <GridItem colSpan={15}>
+                            <SimpleGrid colnum={6}>
+                                <GridItem colSpan={3} fontSize='40px'>
+                                    <VStack>
+                                        <Heading
+                                            fontSize="40px" marginBottom='20px'
+                                        >
+                                            LUGAR EN EL CAMPO
+                                        </Heading>
 
-                                                    <AlertDialogBody>
-                                                        <Input
-                                                            placeholder="Select Date and Time"
-                                                            size="md"
-                                                            type="file"
-                                                            onChange={(e) => handleFileUpload(e)}
-                                                        />
-                                                    </AlertDialogBody>
+                                        <Box
+                                            position="relative"
+                                        >
+                                            <Image alt=''  src="/campo.png" />
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('1') } } } style={ lugarEnElCampo != '1' ? { background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9 !important', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('2') } } } style={ lugarEnElCampo != '2' ? { background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('3') } } } style={ lugarEnElCampo != '3' ? { background: 'white', top: '30%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '30%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('4') } } } style={ lugarEnElCampo != '4' ? { background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('5') } } } style={ lugarEnElCampo != '5' ? { background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('6') } } } style={ lugarEnElCampo != '6' ? { background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('7') } } } style={ lugarEnElCampo != '7' ? { background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('8') } } } style={ lugarEnElCampo != '8' ? { background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('9') } } } style={ lugarEnElCampo != '9' ? { background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('10') } } } style={ lugarEnElCampo != '10' ? { background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                            <div className="playerPosition" onClick={ () => { if (edicionActivada) { setLugarEnElCampo('11') } } } style={ lugarEnElCampo != '11' ? { background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'} : { background: '#2B98D9', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block !important', height: '20px', width: '20px'} }></div>
+                                        </Box>
+                                    </VStack>
+                                </GridItem>
 
-                                                    <AlertDialogFooter>
-                                                    <Button ref={cancelRef} onClick={onClose}>
-                                                        Cancelar
-                                                    </Button>
-                                                    <Button colorScheme='blue' onClick={uploadImage} ml={3}>
-                                                        Guardar
-                                                    </Button>
-                                                    </AlertDialogFooter>
-                                                </AlertDialogContent>
-                                                </AlertDialogOverlay>
-                                            </AlertDialog>
-                                            <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no hay imágenes.</Text>
-                                                { imagenesGaleriaArray.map((imagenBase64, index) => {
-                                                    return (
-                                                        <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
-                                                    )
-                                                })}
-                                            </VStack>
-                                        </TabPanel>
-                                        <TabPanel>
-                                            <AlertDialog
-                                                isOpen={isOpenVideos}
-                                                leastDestructiveRef={cancelRef}
-                                                onClose={onCloseVideos}
-                                            >
-                                                <AlertDialogOverlay>
-                                                <AlertDialogContent>
-                                                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-                                                    Agregar video
-                                                    </AlertDialogHeader>
+                                <GridItem colSpan={3} textAlign='center'>
+                                    <Heading
+                                        fontSize="40px"
+                                        marginBottom='20px'
+                                    >
+                                        ATRIBUTOS
+                                    </Heading>
+                                    <HStack display='inline-block' marginBottom='15px'>
+                                        <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width='450px'>Pases</Button>
+                                        <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width='450px'>Tiros</Button>
+                                        <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Resistencia</Button>
+                                        <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Visión de juego</Button>
+                                    </HStack>
+                                    <br />
+                                    <HStack gap='12px' display='inline-block' marginBottom='15px'>
+                                        <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>1vs1</Button>
+                                        <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Tiros libres</Button>
+                                        <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Marca</Button>
+                                        <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Juego aéreo</Button>
+                                    </HStack>
+                                </GridItem>
+                                                        
+                                {/* "Top Torneos (Figma)" */}
 
-                                                    <AlertDialogBody>
-                                                        Ingresa la URL del video para agregarlo al perfil:
-                                                        <Input
-                                                            id="videoGaleria1Input"
-                                                            marginTop='20px'
-                                                            placeholder="URL del video"
-                                                            size="md"
-                                                            type="text"
-                                                            onChange={(e) => handleVideoUpload(e)}
-                                                        />
-                                                    </AlertDialogBody>
 
-                                                    <AlertDialogFooter>
-                                                    <Button ref={cancelRef} onClick={onCloseVideos}>
-                                                        Cancelar
-                                                    </Button>
-                                                    <Button colorScheme='blue' onClick={uploadVideo} ml={3}>
-                                                        Guardar
-                                                    </Button>
-                                                    </AlertDialogFooter>
-                                                </AlertDialogContent>
-                                                </AlertDialogOverlay>
-                                            </AlertDialog>
-                                            <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay videos.</Text>
-                                                {
-                                                    videosGaleria.map((videoUrl, index) => {
-                                                        console.log(videoUrl);
-                                                        return (
-                                                            <iframe key={ index } width="853" height="480" src={ videoUrl } title=""></iframe>
-                                                        )}
-                                                    )
-                                                }
-                                            </VStack>
-                                        </TabPanel>
-                                        <TabPanel>
-                                            <AlertDialog
-                                                isOpen={isOpenPartidos}
-                                                leastDestructiveRef={cancelRef}
-                                                onClose={onClosePartidos}
-                                            >
-                                                <AlertDialogOverlay>
-                                                <AlertDialogContent>
-                                                    <AlertDialogHeader fontSize='lg' fontWeight='bold'>
-                                                    Agregar Partido
-                                                    </AlertDialogHeader>
+                                <GridItem colSpan={15} display={['block', 'none']}>
+                                    <Heading>Galería:</Heading>
+                                </GridItem>
 
-                                                    <AlertDialogBody>
+                                <GridItem colSpan={15} display={['block', 'none']}>
+                                    <Heading
+                                        fontSize="40px"
+                                        marginBottom='20px'
+                                    >
+                                        IMAGENES
+                                    <Text>Aún no hay imagenes.</Text>
+                                    </Heading>
+                                </GridItem>
 
-                                                        <Text marginBottom='10px'>URL del video:</Text>
-                                                        <Input type="txt" placeholder="Url del video" onChange={ (e) => {
-                                                            localStorage.setItem('Url del video Partido', e.target.value);
-                                                            setUrlDelVideoPartido(e.target.value)
-                                                        } }/>
+                                <GridItem colSpan={15} display={['block', 'none']}>
+                                    <Heading
+                                        fontSize="40px"
+                                        marginBottom='20px'
+                                    >
+                                        VIDEOS
+                                    <Text>Aún no hay videos.</Text>
+                                    </Heading>
+                                </GridItem>
 
-                                                        <Text marginTop='10px' marginBottom='10px'>Fecha:</Text>
-                                                        <Input type="date" />
+                                <GridItem colSpan={15} display={['block', 'none']}>
+                                    <Heading
+                                        fontSize="40px"
+                                        marginBottom='20px'
+                                    >
+                                        GRABACIONES
+                                    </Heading>
+                                    <Text>Aún no hay grabaciones.</Text>
+                                </GridItem>
 
-                                                        <Text marginTop='10px' marginBottom='10px'>Equipos:</Text>
-                                                        <HStack marginBottom='10px'>
-                                                            <Input type="text" placeholder="Equipo A" onChange={ (e) => { localStorage.setItem('Equipo A', e.target.value); setEquipoA(e.target.value) } }/>
-                                                            <Input type="text" placeholder="Equipo B" onChange={ (e) => { localStorage.setItem('Equipo B', e.target.value); setEquipoB(e.target.value) } }/>
-                                                        </HStack>
+                                <GridItem colSpan={15} display={['none', 'block']}>
+                                    <Box width='full' padding='0 150px' suppressHydrationWarning>
+                                        <Tabs isFitted variant='enclosed'>
+                                            <TabList mb='1em'>
+                                                {/** IMAGENES */}
+                                                <Tab position='relative' >
+                                                    Imágenes&nbsp;&nbsp;&nbsp;
+                                                    <Tooltip label="Agregar imagen" aria-label='A tooltip'>
+                                                        <Link onClick={onOpen} position='absolute' right='20px'>
+                                                            <AddIcon />
+                                                        </Link>
+                                                    </Tooltip>
+                                                </Tab>
+                                                {/** VIDEOS */}
+                                                <Tab position='relative'>
+                                                    Videos&nbsp;&nbsp;&nbsp;
+                                                    <Tooltip label="Agregar video" aria-label='A tooltip'>
+                                                        <Link onClick={onOpenVideos} position='absolute' right='20px'>
+                                                            <AddIcon />
+                                                        </Link>
+                                                    </Tooltip>
+                                                </Tab>
+                                                {/** PARTIDOS */}
+                                                <Tab position='relative'>
+                                                    Partidos&nbsp;&nbsp;&nbsp;
+                                                    <Tooltip label="Agregar partido" aria-label='A tooltip'>
+                                                        <Link onClick={onOpenPartidos} position='absolute' right='20px'>
+                                                            <AddIcon />
+                                                        </Link> 
+                                                    </Tooltip>
+                                                </Tab>
+                                            </TabList>
+                                            <TabPanels textAlign='center'>
+                                                <TabPanel>
+                                                    <AlertDialog
+                                                        isOpen={isOpen}
+                                                        leastDestructiveRef={cancelRef}
+                                                        onClose={onClose}
+                                                    >
+                                                        <AlertDialogOverlay>
+                                                        <AlertDialogContent>
+                                                            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                                            Agregar imagen
+                                                            </AlertDialogHeader>
 
-                                                        <Text marginBottom='10px'>Resultado:</Text>
-                                                        <HStack>
-                                                            <Input type="text" placeholder="Goles Equipo A" onChange={ (e) => {
-                                                                localStorage.setItem('Goles Equipo A', e.target.value);
-                                                                setResultadoA(e.target.value);
-                                                            } }/>
-                                                            <Input type="text" placeholder="Goles Equipo B" onChange={ (e) => {
-                                                                localStorage.setItem('Goles Equipo 1 B', e.target.value);
-                                                                setResultadoB(e.target.value);  
-                                                            }
-                                                             }/>
-                                                        </HStack>
-                                                    </AlertDialogBody>
+                                                            <AlertDialogBody>
+                                                                <Input
+                                                                    placeholder="Select Date and Time"
+                                                                    size="md"
+                                                                    type="file"
+                                                                    onChange={(e) => handleFileUpload(e)}
+                                                                />
+                                                            </AlertDialogBody>
 
-                                                    <AlertDialogFooter>
-                                                    <Button ref={cancelRef} onClick={onClosePartidos}>
-                                                        Cancelar
-                                                    </Button>
-                                                    <Button colorScheme='blue' onClick={handleUpdatePartidos} ml={3}>
-                                                        Guardar
-                                                    </Button>
-                                                    </AlertDialogFooter>
-                                                </AlertDialogContent>
-                                                </AlertDialogOverlay>
-                                            </AlertDialog>
-                                            <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                
-                                                <Text>Aún no hay partidos.</Text>
-                                                
-                                                {/**
-                                                <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay partidos.</Text>
-                                                {
-                                                    galeriaPartidos.map((partido, index) => {
-                                                        return (
-                                                            <Box key={ index }>
-                                                                <Text>{ partido.equipoA }</Text>
-                                                                <Text>{ partido.equipoB }</Text>
-                                                                <Text>{ partido.urlDelVideoPartido }</Text>
-                                                                <Text>{ partido.resultadoA }</Text>
-                                                                <Text>{ partido.resultadoB }</Text>
-                                                            </Box>
-                                                        )
-                                                    })
-                                                }
-                                                 */}
-                                            </VStack>
-                                        </TabPanel>
-                                    </TabPanels>
-                                </Tabs>
-                            </Box>
+                                                            <AlertDialogFooter>
+                                                            <Button ref={cancelRef} onClick={onClose}>
+                                                                Cancelar
+                                                            </Button>
+                                                            <Button colorScheme='blue' onClick={uploadImage} ml={3}>
+                                                                Guardar
+                                                            </Button>
+                                                            </AlertDialogFooter>
+                                                        </AlertDialogContent>
+                                                        </AlertDialogOverlay>
+                                                    </AlertDialog>
+                                                    <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                        <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no hay imágenes.</Text>
+                                                        { imagenesGaleriaArray.map((imagenBase64, index) => {
+                                                            return (
+                                                                <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
+                                                            )
+                                                        })}
+                                                    </VStack>
+                                                </TabPanel>
+                                                <TabPanel>
+                                                    <AlertDialog
+                                                        isOpen={isOpenVideos}
+                                                        leastDestructiveRef={cancelRef}
+                                                        onClose={onCloseVideos}
+                                                    >
+                                                        <AlertDialogOverlay>
+                                                        <AlertDialogContent>
+                                                            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                                            Agregar video
+                                                            </AlertDialogHeader>
+
+                                                            <AlertDialogBody>
+                                                                Ingresa la URL del video para agregarlo al perfil:
+                                                                <Input
+                                                                    id="videoGaleria1Input"
+                                                                    marginTop='20px'
+                                                                    placeholder="URL del video"
+                                                                    size="md"
+                                                                    type="text"
+                                                                    onChange={(e) => handleVideoUpload(e)}
+                                                                />
+                                                            </AlertDialogBody>
+
+                                                            <AlertDialogFooter>
+                                                            <Button ref={cancelRef} onClick={onCloseVideos}>
+                                                                Cancelar
+                                                            </Button>
+                                                            <Button colorScheme='blue' onClick={uploadVideo} ml={3}>
+                                                                Guardar
+                                                            </Button>
+                                                            </AlertDialogFooter>
+                                                        </AlertDialogContent>
+                                                        </AlertDialogOverlay>
+                                                    </AlertDialog>
+                                                    <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                        <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay videos.</Text>
+                                                        {
+                                                            videosGaleria.map((videoUrl, index) => {
+                                                                console.log(videoUrl);
+                                                                return (
+                                                                    <iframe key={ index } width="853" height="480" src={ videoUrl } title=""></iframe>
+                                                                )}
+                                                            )
+                                                        }
+                                                    </VStack>
+                                                </TabPanel>
+                                                <TabPanel>
+                                                    <AlertDialog
+                                                        isOpen={isOpenPartidos}
+                                                        leastDestructiveRef={cancelRef}
+                                                        onClose={onClosePartidos}
+                                                    >
+                                                        <AlertDialogOverlay>
+                                                        <AlertDialogContent>
+                                                            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                                            Agregar Partido
+                                                            </AlertDialogHeader>
+
+                                                            <AlertDialogBody>
+
+                                                                <Text marginBottom='10px'>URL del video:</Text>
+                                                                <Input type="txt" placeholder="Url del video" onChange={ (e) => {
+                                                                    localStorage.setItem('Url del video Partido', e.target.value);
+                                                                    setUrlDelVideoPartido(e.target.value)
+                                                                } }/>
+
+                                                                <Text marginTop='10px' marginBottom='10px'>Fecha:</Text>
+                                                                <Input type="date" />
+
+                                                                <Text marginTop='10px' marginBottom='10px'>Equipos:</Text>
+                                                                <HStack marginBottom='10px'>
+                                                                    <Input type="text" placeholder="Equipo A" onChange={ (e) => { localStorage.setItem('Equipo A', e.target.value); setEquipoA(e.target.value) } }/>
+                                                                    <Input type="text" placeholder="Equipo B" onChange={ (e) => { localStorage.setItem('Equipo B', e.target.value); setEquipoB(e.target.value) } }/>
+                                                                </HStack>
+
+                                                                <Text marginBottom='10px'>Resultado:</Text>
+                                                                <HStack>
+                                                                    <Input type="text" placeholder="Goles Equipo A" onChange={ (e) => {
+                                                                        localStorage.setItem('Goles Equipo A', e.target.value);
+                                                                        setResultadoA(e.target.value);
+                                                                    } }/>
+                                                                    <Input type="text" placeholder="Goles Equipo B" onChange={ (e) => {
+                                                                        localStorage.setItem('Goles Equipo 1 B', e.target.value);
+                                                                        setResultadoB(e.target.value);  
+                                                                    }
+                                                                    }/>
+                                                                </HStack>
+                                                            </AlertDialogBody>
+
+                                                            <AlertDialogFooter>
+                                                            <Button ref={cancelRef} onClick={onClosePartidos}>
+                                                                Cancelar
+                                                            </Button>
+                                                            <Button colorScheme='blue' onClick={handleUpdatePartidos} ml={3}>
+                                                                Guardar
+                                                            </Button>
+                                                            </AlertDialogFooter>
+                                                        </AlertDialogContent>
+                                                        </AlertDialogOverlay>
+                                                    </AlertDialog>
+                                                    <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                        
+                                                        <Text>Aún no hay partidos.</Text>
+                                                        
+                                                        {/**
+                                                        <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay partidos.</Text>
+                                                        {
+                                                            galeriaPartidos.map((partido, index) => {
+                                                                return (
+                                                                    <Box key={ index }>
+                                                                        <Text>{ partido.equipoA }</Text>
+                                                                        <Text>{ partido.equipoB }</Text>
+                                                                        <Text>{ partido.urlDelVideoPartido }</Text>
+                                                                        <Text>{ partido.resultadoA }</Text>
+                                                                        <Text>{ partido.resultadoB }</Text>
+                                                                    </Box>
+                                                                )
+                                                            })
+                                                        }
+                                                        */}
+                                                    </VStack>
+                                                </TabPanel>
+                                            </TabPanels>
+                                        </Tabs>
+                                    </Box>
+                                </GridItem>
+                            </SimpleGrid>
                         </GridItem>
                     </SimpleGrid>
                 </HStack>
