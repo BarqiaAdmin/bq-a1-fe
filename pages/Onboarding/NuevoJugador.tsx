@@ -358,7 +358,7 @@ function NuevoJugador() {
                         </Link>
                          */}
                         <GridItem colSpan={12} marginTop='170px'>
-                            <Text fontSize={[60, 10]}>Foto de perfil:</Text>
+                            <Text fontSize={[60, 10]}></Text>
                         </GridItem>
                          <Input
                             placeholder="Select Date and Time"

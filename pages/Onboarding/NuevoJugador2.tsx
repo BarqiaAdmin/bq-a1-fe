@@ -314,8 +314,6 @@ class NuevoJugador2 extends Component {
                         ATRIBUTOS
                     </Heading>
                     <VStack>
-                        <Button onClick={(e) => this.elegirAtributo(e, 9)} fontSize='40px' height='100px' width='450px'>Fuerza</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 10)} fontSize='40px' height='100px' width='450px'>Velocidad</Button>
                         <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px' width='450px'>Pases</Button>
                         <Button onClick={(e) => this.elegirAtributo(e, 2)} fontSize='40px' height='100px' width='450px'>Tiros</Button>
                         <Button onClick={(e) => this.elegirAtributo(e, 3)} fontSize='40px' height='100px' width='450px'>Resistencia</Button>
