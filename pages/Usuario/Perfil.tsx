@@ -731,7 +731,7 @@ export default function Perfil() {
                                     margin='auto'
                                     padding='30px'
                                     textAlign='center'
-                                    fontSize='40px'
+                                    fontSize={['40px', '10px']}
                                     gap={12}
                                 >
                                     <GridItem colSpan={[4, 1]}>
