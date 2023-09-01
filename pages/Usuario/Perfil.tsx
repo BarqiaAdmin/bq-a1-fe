@@ -575,7 +575,7 @@ export default function Perfil() {
             setPeso(localStorage.getItem('peso'));
 
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
-            //setVideosGaleria(response.videosGaleria);
+            setVideosGaleria(response.videosGaleria);
             //setGaleriaPartidos();
 
             setNacimiento(localStorage.getItem('nacimiento'));
@@ -645,11 +645,12 @@ export default function Perfil() {
                                                 borderRadius='full'
                                                 id="fotoDePerfil"
                                                 src={ fotoPerfil }
-                                                height={['360px', '180px']}
-                                                width={['360px', '180px']}
+                                                height={['120px', '200px']}
+                                                width={['120px', '200px']}
                                                 marginTop={['70px', '']}
                                                 marginLeft={['55px', '']}
                                                 objectFit='cover'
+                                                float='left'
                                             />
                                             <Box
                                                 cursor='pointer'
