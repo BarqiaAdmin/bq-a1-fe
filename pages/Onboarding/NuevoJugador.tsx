@@ -437,9 +437,9 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPais}>
-                                    <FormLabel fontSize={[40, 15]}>Nacionalidad</FormLabel>
-                                    <Select placeholder="Seleccionar país" value={ inputPais } onChange={handlePaisChange} fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} width='625px' marginLeft='-50px'>
-                                        {paises.map((pais, index) => {
+                                    <FormLabel>Nacionalidad</FormLabel>
+                                    <Select placeholder="Seleccionar país" value={ inputPais } onChange={handlePaisChange}>
+                                        {paises.map((pais, index) => { 
                                             return (
                                                 <option key={index}>{ pais }</option>
                                             )
@@ -456,8 +456,8 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorCategoria}>
-                                    <FormLabel fontSize={[40, 15]}>Categoría</FormLabel>
-                                    <Select value={ inputCategoria } onChange={ (e) => { localStorage.setItem('categoria', e.target.value); setInputCategoria(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
+                                    <FormLabel>Categoría</FormLabel>
+                                    <Select value={ inputCategoria } onChange={ (e) => { localStorage.setItem('categoria', e.target.value); setInputCategoria(e.target.value) } } placeholder="Seleccionar">
                                         <option>Pro</option>
                                         <option>Semi-Pro</option>
                                         <option>Juvenil</option>
@@ -474,8 +474,8 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPosicion}>
-                                    <FormLabel fontSize={[40, 15]}>Posición</FormLabel>
-                                    <Select value={ inputPosicion } onChange={ (e) => { localStorage.setItem('posicion', e.target.value); setInputPosicion(e.target.value) } }  fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} width='625px' marginLeft='-50px'>
+                                    <FormLabel>Posición</FormLabel>
+                                    <Select value={ inputPosicion } onChange={ (e) => { localStorage.setItem('posicion', e.target.value); setInputPosicion(e.target.value) } }>
                                         <option>Seleccionar</option>
                                         <option>Delantero</option>
                                         <option>Mediocampista</option>
@@ -493,8 +493,8 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPieHabil}>
-                                    <FormLabel fontSize={[40, 15]}>Pie hábil</FormLabel>
-                                    <Select value={ inputPieHabil } onChange={ (e) => { localStorage.setItem('pieHabil', e.target.value); setInputPieHabil(e.target.value) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} width='625px' marginLeft='-50px'>
+                                    <FormLabel>Pie hábil</FormLabel>
+                                    <Select value={ inputPieHabil } onChange={ (e) => { localStorage.setItem('pieHabil', e.target.value); setInputPieHabil(e.target.value) } }>
                                         <option>Seleccionar</option>
                                         <option>Izquierdo</option>
                                         <option>Derecho</option>
@@ -510,8 +510,8 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorCategoria}>
-                                    <FormLabel fontSize={[40, 15]}>Género</FormLabel>
-                                    <Select value={ inputGenero } onChange={ (e) => { localStorage.setItem('genero', e.target.value); setInputGenero(e.target.value) } }  fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} width='625px' marginLeft='-50px'>
+                                    <FormLabel>Género</FormLabel>
+                                    <Select value={ inputGenero } onChange={ (e) => { localStorage.setItem('genero', e.target.value); setInputGenero(e.target.value) } }>
                                         <option>Seleccionar</option>
                                         <option>Femenino</option>
                                         <option>Masculino</option>
@@ -527,9 +527,9 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorEstatura}>
-                                    <FormLabel fontSize={[40, 15]}>Estatura</FormLabel>
+                                    <FormLabel>Estatura</FormLabel>
                                     <NumberInput>
-                                        <NumberInputField value={ inputEstatura } placeholder="Ej: 1.76m" onChange={ (e) => { localStorage.setItem('estatura', e.target.value); setInputEstatura(e.target.value) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} />
+                                        <NumberInputField value={ inputEstatura } placeholder="Ej: 1.76m" onChange={ (e) => { localStorage.setItem('estatura', e.target.value); setInputEstatura(e.target.value) } }/>
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
                                             <NumberDecrementStepper />
@@ -546,9 +546,9 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isRequired isInvalid={isErrorPeso}>
-                                    <FormLabel fontSize={[40, 15]}>Peso</FormLabel>
+                                    <FormLabel>Peso</FormLabel>
                                     <NumberInput>
-                                        <NumberInputField value={ inputPeso } placeholder="Ej: 80kg" onChange={ (e) => { localStorage.setItem('peso', e.target.value); setInputPeso(e.target.value) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} />
+                                        <NumberInputField value={ inputPeso } placeholder="Ej: 80kg" onChange={ (e) => { localStorage.setItem('peso', e.target.value); setInputPeso(e.target.value) } }/>
                                         <NumberInputStepper>
                                             <NumberIncrementStepper />
                                             <NumberDecrementStepper />
@@ -563,12 +563,11 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            <Divider />
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl isInvalid={isErrorClub}>
-                                    <FormLabel fontSize={[60, 10]}>Club<Text style={ (!inputClubCustom && !inputClubCustomName) ? { display: 'none' } : { display: 'inline-block' } }> { ': ' + localStorage.getItem('club') } </Text></FormLabel>
+                                    <FormLabel>Club<Text style={ (!inputClubCustom && !inputClubCustomName) ? { display: 'none' } : { display: 'inline-block' } }> { ': ' + localStorage.getItem('club') } </Text></FormLabel>
                                     <HStack>                                    
-                                        <Select value={ inputClub } style={ (inputClubCustom && inputClubCustomName) ? { display: 'none' } : { display: 'inline-block '} } placeholder="Seleccionar" onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
+                                        <Select value={ inputClub } style={ (inputClubCustom && inputClubCustomName) ? { display: 'none' } : { display: 'inline-block '} } placeholder="Seleccionar" onChange={ (e) => { setInputClub(e.target.value); localStorage.setItem('club', e.target.value ) } }>
                                             {clubes.map((club, index) => {
                                                 return (
                                                     <option key={ index }>{ club }</option>
@@ -586,8 +585,8 @@ function NuevoJugador() {
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl>
-                                    <FormLabel fontSize={[40, 15]}>Condición</FormLabel>
-                                    <Select value={ inputCondicion } onChange={ (e) => { localStorage.setItem('condicion', e.target.value); setInputCondicion(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} width='625px' marginLeft='-50px'>
+                                    <FormLabel>Condición</FormLabel>
+                                    <Select value={ inputCondicion } onChange={ (e) => { localStorage.setItem('condicion', e.target.value); setInputCondicion(e.target.value) } } placeholder="Seleccionar">
                                         <option>Libre</option>
                                         <option>Con contrato</option>
                                     </Select>
@@ -600,7 +599,7 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={[12, 12, 6, 6]}>
+                            <GridItem colSpan={12}>
                                 <Accordion defaultIndex={[1]} allowMultiple>
                                     <AccordionItem>
                                         <h2>
@@ -612,33 +611,33 @@ function NuevoJugador() {
                                         </AccordionButton>
                                         </h2>
                                         <AccordionPanel pb={4}>
-                                            <Input value={ localStorage.getItem('clubPrevio1') } onChange={ (e) => localStorage.setItem('clubPrevio1', e.target.value) }placeholder="Club previo 1" fontSize={[30, 14]} padding={[10, 10, 5, 5]} />
-                                            <Input value={ localStorage.getItem('clubPrevio2') } onChange={ (e) => localStorage.setItem('clubPrevio2', e.target.value) }placeholder="Club previo 2" fontSize={[30, 14]} padding={[10, 10, 5, 5]} />
-                                            <Input value={ localStorage.getItem('clubPrevio3') } onChange={ (e) => localStorage.setItem('clubPrevio3', e.target.value) }placeholder="Club previo 3" fontSize={[30, 14]} padding={[10, 10, 5, 5]} />
+                                            <Input value={ localStorage.getItem('clubPrevio1') } onChange={ (e) => localStorage.setItem('clubPrevio1', e.target.value) }placeholder="Club previo 1"/>
+                                            <Input value={ localStorage.getItem('clubPrevio2') } onChange={ (e) => localStorage.setItem('clubPrevio2', e.target.value) }placeholder="Club previo 2"/>
+                                            <Input value={ localStorage.getItem('clubPrevio3') } onChange={ (e) => localStorage.setItem('clubPrevio3', e.target.value) }placeholder="Club previo 3"/>
                                         </AccordionPanel>
                                     </AccordionItem>
                                 </Accordion>
                             </GridItem>
-                            <GridItem colSpan={[12, 12, 6, 6]}>
-                                <FormLabel fontSize={[50, 15]}>Quiero ser visto por:</FormLabel>
+                            <GridItem colSpan={12}>
+                                <FormLabel>Quiero ser visto por:</FormLabel>
                             </GridItem>
-                            <GridItem colSpan={[12, 12, 6, 6]}>
-                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} width='full'>Agentes</Button>
+                            <GridItem colSpan={12}>
+                                <Button className={ inputUniversidades ? 'btn2' : '' } width='full'>Agentes</Button>
                                 {/**<Checkbox colorScheme='blue'>
                                     Universidadesword
                                 </Checkbox>
                                         */}
                             </GridItem>
-                            <GridItem colSpan={[12, 12, 6, 6]}>
-                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} width='full'>Clubes</Button>
+                            <GridItem colSpan={12}>
+                                <Button className={ inputUniversidades ? 'btn2' : '' } width='full'>Clubes</Button>
                                 {/**<Checkbox colorScheme='blue'>
                                     Universidadesword
                                 </Checkbox>
                                         */}
                             </GridItem>
                                 
-                            <GridItem colSpan={[12, 12, 6, 6]}>
-                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} width='full'>Universidades</Button>
+                            <GridItem colSpan={12}>
+                                <Button className={ inputUniversidades ? 'btn2' : '' } onClick={ () => { setInputUniversidades(!inputUniversidades); localStorage.setItem('universidades', 'true') } }width='full'>Universidades</Button>
                                 {/**<Checkbox colorScheme='blue'>
                                     Universidadesword
                                 </Checkbox>
@@ -647,7 +646,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Nivel de inglés</FormLabel>
-                                    <Select value={ inputNivelDeIngles } onChange={ (e) => { localStorage.setItem('nivelDeIngles', e.target.value); setInputNivelDeIngles(e.target.value) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
+                                    <Select value={ inputNivelDeIngles } onChange={ (e) => { localStorage.setItem('nivelDeIngles', e.target.value); setInputNivelDeIngles(e.target.value) } }>
                                         <option>Seleccionar</option>
                                         <option>Bilingüe</option>
                                         <option>Avanzado</option>
@@ -666,7 +665,7 @@ function NuevoJugador() {
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Certificaciones</FormLabel>
-                                    <Input onChange={ (e) => localStorage.setItem('certificaciones', 'true') } type="text" placeholder="Certificaciones" fontSize={[30, 14]} padding={[10, 10, 5, 5]} />
+                                    <Input onChange={ (e) => localStorage.setItem('certificaciones', 'true') } type="text" placeholder="Certificaciones"/>
                                     {!isErrorCategoria ? (
                                         <FormHelperText>
                                             Ingresa tus certificados separados por coma: Ej: CAE, First, etc 
@@ -679,7 +678,7 @@ function NuevoJugador() {
                             <GridItem colSpan={12}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Presupuesto</FormLabel>
-                                    <Select value={ inputPresupuesto } onChange={ (e) => { localStorage.setItem('presupuesto', e.target.value); setInputPresupuesto(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 14]} padding={[10, 10, 5, 5]} height={[82]} paddingLeft='50px' width='625px' marginLeft='-50px'>
+                                    <Select value={ inputPresupuesto } onChange={ (e) => { localStorage.setItem('presupuesto', e.target.value); setInputPresupuesto(e.target.value) } } placeholder="Seleccionar">
                                         <option>0 - 5.000</option>
                                         <option>6.0000 - 10.000</option>
                                         <option>10.000 - 15.000</option>
@@ -697,30 +696,30 @@ function NuevoJugador() {
                             </GridItem>
                             
                             <GridItem colSpan={12}>
-                                <Text fontSize={[50, 10]}>Redes sociales</Text>
+                                <Text>Redes sociales</Text>
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl>
-                                    <FormLabel fontSize={[40, 15]}>Facebook</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ inputFacebook } onChange={(e) => { localStorage.setItem("facebook", e.target.value); setInputFacebook(e.target.value) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]}/>
+                                    <FormLabel>Facebook</FormLabel>
+                                    <Input placeholder="URL del perfil" value={ inputFacebook } onChange={(e) => { localStorage.setItem("facebook", e.target.value); setInputFacebook(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl>
-                                    <FormLabel fontSize={[40, 15]}>Instagram</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ inputInstagram } onChange={(e) => { localStorage.setItem("instagram", e.target.value); setInputInstagram(e.target.value) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]}/>
+                                    <FormLabel>Instagram</FormLabel>
+                                    <Input placeholder="URL del perfil" value={ inputInstagram } onChange={(e) => { localStorage.setItem("instagram", e.target.value); setInputInstagram(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl>
-                                <FormLabel fontSize={[40, 15]}>Twitter</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ inputTwitter } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTwitter(e.target.value) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]}/>
+                                <FormLabel>Twitter</FormLabel>
+                                    <Input placeholder="URL del perfil" value={ inputTwitter } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTwitter(e.target.value) } }/>
                                 </FormControl>
                             </GridItem>
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl>
-                                <FormLabel fontSize={[40, 15]}>Tiktok</FormLabel>
-                                    <Input placeholder="URL del perfil" value={ inputTiktok } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTiktok(e.target.value) } } fontSize={[30, 14]} padding={[10, 10, 5, 5]} />
+                                <FormLabel>Tiktok</FormLabel>
+                                    <Input placeholder="URL del perfil" value={ inputTiktok } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTiktok(e.target.value) } } />
                                 </FormControl>
                             </GridItem>
                             <Divider />

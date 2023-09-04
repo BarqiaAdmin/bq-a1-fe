@@ -870,7 +870,7 @@ export default function Perfil() {
                         </GridItem>
                         
                         <GridItem colSpan={15}>
-                            <SimpleGrid colnum={6}>
+                            <SimpleGrid columns={6}>
                                 <GridItem colSpan={3} fontSize='40px'>
                                     <VStack>
                                         <Heading
@@ -927,6 +927,7 @@ export default function Perfil() {
                                     <Heading>Galería:</Heading>
                                 </GridItem>
 
+                                {/**
                                 <GridItem colSpan={15} display={['block', 'none']}>
                                     <Heading
                                         fontSize="40px"
@@ -956,8 +957,9 @@ export default function Perfil() {
                                     </Heading>
                                     <Text>Aún no hay grabaciones.</Text>
                                 </GridItem>
+                                 */}
 
-                                <GridItem colSpan={15} display={['none', 'block']}>
+                                <GridItem colSpan={15}>
                                     <Box width='full' padding='0 150px' suppressHydrationWarning>
                                         <Tabs isFitted variant='enclosed'>
                                             <TabList mb='1em'>
