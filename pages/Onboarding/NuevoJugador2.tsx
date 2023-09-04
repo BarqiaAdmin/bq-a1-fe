@@ -269,18 +269,18 @@ class NuevoJugador2 extends Component {
                         textAlign='center'
                         fontSize="60px"
                     >
-                        SELECCIONA TU LUGAR EN EL CAMPO
+                        Selecciona tu lugar en el campo:
                     </Heading>
                     <Image alt='' 
                         left="0"
                         bottom="0"
                         width='full'
                         src="/campo-vertical.JPG"
-                        display={['block', 'none']}
+                        display={['none', 'block']}
                     />
                     {/** */}
                     <Box
-                        display={['none', 'block']}
+                        display={['block', 'none']}
                         position="relative"
                     >
                         <Image alt=''  src="/campo.png" />
@@ -311,7 +311,7 @@ class NuevoJugador2 extends Component {
                     <Heading
                         fontSize="60px"
                     >
-                        ATRIBUTOS
+                        Atributos:
                     </Heading>
                     <VStack>
                         <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px' width='450px'>Pases</Button>

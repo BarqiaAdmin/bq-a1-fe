@@ -628,10 +628,12 @@ export default function Perfil() {
                         </BreadcrumbItem>
                     </Breadcrumb>
                 </HStack>
-                <HStack>
-                    <SimpleGrid columns={4}>
+                <VStack>
+                    <SimpleGrid columns={12}>
                         <GridItem
-                            colSpan={2}
+                            colSpan={12}
+                            marginLeft={['130px', '0']}
+                            marginBottom={['50px', '0']}
                             >
                             <VStack
                                 gap="5px"
@@ -649,7 +651,6 @@ export default function Perfil() {
                                                 width={['120px', '200px']}
                                                 marginTop={['70px', '']}
                                                 objectFit='cover'
-                                                float='left'
                                             />
                                             <Box
                                                 cursor='pointer'
@@ -720,8 +721,8 @@ export default function Perfil() {
                             </VStack>
                         </GridItem>
 
-                        <GridItem colSpan={[4, 2, 2]}>
-                        <HStack
+                        <GridItem colSpan={12} marginLeft={['130px', '0']} marginBottom={['50px', '0']}>
+                            <HStack
                                 marginTop='40px'
                                 marginBottom='40px'
                             >
@@ -869,14 +870,14 @@ export default function Perfil() {
                             </HStack>
                         </GridItem>
                         
-                        <GridItem colSpan={15}>
+                        <GridItem colSpan={12}>
                             <SimpleGrid columns={6}>
-                                <GridItem colSpan={3} fontSize='40px'>
+                                <GridItem colSpan={6} fontSize='40px' marginLeft={['130px', '0']} marginBottom={['50px', '0']}>
                                     <VStack>
                                         <Heading
                                             fontSize="40px" marginBottom='20px'
                                         >
-                                            LUGAR EN EL CAMPO
+                                            Lugar en el campo
                                         </Heading>
 
                                         <Box
@@ -898,34 +899,29 @@ export default function Perfil() {
                                     </VStack>
                                 </GridItem>
 
-                                <GridItem colSpan={3} textAlign='center'>
+                                <GridItem colSpan={6} textAlign='center' marginLeft={['130px', '0']} marginBottom={['50px', '0']}>
                                     <Heading
                                         fontSize="40px"
                                         marginBottom='20px'
                                     >
-                                        ATRIBUTOS
+                                        Atributos
                                     </Heading>
                                     <HStack display='inline-block' marginBottom='15px'>
-                                        <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width='450px'>Pases</Button>
-                                        <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width='450px'>Tiros</Button>
-                                        <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Resistencia</Button>
-                                        <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Visión de juego</Button>
+                                        <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width={['200px', '450px']}>Pases</Button>
+                                        <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width={['200px', '450px']}>Tiros</Button>
+                                        <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Resistencia</Button>
+                                        <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Visión de juego</Button>
                                     </HStack>
                                     <br />
                                     <HStack gap='12px' display='inline-block' marginBottom='15px'>
-                                        <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>1vs1</Button>
-                                        <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Tiros libres</Button>
-                                        <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Marca</Button>
-                                        <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width='450px'>Juego aéreo</Button>
+                                        <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>1vs1</Button>
+                                        <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Tiros libres</Button>
+                                        <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Marca</Button>
+                                        <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Juego aéreo</Button>
                                     </HStack>
                                 </GridItem>
                                                         
                                 {/* "Top Torneos (Figma)" */}
-
-
-                                <GridItem colSpan={15} display={['block', 'none']}>
-                                    <Heading>Galería:</Heading>
-                                </GridItem>
 
                                 {/**
                                 <GridItem colSpan={15} display={['block', 'none']}>
@@ -959,33 +955,33 @@ export default function Perfil() {
                                 </GridItem>
                                  */}
 
-                                <GridItem colSpan={15}>
-                                    <Box width='full' padding='0 150px' suppressHydrationWarning>
+                                <GridItem colSpan={6} marginBottom={['40px', '0']}>
+                                    <Box width='full' padding={[0, '0 150px']} suppressHydrationWarning>
                                         <Tabs isFitted variant='enclosed'>
                                             <TabList mb='1em'>
                                                 {/** IMAGENES */}
-                                                <Tab position='relative' >
+                                                <Tab position='relative' fontSize={['30px', '18px']}>
                                                     Imágenes&nbsp;&nbsp;&nbsp;
                                                     <Tooltip label="Agregar imagen" aria-label='A tooltip'>
-                                                        <Link onClick={onOpen} position='absolute' right='20px'>
+                                                        <Link onClick={onOpen} position='absolute' right='20px' marginRight={['-13px', '0']}>
                                                             <AddIcon />
                                                         </Link>
                                                     </Tooltip>
                                                 </Tab>
                                                 {/** VIDEOS */}
-                                                <Tab position='relative'>
+                                                <Tab position='relative' fontSize={['30px', '18px']}>
                                                     Videos&nbsp;&nbsp;&nbsp;
                                                     <Tooltip label="Agregar video" aria-label='A tooltip'>
-                                                        <Link onClick={onOpenVideos} position='absolute' right='20px'>
+                                                        <Link onClick={onOpenVideos} position='absolute' right='20px' marginRight={['-13px', '0']}>
                                                             <AddIcon />
                                                         </Link>
                                                     </Tooltip>
                                                 </Tab>
                                                 {/** PARTIDOS */}
-                                                <Tab position='relative'>
+                                                <Tab position='relative' fontSize={['30px', '18px']}>
                                                     Partidos&nbsp;&nbsp;&nbsp;
                                                     <Tooltip label="Agregar partido" aria-label='A tooltip'>
-                                                        <Link onClick={onOpenPartidos} position='absolute' right='20px'>
+                                                        <Link onClick={onOpenPartidos} position='absolute' right='20px' marginRight={['-13px', '0']}>
                                                             <AddIcon />
                                                         </Link> 
                                                     </Tooltip>
@@ -1025,7 +1021,7 @@ export default function Perfil() {
                                                         </AlertDialogOverlay>
                                                     </AlertDialog>
                                                     <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                        <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }}>Aún no hay imágenes.</Text>
+                                                        <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }} fontSize={['30px', '18px']}>Aún no hay imágenes.</Text>
                                                         { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                             return (
                                                                 <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
@@ -1069,7 +1065,7 @@ export default function Perfil() {
                                                         </AlertDialogOverlay>
                                                     </AlertDialog>
                                                     <VStack width='full' marginTop='40px' marginBottom='60px'>
-                                                        <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay videos.</Text>
+                                                        <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } } fontSize={['30px', '18px']}>Aún no hay videos.</Text>
                                                         {
                                                             videosGaleria.map((videoUrl, index) => {
                                                                 console.log(videoUrl);
@@ -1136,7 +1132,7 @@ export default function Perfil() {
                                                     </AlertDialog>
                                                     <VStack width='full' marginTop='40px' marginBottom='60px'>
                                                         
-                                                        <Text>Aún no hay partidos.</Text>
+                                                        <Text fontSize={['30px', '18px']}>Aún no hay partidos.</Text>
                                                         
                                                         {/**
                                                         <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay partidos.</Text>
@@ -1163,7 +1159,7 @@ export default function Perfil() {
                             </SimpleGrid>
                         </GridItem>
                     </SimpleGrid>
-                </HStack>
+                </VStack>
             </VStack>
         </Box>
         </>
