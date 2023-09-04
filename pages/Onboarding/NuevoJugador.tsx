@@ -132,60 +132,6 @@ function NuevoJugador() {
         localStorage.setItem('pais', e.target.value);
     }
 
-    const handleNivelDeInglesChange = (e) => {
-        setInputNivelDeIngles(e.target.value);
-        localStorage.setItem('nivelDeIngles', e.target.value);
-    }
-
-    const handlePieHabilChange = (e) => {
-        setInputPieHabil(e.target.value);
-        localStorage.setItem('pieHabil', e.target.value);
-    }
-
-    const handlePosicionChange = (e) => {
-        setInputPosicion(e.target.value);
-        localStorage.setItem('posicion', e.target.value);
-    }
-
-    const handleGeneroChange = (e) => {
-        setInputGenero(e.target.value);
-        localStorage.setItem('genero', e.target.value);
-    }
-
-    const handleEstaturaChange = (e) => {
-        setInputEstatura(e.target.value);
-        localStorage.setItem('estatura', e.target.value);
-    }
-
-    const handlePesoChange = (e) => {
-        setInputPeso(e.target.value);
-        localStorage.setItem('peso', e.target.value);
-    }
-
-    const handleClubChange = (e) => {
-        setInputClub(e.target.value);
-        localStorage.setItem('club', e.target.value);
-    }
-
-    const handleCategoriaChange = (e) => {
-        setInputCategoria(e.target.value);
-        localStorage.setItem('categoria', e.target.value);
-    }
-
-    const handleCondicionChange = (e) => {
-        setInputCondicion(e.target.value);
-        localStorage.setItem('condicion', e.target.value)
-    }
-
-    const handlePresupuestoChange = (e) => {
-        setInputPresupuesto(e.target.value);
-        localStorage.setItem('presupuesto', e.target.value)
-    }
-
-    const handleCertificacionesChange = (e) => {
-
-    }
-
     const isErrorNombre = false;
     const isErrorApellido = false;
     const isErrorNacimiento = false;

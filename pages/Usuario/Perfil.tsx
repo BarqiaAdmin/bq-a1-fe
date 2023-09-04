@@ -185,6 +185,7 @@ export default function Perfil() {
             },
             body: JSON.stringify({
                 email: email,
+                edad: edad,
                 password: password,
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
@@ -310,6 +311,7 @@ export default function Perfil() {
             },
             body: JSON.stringify({
                 email: email,
+                edad: edad,
                 password: password,
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
@@ -410,13 +412,29 @@ export default function Perfil() {
         })
         ** */
     }
-    
-    
+
+    const age = (dateString) => {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
 
     const handleNacimientoChange = (e) => {
-        setNacimiento(e.target.value);
-        console.log(e.target.value);
-        localStorage.setItem('nacimiento', e.target.value);
+        let nacimiento = e.target.value
+        console.log('Fecha de nacimiento: ' + nacimiento);
+        console.log('Calculando edad...')
+        let edad = age(e.target.value).toString();
+        console.log(edad);
+        
+        setEdad(edad);
+        
+        localStorage.setItem('nacimiento', nacimiento);
+        localStorage.setItem('edad', edad);
     }
 
     const handlePaisChange = (e) => {
@@ -649,7 +667,6 @@ export default function Perfil() {
                                                 src={ fotoPerfil }
                                                 height={['150px', '200px']}
                                                 width={['150px', '200px']}
-                                                marginTop={['70px', '']}
                                                 objectFit='cover'
                                             />
                                             <Box
@@ -679,7 +696,7 @@ export default function Perfil() {
 
                                                 color="white"
                                                 background="#144077"
-                                                fontSize={['40px', '']}
+                                                fontSize={['30px', '30px']}
                                                 padding='10px'
                                             >
                                                 <LinkIcon />&nbsp;Compartir perfil 
@@ -693,16 +710,16 @@ export default function Perfil() {
                                         </HStack>
                                         <HStack gap="10px">
                                             <Link href={ facebook } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["50px", "30px"]} src="/facebook.png" />
+                                                <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/facebook.png" />
                                             </Link>
                                             <Link href={ twitter } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["50px", "30px"]} src="/twitter.png" />
+                                                <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/twitter.png" />
                                             </Link>
                                             <Link href={ instagram } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["50px", "30px"]} src="/instagram.png" />
+                                                <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/instagram.png" />
                                             </Link>
                                             <Link href={ tiktok } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["50px", "30px"]} src="/icono-tiktok.png" />
+                                                <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/icono-tiktok.png" />
                                             </Link>
                                             <Box
                                                 cursor='pointer'
@@ -721,10 +738,9 @@ export default function Perfil() {
                             </VStack>
                         </GridItem>
 
-                        <GridItem colSpan={12} width='100%' marginLeft={['70px', '0']} marginBottom={['50px', '0']}>
+                        <GridItem colSpan={12} width='100%' marginLeft={['70px', '0']} marginBottom={['50px', '50px']}>
                             <HStack
-                                marginTop='40px'
-                                marginBottom='40px'
+                                marginTop={['0px', '30px']}
                             >
                                 <SimpleGrid
                                     columns={4}
@@ -734,7 +750,7 @@ export default function Perfil() {
                                     margin='auto'
                                     padding='30px'
                                     textAlign='center'
-                                    fontSize={['27px', '14px', '20px']}
+                                    fontSize={['23px', '25px']}
                                     gap={12}
                                 >
                                     <GridItem colSpan={[2, 1]}>
@@ -746,65 +762,79 @@ export default function Perfil() {
                                         />
                                         */}
                                         <strong><em>{ club }</em></strong>
-                                        <Select className="campoDeEdicion" placeholder="Seleccionar" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleClubChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
-                                            {clubes.map((club, index) => {
-                                                return (
-                                                    <option key={ index }>{ club }</option>
-                                                )
-                                            })}
-                                        </Select>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder="Seleccionar" onChange={ handleClubChange } fontSize={[20, 30]} marginTop={['10px', '20px']}>
+                                                {clubes.map((club, index) => {
+                                                    return (
+                                                        <option key={ index }>{ club }</option>
+                                                    )
+                                                })}
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
 
                                     <GridItem colSpan={[2, 1]}>
                                         PAIS <br />
                                         <strong><em>{ pais }</em></strong>
-                                        <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar" onChange={ handlePaisChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
-                                            {paises.map((pais, index) => {
-                                                return (
-                                                    <option key={index}>{  pais }</option>
-                                                )
-                                            })}
-                                        </Select>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder="Seleccionar" onChange={ handlePaisChange } fontSize={[20, 30]} marginTop={['10px', '20px']}>
+                                                {paises.map((pais, index) => {
+                                                    return (
+                                                        <option key={index}>{  pais }</option>
+                                                    )
+                                                })}
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
 
                                     <GridItem colSpan={[2, 1]}>
                                         PIE HÁBIL <br />
                                         <strong><em>{ pieHabil }</em></strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePieHabilChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
-                                            <option>Izquierdo</option>
-                                            <option>Derecho</option>
-                                        </Select>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handlePieHabilChange } fontSize={[20, 30]} marginTop={['10px', '20px']}>
+                                                <option>Izquierdo</option>
+                                                <option>Derecho</option>
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={[2, 1]}>
                                         POSICIÓN <br />
                                         <strong><em>{ posicion }</em></strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePosicionChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
-                                            <option>Delantero</option>
-                                            <option>Mediocampista</option>
-                                            <option>Defensor</option>
-                                            <option>Arquero</option>
-                                        </Select>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handlePosicionChange } fontSize={[20, 30]} marginTop={['10px', '20px']}>
+                                                <option>Delantero</option>
+                                                <option>Mediocampista</option>
+                                                <option>Defensor</option>
+                                                <option>Arquero</option>
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
 
                                     <GridItem colSpan={[2, 1]}>
                                         CATEGORÍA <br />
                                         <strong><em>{ categoria }</em></strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCategoriaChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
-                                            <option>Pro</option>
-                                            <option>Semi-Pro</option>
-                                            <option>Juvenil</option>
-                                            <option>Amateur</option>
-                                        </Select>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handleCategoriaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}>
+                                                <option>Pro</option>
+                                                <option>Semi-Pro</option>
+                                                <option>Juvenil</option>
+                                                <option>Amateur</option>
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={[2, 1]}>
                                         ESTATURA <br />
                                         <strong><em>{ estatura }</em></strong>
-                                        <Input className="campoDeEdicion" placeholder='Ingresar estatura' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleEstaturaChange }  fontSize={[30, 30]} padding={[10, 10, 20, 20]}/>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Input className="campoDeEdicion" placeholder='Ingresar estatura' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                        </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={[2, 1]}>
                                         PESO <br />
                                         <strong><em>{ peso }</em></strong>
-                                        <Input className="campoDeEdicion" placeholder='Ingresar peso' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePesoChange }  fontSize={[30, 30]} padding={[10, 10, 20, 20]}/>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Input className="campoDeEdicion" placeholder='Ingresar peso' onChange={ handlePesoChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                        </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={[2, 1]}>
                                         Edad  <br />
@@ -825,45 +855,64 @@ export default function Perfil() {
                                     <GridItem colSpan={[2, 1]} display='none'>
                                         NIVEL DE INGLÉS <br />
                                         <strong><em>{ nivelDeIngles }</em></strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleNivelDeInglesChange }>
-                                            <option>Bilingüe</option>
-                                            <option>Avanzado</option>
-                                            <option>Intermedio</option>
-                                            <option>Básico</option>
-                                        </Select>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handleNivelDeInglesChange }>
+                                                <option>Bilingüe</option>
+                                                <option>Avanzado</option>
+                                                <option>Intermedio</option>
+                                                <option>Básico</option>
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={[2, 1]} display='none'>
                                         CONDICIÓN <br />
                                         <strong><em>{ condicion }</em></strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCondicionChange }>
-                                            <option>Libre</option>
-                                            <option>Con contrato</option>
-                                        </Select>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handleCondicionChange }>
+                                                <option>Libre</option>
+                                                <option>Con contrato</option>
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={[2, 1]} display='none'>
                                         PRESUPUESTO <br />
                                         <strong><em>{ presupuesto }</em></strong>
-                                        <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePresupuestoChange }>
-                                            <option>0 - 5.000</option>
-                                            <option>6.0000 - 10.000</option>
-                                            <option>10.000 - 15.000</option>
-                                            <option>16.000 - 20.000</option>
-                                            <option>Más de 20.000</option>
-                                        </Select>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handlePresupuestoChange }>
+                                                <option>0 - 5.000</option>
+                                                <option>6.0000 - 10.000</option>
+                                                <option>10.000 - 15.000</option>
+                                                <option>16.000 - 20.000</option>
+                                                <option>Más de 20.000</option>
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         <HStack display={['none', 'block']}>
-                                            <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px'>Editar&nbsp;<EditIcon /></Button>
-                                            <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px'>Cancelar&nbsp;<CloseIcon /></Button>
-                                            <Button color="white"
-                                                    background="#144077"
-                                                    style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px'>Guardar&nbsp;<CheckIcon /></Button>
+                                            <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px">Editar&nbsp;<EditIcon /></Button>
+
+                                            <HStack>
+                                                <Box>
+                                                    <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px' width="255px">Cancelar&nbsp;<CloseIcon /></Button>
+                                                </Box>
+                                                <Box>
+                                                <Button color="white"
+                                                        background="#144077"
+                                                        style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px' width="255px">Guardar&nbsp;<CheckIcon /></Button> 
+                                                </Box>
+                                            </HStack>
                                         </HStack>
 
                                         <HStack display={['block', 'none']}>        
-                                                <Button fontSize='40px' padding='50px' style={ !edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
-                                                <Button fontSize='40px' padding='50px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
-                                                <Button fontSize='40px' padding='50px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
+                                                <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
+                                                <HStack>
+                                                    <Box>
+                                                        <Button fontSize='23px' width='150px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
+                                                    </Box>
+                                                    <Box>
+                                                        <Button fontSize='23px' width='150px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
+                                                    </Box>
+                                                </HStack>
                                         </HStack>
                                     </GridItem>
                                 </SimpleGrid>
@@ -873,9 +922,10 @@ export default function Perfil() {
                         <GridItem colSpan={12}>
                             <SimpleGrid columns={6}>
                                 <GridItem colSpan={6} fontSize='40px' marginLeft={['130px', '0']} marginBottom={['50px', '0']}>
-                                    <VStack>
+                                    <VStack
+                                        marginBottom={['', '30px']}>
                                         <Heading
-                                            fontSize="40px" marginBottom='20px'
+                                            fontSize="35px" marginBottom='20px' textAlign='center'
                                         >
                                             Lugar en el campo
                                         </Heading>
@@ -899,26 +949,23 @@ export default function Perfil() {
                                     </VStack>
                                 </GridItem>
 
-                                <GridItem colSpan={6} textAlign='center' marginLeft={['130px', '0']} marginBottom={['50px', '0']}>
+                                <GridItem colSpan={6} textAlign='center' marginLeft={['130px', '0']} marginBottom={['25px', '0']}>
                                     <Heading
-                                        fontSize="40px"
-                                        marginBottom='20px'
+                                        fontSize="35px"
+                                        marginBottom={['50px', '30px']}
                                     >
                                         Atributos
                                     </Heading>
-                                    <HStack display='inline-block' marginBottom='15px'>
-                                        <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
-                                        <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
-                                        <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
-                                        <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
-                                    </HStack>
-                                    <br />
-                                    <HStack gap='12px' display='inline-block' marginBottom='15px'>
-                                        <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
-                                        <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
-                                        <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
-                                        <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
-                                    </HStack>
+                                    <VStack marginBottom='70px'>
+                                        <Button style={ !pases ? { display: 'none '} : { display: 'block' }} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
+                                        <Button style={ !tiros ? { display: 'none '} : { display: 'block' }} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
+                                        <Button style={ !resistencia ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
+                                        <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
+                                        <Button style={ !unoVsUno ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
+                                        <Button style={ !tirosLibres ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
+                                        <Button style={ !marca ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
+                                        <Button style={ !juegoAereo ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
+                                    </VStack>
                                 </GridItem>
                                                         
                                 {/* "Top Torneos (Figma)" */}
