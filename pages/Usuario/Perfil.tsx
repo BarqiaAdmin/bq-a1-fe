@@ -647,8 +647,8 @@ export default function Perfil() {
                                                 borderRadius='full'
                                                 id="fotoDePerfil"
                                                 src={ fotoPerfil }
-                                                height={['120px', '200px']}
-                                                width={['120px', '200px']}
+                                                height={['150px', '200px']}
+                                                width={['150px', '200px']}
                                                 marginTop={['70px', '']}
                                                 objectFit='cover'
                                             />
@@ -660,7 +660,7 @@ export default function Perfil() {
                                             </Box>
                                         </HStack>
                                         
-                                        <Heading fontSize={['30px', '30px']}>{ nombre } { apellido }</Heading>
+                                        <Heading fontSize={['40px', '30px']}>{ nombre } { apellido }</Heading>
                                         <Box
                                             cursor='pointer'
                                             color=''
@@ -668,7 +668,7 @@ export default function Perfil() {
                                             >
                                             <EditIcon/>
                                         </Box>
-                                        <HStack gap="5px">
+                                        <HStack>
                                             {/**
                                             <CircularProgress value={70} color='green.400' size='60px'>
                                                 <CircularProgressLabel>70%</CircularProgressLabel>
@@ -679,7 +679,7 @@ export default function Perfil() {
 
                                                 color="white"
                                                 background="#144077"
-                                                fontSize={['30px', '']}
+                                                fontSize={['40px', '']}
                                                 padding='10px'
                                             >
                                                 <LinkIcon />&nbsp;Compartir perfil 
@@ -693,16 +693,16 @@ export default function Perfil() {
                                         </HStack>
                                         <HStack gap="10px">
                                             <Link href={ facebook } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["30px", "30px"]} src="/facebook.png" />
+                                                <Image cursor='pointer' alt=''  h={["50px", "30px"]} src="/facebook.png" />
                                             </Link>
                                             <Link href={ twitter } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["30px", "30px"]} src="/twitter.png" />
+                                                <Image cursor='pointer' alt=''  h={["50px", "30px"]} src="/twitter.png" />
                                             </Link>
                                             <Link href={ instagram } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["30px", "30px"]} src="/instagram.png" />
+                                                <Image cursor='pointer' alt=''  h={["50px", "30px"]} src="/instagram.png" />
                                             </Link>
                                             <Link href={ tiktok } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["30px", "30px"]} src="/icono-tiktok.png" />
+                                                <Image cursor='pointer' alt=''  h={["50px", "30px"]} src="/icono-tiktok.png" />
                                             </Link>
                                             <Box
                                                 cursor='pointer'
@@ -721,7 +721,7 @@ export default function Perfil() {
                             </VStack>
                         </GridItem>
 
-                        <GridItem colSpan={12} marginLeft={['130px', '0']} marginBottom={['50px', '0']}>
+                        <GridItem colSpan={12} width='100%' marginLeft={['70px', '0']} marginBottom={['50px', '0']}>
                             <HStack
                                 marginTop='40px'
                                 marginBottom='40px'
@@ -734,10 +734,10 @@ export default function Perfil() {
                                     margin='auto'
                                     padding='30px'
                                     textAlign='center'
-                                    fontSize={['40px', '14px', '20px']}
+                                    fontSize={['27px', '14px', '20px']}
                                     gap={12}
                                 >
-                                    <GridItem colSpan={[4, 1]}>
+                                    <GridItem colSpan={[2, 1]}>
                                         EQUIPO <br />
                                         {/**
                                         <Image src='/escudo.png' alt=''
@@ -755,7 +755,7 @@ export default function Perfil() {
                                         </Select>
                                     </GridItem>
 
-                                    <GridItem colSpan={[4, 1]}>
+                                    <GridItem colSpan={[2, 1]}>
                                         PAIS <br />
                                         <strong><em>{ pais }</em></strong>
                                         <Select className="campoDeEdicion" style={ edicionActivada ? { display: 'block' } : { display: 'none' }} placeholder="Seleccionar" onChange={ handlePaisChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
@@ -767,7 +767,7 @@ export default function Perfil() {
                                         </Select>
                                     </GridItem>
 
-                                    <GridItem colSpan={[4, 1]}>
+                                    <GridItem colSpan={[2, 1]}>
                                         PIE HÁBIL <br />
                                         <strong><em>{ pieHabil }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePieHabilChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
@@ -775,7 +775,7 @@ export default function Perfil() {
                                             <option>Derecho</option>
                                         </Select>
                                     </GridItem>
-                                    <GridItem colSpan={[4, 1]}>
+                                    <GridItem colSpan={[2, 1]}>
                                         POSICIÓN <br />
                                         <strong><em>{ posicion }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePosicionChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
@@ -786,7 +786,7 @@ export default function Perfil() {
                                         </Select>
                                     </GridItem>
 
-                                    <GridItem colSpan={[4, 1]}>
+                                    <GridItem colSpan={[2, 1]}>
                                         CATEGORÍA <br />
                                         <strong><em>{ categoria }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCategoriaChange } fontSize={[30, 30]} padding={[10, 10, 20, 20]}>
@@ -796,17 +796,17 @@ export default function Perfil() {
                                             <option>Amateur</option>
                                         </Select>
                                     </GridItem>
-                                    <GridItem colSpan={[4, 1]}>
+                                    <GridItem colSpan={[2, 1]}>
                                         ESTATURA <br />
                                         <strong><em>{ estatura }</em></strong>
                                         <Input className="campoDeEdicion" placeholder='Ingresar estatura' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleEstaturaChange }  fontSize={[30, 30]} padding={[10, 10, 20, 20]}/>
                                     </GridItem>
-                                    <GridItem colSpan={[4, 1]}>
+                                    <GridItem colSpan={[2, 1]}>
                                         PESO <br />
                                         <strong><em>{ peso }</em></strong>
                                         <Input className="campoDeEdicion" placeholder='Ingresar peso' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePesoChange }  fontSize={[30, 30]} padding={[10, 10, 20, 20]}/>
                                     </GridItem>
-                                    <GridItem colSpan={[4, 1]}>
+                                    <GridItem colSpan={[2, 1]}>
                                         Edad  <br />
                                         <strong><em>{ edad }</em></strong>
                                         <VStack style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -822,7 +822,7 @@ export default function Perfil() {
                                             </FormControl>
                                         </VStack>
                                     </GridItem>
-                                    <GridItem colSpan={[4, 1]} display='none'>
+                                    <GridItem colSpan={[2, 1]} display='none'>
                                         NIVEL DE INGLÉS <br />
                                         <strong><em>{ nivelDeIngles }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleNivelDeInglesChange }>
@@ -832,7 +832,7 @@ export default function Perfil() {
                                             <option>Básico</option>
                                         </Select>
                                     </GridItem>
-                                    <GridItem colSpan={[4, 1]} display='none'>
+                                    <GridItem colSpan={[2, 1]} display='none'>
                                         CONDICIÓN <br />
                                         <strong><em>{ condicion }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handleCondicionChange }>
@@ -840,7 +840,7 @@ export default function Perfil() {
                                             <option>Con contrato</option>
                                         </Select>
                                     </GridItem>
-                                    <GridItem colSpan={[4, 1]} display='none'>
+                                    <GridItem colSpan={[2, 1]} display='none'>
                                         PRESUPUESTO <br />
                                         <strong><em>{ presupuesto }</em></strong>
                                         <Select className="campoDeEdicion" placeholder='Seleccionar' style={ edicionActivada ? { display: 'block' } : { display: 'none' }} onChange={ handlePresupuestoChange }>
@@ -853,11 +853,11 @@ export default function Perfil() {
                                     </GridItem>
                                     <GridItem colSpan={1}>
                                         <HStack display={['none', 'block']}>
-                                            <Button style={ !edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }fontSize={['30px', '']} padding='50px'>Editar&nbsp;<EditIcon /></Button>
-                                            <Button style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }fontSize={['30px', '']} padding='50px'>Cancelar&nbsp;<CloseIcon /></Button>
+                                            <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px'>Editar&nbsp;<EditIcon /></Button>
+                                            <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px'>Cancelar&nbsp;<CloseIcon /></Button>
                                             <Button color="white"
                                                     background="#144077"
-                                                    style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px'>Guardar&nbsp;<CheckIcon /></Button>
+                                                    style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px'>Guardar&nbsp;<CheckIcon /></Button>
                                         </HStack>
 
                                         <HStack display={['block', 'none']}>        
