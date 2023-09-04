@@ -907,17 +907,17 @@ export default function Perfil() {
                                         Atributos
                                     </Heading>
                                     <HStack display='inline-block' marginBottom='15px'>
-                                        <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width={['200px', '450px']}>Pases</Button>
-                                        <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width={['200px', '450px']}>Tiros</Button>
-                                        <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Resistencia</Button>
-                                        <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Visión de juego</Button>
+                                        <Button style={ !pases ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
+                                        <Button style={ !tiros ? { display: 'none '} : { display: 'inline-block' }} fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
+                                        <Button style={ !resistencia ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
+                                        <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
                                     </HStack>
                                     <br />
                                     <HStack gap='12px' display='inline-block' marginBottom='15px'>
-                                        <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>1vs1</Button>
-                                        <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Tiros libres</Button>
-                                        <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Marca</Button>
-                                        <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']}>Juego aéreo</Button>
+                                        <Button style={ !unoVsUno ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
+                                        <Button style={ !tirosLibres ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
+                                        <Button style={ !marca ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
+                                        <Button style={ !juegoAereo ? { display: 'none' } : { display: 'inline-block' }} className="btn2" fontSize='40px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
                                     </HStack>
                                 </GridItem>
                                                         
