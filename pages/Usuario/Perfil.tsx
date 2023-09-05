@@ -535,8 +535,6 @@ export default function Perfil() {
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
-        //console.log(galeriaPartidos);
-
         fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
             method: 'POST',
             headers: {
@@ -578,6 +576,7 @@ export default function Perfil() {
 
             setEmail(localStorage.getItem('email'))
             setPassword(localStorage.getItem('password'));
+
             setFotoPerfil(localStorage.getItem('fotoPerfil'));
             setNombre(localStorage.getItem('nombre'))
             setApellido(localStorage.getItem('apellido'))
@@ -594,10 +593,6 @@ export default function Perfil() {
             setGenero(localStorage.getItem('genero'));
             setEstatura(localStorage.getItem('estatura'));
             setPeso(localStorage.getItem('peso'));
-
-            setImagenesGaleriaArray(response.imagenesGaleriaArray)
-            setVideosGaleria(response.videosGaleria);
-            setGaleriaPartidos(response.galeriaPartidos);
 
             setNacimiento(localStorage.getItem('nacimiento'));
             setPais(localStorage.getItem('pais'));
@@ -616,6 +611,12 @@ export default function Perfil() {
             setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
             setMarca((localStorage.getItem('marca') === 'true' ))
             setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
+
+            // Galería
+
+            setImagenesGaleriaArray(response.imagenesGaleriaArray)
+            setVideosGaleria(response.videosGaleria);
+            setGaleriaPartidos(response.galeriaPartidos);
         })
     }, []);
 
