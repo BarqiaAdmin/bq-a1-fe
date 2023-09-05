@@ -60,7 +60,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 
 import { useDisclosure, useToast } from '@chakra-ui/react'
-import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 
 import clubes from '../../db/clubesAFA';
 import paises from '../../db/paises';
@@ -133,11 +133,15 @@ export default function Perfil() {
 
     const cancelRef = React.useRef()
 
+    const [fechaDelPartido, setFechaDelPartido] = useState('')
     const [equipoA, setEquipoA] = useState('');
     const [equipoB, setEquipoB] = useState('');
     const [urlDelVideoPartido, setUrlDelVideoPartido] = useState('');
     const [resultadoA, setResultadoA] = useState('');
     const [resultadoB, setResultadoB] = useState('');
+
+    const [partido, setPartido] = useState([]);
+    const [galeriaPartidos, setGaleriaPartidos] = useState([]);
 
     /**
     let shareLink
@@ -352,18 +356,18 @@ export default function Perfil() {
         })
     }
 
-    
-    const handleUpdatePartidos = () => {
-        console.log("Handle upload partidos")
-        /*
+    const handlePreparePartido = () => {
         setGaleriaPartidos([...galeriaPartidos, {
             equipoA: equipoA,
             equipoB: equipoB,
-            urlDelVideoPartido: urlDelVideoPartido,
             resultadoA: resultadoA,
-            resultadoB: resultadoB
+            resultadoB: resultadoB,
+            fechaDelPartido: fechaDelPartido,
+            urlDelVideoPartido: urlDelVideoPartido,
         }])
-
+    }
+    
+    const handleUpdatePartido = () => {
         fetch('https://bq-a1-be.vercel.app/actualizarUsuario', {
             method: 'post',
             headers: {
@@ -408,9 +412,8 @@ export default function Perfil() {
         })
         .then(data => {
             console.log(data);
-            onCloseVideos()
+            onClosePartidos()
         })
-        ** */
     }
 
     const age = (dateString) => {
@@ -594,7 +597,7 @@ export default function Perfil() {
 
             setImagenesGaleriaArray(response.imagenesGaleriaArray)
             setVideosGaleria(response.videosGaleria);
-            //setGaleriaPartidos();
+            setGaleriaPartidos(response.galeriaPartidos);
 
             setNacimiento(localStorage.getItem('nacimiento'));
             setPais(localStorage.getItem('pais'));
@@ -1139,28 +1142,25 @@ export default function Perfil() {
 
                                                                 <Text marginBottom='10px'>URL del video:</Text>
                                                                 <Input type="txt" placeholder="Url del video" onChange={ (e) => {
-                                                                    localStorage.setItem('Url del video Partido', e.target.value);
                                                                     setUrlDelVideoPartido(e.target.value)
                                                                 } }/>
 
                                                                 <Text marginTop='10px' marginBottom='10px'>Fecha:</Text>
-                                                                <Input type="date" />
+                                                                <Input type="date" onChange={ (e) => { setFechaDelPartido(e.target.value) }}/>
 
                                                                 <Text marginTop='10px' marginBottom='10px'>Equipos:</Text>
                                                                 <HStack marginBottom='10px'>
-                                                                    <Input type="text" placeholder="Equipo A" onChange={ (e) => { localStorage.setItem('Equipo A', e.target.value); setEquipoA(e.target.value) } }/>
-                                                                    <Input type="text" placeholder="Equipo B" onChange={ (e) => { localStorage.setItem('Equipo B', e.target.value); setEquipoB(e.target.value) } }/>
+                                                                    <Input type="text" placeholder="Equipo A" onChange={ (e) => { setEquipoA(e.target.value) } }/>
+                                                                    <Input type="text" placeholder="Equipo B" onChange={ (e) => { setEquipoB(e.target.value) } }/>
                                                                 </HStack>
 
                                                                 <Text marginBottom='10px'>Resultado:</Text>
                                                                 <HStack>
                                                                     <Input type="text" placeholder="Goles Equipo A" onChange={ (e) => {
-                                                                        localStorage.setItem('Goles Equipo A', e.target.value);
                                                                         setResultadoA(e.target.value);
                                                                     } }/>
                                                                     <Input type="text" placeholder="Goles Equipo B" onChange={ (e) => {
-                                                                        localStorage.setItem('Goles Equipo 1 B', e.target.value);
-                                                                        setResultadoB(e.target.value);  
+                                                                        setResultadoB(e.target.value); handlePreparePartido()  
                                                                     }
                                                                     }/>
                                                                 </HStack>
@@ -1170,16 +1170,49 @@ export default function Perfil() {
                                                             <Button ref={cancelRef} onClick={onClosePartidos}>
                                                                 Cancelar
                                                             </Button>
-                                                            <Button colorScheme='blue' onClick={handleUpdatePartidos} ml={3}>
+                                                            <Button colorScheme='blue' onClick={handleUpdatePartido} ml={3}>
                                                                 Guardar
                                                             </Button>
                                                             </AlertDialogFooter>
                                                         </AlertDialogContent>
                                                         </AlertDialogOverlay>
                                                     </AlertDialog>
-                                                    <VStack width='full' marginTop='40px' marginBottom='60px'>
+                                                    <VStack marginTop='40px' marginBottom='60px' width={['505px', '100%']}>
                                                         
                                                         <Text fontSize={['30px', '18px']}>Aún no hay partidos.</Text>
+
+                                                        <TableContainer>
+                                                            <Table variant='striped' colorScheme='teal'>
+                                                                <Thead>
+                                                                    <Tr>
+                                                                        <Th>Equipos</Th>
+                                                                        <Th>Resultados</Th>
+                                                                        <Th>Fecha</Th>
+                                                                        <Th>Grabación</Th>
+                                                                    </Tr>
+                                                                </Thead>
+                                                                <Tbody>
+                                                                    {galeriaPartidos.map((partido, index) => {
+                                                                        return (
+                                                                            <Tr key={index}>
+                                                                                <Td textAlign='center'>
+                                                                                    {partido.equipoA}<br />
+                                                                                    VS<br />
+                                                                                    {partido.equipoB}
+                                                                                </Td>
+                                                                                <Td textAlign='center'>
+                                                                                    {partido.resultadoA}<br />
+                                                                                    -<br />
+                                                                                    {partido.resultadoB}
+                                                                                </Td>
+                                                                                <Td textAlign='center'>{partido.fechaDelPartido}</Td>
+                                                                                <Td textAlign='center'><Link href={partido.urlDelVideoPartido}><ExternalLinkIcon /></Link></Td>
+                                                                            </Tr>
+                                                                        )
+                                                                    })}
+                                                                </Tbody>
+                                                            </Table>
+                                                        </TableContainer>
                                                         
                                                         {/**
                                                         <Text style={ videosGaleria.length == 0 ? { display: 'block' } : { display: 'none' } }>Aún no hay partidos.</Text>

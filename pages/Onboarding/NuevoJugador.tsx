@@ -324,7 +324,7 @@ function NuevoJugador() {
                                 height='180px'
                                 width='180px'
                                 objectFit='cover'
-                                marginTop='-450px'
+                                marginTop='-360px'
                             />
                         </Box>
                         {/**
