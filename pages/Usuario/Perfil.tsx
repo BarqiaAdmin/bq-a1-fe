@@ -169,7 +169,7 @@ export default function Perfil() {
     };
 
     const handleShare = () => {
-        let shareLink = 'https://bq-a1-fe-t8pc.vercel.app/Usuario/' + email
+        let shareLink = 'https://https://bq-a1-fe-t8pc.vercel.app/Usuario/' + email
         navigator.clipboard.writeText(shareLink);
         toast({
             title: 'Enlace copiado al portapapeles',
@@ -673,15 +673,18 @@ export default function Perfil() {
                                                 width={['150px', '200px']}
                                                 objectFit='cover'
                                             />
+                                            {/** Edición
                                             <Box
                                                 cursor='pointer'
                                                 color=''
                                                 style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
                                                 <EditIcon/>
                                             </Box>
+                                            */}
                                         </HStack>
                                         
                                         <Heading fontSize={['40px', '30px']}>{ nombre } { apellido }</Heading>
+                                        {/** Edición
                                         <Box
                                             cursor='pointer'
                                             color=''
@@ -689,6 +692,7 @@ export default function Perfil() {
                                             >
                                             <EditIcon/>
                                         </Box>
+                                        */}
                                         <HStack>
                                             {/**
                                             <CircularProgress value={70} color='green.400' size='60px'>
