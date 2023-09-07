@@ -71,7 +71,7 @@ const LogIn = () => {
             window.alert('No se ha ingresado una contraseña');
         }
 
-        await fetch('https://bq-a1-be.vercel.app/buscarUsuario', {
+        await fetch('https://bq-a1-be.vercel.app/logIn', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -84,72 +84,44 @@ const LogIn = () => {
         })
         .then((response) => response.json())
         .then((response) => {
-            console.log(response)
-            localStorage.setItem('email', response.email);
-            localStorage.setItem('password', response.password);
-            localStorage.setItem('fotoPerfil', response.fotoPerfil);
-            localStorage.setItem('nombre', response.nombre);
-            localStorage.setItem('apellido', response.apellido);
-            localStorage.setItem('urlDeImagen', response.urlDeImagen);
-            localStorage.setItem('edad', response.edad);
-            localStorage.setItem('pais', response.pais);
-            localStorage.setItem('nivelDeIngles', response.nivelDeIngles);
-            localStorage.setItem('pieHabil', response.pieHabil);
-            localStorage.setItem('posicion', response.posicion);
-            localStorage.setItem('genero', response.genero);
-            localStorage.setItem('estatura', response.estatura);
-            localStorage.setItem('peso', response.peso);
-            localStorage.setItem('club', response.club);
-            localStorage.setItem('categoria', response.categoria);
-            localStorage.setItem('condicion', response.condicion);
-            localStorage.setItem('presupuesto', response.presupuesto);
-            
-            // Imagenes
-            let imagenesGaleriaArray = response.imagenesGaleriaArray
-            //localStorage.setItem('imagenesGaleriaArray', imagenesGaleriaArray);
-            
-            // Videos
-            let videosGaleria = response.videosGaleria;
-            videosGaleria = videosGaleria.toString();
-            console.log(videosGaleria);
-            localStorage.setItem('videosGaleria', videosGaleria);
+            if (response.Password != 0) {
+                localStorage.setItem('email', response.email);
+                localStorage.setItem('fotoPerfil', response.fotoPerfil);
+                localStorage.setItem('nombre', response.nombre);
+                localStorage.setItem('apellido', response.apellido);
+                localStorage.setItem('urlDeImagen', response.urlDeImagen);
+                localStorage.setItem('edad', response.edad);
+                localStorage.setItem('pais', response.pais);
+                localStorage.setItem('nivelDeIngles', response.nivelDeIngles);
+                localStorage.setItem('pieHabil', response.pieHabil);
+                localStorage.setItem('posicion', response.posicion);
+                localStorage.setItem('genero', response.genero);
+                localStorage.setItem('estatura', response.estatura);
+                localStorage.setItem('peso', response.peso);
+                localStorage.setItem('club', response.club);
+                localStorage.setItem('categoria', response.categoria);
+                localStorage.setItem('condicion', response.condicion);
+                localStorage.setItem('presupuesto', response.presupuesto);
 
-            localStorage.setItem('pases', response.pases)
-            localStorage.setItem('tiros', response.tiros)
-            localStorage.setItem('resistencia', response.resistencia)
-            localStorage.setItem('visionDeJuego', response.visionDeJuego)
-            localStorage.setItem('unoVsUno', response.unoVsUno)
-            localStorage.setItem('tirosLibres', response.tirosLibres)
-            localStorage.setItem('marca', response.marca)
-            localStorage.setItem('juegoAereo', response.juegoAereo)
-        })
-        
-        Router.push({
-            pathname: '/Usuario/Perfil'
-        });
-        
-        /*
-        Router.push({
-            pathname: '/Usuario/Perfil'
-        })
-        */
-    }
+                localStorage.setItem('pases', response.pases)
+                localStorage.setItem('tiros', response.tiros)
+                localStorage.setItem('resistencia', response.resistencia)
+                localStorage.setItem('visionDeJuego', response.visionDeJuego)
+                localStorage.setItem('unoVsUno', response.unoVsUno)
+                localStorage.setItem('tirosLibres', response.tirosLibres)
+                localStorage.setItem('marca', response.marca)
+                localStorage.setItem('juegoAereo', response.juegoAereo)
 
-    /*
-    const iniciarSesion = () => {
-        axios({
-            method: 'post',
-            url: 'https://bq-a1-be.vercel.app//leerUsuario',
-            data: {
-                email: localStorage.getItem('email'),
-                password: localStorage.getItem('logInPassword'),
+                Router.push({
+                    pathname: '/Usuario/Perfil'
+                });
+            } else {
+                console.log(response)
+                window.alert('Contraseña equivocada')
+                console.log('Contraseña equivocada')
             }
         })
-        Router.push({
-            pathname: '/Usuario/Perfil'
-        })
-    }
-    */
+    }   
 
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');

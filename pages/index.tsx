@@ -109,6 +109,9 @@ const IndexPage = () => {
         if (inputPassword == '') {
             window.alert('No se ha ingresado una contraseña');
         } else
+        if (inputPassword.length < 8) {
+            window.alert('La contraseña debe tener 8 (ocho) o más caracteres')
+        } else
         if (inputPasswordRepeat == '') {
             window.alert('Por favor complete el campo de "Repetir contraseña"');
         } else

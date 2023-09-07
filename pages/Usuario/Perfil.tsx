@@ -356,12 +356,12 @@ export default function Perfil() {
         })
     }
 
-    const handlePreparePartido = () => {
+    const handlePreparePartido = (e) => {
         setGaleriaPartidos([...galeriaPartidos, {
             equipoA: equipoA,
             equipoB: equipoB,
             resultadoA: resultadoA,
-            resultadoB: resultadoB,
+            resultadoB: e.target.value,
             fechaDelPartido: fechaDelPartido,
             urlDelVideoPartido: urlDelVideoPartido,
         }])
@@ -1164,10 +1164,7 @@ export default function Perfil() {
                                                                     <Input type="text" placeholder="Goles Equipo A" onChange={ (e) => {
                                                                         setResultadoA(e.target.value);
                                                                     } }/>
-                                                                    <Input type="text" placeholder="Goles Equipo B" onChange={ (e) => {
-                                                                        setResultadoB(e.target.value); handlePreparePartido()  
-                                                                    }
-                                                                    }/>
+                                                                    <Input type="text" placeholder="Goles Equipo B" onChange={ (e) => handlePreparePartido(e) }/>
                                                                 </HStack>
                                                             </AlertDialogBody>
 
