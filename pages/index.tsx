@@ -218,9 +218,11 @@ const IndexPage = () => {
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={5}>
-                        <Checkbox id="checkboxTerminosYCondiciones" fontSize='10px' onChange={ handleTerminosYCondiciones }>
-                            Acepto los <Link className="link1" href="https://scoutinglabs.com/politicas.pdf">Términos y condiciones</Link>
+                        <Checkbox id="checkboxTerminosYCondiciones" fontSize='10px' marginTop='5px' onChange={ handleTerminosYCondiciones } display='inline-block'>
                         </Checkbox>
+                        <Box marginLeft='10px' fontSize='12px' display='inline-block'>
+                            Acepto los <Link className="link1" href="https://scoutinglabs.com/politicas.pdf">Términos y condiciones</Link>
+                        </Box>
                     </GridItem>
                     <GridItem colSpan={3} fontSize='14px' textAlign='right'>
                         <Link className="link1" href="Sesion/PassRecovery">Olvidé mi contraseña</Link>
