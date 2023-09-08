@@ -118,6 +118,8 @@ export default function Perfil() {
     const [tirosLibres, setTirosLibres] = useState(false);
     const [marca, setMarca] = useState(false);
     const [juegoAereo, setJuegoAereo] = useState(false);
+    const [fuerza, setFuerza] = useState('');
+    const [velocidad, setVelocidad] = useState('');
 
     const [categoria, setCategoria] = useState('');
 
@@ -653,7 +655,7 @@ export default function Perfil() {
                 <VStack>
                     <SimpleGrid columns={12}>
                         <GridItem
-                            colSpan={12}
+                            colSpan={3}
                             marginLeft={['130px', '0']}
                             marginBottom={['50px', '0']}
                             >
@@ -672,24 +674,19 @@ export default function Perfil() {
                                                 height={['150px', '200px']}
                                                 width={['150px', '200px']}
                                                 objectFit='cover'
-                                            />Edición
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
+                                            />
                                         </HStack>
+
+                                        <Input type='file' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} />
                                         
                                         <HStack>
-                                            <Heading fontSize={['40px', '30px']}>{ nombre } { apellido }</Heading>Edición
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}
-                                                >
-                                                <EditIcon/>
-                                            </Box>
+                                           <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                                <Heading fontSize={['40px', '30px']}>
+                                                <strong><em>{ nombre } { apellido }</em></strong>
+                                                </Heading>
+                                                <Input className="campoDeEdicion" placeholder='Cambiar nombre' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                                <Input className="campoDeEdicion" placeholder='Cambiar apellido' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                            </FormControl>
                                         </HStack>
                                        
                                         <HStack>
@@ -708,51 +705,30 @@ export default function Perfil() {
                                             >
                                                 <LinkIcon />&nbsp;Compartir perfil 
                                             </Button>
-                                            {/**
-                                            <Image alt='' 
-                                                cursor='pointer'
-                                                src="/like.png"
-                                            />
-                                             */}
                                         </HStack>
                                         <HStack gap="10px">
                                             <Link href={ facebook } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/facebook.png" />
                                             </Link>
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
                                             <Link href={ twitter } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/twitter.png" />
                                             </Link>
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
                                             <Link href={ instagram } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/instagram.png" />
                                             </Link>
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
                                             <Link href={ tiktok } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/icono-tiktok.png" />
                                             </Link>
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
                                         </HStack>
+
+                                        <VStack
+                                            style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}
+                                            >
+                                            <Input className="campoDeEdicion" placeholder='Nuevo Facebook' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                            <Input className="campoDeEdicion" placeholder='Nuevo X' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                            <Input className="campoDeEdicion" placeholder='Nuevo Instagram' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                            <Input className="campoDeEdicion" placeholder='Nuevo TikTok' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                        </VStack>
                                     </VStack>
                                     <HStack>
                                         {/**
@@ -763,7 +739,7 @@ export default function Perfil() {
                             </VStack>
                         </GridItem>
 
-                        <GridItem colSpan={12} width='100%' marginLeft={['70px', '0']} marginBottom={['50px', '50px']}>
+                        <GridItem colSpan={9} width='100%' marginLeft={['70px', '0']} marginBottom={['50px', '50px']}>
                             <HStack
                                 marginTop={['0px', '30px']}
                             >
@@ -945,7 +921,11 @@ export default function Perfil() {
                         </GridItem>
                         
                         <GridItem colSpan={12}>
-                            <SimpleGrid columns={6}>
+                            <SimpleGrid columns={12}>
+                                
+
+                                
+
                                 <GridItem colSpan={6} fontSize='40px' marginLeft={['130px', '0']} marginBottom={['50px', '0']}>
                                     <VStack
                                         marginBottom={['', '30px']}>
@@ -954,7 +934,13 @@ export default function Perfil() {
                                         >
                                             Lugar en el campo
                                         </Heading>
-
+                                        <Box
+                                            cursor='pointer'
+                                            color='#6EC1E4'
+                                            fontSize='20px'
+                                            style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                            <Text>Selecciona un nuevo lugar en el campo:</Text>
+                                        </Box>
                                         <Box
                                             position="relative"
                                         >
@@ -974,25 +960,6 @@ export default function Perfil() {
                                     </VStack>
                                 </GridItem>
 
-                                <GridItem colSpan={6} textAlign='center' marginLeft={['130px', '0']} marginBottom={['25px', '0']}>
-                                    <Heading
-                                        fontSize="35px"
-                                        marginBottom={['50px', '30px']}
-                                    >
-                                        Atributos
-                                    </Heading>
-                                    <VStack marginBottom='70px'>
-                                        <Button style={ !pases ? { display: 'none '} : { display: 'block' }} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
-                                        <Button style={ !tiros ? { display: 'none '} : { display: 'block' }} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
-                                        <Button style={ !resistencia ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
-                                        <Button style={ !visionDeJuego ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
-                                        <Button style={ !unoVsUno ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
-                                        <Button style={ !tirosLibres ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
-                                        <Button style={ !marca ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
-                                        <Button style={ !juegoAereo ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
-                                    </VStack>
-                                </GridItem>
-                                                        
                                 {/* "Top Torneos (Figma)" */}
 
                                 {/**
@@ -1255,6 +1222,35 @@ export default function Perfil() {
                                         </Tabs>
                                     </Box>
                                 </GridItem>
+                                                    
+                                <GridItem colSpan={6} textAlign='center' marginLeft={['130px', '0']} marginBottom={['25px', '0']}>
+                                    <Heading
+                                        fontSize="35px"
+                                        marginBottom={['50px', '30px']}
+                                    >
+                                        Atributos
+                                    </Heading>
+                                    <Box
+                                        cursor='pointer'
+                                        color='#6EC1E4'
+                                        fontSize='20px'
+                                        style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                        <Text>Agrega o quita atributos</Text>
+                                    </Box>
+                                    <VStack marginBottom='70px'>
+                                        <Button style={ !pases && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2"  fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
+                                        <Button style={ !tiros && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2"  fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
+                                        <Button style={ !resistencia && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
+                                        <Button style={ !visionDeJuego && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
+                                        <Button style={ !unoVsUno && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
+                                        <Button style={ !tirosLibres && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
+                                        <Button style={ !marca && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
+                                        <Button style={ !juegoAereo && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
+                                        <Button style={ !fuerza && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Fuerza</Button>
+                                        <Button style={ !velocidad && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Velocidad</Button>
+                                    </VStack>
+                                </GridItem>
+                                
                             </SimpleGrid>
                         </GridItem>
                     </SimpleGrid>
