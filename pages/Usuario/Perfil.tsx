@@ -6,6 +6,7 @@ import {
     Box,
     Flex,
     Container,
+    FormErrorMessage,
     Heading,
     VStack,
     HStack,
@@ -532,6 +533,14 @@ export default function Perfil() {
         }
     }
 
+    const handleNombreChange = () => {
+        console.log('Está cambiando el nombre.');
+    }
+
+    const handleApellidoChange = () => {
+        console.log('Está cambiando el apellido.');
+    }
+
     useEffect(() => {
         localStorage.setItem('chakra-ui-color-mode', 'dark');
 
@@ -672,25 +681,24 @@ export default function Perfil() {
                                                 height={['150px', '200px']}
                                                 width={['150px', '200px']}
                                                 objectFit='cover'
-                                            />Edición
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
+                                            />
                                         </HStack>
                                         
                                         <HStack>
-                                            <Heading fontSize={['40px', '30px']}>{ nombre } { apellido }</Heading>Edición
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}
-                                                >
-                                                <EditIcon/>
-                                            </Box>
+                                            <Heading fontSize={['40px', '30px']}>{ nombre } { apellido }</Heading>
                                         </HStack>
+
+                                        <VStack style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <FormControl>
+                                                <FormLabel fontSize={[40, 15]}>Nombre</FormLabel>
+                                                <Input id="inputNombre" placeholder="Ingresar nombre" onChange={handleNombreChange} fontSize={[30, 14]} padding={[10, 10, 5, 5]}/>
+                                            </FormControl>
+                                            <FormControl>
+                                                <FormLabel fontSize={[40, 15]}>Apellido</FormLabel>
+                                                <Input placeholder="Ingresar apellido" onChange={handleApellidoChange} fontSize={[30, 14]} padding={[10, 10, 5, 5]}/>
+                                            </FormControl>
+                                        </VStack>
+                                        
                                        
                                         <HStack>
                                             {/**
@@ -708,50 +716,20 @@ export default function Perfil() {
                                             >
                                                 <LinkIcon />&nbsp;Compartir perfil 
                                             </Button>
-                                            {/**
-                                            <Image alt='' 
-                                                cursor='pointer'
-                                                src="/like.png"
-                                            />
-                                             */}
                                         </HStack>
                                         <HStack gap="10px">
                                             <Link href={ facebook } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/facebook.png" />
                                             </Link>
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
                                             <Link href={ twitter } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/twitter.png" />
                                             </Link>
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
                                             <Link href={ instagram } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/instagram.png" />
                                             </Link>
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
                                             <Link href={ tiktok } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/icono-tiktok.png" />
                                             </Link>
-                                            <Box
-                                                cursor='pointer'
-                                                color=''
-                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
-                                                <EditIcon/>
-                                            </Box>
                                         </HStack>
                                     </VStack>
                                     <HStack>
