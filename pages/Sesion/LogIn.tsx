@@ -102,7 +102,6 @@ const LogIn = () => {
                 localStorage.setItem('categoria', response.categoria);
                 localStorage.setItem('condicion', response.condicion);
                 localStorage.setItem('presupuesto', response.presupuesto);
-
                 localStorage.setItem('pases', response.pases)
                 localStorage.setItem('tiros', response.tiros)
                 localStorage.setItem('resistencia', response.resistencia)
@@ -120,6 +119,9 @@ const LogIn = () => {
                 window.alert('Contraseña equivocada')
                 console.log('Contraseña equivocada')
             }
+        })
+        .catch((response) => {
+            window.alert('Ese usuario no existe');
         })
     }   
 
