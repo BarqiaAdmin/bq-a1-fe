@@ -672,27 +672,26 @@ export default function Perfil() {
                                                 height={['150px', '200px']}
                                                 width={['150px', '200px']}
                                                 objectFit='cover'
-                                            />
-                                            {/** Edición
+                                            />Edición
                                             <Box
                                                 cursor='pointer'
                                                 color=''
                                                 style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
                                                 <EditIcon/>
                                             </Box>
-                                            */}
                                         </HStack>
                                         
-                                        <Heading fontSize={['40px', '30px']}>{ nombre } { apellido }</Heading>
-                                        {/** Edición
-                                        <Box
-                                            cursor='pointer'
-                                            color=''
-                                            style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}
-                                            >
-                                            <EditIcon/>
-                                        </Box>
-                                        */}
+                                        <HStack>
+                                            <Heading fontSize={['40px', '30px']}>{ nombre } { apellido }</Heading>Edición
+                                            <Box
+                                                cursor='pointer'
+                                                color=''
+                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}
+                                                >
+                                                <EditIcon/>
+                                            </Box>
+                                        </HStack>
+                                       
                                         <HStack>
                                             {/**
                                             <CircularProgress value={70} color='green.400' size='60px'>
@@ -720,12 +719,30 @@ export default function Perfil() {
                                             <Link href={ facebook } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/facebook.png" />
                                             </Link>
+                                            <Box
+                                                cursor='pointer'
+                                                color=''
+                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                                <EditIcon/>
+                                            </Box>
                                             <Link href={ twitter } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/twitter.png" />
                                             </Link>
+                                            <Box
+                                                cursor='pointer'
+                                                color=''
+                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                                <EditIcon/>
+                                            </Box>
                                             <Link href={ instagram } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/instagram.png" />
                                             </Link>
+                                            <Box
+                                                cursor='pointer'
+                                                color=''
+                                                style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }}>
+                                                <EditIcon/>
+                                            </Box>
                                             <Link href={ tiktok } target='blank' >
                                                 <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/icono-tiktok.png" />
                                             </Link>
