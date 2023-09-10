@@ -271,16 +271,7 @@ class NuevoJugador2 extends Component {
                     >
                         Selecciona tu lugar en el campo:
                     </Heading>
-                    <Image alt='' 
-                        left="0"
-                        bottom="0"
-                        width='full'
-                        src="/campo-vertical.JPG"
-                        display={['none', 'block']}
-                    />
-                    {/** */}
                     <Box
-                        display={['block', 'none']}
                         position="relative"
                     >
                         <Image alt=''  src="/campo.png" />
