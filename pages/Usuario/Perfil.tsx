@@ -144,6 +144,11 @@ export default function Perfil() {
     const [partido, setPartido] = useState([]);
     const [galeriaPartidos, setGaleriaPartidos] = useState([]);
 
+    /** EDITS */
+
+    const [nuevoNombre, setNuevoNombre] = useState('');
+    const [nuevoApellido, setNuevoApellido] = useState('');
+
     /**
     let shareLink
     if (typeof window !== 'undefined') {
@@ -379,8 +384,8 @@ export default function Perfil() {
                 email: email,
                 password: password,
                 fotoPerfil: fotoPerfil,
-                nombre: nombre,
-                apellido: apellido,
+                nombre: nuevoNombre,
+                apellido: nuevoApellido,
                 facebook: facebook,
                 instagram: instagram,
                 twitter: twitter,
@@ -684,19 +689,14 @@ export default function Perfil() {
                                             />
                                         </HStack>
                                         
-                                        <HStack>
-                                            <Heading fontSize={['40px', '30px']}>{ nombre } { apellido }</Heading>
-                                        </HStack>
+                                        <VStack>
+                                            <Heading fontSize={['40px', '30px']}>{ nombre }</Heading>
+                                            <Heading style={ edicionActivada ? { display: 'block' } : { display: 'none' }} fontSize={['40px', '30px']}><strong><em>{ nuevoNombre }</em></strong></Heading>
+                                             <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo nombre' } onChange={ (e) => { setNuevoNombre(e.target.value) } } />
 
-                                        <VStack style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                            <FormControl>
-                                                <FormLabel fontSize={[40, 15]}>Nombre</FormLabel>
-                                                <Input id="inputNombre" placeholder="Ingresar nombre" onChange={handleNombreChange} fontSize={[30, 14]} padding={[10, 10, 5, 5]}/>
-                                            </FormControl>
-                                            <FormControl>
-                                                <FormLabel fontSize={[40, 15]}>Apellido</FormLabel>
-                                                <Input placeholder="Ingresar apellido" onChange={handleApellidoChange} fontSize={[30, 14]} padding={[10, 10, 5, 5]}/>
-                                            </FormControl>
+                                            <Heading fontSize={['40px', '30px']}>{ apellido }</Heading>
+                                            <Heading style={ edicionActivada ? { display: 'block' } : { display: 'none' }} fontSize={['40px', '30px']}><strong><em>{ nuevoApellido }</em></strong></Heading>
+                                            <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo apellido' } onChange={ (e) => { setNuevoApellido(e.target.value) } }/>
                                         </VStack>
                                         
                                        
