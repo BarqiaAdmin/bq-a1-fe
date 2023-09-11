@@ -255,6 +255,15 @@ export default function Perfil() {
         })
     }
 
+    const handleProfileImageChange = (e) => {
+        setFotoPerfil(e.target.value);
+        localStorage.setItem('fotoPerfil', e.target.value);
+        const file = e.target.files[0];
+        const base64 = convertToBase64(file);
+        setFotoPerfil(base64.toString())
+        localStorage.setItem('fotoPerfil', base64.toString());
+    }
+
     const handleVideoUpload = (e) => {
         let ytUrl = e.target.value;
         ytUrl = ytUrl.replace('/watch?v=', '/embed/')
@@ -689,13 +698,13 @@ export default function Perfil() {
                                             />
                                             <Input
                                                 style={ edicionActivada ? { display: 'block' } : { display: 'none' }}
-                                                placeholder="Select Date and Time"
+                                                placeholder="Select Profile Image"
                                                 size="md"
                                                 type="file"
                                                 fontSize="40px"
                                                 height='70px'
                                                 width='370px'
-                                                onChange={(e) => handleFileUpload(e)}
+                                                onChange={(e) => handleProfileImageChange(e)}
                                             />
                                         </VStack>
                                         
@@ -926,7 +935,7 @@ export default function Perfil() {
                                             </HStack>
                                         </HStack>
 
-                                        <HStack display={['block', 'none']}>        
+                                        <HStack display={['block', 'none']} position='fixed' right='0' bottom='0'>        
                                                 <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
                                                 <HStack>
                                                     <Box>

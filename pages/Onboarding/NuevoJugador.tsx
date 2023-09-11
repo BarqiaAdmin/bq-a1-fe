@@ -308,7 +308,7 @@ function NuevoJugador() {
                             <Text fontSize={[60, 10]}></Text>
                         </GridItem>
                         <Input
-                            placeholder="Select Date and Time"
+                            placeholder="Select Profile Image"
                             size="md"
                             type="file"
                             fontSize="40px"
