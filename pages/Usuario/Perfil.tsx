@@ -61,7 +61,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 
 import { useDisclosure, useToast } from '@chakra-ui/react'
-import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon, ExternalLinkIcon, SmallCloseIcon } from '@chakra-ui/icons';
 
 import clubes from '../../db/clubesAFA';
 import paises from '../../db/paises';
@@ -677,7 +677,7 @@ export default function Perfil() {
                             >
                                 <HStack>
                                     <VStack gap="5px">
-                                        <HStack>
+                                        <VStack>
                                             <Image
                                                 alt=''
                                                 borderRadius='full'
@@ -687,7 +687,17 @@ export default function Perfil() {
                                                 width={['150px', '200px']}
                                                 objectFit='cover'
                                             />
-                                        </HStack>
+                                            <Input
+                                                style={ edicionActivada ? { display: 'block' } : { display: 'none' }}
+                                                placeholder="Select Date and Time"
+                                                size="md"
+                                                type="file"
+                                                fontSize="40px"
+                                                height='70px'
+                                                width='370px'
+                                                onChange={(e) => handleFileUpload(e)}
+                                            />
+                                        </VStack>
                                         
                                         <VStack>
                                             <Heading fontSize={['40px', '30px']}>{ nombre }</Heading>
@@ -718,18 +728,28 @@ export default function Perfil() {
                                             </Button>
                                         </HStack>
                                         <HStack gap="10px">
-                                            <Link href={ facebook } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/facebook.png" />
-                                            </Link>
-                                            <Link href={ twitter } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/twitter.png" />
-                                            </Link>
-                                            <Link href={ instagram } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/instagram.png" />
-                                            </Link>
-                                            <Link href={ tiktok } target='blank' >
-                                                <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/icono-tiktok.png" />
-                                            </Link>
+                                            <VStack>
+                                                <HStack>
+                                                    <Link href={ facebook } target='blank' >
+                                                        <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/facebook.png" />
+                                                    </Link>
+                                                    <Link href={ twitter } target='blank' >
+                                                        <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/twitter.png" />
+                                                    </Link>
+                                                    <Link href={ instagram } target='blank' >
+                                                        <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/instagram.png" />
+                                                    </Link>
+                                                    <Link href={ tiktok } target='blank' >
+                                                        <Image cursor='pointer' alt=''  h={["50px", "50px"]} src="/icono-tiktok.png" />
+                                                    </Link>
+                                                </HStack>
+                                                <VStack>
+                                                    <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo Facebook' } onChange={ (e) => { setNuevoApellido(e.target.value) } }/>
+                                                    <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo Twitter' } onChange={ (e) => { setNuevoApellido(e.target.value) } }/>
+                                                    <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo Instagram' } onChange={ (e) => { setNuevoApellido(e.target.value) } }/>
+                                                    <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo TikTok' } onChange={ (e) => { setNuevoApellido(e.target.value) } }/>
+                                                </VStack>
+                                            </VStack>
                                         </HStack>
                                     </VStack>
                                     <HStack>
@@ -891,7 +911,7 @@ export default function Perfil() {
                                         </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={1}>
-                                        <HStack display={['none', 'block']}>
+                                        <HStack display={['none', 'block']} position='fixed' right='0' bottom='0'>
                                             <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px">Editar&nbsp;<EditIcon /></Button>
 
                                             <HStack>
@@ -924,6 +944,25 @@ export default function Perfil() {
                         
                         <GridItem colSpan={12}>
                             <SimpleGrid columns={6}>
+                                <GridItem colSpan={6} textAlign='center' marginLeft={['130px', '0']} marginBottom={['25px', '0']}>
+                                    <Heading
+                                        fontSize="35px"
+                                        marginBottom={['50px', '30px']}
+                                    >
+                                        Atributos
+                                    </Heading>
+                                    <VStack marginBottom='70px'>
+                                        <Button style={ !pases && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
+                                        <Button style={ !tiros && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
+                                        <Button style={ !resistencia && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
+                                        <Button style={ !visionDeJuego && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
+                                        <Button style={ !unoVsUno && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
+                                        <Button style={ !tirosLibres && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
+                                        <Button style={ !marca && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
+                                        <Button style={ !juegoAereo && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
+                                    </VStack>
+                                </GridItem>
+                                                        
                                 <GridItem colSpan={6} fontSize='40px' marginLeft={['130px', '0']} marginBottom={['50px', '0']}>
                                     <VStack
                                         marginBottom={['', '30px']}>
@@ -951,59 +990,6 @@ export default function Perfil() {
                                         </Box>
                                     </VStack>
                                 </GridItem>
-
-                                <GridItem colSpan={6} textAlign='center' marginLeft={['130px', '0']} marginBottom={['25px', '0']}>
-                                    <Heading
-                                        fontSize="35px"
-                                        marginBottom={['50px', '30px']}
-                                    >
-                                        Atributos
-                                    </Heading>
-                                    <VStack marginBottom='70px'>
-                                        <Button style={ !pases && !edicionActivada ? { display: 'none '} : { display: 'block' }} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
-                                        <Button style={ !tiros && !edicionActivada ? { display: 'none '} : { display: 'block' }} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
-                                        <Button style={ !resistencia && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
-                                        <Button style={ !visionDeJuego && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
-                                        <Button style={ !unoVsUno && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
-                                        <Button style={ !tirosLibres && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
-                                        <Button style={ !marca && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
-                                        <Button style={ !juegoAereo && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
-                                    </VStack>
-                                </GridItem>
-                                                        
-                                {/* "Top Torneos (Figma)" */}
-
-                                {/**
-                                <GridItem colSpan={15} display={['block', 'none']}>
-                                    <Heading
-                                        fontSize="40px"
-                                        marginBottom='20px'
-                                    >
-                                        IMAGENES
-                                    <Text>Aún no hay imagenes.</Text>
-                                    </Heading>
-                                </GridItem>
-
-                                <GridItem colSpan={15} display={['block', 'none']}>
-                                    <Heading
-                                        fontSize="40px"
-                                        marginBottom='20px'
-                                    >
-                                        VIDEOS
-                                    <Text>Aún no hay videos.</Text>
-                                    </Heading>
-                                </GridItem>
-
-                                <GridItem colSpan={15} display={['block', 'none']}>
-                                    <Heading
-                                        fontSize="40px"
-                                        marginBottom='20px'
-                                    >
-                                        GRABACIONES
-                                    </Heading>
-                                    <Text>Aún no hay grabaciones.</Text>
-                                </GridItem>
-                                 */}
 
                                 <GridItem colSpan={6} marginBottom={['40px', '0']}>
                                     <Box width='full' padding={[0, '0 150px']} suppressHydrationWarning>
@@ -1074,7 +1060,12 @@ export default function Perfil() {
                                                         <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }} fontSize={['30px', '18px']}>Aún no hay imágenes.</Text>
                                                         { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                             return (
-                                                                <Image key={ index } w='330px' src= { imagenBase64 } alt='' />
+                                                                <Box key={ index }>
+                                                                    <Image w='330px' src= { imagenBase64 } alt='' />
+                                                                    <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                                                        <SmallCloseIcon />
+                                                                    </Button>
+                                                                </Box>
                                                             )
                                                         })}
                                                     </VStack>
@@ -1120,7 +1111,12 @@ export default function Perfil() {
                                                             videosGaleria.map((videoUrl, index) => {
                                                                 console.log(videoUrl);
                                                                 return (
-                                                                    <iframe key={ index } width="853" height="480" src={ videoUrl } title=""></iframe>
+                                                                    <Box key={ index }>
+                                                                        <iframe width="853" height="480" src={ videoUrl } title=""></iframe>
+                                                                        <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                                                            <SmallCloseIcon />
+                                                                        </Button>
+                                                                    </Box>
                                                                 )}
                                                             )
                                                         }
@@ -1196,6 +1192,10 @@ export default function Perfil() {
                                                                                     {partido.equipoA}<br />
                                                                                     VS<br />
                                                                                     {partido.equipoB}
+                                                                                    <br />
+                                                                                    <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                                                                        <SmallCloseIcon />
+                                                                                    </Button>
                                                                                 </Td>
                                                                                 <Td textAlign='center'>
                                                                                     {partido.resultadoA}<br />

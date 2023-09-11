@@ -260,6 +260,7 @@ function NuevoJugador() {
                     maxW="100%"
                     p={10}
                 >
+                    <NavBar />
                     <Image alt='' 
                         position="fixed"
                         left="0"
@@ -306,7 +307,7 @@ function NuevoJugador() {
                         <GridItem colSpan={12} marginTop='170px'>
                             <Text fontSize={[60, 10]}></Text>
                         </GridItem>
-                         <Input
+                        <Input
                             placeholder="Select Date and Time"
                             size="md"
                             type="file"

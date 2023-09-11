@@ -237,6 +237,7 @@ class NuevoJugador2 extends Component {
                 maxW="100%"
                 p={10}
             >
+                <NavBar />
                 <Image alt='' 
                     position="fixed"
                     left="0"
