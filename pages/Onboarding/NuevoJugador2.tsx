@@ -26,6 +26,8 @@ import {
     AccordionPanel
 } from '@chakra-ui/react';
 
+import NavBar from '../src/Components/NavBar/NavBar'
+
 import { Component, useState } from 'react';
 
 import Router from 'next/router';
