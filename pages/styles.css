@@ -59,6 +59,10 @@ a {
         color: #6EC1E4;
     }
 
+.btn4 {
+  background: transparent;
+}
+
 .selected {
   border: 1px solid #6EC1E4;
   color: #6EC1E4;

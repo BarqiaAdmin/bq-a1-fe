@@ -61,7 +61,7 @@ import { useState } from 'react';
 import Router from 'next/router';
 
 import { useDisclosure, useToast } from '@chakra-ui/react'
-import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon, ExternalLinkIcon, SmallCloseIcon } from '@chakra-ui/icons';
+import { ChevronRightIcon, EditIcon, AddIcon, LinkIcon, CheckIcon, CloseIcon, ExternalLinkIcon, SmallCloseIcon, EmailIcon } from '@chakra-ui/icons';
 
 import clubes from '../../db/clubesAFA';
 import paises from '../../db/paises';
@@ -73,6 +73,9 @@ export default function Perfil() {
 
     const toast = useToast();
 
+    const [nombre, setNombre] = useState('')
+    const [apellido, setApellido] = useState('');
+
     const [email, setEmail] = useState('')
 
     const [videosGaleria, setVideosGaleria] = useState([])
@@ -83,9 +86,6 @@ export default function Perfil() {
     const [password, setPassword] = useState('');
 
     const [fotoPerfil, setFotoPerfil] = useState('');
-
-    const [nombre, setNombre] = useState('')
-    const [apellido, setApellido] = useState('');
 
     const [nacimiento, setNacimiento] = useState('');
 
@@ -119,6 +119,8 @@ export default function Perfil() {
     const [tirosLibres, setTirosLibres] = useState(false);
     const [marca, setMarca] = useState(false);
     const [juegoAereo, setJuegoAereo] = useState(false);
+    const [fuerza, setFuerza] = useState(false);
+    const [velocidad, setVelocidad] = useState(false);
 
     const [categoria, setCategoria] = useState('');
 
@@ -715,6 +717,8 @@ export default function Perfil() {
                                             <Heading fontSize={['40px', '30px']}>{ apellido }</Heading>
                                             <Heading fontSize={['40px', '30px']}><strong><em>{ nuevoApellido }</em></strong></Heading>
                                             <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo apellido' } onChange={ (e) => { setNuevoApellido(e.target.value) } }/>
+
+                                            <Heading fontSize={['20px', '20px']}><EmailIcon />&nbsp;{ email }</Heading>
                                         </VStack>
                                         
                                        
@@ -919,7 +923,7 @@ export default function Perfil() {
                                         </FormControl>
                                     </GridItem>
                                     <GridItem colSpan={1}>
-                                        <HStack display={['none', 'block']} position='fixed' right='0' bottom='0'>
+                                        <HStack display={['none', 'block']} position='fixed' right='0' bottom='0' zIndex='9999'>
                                             <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px">Editar&nbsp;<EditIcon /></Button>
 
                                             <HStack>
@@ -934,7 +938,7 @@ export default function Perfil() {
                                             </HStack>
                                         </HStack>
 
-                                        <HStack display={['block', 'none']} position='fixed' right='0' bottom='0'>        
+                                        <HStack display={['block', 'none']} position='fixed' right='0' bottom='0' zIn>        
                                                 <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
                                                 <HStack>
                                                     <Box>
@@ -960,14 +964,16 @@ export default function Perfil() {
                                         Atributos
                                     </Heading>
                                     <VStack marginBottom='70px'>
-                                        <Button style={ !pases && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
-                                        <Button style={ !tiros && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
-                                        <Button style={ !resistencia && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
-                                        <Button style={ !visionDeJuego && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
-                                        <Button style={ !unoVsUno && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
-                                        <Button style={ !tirosLibres && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
-                                        <Button style={ !marca && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
-                                        <Button style={ !juegoAereo && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
+                                        <Button style={ !pases && !edicionActivada ? { display: 'none '} : { display: 'block' }} className='btn2' background={ !pases ? 'transparent' : '#35383B'}  fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
+                                        <Button style={ !tiros && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2" background={ !tiros ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
+                                        <Button style={ !resistencia && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" background={ !resistencia ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
+                                        <Button style={ !visionDeJuego && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" background={ !visionDeJuego ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
+                                        <Button style={ !unoVsUno && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !unoVsUno ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
+                                        <Button style={ !tirosLibres && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !tirosLibres ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
+                                        <Button style={ !marca && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !marca ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
+                                        <Button style={ !juegoAereo && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !juegoAereo ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
+                                        <Button style={ !fuerza && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !fuerza ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Fuerza</Button>
+                                        <Button style={ !velocidad && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !velocidad ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Velocidad</Button>
                                     </VStack>
                                 </GridItem>
                                                         
