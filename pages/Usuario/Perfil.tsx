@@ -788,6 +788,42 @@ export default function Perfil() {
                                     fontSize={['23px', '25px']}
                                     gap={12}
                                 >
+                                    {/**
+                                     * 
+                                     * Botonera de interfaz
+                                     * 
+                                     */}
+                                    <GridItem colSpan={1}>
+                                        <HStack display={['none', 'block']} position='fixed' right='0' bottom='0' zIndex='9999'>
+                                            <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px">Editar&nbsp;<EditIcon /></Button>
+
+                                            <HStack>
+                                                <Box>
+                                                    <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px' width="255px">Cancelar&nbsp;<CloseIcon /></Button>
+                                                </Box>
+                                                <Box>
+                                                <Button color="white"
+                                                        background="#144077"
+                                                        style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px' width="255px">Guardar&nbsp;<CheckIcon /></Button> 
+                                                </Box>
+                                            </HStack>
+                                        </HStack>
+
+                                        <HStack display={['block', 'none']} position='fixed' right='0' bottom='0' zIn>        
+                                                <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
+                                                <HStack>
+                                                    <Box>
+                                                        <Button fontSize='23px' width='150px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
+                                                    </Box>
+                                                    <Box>
+                                                        <Button fontSize='23px' width='150px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
+                                                    </Box>
+                                                </HStack>
+                                        </HStack>
+                                    </GridItem>
+                                    {/**
+                                     * (Cierre botonera UI)
+                                     */}
                                     <GridItem colSpan={[2, 1]}>
                                         EQUIPO <br />
                                         {/**
@@ -887,7 +923,51 @@ export default function Perfil() {
                                             </FormControl>
                                         </VStack>
                                     </GridItem>
-                                    <GridItem colSpan={[2, 1]} display='none'>
+
+{/**
+                                     * 
+                                     * Hasta acá se muestran por defecto. Luego vienen:
+                                     * 
+                                    Visto por agentes
+                                    Visto por clubes
+                                    Visto por universidades:
+
+                                    -Nivel de inglés:
+                                    1)Bilingüe
+                                    2)Avanzado
+                                    3)Intermedio
+                                    4)Básico
+                                    -Presupuesto
+                                    -Certificaciones
+
+                                    Condición contractual
+                                    (Club personalizado)
+                                    Clubes anteriores
+                                     */}
+
+
+                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <HStack>
+                                            <Checkbox type='checkbox' />
+                                            <Text>Deseo ser visto por AGENTES</Text>
+                                        </HStack>
+                                    </GridItem>
+                                    
+                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <HStack>
+                                            <Checkbox type='checkbox' />
+                                            <Text>Deseo ser visto por CLUBES</Text>
+                                        </HStack>
+                                    </GridItem>
+
+                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <HStack>
+                                            <Checkbox type='checkbox' />
+                                            <Text>Deseo ser visto por UNIVERSIDADES</Text>
+                                        </HStack>
+                                    </GridItem>
+
+                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         NIVEL DE INGLÉS <br />
                                         <strong><em>{ nivelDeIngles }</em></strong>
                                         <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -899,7 +979,7 @@ export default function Perfil() {
                                             </Select>
                                         </FormControl>
                                     </GridItem>
-                                    <GridItem colSpan={[2, 1]} display='none'>
+                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         CONDICIÓN <br />
                                         <strong><em>{ condicion }</em></strong>
                                         <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -909,7 +989,7 @@ export default function Perfil() {
                                             </Select>
                                         </FormControl>
                                     </GridItem>
-                                    <GridItem colSpan={[2, 1]} display='none'>
+                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         PRESUPUESTO <br />
                                         <strong><em>{ presupuesto }</em></strong>
                                         <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -922,34 +1002,9 @@ export default function Perfil() {
                                             </Select>
                                         </FormControl>
                                     </GridItem>
-                                    <GridItem colSpan={1}>
-                                        <HStack display={['none', 'block']} position='fixed' right='0' bottom='0' zIndex='9999'>
-                                            <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px">Editar&nbsp;<EditIcon /></Button>
+                                    
+                                    
 
-                                            <HStack>
-                                                <Box>
-                                                    <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px' width="255px">Cancelar&nbsp;<CloseIcon /></Button>
-                                                </Box>
-                                                <Box>
-                                                <Button color="white"
-                                                        background="#144077"
-                                                        style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px' width="255px">Guardar&nbsp;<CheckIcon /></Button> 
-                                                </Box>
-                                            </HStack>
-                                        </HStack>
-
-                                        <HStack display={['block', 'none']} position='fixed' right='0' bottom='0' zIn>        
-                                                <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
-                                                <HStack>
-                                                    <Box>
-                                                        <Button fontSize='23px' width='150px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
-                                                    </Box>
-                                                    <Box>
-                                                        <Button fontSize='23px' width='150px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
-                                                    </Box>
-                                                </HStack>
-                                        </HStack>
-                                    </GridItem>
                                 </SimpleGrid>
                             </HStack>
                         </GridItem>
@@ -1075,10 +1130,10 @@ export default function Perfil() {
                                                         { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                             return (
                                                                 <Box key={ index }>
-                                                                    <Image w='330px' src= { imagenBase64 } alt='' />
                                                                     <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                                                         <SmallCloseIcon />
                                                                     </Button>
+                                                                    <Image w='330px' src= { imagenBase64 } alt='' />
                                                                 </Box>
                                                             )
                                                         })}
@@ -1126,10 +1181,10 @@ export default function Perfil() {
                                                                 console.log(videoUrl);
                                                                 return (
                                                                     <Box key={ index }>
-                                                                        <iframe width="853" height="480" src={ videoUrl } title=""></iframe>
                                                                         <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                                                             <SmallCloseIcon />
                                                                         </Button>
+                                                                        <iframe width="853" height="480" src={ videoUrl } title=""></iframe>
                                                                     </Box>
                                                                 )}
                                                             )
@@ -1203,13 +1258,13 @@ export default function Perfil() {
                                                                         return (
                                                                             <Tr key={index}>
                                                                                 <Td textAlign='center'>
+                                                                                    <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                                                                        <SmallCloseIcon />
+                                                                                    </Button>
                                                                                     {partido.equipoA}<br />
                                                                                     VS<br />
                                                                                     {partido.equipoB}
                                                                                     <br />
-                                                                                    <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                                                                        <SmallCloseIcon />
-                                                                                    </Button>
                                                                                 </Td>
                                                                                 <Td textAlign='center'>
                                                                                     {partido.resultadoA}<br />
