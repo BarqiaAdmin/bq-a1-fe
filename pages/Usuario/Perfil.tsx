@@ -196,7 +196,7 @@ export default function Perfil() {
             body: JSON.stringify({
                 email: email,
                 edad: edad,
-                password: password,
+
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
 
@@ -255,11 +255,11 @@ export default function Perfil() {
         })
     }
 
-    const handleProfileImageChange = (e) => {
+    const handleProfileImageChange = async (e) => {
         setFotoPerfil(e.target.value);
         localStorage.setItem('fotoPerfil', e.target.value);
         const file = e.target.files[0];
-        const base64 = convertToBase64(file);
+        const base64 = await convertToBase64(file);
         setFotoPerfil(base64.toString())
         localStorage.setItem('fotoPerfil', base64.toString());
     }
@@ -281,7 +281,6 @@ export default function Perfil() {
             },
             body: JSON.stringify({
                 email: email,
-                password: password,
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
                 apellido: apellido,
@@ -710,11 +709,11 @@ export default function Perfil() {
                                         
                                         <VStack>
                                             <Heading fontSize={['40px', '30px']}>{ nombre }</Heading>
-                                            <Heading style={ edicionActivada ? { display: 'block' } : { display: 'none' }} fontSize={['40px', '30px']}><strong><em>{ nuevoNombre }</em></strong></Heading>
+                                            <Heading fontSize={['40px', '30px']}><strong><em>{ nuevoNombre }</em></strong></Heading>
                                              <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo nombre' } onChange={ (e) => { setNuevoNombre(e.target.value) } } />
 
                                             <Heading fontSize={['40px', '30px']}>{ apellido }</Heading>
-                                            <Heading style={ edicionActivada ? { display: 'block' } : { display: 'none' }} fontSize={['40px', '30px']}><strong><em>{ nuevoApellido }</em></strong></Heading>
+                                            <Heading fontSize={['40px', '30px']}><strong><em>{ nuevoApellido }</em></strong></Heading>
                                             <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo apellido' } onChange={ (e) => { setNuevoApellido(e.target.value) } }/>
                                         </VStack>
                                         

@@ -71,6 +71,7 @@ const LogIn = () => {
             window.alert('No se ha ingresado una contraseña');
         }
 
+        /** */
         await fetch('https://bq-a1-be.vercel.app/logIn', {
             method: 'POST',
             headers: {
