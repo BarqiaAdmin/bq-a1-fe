@@ -3,6 +3,7 @@ import React from 'react';
 
 import {
     AspectRatio,
+    Badge,
     Box,
     Flex,
     Container,
@@ -443,6 +444,15 @@ export default function Perfil() {
         return age;
     }
 
+    const handleNombreChange = (e) => {
+        setNombre(e.target.value);
+        localStorage.setItem('nombre', e.target.value);
+    }
+    const handleApellidoChange = (e) => {
+        setApellido(e.target.value);
+        localStorage.setItem('estallido', e.target.value);
+    }
+
     const handleNacimientoChange = (e) => {
         let nacimiento = e.target.value
         console.log('Fecha de nacimiento: ' + nacimiento);
@@ -548,12 +558,44 @@ export default function Perfil() {
         }
     }
 
-    const handleNombreChange = () => {
-        console.log('Está cambiando el nombre.');
-    }
-
-    const handleApellidoChange = () => {
-        console.log('Está cambiando el apellido.');
+    const elegirAtributo = (e, atributo) => {
+        if (localStorage.getItem(atributo) == 'false') {
+            localStorage.setItem(atributo, 'true')
+        } else {
+            localStorage.setItem(atributo, 'false')
+        }
+        switch(atributo) {
+            case 'pases':
+                setPases(!pases);
+                break;
+            case 'tiros':
+                setTiros(!tiros);
+                break;
+            case 'resistencia':
+                setResistencia(!resistencia);
+                break;
+            case 'visionDeJuego':
+                setVisionDeJuego(!visionDeJuego);
+                break;
+            case 'unoVsUno':
+                setUnoVsUno(!unoVsUno);
+                break;
+            case 'tirosLibres':
+                setTirosLibres(!tirosLibres);
+                break;
+            case 'marca':
+                setMarca(!marca);
+                break;
+            case 'juegoAereo':
+                setJuegoAereo(!juegoAereo);
+                break;
+            case 'fuerza':
+                setFuerza(!fuerza);
+                break;
+            case 'velocidad':
+                setVelocidad(!velocidad);
+                break;
+        }
     }
 
     useEffect(() => {
@@ -644,6 +686,21 @@ export default function Perfil() {
         })
     }, []);
 
+    const borrarImagen = (index, e) => {
+        imagenesGaleriaArray.splice(index, 1);
+        e.target.style.background = 'red'
+    }
+
+    const borrarVideo = (index, e) => {
+        videosGaleria.splice(index, 1);
+        e.target.style.background = 'red'
+    }
+
+    const borrarPartido = (index, e) => {
+        galeriaPartidos.splice(index, 1);
+        e.target.style.background = 'red';
+    }
+
     return(
         <>
         <Box>
@@ -710,18 +767,14 @@ export default function Perfil() {
                                         </VStack>
                                         
                                         <VStack>
-                                            <Heading fontSize={['40px', '30px']}>{ nombre }</Heading>
-                                            <Heading fontSize={['40px', '30px']}><strong><em>{ nuevoNombre }</em></strong></Heading>
-                                             <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo nombre' } onChange={ (e) => { setNuevoNombre(e.target.value) } } />
+                                            <Heading fontSize={['40px', '30px']}><strong><em>{ nombre }</em></strong></Heading>
+                                             <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo nombre' } onChange={ (e) => { setNuevoNombre(e.target.value); handleNombreChange(e) } } />
 
-                                            <Heading fontSize={['40px', '30px']}>{ apellido }</Heading>
-                                            <Heading fontSize={['40px', '30px']}><strong><em>{ nuevoApellido }</em></strong></Heading>
-                                            <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo apellido' } onChange={ (e) => { setNuevoApellido(e.target.value) } }/>
+                                            <Heading fontSize={['40px', '30px']}><strong><em>{ apellido }</em></strong></Heading>
+                                            <Input style={ edicionActivada ? { display: 'block' } : { display: 'none' }} type="text" placeholder={ 'Nuevo apellido' } onChange={ (e) => { setNuevoApellido(e.target.value); handleApellidoChange(e) } }/>
 
                                             <Heading fontSize={['20px', '20px']}><EmailIcon />&nbsp;{ email }</Heading>
                                         </VStack>
-                                        
-                                       
                                         <HStack>
                                             {/**
                                             <CircularProgress value={70} color='green.400' size='60px'>
@@ -809,7 +862,7 @@ export default function Perfil() {
                                             </HStack>
                                         </HStack>
 
-                                        <HStack display={['block', 'none']} position='fixed' right='0' bottom='0' zIn>        
+                                        <HStack display={['block', 'none']} position='fixed' right='0' bottom='0' zIndex='9999'>        
                                                 <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
                                                 <HStack>
                                                     <Box>
@@ -842,6 +895,28 @@ export default function Perfil() {
                                                 })}
                                             </Select>
                                         </FormControl>
+                                        <br />
+                                        CLUBES PREVIOS <br />
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Club previo 1
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>&nbsp;
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Club previo 2
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>&nbsp;
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Club previo 3
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Club previo 4
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Club previo 5
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>
                                     </GridItem>
 
                                     <GridItem colSpan={[2, 1]}>
@@ -941,7 +1016,7 @@ export default function Perfil() {
                                     -Certificaciones
 
                                     Condición contractual
-                                    (Club personalizado)
+                                    (Club personalizado)        
                                     Clubes anteriores
                                      */}
 
@@ -966,8 +1041,32 @@ export default function Perfil() {
                                             <Text>Deseo ser visto por UNIVERSIDADES</Text>
                                         </HStack>
                                     </GridItem>
+                                    {/** CERTIFICACIONES */}
+                                    <GridItem colSpan={[4, 1]}>
+                                        CERTIFICACIONES <br />
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Certificación 1
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>&nbsp;
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Certificación 2
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>&nbsp;
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Certificación 3
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Certificación 4
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>
+                                        <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
+                                            Certificación 5
+                                            <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
+                                        </Badge>
+                                    </GridItem>
 
-                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         NIVEL DE INGLÉS <br />
                                         <strong><em>{ nivelDeIngles }</em></strong>
                                         <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -979,7 +1078,7 @@ export default function Perfil() {
                                             </Select>
                                         </FormControl>
                                     </GridItem>
-                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         CONDICIÓN <br />
                                         <strong><em>{ condicion }</em></strong>
                                         <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -989,7 +1088,7 @@ export default function Perfil() {
                                             </Select>
                                         </FormControl>
                                     </GridItem>
-                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         PRESUPUESTO <br />
                                         <strong><em>{ presupuesto }</em></strong>
                                         <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -1002,9 +1101,6 @@ export default function Perfil() {
                                             </Select>
                                         </FormControl>
                                     </GridItem>
-                                    
-                                    
-
                                 </SimpleGrid>
                             </HStack>
                         </GridItem>
@@ -1019,16 +1115,16 @@ export default function Perfil() {
                                         Atributos
                                     </Heading>
                                     <VStack marginBottom='70px'>
-                                        <Button style={ !pases && !edicionActivada ? { display: 'none '} : { display: 'block' }} className='btn2' background={ !pases ? 'transparent' : '#35383B'}  fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
-                                        <Button style={ !tiros && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2" background={ !tiros ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
-                                        <Button style={ !resistencia && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" background={ !resistencia ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
-                                        <Button style={ !visionDeJuego && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" background={ !visionDeJuego ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
-                                        <Button style={ !unoVsUno && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !unoVsUno ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
-                                        <Button style={ !tirosLibres && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !tirosLibres ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
-                                        <Button style={ !marca && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !marca ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
-                                        <Button style={ !juegoAereo && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !juegoAereo ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
-                                        <Button style={ !fuerza && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !fuerza ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Fuerza</Button>
-                                        <Button style={ !velocidad && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !velocidad ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Velocidad</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'pases')} style={ !pases && !edicionActivada ? { display: 'none '} : { display: 'block' }} className='btn2' background={ !pases ? 'transparent' : '#35383B'}  fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Pases</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'tiros')} style={ !tiros && !edicionActivada ? { display: 'none '} : { display: 'block' }} className="btn2" background={ !tiros ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'resistencia')} style={ !resistencia && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" background={ !resistencia ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Resistencia</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'visionDeJuego')} style={ !visionDeJuego && !edicionActivada ? { display: 'none'} : { display: 'block' }} className="btn2" background={ !visionDeJuego ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Visión de juego</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'unoVsUno')} style={ !unoVsUno && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !unoVsUno ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>1vs1</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'tirosLibres')} style={ !tirosLibres && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !tirosLibres ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Tiros libres</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'marca')} style={ !marca && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !marca ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Marca</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'juegoAereo')} style={ !juegoAereo && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !juegoAereo ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Juego aéreo</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'fuerza')} style={ !fuerza && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !fuerza ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Fuerza</Button>
+                                        <Button onClick={(e) => elegirAtributo(e, 'velocidad')} style={ !velocidad && !edicionActivada ? { display: 'none' } : { display: 'block' }} className="btn2" background={ !velocidad ? 'transparent' : '#35383B'} fontSize='23px' height='100px' width={['200px', '450px']} marginLeft='0'>Velocidad</Button>
                                     </VStack>
                                 </GridItem>
                                                         
@@ -1129,8 +1225,8 @@ export default function Perfil() {
                                                         <Text style={ imagenesGaleriaArray.length == 0 ? { display: 'block'} : { display: 'none' }} fontSize={['30px', '18px']}>Aún no hay imágenes.</Text>
                                                         { imagenesGaleriaArray.map((imagenBase64, index) => {
                                                             return (
-                                                                <Box key={ index }>
-                                                                    <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                                                <Box key={index}>
+                                                                    <Button style={ edicionActivada ? { display: 'block', float: 'right' } : { display: 'none' }} onClick={(e) => borrarImagen(index, e)}>
                                                                         <SmallCloseIcon />
                                                                     </Button>
                                                                     <Image w='330px' src= { imagenBase64 } alt='' />
@@ -1181,7 +1277,7 @@ export default function Perfil() {
                                                                 console.log(videoUrl);
                                                                 return (
                                                                     <Box key={ index }>
-                                                                        <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                                                        <Button style={ edicionActivada ? { display: 'block', float: 'right' } : { display: 'none' }} onClick={(e) => borrarVideo(index, e)}>
                                                                             <SmallCloseIcon />
                                                                         </Button>
                                                                         <iframe width="853" height="480" src={ videoUrl } title=""></iframe>
@@ -1258,7 +1354,7 @@ export default function Perfil() {
                                                                         return (
                                                                             <Tr key={index}>
                                                                                 <Td textAlign='center'>
-                                                                                    <Button style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                                                                    <Button style={ edicionActivada ? { display: 'block', float: 'right' } : { display: 'none' }} onClick={(e) => borrarPartido(index, e)}>
                                                                                         <SmallCloseIcon />
                                                                                     </Button>
                                                                                     {partido.equipoA}<br />
