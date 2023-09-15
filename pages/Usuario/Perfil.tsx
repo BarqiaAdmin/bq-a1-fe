@@ -895,6 +895,7 @@ export default function Perfil() {
                                                 })}
                                             </Select>
                                         </FormControl>
+                                        {/**
                                         <br />
                                         CLUBES PREVIOS <br />
                                         <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
@@ -917,6 +918,7 @@ export default function Perfil() {
                                             Club previo 5
                                             <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
                                         </Badge>
+                                         */}
                                     </GridItem>
 
                                     <GridItem colSpan={[2, 1]}>
@@ -982,7 +984,7 @@ export default function Perfil() {
                                             <Input className="campoDeEdicion" placeholder='Ingresar peso' onChange={ handlePesoChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
                                         </FormControl>
                                     </GridItem>
-                                    <GridItem colSpan={[2, 1]}>
+                                    <GridItem colSpan={[4, 1]}>
                                         Edad  <br />
                                         <strong><em>{ edad }</em></strong>
                                         <VStack style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -999,28 +1001,6 @@ export default function Perfil() {
                                         </VStack>
                                     </GridItem>
 
-{/**
-                                     * 
-                                     * Hasta acá se muestran por defecto. Luego vienen:
-                                     * 
-                                    Visto por agentes
-                                    Visto por clubes
-                                    Visto por universidades:
-
-                                    -Nivel de inglés:
-                                    1)Bilingüe
-                                    2)Avanzado
-                                    3)Intermedio
-                                    4)Básico
-                                    -Presupuesto
-                                    -Certificaciones
-
-                                    Condición contractual
-                                    (Club personalizado)        
-                                    Clubes anteriores
-                                     */}
-
-
                                     <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         <HStack>
                                             <Checkbox type='checkbox' />
@@ -1035,13 +1015,13 @@ export default function Perfil() {
                                         </HStack>
                                     </GridItem>
 
-                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         <HStack>
                                             <Checkbox type='checkbox' />
                                             <Text>Deseo ser visto por UNIVERSIDADES</Text>
                                         </HStack>
                                     </GridItem>
-                                    {/** CERTIFICACIONES */}
+                                    {/** CERTIFICACIONES
                                     <GridItem colSpan={[4, 1]}>
                                         CERTIFICACIONES <br />
                                         <Badge colorScheme='green' fontSize='20px' p='2px 12px'>
@@ -1065,6 +1045,7 @@ export default function Perfil() {
                                             <Input placeholder='Modificar certificación' style={ edicionActivada ? { display: 'block' } : { display: 'none' }}/>
                                         </Badge>
                                     </GridItem>
+                                     */}
 
                                     <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         NIVEL DE INGLÉS <br />
