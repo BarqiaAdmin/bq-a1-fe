@@ -546,6 +546,7 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
+                            {/** CLUBES ANTERIORES
                             <GridItem colSpan={12}>
                                 <Accordion defaultIndex={[1]} allowMultiple>
                                     <AccordionItem>
@@ -565,6 +566,7 @@ function NuevoJugador() {
                                     </AccordionItem>
                                 </Accordion>
                             </GridItem>
+                            CIERRE CLUBES ANTERIORES */}
                             <GridItem colSpan={12}>
                                 <FormLabel fontSize={[30, 14]}>Quiero ser visto por:</FormLabel>
                             </GridItem>
@@ -609,6 +611,7 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
+                            {/** CERTIFICACIONES
                             <GridItem colSpan={[12, 12, 6, 6]}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Certificaciones</FormLabel>
@@ -622,7 +625,8 @@ function NuevoJugador() {
                                     )}
                                 </FormControl>
                             </GridItem>
-                            <GridItem colSpan={12}>
+                            CIERRE CERTIFICACIONES  */}
+                            <GridItem colSpan={6}>
                                 <FormControl style={ inputUniversidades ? { display: 'inline-block'} : { display: 'none' } }>
                                     <FormLabel fontSize={[40, 15]}>Presupuesto</FormLabel>
                                     <Select value={ inputPresupuesto } onChange={ (e) => { localStorage.setItem('presupuesto', e.target.value); setInputPresupuesto(e.target.value) } } placeholder="Seleccionar" fontSize={[30, 14]}>

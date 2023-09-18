@@ -750,8 +750,8 @@ export default function Perfil() {
                                                 borderRadius='full'
                                                 id="fotoDePerfil"
                                                 src={ fotoPerfil }
-                                                height={['150px', '200px']}
-                                                width={['150px', '200px']}
+                                                height={['225px', '225px']}
+                                                width={['225px', '225px']}
                                                 objectFit='cover'
                                             />
                                             <Input
