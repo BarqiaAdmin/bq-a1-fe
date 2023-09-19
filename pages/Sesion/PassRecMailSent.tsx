@@ -24,7 +24,7 @@ const PassRecMailSent = () => {
             method: 'POST',
             headers: {
                 'accept': 'application/json',
-                ''
+                "Content-Type": "application/json"
             }
         })
     }
