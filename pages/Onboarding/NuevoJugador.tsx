@@ -673,38 +673,29 @@ function NuevoJugador() {
                                     <Input placeholder="URL del perfil" value={ inputTiktok } onChange={(e) => { localStorage.setItem("twitter", e.target.value); setInputTiktok(e.target.value) } } fontSize={[30, 14]}/>
                                 </FormControl>
                             </GridItem>
-                            <Divider />
+                            
                             <GridItem colSpan={12}>
                                 <Link href="/">
                                     <Button
-                                        className="btn1"
-                                        p="10px 24px 12px"
-                                        w="161px"
-                                        h="57px"
-                                        bg="#353535"
-                                        borderRadius="5px"
-                                        color="#A2A2A2"
+                                        w="full"
+                                        className="btn2"
                                     
                                         height={['100px', '70px']}
                                         fontSize={[ '26px', '24px']}
-                                        width={['180px', '170px']}
+                                        width={['180px', '150px']}
                                     >
                                         Atrás
                                     </Button>
                                 </Link>
                                 <Button
-                                    className="btn1"
-                                    p="10px 24px 12px"
-                                    w="161px"
-                                    h="57px"
-                                    bg="#353535"
-                                    borderRadius="5px"
-                                    color="#A2A2A2"
+                                    w="full"
+                                    className="btn2"
+                                
                                     float='right'
 
                                     height={['100px', '70px']}
                                     fontSize={[ '26px', '24px']}
-                                    width={['180px', '170px']}
+                                    width={['180px', '150px']}
 
                                     onClick={crearJugador}
                                 >

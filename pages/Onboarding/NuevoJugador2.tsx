@@ -322,18 +322,12 @@ class NuevoJugador2 extends Component {
                     <SimpleGrid columns={2} w="full" paddingTop='20px'>
                         <GridItem colSpan={1}>
                             <Button
-                                className="btn1"
-                                p="10px 24px 12px"
-                                w="161px"
-                                h="57px"
-                                bg="#353535"
-                                borderRadius="5px"
-                                color="#A2A2A2"
-                                float='right'
-                                
+                                w="full"
+                                className="btn2"
+                            
                                 height={['100px', '70px']}
                                 fontSize={[ '26px', '24px']}
-                                width={['180px', '170px']}
+                                width={['180px', '150px']}
                             >
                                 <Link href='/Onboarding/NuevoJugador'>
                                     Volver
@@ -342,18 +336,12 @@ class NuevoJugador2 extends Component {
                         </GridItem>
                         <GridItem colSpan={1} textAlign="right">
                             <Button
-                                className="btn1"
-                                p="10px 24px 12px"
-                                w="161px"
-                                h="57px"
-                                bg="#353535"
-                                borderRadius="5px"
-                                color="#A2A2A2"
-                                float='right'
-                                
+                                w="full"
+                                className="btn2"
+                            
                                 height={['100px', '70px']}
                                 fontSize={[ '26px', '24px']}
-                                width={['180px', '170px']}
+                                width={['180px', '150px']}
 
                                 onClick={this.actualizarUsuario}
                             >
