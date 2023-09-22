@@ -162,7 +162,7 @@ export default function Perfil() {
     console.log(pattern)
     let userEmail = shareLink.match(pattern)[0]
     console.log(userEmail);
-     */
+     */ 
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -848,28 +848,28 @@ export default function Perfil() {
                                      */}
                                     <GridItem colSpan={1}>
                                         <HStack display={['none', 'block']} position='fixed' right='0' bottom='0' zIndex='9999'>
-                                            <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px">Editar&nbsp;<EditIcon /></Button>
+                                            <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px"><EditIcon /></Button>
 
                                             <HStack>
                                                 <Box>
-                                                    <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px' width="255px">Cancelar&nbsp;<CloseIcon /></Button>
+                                                    <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px' width="255px"><CloseIcon /></Button>
                                                 </Box>
                                                 <Box>
                                                 <Button color="white"
                                                         background="#144077"
-                                                        style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px' width="255px">Guardar&nbsp;<CheckIcon /></Button> 
+                                                        style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px' width="255px"><CheckIcon /></Button> 
                                                 </Box>
                                             </HStack>
                                         </HStack>
 
                                         <HStack display={['block', 'none']} position='fixed' right='0' bottom='0' zIndex='9999'>        
-                                                <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }>Editar&nbsp;<EditIcon /></Button>
+                                                <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }><EditIcon /></Button>
                                                 <HStack>
                                                     <Box>
-                                                        <Button fontSize='23px' width='150px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }>Cancelar&nbsp;<CloseIcon /></Button>
+                                                        <Button fontSize='23px' width='150px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }><CloseIcon /></Button>
                                                     </Box>
                                                     <Box>
-                                                        <Button fontSize='23px' width='150px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }>Guardar&nbsp;<CheckIcon /></Button>
+                                                        <Button fontSize='23px' width='150px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }><CheckIcon /></Button>
                                                     </Box>
                                                 </HStack>
                                         </HStack>
@@ -1318,7 +1318,7 @@ export default function Perfil() {
                                                     </AlertDialog>
                                                     <VStack marginTop='40px' marginBottom='60px' width={['505px', '100%']}>
                                                         
-                                                        <Text fontSize={['30px', '18px']}>Aún no hay partidos.</Text>
+                                                        <Text style={ galeriaPartidos.length == 0 ? { display: 'block' } : { display: 'none' } } fontSize={['30px', '18px']}>Aún no hay partidos.</Text>
 
                                                         <TableContainer>
                                                             <Table variant='striped' colorScheme='teal'>

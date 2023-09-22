@@ -330,9 +330,10 @@ class NuevoJugador2 extends Component {
                                 borderRadius="5px"
                                 color="#A2A2A2"
                                 float='right'
-                                height='100px'
-                                width='220px'
-                                fontSize='35px'
+                                
+                                height={['100px', '70px']}
+                                fontSize={[ '26px', '24px']}
+                                width={['180px', '170px']}
                             >
                                 <Link href='/Onboarding/NuevoJugador'>
                                     Volver
@@ -349,9 +350,10 @@ class NuevoJugador2 extends Component {
                                 borderRadius="5px"
                                 color="#A2A2A2"
                                 float='right'
-                                height='100px'
-                                width='220px'
-                                fontSize='35px'
+                                
+                                height={['100px', '70px']}
+                                fontSize={[ '26px', '24px']}
+                                width={['180px', '170px']}
 
                                 onClick={this.actualizarUsuario}
                             >
