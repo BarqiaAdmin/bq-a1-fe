@@ -845,34 +845,33 @@ export default function Perfil() {
                                      * Botonera de interfaz
                                      * 
                                      */}
-                                    <GridItem colSpan={1}>
-                                        <HStack display={['none', 'block']} position='fixed' right='0' bottom='0' zIndex='9999'>
-                                            <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px"><EditIcon /></Button>
+                                    
+                                    <HStack display={['none', 'block']} position='fixed' right='0' bottom='0' zIndex='9999'>
+                                        <Button style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) } fontSize={['30px', '']} padding='50px' width="255px"><EditIcon /></Button>
 
+                                        <HStack>
+                                            <Box>
+                                                <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px' width="255px"><CloseIcon /></Button>
+                                            </Box>
+                                            <Box>
+                                            <Button color="white"
+                                                    background="#144077"
+                                                    style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px' width="255px"><CheckIcon /></Button> 
+                                            </Box>
+                                        </HStack>
+                                    </HStack>
+
+                                    <HStack display={['block', 'none']} position='fixed' right='0' bottom='0' zIndex='9999'>        
+                                            <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }><EditIcon /></Button>
                                             <HStack>
                                                 <Box>
-                                                    <Button style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(false) } fontSize={['30px', '']} padding='50px' width="255px"><CloseIcon /></Button>
+                                                    <Button fontSize='23px' width='150px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }><CloseIcon /></Button>
                                                 </Box>
                                                 <Box>
-                                                <Button color="white"
-                                                        background="#144077"
-                                                        style={ edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={ handleUpdate }fontSize={['30px', '']} padding='50px' width="255px"><CheckIcon /></Button> 
+                                                    <Button fontSize='23px' width='150px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }><CheckIcon /></Button>
                                                 </Box>
                                             </HStack>
-                                        </HStack>
-
-                                        <HStack display={['block', 'none']} position='fixed' right='0' bottom='0' zIndex='9999'>        
-                                                <Button fontSize='23px' style={ !edicionActivada ? { display: 'inline-flex' } : { display: 'none' }} onClick={() => setEdicionActivada(true) }><EditIcon /></Button>
-                                                <HStack>
-                                                    <Box>
-                                                        <Button fontSize='23px' width='150px' style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={() => setEdicionActivada(false) }><CloseIcon /></Button>
-                                                    </Box>
-                                                    <Box>
-                                                        <Button fontSize='23px' width='150px' color="white" background="#144077" style={ edicionActivada ? { display: 'inline-block' } : { display: 'none' }} onClick={ handleUpdate }><CheckIcon /></Button>
-                                                    </Box>
-                                                </HStack>
-                                        </HStack>
-                                    </GridItem>
+                                    </HStack>
                                     {/**
                                      * (Cierre botonera UI)
                                      */}
