@@ -172,14 +172,14 @@ export default function Perfil() {
             setLugarEnElCampo(response.lugarEnElCampo);
 
             setPieHabil(response.pieHabil);
-            setPases(response.pases)
-            setTiros(response.tiros)
-            setResistencia(response.resistencia)
-            setVisionDeJuego(response.visionDeJuego)
-            setUnoVsUno(response.unoVsUno)
-            setTirosLibres(response.tirosLibres)
-            setMarca(response.marca)
-            setJuegoAereo(response.juegoAereo)
+            setPases(response.pases === 'true')
+            setTiros(response.tiros === 'true')
+            setResistencia(response.resistencia === 'true')
+            setVisionDeJuego(response.visionDeJuego === 'true')
+            setUnoVsUno(response.unoVsUno === 'true')
+            setTirosLibres(response.tirosLibres === 'true')
+            setMarca(response.marca === 'true')
+            setJuegoAereo(response.juegoAereo === 'true')
 
             // Galería
 
