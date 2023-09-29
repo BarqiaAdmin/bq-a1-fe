@@ -614,69 +614,68 @@ export default function Perfil() {
         .then((response) => response.json())
         .then((response) => {
             console.log(response)
-            localStorage.setItem('email', response.email);
-            localStorage.setItem('password', response.password);
-            localStorage.setItem('fotoPerfil', response.fotoPerfil);
-            localStorage.setItem('nombre', response.nombre);
-            localStorage.setItem('apellido', response.apellido);
+            //localStorage.setItem('email', response.email);
+            //localStorage.setItem('password', response.password);
+            //localStorage.setItem('fotoPerfil', response.fotoPerfil);
+            //localStorage.setItem('nombre', response.nombre);
+            //localStorage.setItem('apellido', response.apellido);
 
-            localStorage.setItem('urlDeImagen', response.urlDeImagen);
-            localStorage.setItem('edad', response.edad);
-            localStorage.setItem('pais', response.pais);
-            localStorage.setItem('nivelDeIngles', response.nivelDeIngles);
-            localStorage.setItem('lugarEnElCampo', response.lugarEnElCampo);
-            localStorage.setItem('pieHabil', response.pieHabil);
-            localStorage.setItem('posicion', response.posicion);
-            localStorage.setItem('genero', response.genero);
-            localStorage.setItem('estatura', response.estatura);
-            localStorage.setItem('peso', response.peso);
-
-            localStorage.setItem('imagenesGalerArray', response.imagenesGaleriaArray)
+            //localStorage.setItem('urlDeImagen', response.urlDeImagen);
+            //localStorage.setItem('edad', response.edad);
+            //localStorage.setItem('pais', response.pais);
+            //localStorage.setItem('nivelDeIngles', response.nivelDeIngles);
+            //localStorage.setItem('lugarEnElCampo', response.lugarEnElCampo);
+            //localStorage.setItem('pieHabil', response.pieHabil);
+            //localStorage.setItem('posicion', response.posicion);
+            //localStorage.setItem('genero', response.genero);
+            //localStorage.setItem('estatura', response.estatura);
+            //localStorage.setItem('peso', response.peso);
+            //localStorage.setItem('imagenesGalerArray', response.imagenesGaleriaArray)
             //localStorage.setItem('videosGaleria', response.videosGaleria);
             //localStorage.setItem('galeriaPartidos', 'en construcción');
 
-            localStorage.setItem('club', response.club);
-            localStorage.setItem('categoria', response.categoria);
-            localStorage.setItem('condicion', response.condicion);
-            localStorage.setItem('presupuesto', response.presupuesto);
+            //localStorage.setItem('club', response.club);
+            //localStorage.setItem('categoria', response.categoria);
+            //localStorage.setItem('condicion', response.condicion);
+            //localStorage.setItem('presupuesto', response.presupuesto);
 
-            setEmail(localStorage.getItem('email'))
-            setPassword(localStorage.getItem('password'));
+            setEmail(response.email)
+            setPassword(response.password);
 
-            setFotoPerfil(localStorage.getItem('fotoPerfil'));
-            setNombre(localStorage.getItem('nombre'))
-            setApellido(localStorage.getItem('apellido'))
+            setFotoPerfil(response.fotoPerfil);
+            setNombre(response.nombre)
+            setApellido(response.apellido)
 
-            setFacebook(localStorage.getItem('facebook'));
-            setInstagram(localStorage.getItem('instagram'));
-            setTwitter(localStorage.getItem('twitter'))
-            setTiktok(localStorage.getItem('tiktok'));
+            setFacebook(response.facebook);
+            setInstagram(response.instagram);
+            setTwitter(response.twitter)
+            setTiktok(response.tiktok);
 
-            setEdad(localStorage.getItem('edad'));
-            setClub(localStorage.getItem('club'))
-            setPosicion(localStorage.getItem('posicion'));
-            setCategoria(localStorage.getItem('categoria'));
-            setGenero(localStorage.getItem('genero'));
-            setEstatura(localStorage.getItem('estatura'));
-            setPeso(localStorage.getItem('peso'));
+            setEdad(response.edad);
+            setClub(response.club)
+            setPosicion(response.posicion);
+            setCategoria(response.categoria);
+            setGenero(response.genero);
+            setEstatura(response.estatura);
+            setPeso(response.peso);
 
-            setNacimiento(localStorage.getItem('nacimiento'));
-            setPais(localStorage.getItem('pais'));
-            setCondicion(localStorage.getItem('condicion'));
-            setNivelDeIngles(localStorage.getItem('nivelDeIngles'));
-            setPresupuesto(localStorage.getItem('presupuesto'));
+            setNacimiento(response.nacimiento);
+            setPais(response.pais);
+            setCondicion(response.condicion);
+            setNivelDeIngles(response.nivelDeIngles);
+            setPresupuesto(response.presupuesto);
 
-            setLugarEnElCampo(localStorage.getItem('lugarEnElCampo'));
+            setLugarEnElCampo(response.lugarEnElCampo);
 
-            setPieHabil(localStorage.getItem('pieHabil'));
-            setPases((localStorage.getItem('pases') === 'true'))
-            setTiros((localStorage.getItem('tiros') === 'true'))
-            setResistencia((localStorage.getItem('resistencia') === 'true'))
-            setVisionDeJuego((localStorage.getItem('visionDeJuego') === 'true'))
-            setUnoVsUno((localStorage.getItem('unoVsUno') === 'true'))
-            setTirosLibres((localStorage.getItem('tirosLibres') === 'true' ))
-            setMarca((localStorage.getItem('marca') === 'true' ))
-            setJuegoAereo((localStorage.getItem('juegoAereo') === 'true' ))
+            setPieHabil(response.pieHabil);
+            setPases(response.pases)
+            setTiros(response.tiros)
+            setResistencia(response.resistencia)
+            setVisionDeJuego(response.visionDeJuego)
+            setUnoVsUno(response.unoVsUno)
+            setTirosLibres(response.tirosLibres)
+            setMarca(response.marca)
+            setJuegoAereo(response.juegoAereo)
 
             // Galería
 

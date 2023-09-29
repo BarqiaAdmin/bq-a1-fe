@@ -145,23 +145,24 @@ export default function Perfil() {
         })
         .then((response) => response.json())
         .then(response => {
+
             setFotoPerfil(response.fotoPerfil);
             setNombre(response.nombre)
-            setApellido(response.apellido);
+            setApellido(response.apellido)
 
             setFacebook(response.facebook);
-            setTwitter(response.twitter);
             setInstagram(response.instagram);
+            setTwitter(response.twitter)
             setTiktok(response.tiktok);
 
             setEdad(response.edad);
-            setClub(response.club);
+            setClub(response.club)
             setPosicion(response.posicion);
             setCategoria(response.categoria);
             setGenero(response.genero);
             setEstatura(response.estatura);
             setPeso(response.peso);
-            
+
             setNacimiento(response.nacimiento);
             setPais(response.pais);
             setCondicion(response.condicion);
@@ -171,14 +172,14 @@ export default function Perfil() {
             setLugarEnElCampo(response.lugarEnElCampo);
 
             setPieHabil(response.pieHabil);
-            setPases((response.pases === 'true'))
-            setTiros((response.tiros === 'true'))
-            setResistencia((response.resistencia === 'true'))
-            setVisionDeJuego((response.visionDeJuego === 'true'))
-            setUnoVsUno((response.unoVsUno === 'true'))
-            setTirosLibres((response.tirosLibres === 'true' ))
-            setMarca((response.marca === 'true' ))
-            setJuegoAereo((response.juegoAereo === 'true' ))
+            setPases(response.pases)
+            setTiros(response.tiros)
+            setResistencia(response.resistencia)
+            setVisionDeJuego(response.visionDeJuego)
+            setUnoVsUno(response.unoVsUno)
+            setTirosLibres(response.tirosLibres)
+            setMarca(response.marca)
+            setJuegoAereo(response.juegoAereo)
 
             // Galería
 
