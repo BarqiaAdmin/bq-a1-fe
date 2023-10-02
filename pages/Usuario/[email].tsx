@@ -387,7 +387,7 @@ export default function Perfil() {
                                     NIVEL DE INGLÉS <br />
                                     <strong><em>{ nivelDeIngles }</em></strong>
                                 </GridItem>
-                                <GridItem colSpan={[2, 1]} display='none'>
+                                <GridItem colSpan={[2, 1]} display={'block'}>
                                     CONDICIÓN <br />
                                     <strong><em>{ condicion }</em></strong>
                                 </GridItem>

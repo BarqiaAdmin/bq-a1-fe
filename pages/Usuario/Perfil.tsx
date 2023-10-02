@@ -70,6 +70,8 @@ import paises from '../../db/paises';
 
 export default function Perfil() {
 
+    const [camposUniversidadesV, setCamposUniversidadesV] = useState(false);
+
     const [files, selectFiles] = useFileUpload();
 
     const toast = useToast();
@@ -162,7 +164,13 @@ export default function Perfil() {
     console.log(pattern)
     let userEmail = shareLink.match(pattern)[0]
     console.log(userEmail);
-     */ 
+     */
+
+    const onChangeEdit = (e) => {
+        e.preventDefault();
+        console.log(camposUniversidadesV);
+        setCamposUniversidadesV(!camposUniversidadesV);
+    }
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -998,26 +1006,23 @@ export default function Perfil() {
                                             <Input className="campoDeEdicion" placeholder='Ingresar peso' onChange={ handlePesoChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
                                         </FormControl>
                                     </GridItem>
-                                    
-
-                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                        <HStack>
-                                            <Checkbox type='checkbox' />
-                                            <Text>Deseo ser visto por AGENTES</Text>
-                                        </HStack>
-                                    </GridItem>
-                                    
-                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                        <HStack>
-                                            <Checkbox type='checkbox' />
-                                            <Text>Deseo ser visto por CLUBES</Text>
-                                        </HStack>
+                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'block' }}>
+                                        CONDICIÓN <br />
+                                        <strong><em>{ condicion }</em></strong>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handleCondicionChange }>
+                                                <option>Libre</option>
+                                                <option>Con contrato</option>
+                                            </Select>
+                                        </FormControl>
                                     </GridItem>
 
                                     <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         <HStack>
-                                            <Checkbox type='checkbox' />
-                                            <Text>Deseo ser visto por UNIVERSIDADES</Text>
+                                            <FormControl onClick={(e) => onChangeEdit(e)}>
+                                                <Checkbox type='checkbox' />
+                                                <FormLabel>Deseo ser visto por UNIVERSIDADES</FormLabel>
+                                            </FormControl>
                                         </HStack>
                                     </GridItem>
                                     {/** CERTIFICACIONES
@@ -1045,17 +1050,7 @@ export default function Perfil() {
                                         </Badge>
                                     </GridItem>
                                      */}
-                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'block' }}>
-                                        CONDICIÓN <br />
-                                        <strong><em>{ condicion }</em></strong>
-                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handleCondicionChange }>
-                                                <option>Libre</option>
-                                                <option>Con contrato</option>
-                                            </Select>
-                                        </FormControl>
-                                    </GridItem>
-                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                    <GridItem colSpan={[4, 1]} style={ camposUniversidadesV ? { display: 'block' } : { display: 'none' }}>
                                         NIVEL DE INGLÉS <br />
                                         <strong><em>{ nivelDeIngles }</em></strong>
                                         <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -1068,7 +1063,7 @@ export default function Perfil() {
                                         </FormControl>
                                     </GridItem>
                                     
-                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                    <GridItem colSpan={[4, 1]} style={ camposUniversidadesV ? { display: 'block' } : { display: 'none' }}>
                                         PRESUPUESTO <br />
                                         <strong><em>{ presupuesto }</em></strong>
                                         <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
@@ -1080,6 +1075,19 @@ export default function Perfil() {
                                                 <option>Más de 20.000</option>
                                             </Select>
                                         </FormControl>
+                                    </GridItem>
+                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <HStack>
+                                            <Checkbox type='checkbox' />
+                                            <Text>Deseo ser visto por AGENTES</Text>
+                                        </HStack>
+                                    </GridItem>
+                                    
+                                    <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                        <HStack>
+                                            <Checkbox type='checkbox' />
+                                            <Text>Deseo ser visto por CLUBES</Text>
+                                        </HStack>
                                     </GridItem>
                                 </SimpleGrid>
                             </HStack>
