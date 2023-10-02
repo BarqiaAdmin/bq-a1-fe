@@ -237,125 +237,125 @@ class NuevoJugador2 extends Component {
         return (
             <>
             <NavBar />
-        <Box>
-            <Container
-                maxW="100%"
-                p={10}
-            >
-                
-                <Image alt='' 
-                    position="fixed"
-                    left="0"
-                    bottom="0"
-                    src="/artwork1.png"
-                />
-                <Image alt='' 
-                    position='fixed'
-                    top='0'
-                    right='0'
-                    p="40px"
-                    src='/artwork3.png'
-                />
-                <HStack>
-                    <Image alt=''  margin="auto" src="/logo.png" />
-                </HStack>
-                <VStack
-                    w="702px"
-                    p="40px 80px"
-                    bg="#0E1216"
-                    boxShadow="0px 1px 2px rgba(0, 0, 0, 0.08)"
-                    borderRadius="16px"
-                    color="#ECECEC"
-                    gap="12px"
-                    margin="auto"
-                    marginTop="25px"
-                    paddingTop="100px"
+            <Box>
+                <Container
+                    maxW="100%"
+                    p={10}
                 >
-                    <Heading
-                        textAlign='center'
-                        fontSize="60px"
-                    >
-                        Selecciona tu lugar en el campo:
-                    </Heading>
-                    <Box
-                        position="relative"
-                    >
-                        <Image alt=''  src="/campo.png" />
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 1) } className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 2) } className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 3) } className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 4) } className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 5) } className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 6) } className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 7) } className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 8) } className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 9) } className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 10) } className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                        <div onClick={ (e) => this.elegirLugarEnElCampo(e, 11) } className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
-                    </Box>
-                    {/*
-                    <Heading
-                        fontSize="18px"
-                    >
-                        PIE HABIL
-                    </Heading>
+                    
+                    <Image alt='' 
+                        position="fixed"
+                        left="0"
+                        bottom="0"
+                        src="/artwork1.png"
+                    />
+                    <Image alt='' 
+                        position='fixed'
+                        top='0'
+                        right='0'
+                        p="40px"
+                        src='/artwork3.png'
+                    />
                     <HStack>
-                        <Button onClick={(e) => this.elegirPieHabil(e, 1)} className="btn2">Diestro</Button>
-                        <Button onClick={(e) => this.elegirPieHabil(e, 2)} className="btn2">Zurdo</Button>
-                        <Button onClick={(e) => this.elegirPieHabil(e, 3)} className="btn2">Ambos</Button>
+                        <Image alt=''  margin="auto" src="/logo.png" />
                     </HStack>
-                    */}
-                    <Heading
-                        fontSize="60px"
+                    <VStack
+                        w="702px"
+                        p="40px 80px"
+                        bg="#0E1216"
+                        boxShadow="0px 1px 2px rgba(0, 0, 0, 0.08)"
+                        borderRadius="16px"
+                        color="#ECECEC"
+                        gap="12px"
+                        margin="auto"
+                        marginTop="25px"
+                        paddingTop="100px"
                     >
-                        Atributos:
-                    </Heading>
-                    <VStack>
-                        <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px' width='450px'>Pases</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 2)} fontSize='40px' height='100px' width='450px'>Tiros</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 3)} fontSize='40px' height='100px' width='450px'>Resistencia</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 4)} fontSize='40px' height='100px' width='450px'>Visión de juego</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 5)} fontSize='40px' height='100px' width='450px' >1vs1</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 6)} fontSize='40px' height='100px' width='450px' >Tiros libres</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 7)} fontSize='40px' height='100px' width='450px' >Marca</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 8)} fontSize='40px' height='100px' width='450px' >Juego aéreo</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 9)} fontSize='40px' height='100px' width='450px'>Fuerza</Button>
-                        <Button onClick={(e) => this.elegirAtributo(e, 10)} fontSize='40px' height='100px' width='450px'>Velocidad</Button>
-                    </VStack>
-                    <SimpleGrid columns={2} w="full" paddingTop='20px'>
-                        <GridItem colSpan={1}>
-                            <Button
-                                w="full"
-                                className="btn2"
-                            
-                                height={['100px', '70px']}
-                                fontSize={[ '26px', '24px']}
-                                width={['180px', '150px']}
-                            >
-                                <Link href='/Onboarding/NuevoJugador'>
-                                    Volver
-                                </Link>
-                            </Button>
-                        </GridItem>
-                        <GridItem colSpan={1} textAlign="right">
-                            <Button
-                                w="full"
-                                className="btn2"
-                            
-                                height={['100px', '70px']}
-                                fontSize={[ '26px', '24px']}
-                                width={['180px', '150px']}
+                        <Heading
+                            textAlign='center'
+                            fontSize="60px"
+                        >
+                            Selecciona tu lugar en el campo:
+                        </Heading>
+                        <Box
+                            position="relative"
+                        >
+                            <Image alt=''  src="/campo.png" />
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 1) } className="playerPosition" style={{ background: 'white', top: '45%', left: '2%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 2) } className="playerPosition" style={{ background: 'white', top: '45%', left: '40%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 3) } className="playerPosition" style={{ background: 'white', top: '30%', left: '14%',position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 4) } className="playerPosition" style={{ background: 'white', top: '55%', left: '14%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 5) } className="playerPosition" style={{ background: 'white', top: '10%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 6) } className="playerPosition" style={{ background: 'white', top: '80%', left: '20%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 7) } className="playerPosition" style={{ background: 'white', top: '76%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 8) } className="playerPosition" style={{ background: 'white', top: '15%', left: '49%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 9) } className="playerPosition" style={{ background: 'white', top: '45%', left: '70%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 10) } className="playerPosition" style={{ background: 'white', top: '25%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                            <div onClick={ (e) => this.elegirLugarEnElCampo(e, 11) } className="playerPosition" style={{ background: 'white', top: '65%', left: '80%', position: 'absolute', borderRadius: '100%', display: 'inline-block', height: '20px', width: '20px'}}></div>
+                        </Box>
+                        {/*
+                        <Heading
+                            fontSize="18px"
+                        >
+                            PIE HABIL
+                        </Heading>
+                        <HStack>
+                            <Button onClick={(e) => this.elegirPieHabil(e, 1)} className="btn2">Diestro</Button>
+                            <Button onClick={(e) => this.elegirPieHabil(e, 2)} className="btn2">Zurdo</Button>
+                            <Button onClick={(e) => this.elegirPieHabil(e, 3)} className="btn2">Ambos</Button>
+                        </HStack>
+                        */}
+                        <Heading
+                            fontSize="60px"
+                        >
+                            Atributos:
+                        </Heading>
+                        <VStack>
+                            <Button onClick={(e) => this.elegirAtributo(e, 1)} fontSize='40px' height='100px' width='450px'>Pases</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 2)} fontSize='40px' height='100px' width='450px'>Tiros</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 3)} fontSize='40px' height='100px' width='450px'>Resistencia</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 4)} fontSize='40px' height='100px' width='450px'>Visión de juego</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 5)} fontSize='40px' height='100px' width='450px' >1vs1</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 6)} fontSize='40px' height='100px' width='450px' >Tiros libres</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 7)} fontSize='40px' height='100px' width='450px' >Marca</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 8)} fontSize='40px' height='100px' width='450px' >Juego aéreo</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 9)} fontSize='40px' height='100px' width='450px'>Fuerza</Button>
+                            <Button onClick={(e) => this.elegirAtributo(e, 10)} fontSize='40px' height='100px' width='450px'>Velocidad</Button>
+                        </VStack>
+                        <SimpleGrid columns={2} w="full" paddingTop='20px'>
+                            <GridItem colSpan={1}>
+                                <Button
+                                    w="full"
+                                    className="btn2"
+                                
+                                    height={['100px', '70px']}
+                                    fontSize={[ '26px', '24px']}
+                                    width={['180px', '150px']}
+                                >
+                                    <Link href='/Onboarding/NuevoJugador'>
+                                        Volver
+                                    </Link>
+                                </Button>
+                            </GridItem>
+                            <GridItem colSpan={1} textAlign="right">
+                                <Button
+                                    w="full"
+                                    className="btn2"
+                                
+                                    height={['100px', '70px']}
+                                    fontSize={[ '26px', '24px']}
+                                    width={['180px', '150px']}
 
-                                onClick={this.actualizarUsuario}
-                            >
-                                Finalizar
-                            </Button>
-                        </GridItem>
-                    </SimpleGrid>
-                </VStack>
-            </Container>
-            </Box>
-        </>
+                                    onClick={this.actualizarUsuario}
+                                >
+                                    Finalizar
+                                </Button>
+                            </GridItem>
+                        </SimpleGrid>
+                    </VStack>
+                </Container>
+                </Box>
+            </>
         );
     }
 };

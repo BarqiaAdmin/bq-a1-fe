@@ -56,6 +56,9 @@ import Router from 'next/router';
 import { useFileUpload } from 'use-file-upload';
 
 function NuevoJugador() {
+    const [inputVistoPorAgentes, setInputVistoPorAgentes] = useState(false);
+    const [inputVistoPorClubes, setInputVistoPorClubes] = useState(false);
+
     const [domLoaded, setDomLoaded] = useState(false);
 
     const [files, selectFiles] = useFileUpload();
@@ -336,10 +339,6 @@ function NuevoJugador() {
                             <Input placeholder='URL de imagen' value={urlDeImagen} onChange={handleUrlDeImagenChange} />
                         </FormControl>
                         */}
-                        
-                        <GridItem colSpan={12}>
-                            <Text fontSize={[60, 10]}>Datos:</Text>
-                        </GridItem>
                         <SimpleGrid columns={12} gap="32px" w="full">
                             <GridItem colSpan={[12, 12, 12, 6]} >
                                 <FormControl isRequired isInvalid={isErrorNombre} >
@@ -573,14 +572,14 @@ function NuevoJugador() {
                                 <FormLabel fontSize={[30, 14]}>Quiero ser visto por:</FormLabel>
                             </GridItem>
                             <GridItem colSpan={12}>
-                                <Button className={ inputUniversidades ? 'btn2' : '' } width='full' fontSize={[30, 14]}>Agentes</Button>
+                                <Button className={ inputVistoPorAgentes ? 'btn2' : '' } fontSize={[30, 14]} onClick={() => setInputVistoPorAgentes(!inputVistoPorAgentes)} width='full'>Agentes</Button>
                                 {/**<Checkbox colorScheme='blue'>
                                     Universidadesword
                                 </Checkbox>
                                         */}
                             </GridItem>
                             <GridItem colSpan={12}>
-                                <Button className={ inputUniversidades ? 'btn2' : '' } width='full' fontSize={[30, 14]}>Clubes</Button>
+                                <Button className={ inputVistoPorClubes ? 'btn2' : '' } fontSize={[30, 14]} onClick={() => setInputVistoPorClubes(!inputVistoPorClubes)} width='full'>Clubes</Button>
                                 {/**<Checkbox colorScheme='blue'>
                                     Universidadesword
                                 </Checkbox>
