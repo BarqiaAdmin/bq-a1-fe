@@ -235,11 +235,14 @@ class NuevoJugador2 extends Component {
 
     render () {
         return (
+            <>
+            <NavBar />
+        <Box>
             <Container
                 maxW="100%"
                 p={10}
             >
-                <NavBar />
+                
                 <Image alt='' 
                     position="fixed"
                     left="0"
@@ -351,6 +354,8 @@ class NuevoJugador2 extends Component {
                     </SimpleGrid>
                 </VStack>
             </Container>
+            </Box>
+        </>
         );
     }
 };

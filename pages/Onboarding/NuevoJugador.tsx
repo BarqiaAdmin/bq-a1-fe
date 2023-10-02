@@ -260,7 +260,9 @@ function NuevoJugador() {
                     maxW="100%"
                     p={10}
                 >
+                    {/**
                     <NavBar />
+                     */}
                     <Image alt='' 
                         position="fixed"
                         left="0"
