@@ -968,20 +968,6 @@ export default function Perfil() {
                                             </Select>
                                         </FormControl>
                                     </GridItem>
-                                    <GridItem colSpan={[2, 1]}>
-                                        ESTATURA <br />
-                                        <strong><em>{ estatura }</em></strong>
-                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                            <Input className="campoDeEdicion" placeholder='Ingresar estatura' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
-                                        </FormControl>
-                                    </GridItem>
-                                    <GridItem colSpan={[2, 1]}>
-                                        PESO <br />
-                                        <strong><em>{ peso }</em></strong>
-                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                            <Input className="campoDeEdicion" placeholder='Ingresar peso' onChange={ handlePesoChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
-                                        </FormControl>
-                                    </GridItem>
                                     <GridItem colSpan={[4, 1]}>
                                         Edad  <br />
                                         <strong><em>{ edad }</em></strong>
@@ -998,6 +984,21 @@ export default function Perfil() {
                                             </FormControl>
                                         </VStack>
                                     </GridItem>
+                                    <GridItem colSpan={[2, 1]}>
+                                        ESTATURA <br />
+                                        <strong><em>{ estatura }</em></strong>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Input className="campoDeEdicion" placeholder='Ingresar estatura' onChange={ handleEstaturaChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                        </FormControl>
+                                    </GridItem>
+                                    <GridItem colSpan={[2, 1]}>
+                                        PESO <br />
+                                        <strong><em>{ peso }</em></strong>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Input className="campoDeEdicion" placeholder='Ingresar peso' onChange={ handlePesoChange } fontSize={[20, 30]} marginTop={['10px', '20px']}/>
+                                        </FormControl>
+                                    </GridItem>
+                                    
 
                                     <GridItem colSpan={[2, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         <HStack>
@@ -1044,7 +1045,16 @@ export default function Perfil() {
                                         </Badge>
                                     </GridItem>
                                      */}
-
+                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'block' }}>
+                                        CONDICIÓN <br />
+                                        <strong><em>{ condicion }</em></strong>
+                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
+                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handleCondicionChange }>
+                                                <option>Libre</option>
+                                                <option>Con contrato</option>
+                                            </Select>
+                                        </FormControl>
+                                    </GridItem>
                                     <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         NIVEL DE INGLÉS <br />
                                         <strong><em>{ nivelDeIngles }</em></strong>
@@ -1057,16 +1067,7 @@ export default function Perfil() {
                                             </Select>
                                         </FormControl>
                                     </GridItem>
-                                    <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                        CONDICIÓN <br />
-                                        <strong><em>{ condicion }</em></strong>
-                                        <FormControl style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
-                                            <Select className="campoDeEdicion" placeholder='Seleccionar' onChange={ handleCondicionChange }>
-                                                <option>Libre</option>
-                                                <option>Con contrato</option>
-                                            </Select>
-                                        </FormControl>
-                                    </GridItem>
+                                    
                                     <GridItem colSpan={[4, 1]} style={ edicionActivada ? { display: 'block' } : { display: 'none' }}>
                                         PRESUPUESTO <br />
                                         <strong><em>{ presupuesto }</em></strong>
