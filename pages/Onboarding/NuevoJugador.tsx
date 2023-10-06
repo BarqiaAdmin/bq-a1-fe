@@ -293,7 +293,6 @@ function NuevoJugador() {
                         gap="32px"
                         margin="auto"
                         marginTop="25px"
-                        paddingTop="100px"
                     >
                         
                         {/**
@@ -309,20 +308,7 @@ function NuevoJugador() {
                             Subir imagen
                         </Link>
                          */}
-                        <GridItem colSpan={12} marginTop='170px'>
-                            <Text fontSize={[60, 10]}></Text>
-                        </GridItem>
-                        <Input
-                            placeholder="Select Profile Image"
-                            size="md"
-                            type="file"
-                            fontSize="40px"
-                            height='70px'
-                            position='absolute'
-                            width='370px'
-                            onChange={(e) => handleFileUpload(e)}
-                        />
-                        <Box>
+                        <Box position='relative'>
                             <Image
                                 alt=''
                                 borderRadius='full'
@@ -331,7 +317,19 @@ function NuevoJugador() {
                                 height='180px'
                                 width='180px'
                                 objectFit='cover'
-                                marginTop='-360px'
+                            />
+                            <Input
+                                size="md"
+
+                                type="file"
+                                position='absolute'
+                                top='0'
+                                left='0'
+                                
+
+                                placeholder="Subir imagen de perfil"
+                                
+                                onChange={(e) => handleFileUpload(e)}
                             />
                         </Box>
                         {/**
