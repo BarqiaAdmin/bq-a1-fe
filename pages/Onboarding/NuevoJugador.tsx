@@ -323,10 +323,10 @@ function NuevoJugador() {
 
                                 type="file"
                                 position='absolute'
-                                top='0'
+                                top='150'
                                 left='0'
-                                
-
+                                width='172px'
+                                border='none'
                                 placeholder="Subir imagen de perfil"
                                 
                                 onChange={(e) => handleFileUpload(e)}
