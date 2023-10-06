@@ -221,7 +221,7 @@ export default function Perfil() {
                 <Flex
                     alignItems="center"
                 >
-                    <Link href='/Sesion/Login'>
+                    <Link href='/Sesion/LogIn'>
                         <Button className='btn1' marginRight="25px" onClick={() => {}}>
                             Iniciar sesión
                         </Button>

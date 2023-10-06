@@ -51,6 +51,9 @@ const LogIn = () => {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value)
         localStorage.setItem('password', e.target.value);
+        if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+            console.log('Enter key was pressed')
+        }
     }
 
     /*

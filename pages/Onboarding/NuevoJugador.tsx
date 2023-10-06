@@ -318,6 +318,7 @@ function NuevoJugador() {
                             type="file"
                             fontSize="40px"
                             height='70px'
+                            position='absolute'
                             width='370px'
                             onChange={(e) => handleFileUpload(e)}
                         />
