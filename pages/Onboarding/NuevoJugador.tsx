@@ -322,11 +322,10 @@ function NuevoJugador() {
                                 size="md"
 
                                 type="file"
-                                position='absolute'
-                                top='150'
-                                left='0'
-                                width='172px'
+                                width='170px'
                                 border='none'
+                                marginTop='20px'
+
                                 placeholder="Subir imagen de perfil"
                                 
                                 onChange={(e) => handleFileUpload(e)}
