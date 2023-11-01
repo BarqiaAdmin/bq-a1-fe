@@ -179,7 +179,13 @@ const LogIn = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Contraseña</FormLabel>
-                            <Input id="inputPassword" type="password" placeholder="Ingresa tu contraseña" onChange={handlePasswordChange}/>
+                            <Input id="inputPassword" type="password" placeholder="Ingresa tu contraseña" onChange={handlePasswordChange}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        iniciarSesion();
+                                    }
+                                }}
+                            />
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={8} textAlign="right">

@@ -362,7 +362,7 @@ export default function Perfil() {
 
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
-                //galeriaPartidos: galeriaPartidos,
+                galeriaPartidos: galeriaPartidos,
 
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
@@ -401,10 +401,11 @@ export default function Perfil() {
             },
             body: JSON.stringify({
                 email: email,
+                edad: edad,
                 password: password,
                 fotoPerfil: fotoPerfil,
-                nombre: nuevoNombre,
-                apellido: nuevoApellido,
+                nombre: nombre,
+                apellido: apellido,
                 facebook: facebook,
                 instagram: instagram,
                 twitter: twitter,

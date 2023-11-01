@@ -212,13 +212,21 @@ const IndexPage = () => {
                     <GridItem colSpan={8}>
                         <FormControl>
                             <FormLabel>Repetir contraseña</FormLabel>
-                            <Input id='inputPasswordRepeat' type="password" placeholder="Repetí tu contraseña" onChange={ handleRepeatPasswordChange } value={repeatPassword}/>
+                            <Input id='inputPasswordRepeat' type="password" placeholder="Repetí tu contraseña" onChange={ handleRepeatPasswordChange } value={repeatPassword}
+                                
+                            />
                             <Text display='none' color="green">La contraseña debe tener por lo menos 8 caracteres.</Text>
                             <Text display='none' color="red">La contraseña no es válida o no corresponde a la dirección de correo electrónico.</Text>
                         </FormControl>
                     </GridItem>
                     <GridItem colSpan={5}>
-                        <Checkbox id="checkboxTerminosYCondiciones" fontSize='10px' marginTop='5px' onChange={ handleTerminosYCondiciones } display='inline-block'>
+                        <Checkbox id="checkboxTerminosYCondiciones" fontSize='10px' marginTop='5px' onChange={ handleTerminosYCondiciones } display='inline-block'
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleRegister();
+                                }
+                            }}
+                        >
                         </Checkbox>
                         <Box marginLeft='10px' fontSize='12px' display='inline-block'>
                             Acepto los <Link className="link1" href="https://scoutinglabs.com/politicas.pdf">Términos y condiciones</Link>
