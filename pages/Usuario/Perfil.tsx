@@ -206,7 +206,7 @@ export default function Perfil() {
             },
             body: JSON.stringify({
                 email: email,
-                edad: edad,
+                edad: edad, pais: pais,
 
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
@@ -225,7 +225,7 @@ export default function Perfil() {
                 posicion: posicion,
                 genero: genero,
                 estatura: estatura,
-                peso: peso,
+                peso: peso, club: club,
 
                 vistoPorAgentes: vistoPorAgentes,
                 vistoPorClubes: vistoPorClubes,
@@ -292,7 +292,7 @@ export default function Perfil() {
             },
             body: JSON.stringify({
                 email: email,
-                edad: edad,
+                edad: edad, pais: pais,
                 password: password,
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
@@ -307,7 +307,7 @@ export default function Perfil() {
                 posicion: posicion,
                 genero: genero,
                 estatura: estatura,
-                peso: peso,
+                peso: peso, club: club,
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
@@ -342,7 +342,7 @@ export default function Perfil() {
             },
             body: JSON.stringify({
                 email: email,
-                edad: edad,
+                edad: edad, pais: pais,
                 password: password,
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
@@ -357,7 +357,7 @@ export default function Perfil() {
                 posicion: posicion,
                 genero: genero,
                 estatura: estatura,
-                peso: peso,
+                peso: peso, club: club,
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
@@ -403,7 +403,7 @@ export default function Perfil() {
             },
             body: JSON.stringify({
                 email: email,
-                edad: edad,
+                edad: edad, pais: pais,
                 password: password,
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
@@ -418,7 +418,7 @@ export default function Perfil() {
                 posicion: posicion,
                 genero: genero,
                 estatura: estatura,
-                peso: peso,
+                peso: peso, club: club,
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
