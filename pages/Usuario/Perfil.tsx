@@ -207,38 +207,28 @@ export default function Perfil() {
             body: JSON.stringify({
                 email: email,
                 edad: edad, pais: pais,
-
+                password: password,
                 fotoPerfil: fotoPerfil,
                 nombre: nombre,
-
                 apellido: apellido,
                 facebook: facebook,
                 instagram: instagram,
                 twitter: twitter,
                 tiktok: tiktok,
-
-                club: club,
-                pais: pais,
                 nacimiento: nacimiento,
-                
+                nivelDeIngles: nivelDeIngles,
                 pieHabil: pieHabil,
                 posicion: posicion,
                 genero: genero,
                 estatura: estatura,
                 peso: peso, club: club,
-
-                vistoPorAgentes: vistoPorAgentes,
-                vistoPorClubes: vistoPorClubes,
-                vistoPorUniversidades: vistoPorUniversidades,
-
                 categoria: categoria,
                 condicion: condicion,
                 presupuesto: presupuesto,
-                nivelDeIngles: nivelDeIngles,
 
                 imagenesGaleriaArray: imagenesGaleriaArray,
                 videosGaleria: videosGaleria,
-                //galeriaPartidos: galeriaPartidos,
+                galeriaPartidos: galeriaPartidos,
 
                 lugarEnElCampo: lugarEnElCampo,
                 pases: pases,
